@@ -5,6 +5,7 @@
 :root {
   /* ZINC */
   --color-zinc-950: #09090b;
+  --color-zinc-925: #111113;
   --color-zinc-900: #18181b;
   --color-zinc-850: #1e1e21;
   --color-zinc-800: #27272a;
@@ -18,14 +19,30 @@
   --color-zinc-250: #dddddf;
   --color-zinc-200: #e4e4e7;
   --color-zinc-100: #f4f4f5;
+  --color-zinc-75: #f7f7f8;
   --color-zinc-50: #fafafa;
 
+  /* PURPLE */
+  --color-purple-950: #3b0764;
+  --color-purple-900: #581c87;
+  --color-purple-800: #6b21a8;
+  --color-purple-700: #7e22ce;
+  --color-purple-600: #9333ea;
+  --color-purple-500: #a855f7;
+  --color-purple-400: #c084fc;
+  --color-purple-300: #d8b4fe;
+  --color-purple-200: #e9d5ff;
+  --color-purple-100: #f3e8ff;
+  --color-purple-50: #faf5ff;
+
+  /* naming is depended on dark colors */
   /* backgrounds */
   --background: var(--color-zinc-50);
-  --background-color-2: var(--color-zinc-100);
-  --background-color-3: var(--color-zinc-200);
-  --background-color-4: var(--color-zinc-250);
-  --background-color-5: var(--color-zinc-350);
+  --background-color-925C: var(--color-zinc-75);
+  --background-color-900C: var(--color-zinc-100);
+  --background-color-800C: var(--color-zinc-200);
+  --background-color-850C: var(--color-zinc-250);
+  --background-color-750C: var(--color-zinc-350);
 
   /* text & labels */
   --foreground: var(--color-zinc-950);
@@ -33,11 +50,16 @@
   --foreground-color-3: var(--color-zinc-500);
   --foreground-color-4: var(--color-zinc-700);
 
-  
   /* border color */
   --border-color-1: var(--color-zinc-300);
   --border-color-2: var(--color-zinc-400);
 
+  /* transparents */
+  --purple-transparent-1: #7e22ce89;
+  --purple-transparent-2: #7e22ce41;
+
+  /* svg */
+  --svg-default-color: var(--color-zinc-500);
 
   /* shadcn */
   --card: oklch(1 0 0);
@@ -75,20 +97,24 @@
 
 .dark {
   --background: var(--color-zinc-950);
-  --background-color-2: var(--color-zinc-900);
-  --background-color-3: var(--color-zinc-800);
-  --background-color-4: var(--color-zinc-850);
-  --background-color-5: var(--color-zinc-750);
+  --background-color-900C: var(--color-zinc-900);
+  --background-color-925C: var(--color-zinc-925);
+  --background-color-800C: var(--color-zinc-800);
+  --background-color-850C: var(--color-zinc-850);
+  --background-color-750C: var(--color-zinc-750);
 
   /* border */
-  --border-color-1: var(--color-zinc-800);
-  --border-color-2: var(--color-zinc-700);
+  --border-color-800C: var(--color-zinc-800);
+  --border-color-700C: var(--color-zinc-700);
 
   /* text & labels */
   --foreground: var(--color-zinc-50);
   --foreground-color-2: var(--color-zinc-400);
   --foreground-color-3: var(--color-zinc-500);
   --foreground-color-4: var(--color-zinc-300);
+
+  /* svg */
+  --svg-default-color: var(--color-zinc-500);
 
   /* shadcn */
   --card: oklch(0.145 0 0);
@@ -121,7 +147,6 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
-
 }
 
 @theme inline {

@@ -38,9 +38,7 @@ export default function Home() {
           <li className="text-red-400">Save and see your changes instantly.</li>
         </ol>
 
-        <Button>
-          Hello 
-        </Button>
+        <Button>Hello</Button>
 
         <div className={styles.ctas}>
           <a
