@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* ZINC */
+  --color-zinc-950: #09090b;
+  --color-zinc-900: #18181b;
+  --color-zinc-850: #1e1e21;
+  --color-zinc-800: #27272a;
+  --color-zinc-750: #2e2e36;
+  --color-zinc-700: #3f3f46;
+  --color-zinc-600: #52525b;
+  --color-zinc-500: #71717a;
+  --color-zinc-400: #a1a1aa;
+  --color-zinc-350: #c8c8cc;
+  --color-zinc-300: #d4d4d8;
+  --color-zinc-250: #dddddf;
+  --color-zinc-200: #e4e4e7;
+  --color-zinc-100: #f4f4f5;
+  --color-zinc-50: #fafafa;
+
+  /* backgrounds */
+  --background: var(--color-zinc-50);
+  --background-color-2: var(--color-zinc-100);
+  --background-color-3: var(--color-zinc-200);
+  --background-color-4: var(--color-zinc-250);
+  --background-color-5: var(--color-zinc-350);
+
+  /* text & labels */
+  --foreground: var(--color-zinc-950);
+  --foreground-color-2: var(--color-zinc-600);
+  --foreground-color-3: var(--color-zinc-500);
+  --foreground-color-4: var(--color-zinc-700);
+}
+
+.dark {
+  --background: var(--color-zinc-950);
+  --background-color-2: var(--color-zinc-900);
+  --background-color-3: var(--color-zinc-800);
+  --background-color-4: var(--color-zinc-850);
+  --background-color-5: var(--color-zinc-750);
+
+  /* border */
+  --border-color-1: var(--color-zinc-800);
+  --border-color-2: var(--color-zinc-700);
+
+  /* text & labels */
+  --foreground: var(--color-zinc-50);
+  --foreground-color-2: var(--color-zinc-400);
+  --foreground-color-3: var(--color-zinc-500);
+  --foreground-color-4: var(--color-zinc-300);
+
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-geist-sans);
+}
