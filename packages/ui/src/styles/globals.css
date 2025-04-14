@@ -33,6 +33,11 @@
   --foreground-color-3: var(--color-zinc-500);
   --foreground-color-4: var(--color-zinc-700);
 
+  
+  /* border color */
+  --border-color-1: var(--color-zinc-300);
+  --border-color-2: var(--color-zinc-400);
+
 
   /* shadcn */
   --card: oklch(1 0 0);
