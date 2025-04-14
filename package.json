@@ -1,5 +1,5 @@
 {
-  "name": "my-turborepo",
+  "name": "programmermahin-advanced",
   "private": true,
   "scripts": {
     "build": "turbo run build",
