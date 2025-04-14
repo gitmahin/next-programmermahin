@@ -46,6 +46,12 @@ module.exports = {
           zinc_white: "var(--color-zinc-50)"
         },
       },
+      borderRadius: {
+        DEFAULT: "8px",
+        tiny: "5px",
+        circle: "50%",
+        tablet: "50px",
+      }
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
