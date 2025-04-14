@@ -2,7 +2,8 @@
 import { COURSES_ICONS, MAIN_NAV_LINKS } from "@/constants";
 import { DEVOPS_TUTORIALS } from "@/constants/tutorials/devops";
 import { LUCIDE_DEFAULT_ICON_SIZE, PMLogo } from "@programmer/ui";
-import { Search } from "lucide-react";
+import { Moon, Search } from "lucide-react";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,12 +11,27 @@ import React from "react";
 
 export const Sidebar = () => {
   const path_name = usePathname();
+  const {theme, setTheme} = useTheme()
+
+  const toggleTheme = () => {
+    if(theme === "dark"){
+      setTheme("light")
+    }else{
+      setTheme("dark")
+    }
+  }
+
   return (
     <nav className="w-[280px] border-r border-border-color_800C bg-background-color_925C h-screen fixed left-0 top-0">
       <div className="w-full border-b border-border-color_800C px-4 py-3 flex justify-between items-center">
         <PMLogo size="sm" />
-        <div className="border border-border-color_700C w-[60px] h-[25px] rounded-tablet flex justify-between items-center px-[3px]">
+        {/* <div className="border border-border-color_700C w-[60px] h-[25px] rounded-tablet flex justify-between items-center px-[3px]">
         <Search size={LUCIDE_DEFAULT_ICON_SIZE} className="text-text-svg_default_color" />
+
+        </div> */}
+        <div className="w-[30px] h-[30px] rounded-tablet flex justify-center items-center border border-border-color_800C hover:bg-background-color_900C cursor-pointer" onClick={toggleTheme}>
+        <Moon size={LUCIDE_DEFAULT_ICON_SIZE} className="dark:text-text-svg_default_color " />
+
         </div>
       </div>
       <div className="px-4 py-4">
@@ -26,7 +42,7 @@ export const Sidebar = () => {
               <Link href={item.slug ?? "#"} key={i}>
                 <li className="flex justify-start items-center gap-2 group">
                   <div
-                    className={`border rounded-tiny  group-hover:text-text-color_1 border-border-color_800C p-[3px] bg-gradient-to-tr from-background-color_900C to-background-color_800C ${segments.includes(item.slug) ?"bg-gradient-to-tr from-pm_purple-900 to-pm_purple-700 text-text-color_1" : "text-text-svg_default_color"}`}
+                    className={`border rounded-tiny  group-hover:text-text-color_1 border-border-color_800C p-[3px] bg-gradient-to-tr from-background-color_900C to-background-color_800C ${segments.includes(item.slug) ? "bg-gradient-to-tr from-pm_purple-900 to-pm_purple-700 text-text-zinc_white" : "text-text-svg_default_color"}`}
                   >
                     {item.icon}
                   </div>
