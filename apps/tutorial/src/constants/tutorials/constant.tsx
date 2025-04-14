@@ -5,18 +5,17 @@ import { GraduationCap, HomeIcon } from "lucide-react";
 export const MAIN_NAV_LINKS: GeneralNavItemType[] = [
   {
     label: "Home",
-    slug: "Home",
+    slug: "/",
     icon: (
-      <HomeIcon size={LUCIDE_DEFAULT_ICON_SIZE} color={ICON_DEFAULT_COLOR} />
+      <HomeIcon size={LUCIDE_DEFAULT_ICON_SIZE} />
     ),
   },
   {
     label: "Courses",
-    slug: "Courses",
+    slug: "courses",
     icon: (
       <GraduationCap
         size={LUCIDE_DEFAULT_ICON_SIZE}
-        color={ICON_DEFAULT_COLOR}
       />
     ),
   },

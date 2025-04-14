@@ -50,13 +50,15 @@
   --foreground-color-3: var(--color-zinc-500);
   --foreground-color-4: var(--color-zinc-700);
 
+  /* naming is depended on dark colors */
   /* border color */
-  --border-color-1: var(--color-zinc-300);
-  --border-color-2: var(--color-zinc-400);
+  --border-color-800C: var(--color-zinc-300);
+  --border-color-700C: var(--color-zinc-400);
 
+  /* opacity 100% to 0% */
   /* transparents */
-  --purple-transparent-1: #7e22ce89;
-  --purple-transparent-2: #7e22ce41;
+  --purple-transparent-700C: #7e22ce89;
+  --purple-transparent-650C: #7e22ce41;
 
   /* svg */
   --svg-default-color: var(--color-zinc-500);
@@ -196,4 +198,9 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-geist-sans);
+}
+
+
+@layer utilities {
+
 }

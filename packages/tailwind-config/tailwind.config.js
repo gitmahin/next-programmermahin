@@ -47,6 +47,10 @@ module.exports = {
           color_800C: "var(--background-color-800C)",
           color_850C: "var(--background-color-850C)",
           color_750C: "var(--background-color-750C)",
+          tsp: {
+            purple_700C: "var(--purple-transparent-700C)",
+            purple_650C: "var(--purple-transparent-650C)",
+          }
         },
         border: {
           color_800C: "var(--border-color-800C)",
@@ -58,6 +62,8 @@ module.exports = {
           color_3: "var(--foreground-color-3)",
           color_4: "var(--foreground-color-4)",
           zinc_white: "var(--color-zinc-50)",
+          svg_default_color: "var(--svg-default-color)",
+          
         },
       },
       borderRadius: {
