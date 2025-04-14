@@ -20,3 +20,37 @@ export const MAIN_NAV_LINKS: GeneralNavItemType[] = [
     ),
   },
 ];
+
+interface CoursesIconsType {
+  [key: string]: {
+    name: string
+    svgPath: string;
+  }
+}
+
+export const COURSES_ICONS: CoursesIconsType = {
+  docker: {
+    svgPath: "/icons/docker.svg",
+    name: "Docker"
+  },
+  kubernetes: {
+    svgPath: "/icons/kubernetes.svg",
+    name: "Kubernetes"
+  },
+  nginx:{
+    svgPath: "/icons/nginx.svg",
+    name: "Nginx"
+  },
+  git:{
+    svgPath: "/icons/git.svg",
+    name: "Git"
+  },
+  react: {
+    svgPath: "/icons/react.svg",
+    name: "React"
+  },
+  devops: {
+    svgPath: "/icons/devops.svg",
+    name: "Devops"
+  }
+}
