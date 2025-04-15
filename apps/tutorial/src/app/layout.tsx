@@ -5,6 +5,8 @@ import { GlobalThemeProvider } from "@programmer/ui";
 import { JetBrains_Mono } from "next/font/google";
 import { Sidebar } from "@/components/tutorials";
 import ReduxProvider from "@/components/redux-provider";
+// import Search from "@/components/search";
+import {Search} from "@programmer/shared"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -43,7 +45,10 @@ export default async function RootLayout({
 
           <GlobalThemeProvider>
             <Sidebar />
-            <div className="pl-[300px]">{children}</div>
+            <div className="pl-[300px]">
+            <Search/>
+              {children}
+              </div>
           </GlobalThemeProvider>
 
         </ReduxProvider>
