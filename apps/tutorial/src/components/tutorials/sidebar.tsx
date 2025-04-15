@@ -26,6 +26,7 @@ import {
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { TutorialNavItemType } from "@/constants/tutorials/type";
+import MainNavs from "../main-navs";
 
 export const Sidebar = () => {
   const path_name = usePathname();
@@ -67,7 +68,7 @@ export const Sidebar = () => {
 
       <div className="w-full border-b border-border-color_800C px-4 py-3 flex justify-between items-center">
         <PMLogo size="sm" />
-        <div className="w-fit h-[30px] overflow-hidden rounded-tablet flex justify-between items-center border border-border-color_800C  cursor-pointer">
+        <div className="w-fit h-[30px] overflow-hidden rounded-tablet flex justify-between items-center border border-border-color_800C cursor-pointer">
           <div
             onClick={toggleTheme}
             className="flex-shrink-0 h-full px-[6px] hover:bg-background-color_800C flex justify-center items-center"
@@ -92,7 +93,7 @@ export const Sidebar = () => {
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger className="h-full outline-none">
-              <div className="px-1 border-l border-border-color_800C h-full flex justify-center items-center hover:bg-background-color_800C">
+              <div className="px-1 h-full flex justify-center items-center hover:bg-background-color_800C">
                 <ChevronDown
                   size={LUCIDE_DEFAULT_ICON_SIZE}
                   className="text-text-svg_default_color"
@@ -124,7 +125,7 @@ export const Sidebar = () => {
               <Link href={`/${item.slug ?? "#"}`} key={i}>
                 <li className="flex justify-start items-center gap-2 group">
                   <div
-                    className={`border rounded-tiny  group-hover:text-text-color_1 border-border-color_800C p-[3px] bg-gradient-to-tr from-background-color_900C to-background-color_800C ${segments.includes(item.slug) ? "bg-gradient-to-tr from-pm_purple-900 to-pm_purple-700 text-text-zinc_white" : "text-text-svg_default_color"}`}
+                    className={`border rounded-tiny group-hover:text-text-color_1 border-border-color_800C p-[3px] bg-gradient-to-tr from-background-color_900C to-background-color_800C ${segments.includes(item.slug) ? "bg-gradient-to-tr from-pm_purple-900 to-pm_purple-700 text-text-zinc_white" : "text-text-svg_default_color"}`}
                   >
                     {item.icon}
                   </div>
@@ -231,7 +232,7 @@ export const Sidebar = () => {
           )}
         </>
       ) : (
-        <div>Nothing</div>
+        <MainNavs/>
       )}
     </nav>
   );

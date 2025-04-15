@@ -53,4 +53,38 @@ export const TUTORIALS_ICON: TutorialIconsType = {
   }
 }
 
+interface MainNavTutorialsType {
+  label: string;
+  slug: string;
+  icon: string
+}
+
+export const MAIN_NAV_TUTORIALS: MainNavTutorialsType[] = [
+  {
+    label: "React",
+    slug: "react",
+    icon: "/icons/react.svg"
+  },
+  {
+    label: "Devops",
+    slug: "devops",
+    icon: "/icons/devops.svg"
+  },
+  {
+    label: "Git",
+    slug: "git",
+    icon: "/icons/git.svg"
+  },
+  {
+    label: "C++",
+    slug: "cpp",
+    icon: "/icons/cpp.svg"
+  },
+  {
+    label: "Nextjs",
+    slug: "nextjs",
+    icon: "/icons/nextjs.svg"
+  }
+]
+
 

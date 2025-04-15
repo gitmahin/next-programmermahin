@@ -43,7 +43,6 @@ export default function ContentLayout({ children }: ContentLayoutPropsType) {
 
   return (
     <div>
-      {params.slug}
       {children}
     </div>
   );

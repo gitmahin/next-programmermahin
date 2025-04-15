@@ -17,7 +17,7 @@ import {
 export const useProcessMDX = (data: string) => {
   const [content, setContent] = useState("");
 
-  const { data: metaData, content: mdxContent } = matter(data);
+ 
 
   const processContent = useCallback(async () => {
     const processedData = await unified()
@@ -27,16 +27,16 @@ export const useProcessMDX = (data: string) => {
       .use(rehypeFormat)
       .use(rehypeStringify)
       .use(rehypeSlug) // Generates IDs automatically
-      .use(rehypeShiki, {
-        theme: "material-theme-ocean",
-        transformers: [
-          transformerNotationHighlight(),
-          transformerNotationDiff(),
-          transformerNotationErrorLevel(),
-          // ...
-        ],
-      })
-      .process(mdxContent);
+      // .use(rehypeShiki, {
+      //   theme: "material-theme-ocean",
+      //   transformers: [
+      //     transformerNotationHighlight(),
+      //     transformerNotationDiff(),
+      //     transformerNotationErrorLevel(),
+      //     // ...
+      //   ],
+      // })
+      .process(data);
 
     const htmlContent = processedData.toString();
     setContent(htmlContent);
@@ -47,7 +47,6 @@ export const useProcessMDX = (data: string) => {
   }, [processContent]);
 
   return {
-    content,
-    metaData,
+    content
   };
 };
