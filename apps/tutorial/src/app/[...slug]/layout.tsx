@@ -3,10 +3,9 @@ import { TutorialEnums } from "@/constants";
 import { DEVOPS_TUTORIALS } from "@/constants/tutorials/devops";
 import { notFound, useParams } from "next/navigation";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setTutorialChapters } from "@/redux/tutorials/tutoChaptersSlice";
 import { TutorialNavItemType } from "@/constants/tutorials/type";
-import { RootState } from "@/redux/store";
 
 interface ContentLayoutPropsType {
   children: React.ReactNode;
@@ -26,7 +25,6 @@ export default function ContentLayout({ children }: ContentLayoutPropsType) {
   };
 
   useEffect(() => {
-    
     // set tutorial chapter values in redux
     if (!setTutorialChapters) return;
 

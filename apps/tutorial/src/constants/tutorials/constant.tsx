@@ -10,15 +10,6 @@ export const MAIN_NAV_LINKS: GeneralNavItemType[] = [
       <HomeIcon size={LUCIDE_DEFAULT_ICON_SIZE} />
     ),
   },
-  {
-    label: "Courses",
-    slug: "courses",
-    icon: (
-      <GraduationCap
-        size={LUCIDE_DEFAULT_ICON_SIZE}
-      />
-    ),
-  },
 ];
 
 
@@ -60,7 +51,6 @@ export const TUTORIALS_ICON: TutorialIconsType = {
     svgPath: "/next.svg",
     name: "Nextjs"
   }
-  
 }
 
 
