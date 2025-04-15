@@ -21,25 +21,28 @@ export const MAIN_NAV_LINKS: GeneralNavItemType[] = [
   },
 ];
 
-interface CoursesIconsType {
-  [key: string]: {
-    name: string
-    svgPath: string;
-  }
+
+export enum TutorialEnums  {
+  GIT = "git",
+  REACT = "react",
+  DEVOPS = "devops",
+  NEXTJS = "nextjs",
+  CPP = "cpp"
 }
 
-export const COURSES_ICONS: CoursesIconsType = {
-  docker: {
-    svgPath: "/icons/docker.svg",
-    name: "Docker"
-  },
-  kubernetes: {
-    svgPath: "/icons/kubernetes.svg",
-    name: "Kubernetes"
-  },
-  nginx:{
-    svgPath: "/icons/nginx.svg",
-    name: "Nginx"
+interface TutorialIconMetaDataType {
+  svgPath: string;
+  name: string;
+}
+
+type TutorialIconsType = {
+  [key in TutorialEnums]: TutorialIconMetaDataType
+}
+
+export const TUTORIALS_ICON: TutorialIconsType = {
+  cpp: {
+    svgPath: "/icons/cpp.svg",
+    name: "C++"
   },
   git:{
     svgPath: "/icons/git.svg",
@@ -52,5 +55,12 @@ export const COURSES_ICONS: CoursesIconsType = {
   devops: {
     svgPath: "/icons/devops.svg",
     name: "Devops"
+  },
+  nextjs: {
+    svgPath: "/next.svg",
+    name: "Nextjs"
   }
+  
 }
+
+
