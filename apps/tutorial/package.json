@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack --port 3001",
-    "vercel-build": "npx turbo run build --scope=tutorial --include-dependencies --no-deps",
-    "build": "next build",
+    "build": "npx turbo run build --scope=tutorial --include-dependencies --no-deps",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
     "check-types": "tsc --noEmit",

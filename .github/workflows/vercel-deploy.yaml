@@ -41,7 +41,7 @@ jobs:
         run: pnpm install --global vercel
 
       - name: Pull Vercel Environment Variables
-        run: cd apps/tutorial && vercel pull --yes --environment=production --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
+        run: cd ../.. && vercel pull --yes --environment=production --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
 
       - name: Build Project
         run: cd ../.. && vercel build --prod --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
