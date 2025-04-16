@@ -151,7 +151,7 @@ export const Sidebar = () => {
           </DropdownMenu>
         </div>
         <PMButton onClick={handleSidebarOff} variant="secondary" className="w-[25px] h-[25px] absolute hidden showSidebarClose justify-center items-center right-[-32px] group hover:border hover:border-border-color_800C top-1/2 -translate-y-1/2" radius="tiny">
-        <X size={LUCIDE_DEFAULT_ICON_SIZE} className="text-text-svg_default_color flex justify-center items-center group-hover:text-text-color_1  " />
+        <X size={LUCIDE_DEFAULT_ICON_SIZE} className=" flex justify-center items-center text-text-color_1  " />
         </PMButton>
       </div>
       <div className="px-4 py-4">

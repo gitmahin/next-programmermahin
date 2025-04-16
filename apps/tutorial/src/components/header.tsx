@@ -28,7 +28,7 @@ export default function MobileHeader() {
             className="text-text-svg_default_color group-hover:text-text-color_1"
           />
         </PMButton>
-        <PMLogo size="sm" />
+        <PMLogo size="sm" className="mob_logo" />
       </div>
     </header>
   );

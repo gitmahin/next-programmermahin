@@ -1,32 +1,65 @@
 @media screen and (max-width: 1114px) {
-    .tutosidebar{
-      left: -100% !important;   
-    }
+  .tutosidebar {
+    left: -100% !important;
+  }
 
-    .main-content{
-        padding-left: 0px !important;
-        padding-top: 30px;
-    }
+  .main-content {
+    padding-left: 0px !important;
+    padding-top: 30px;
+  }
 
-    .searchTutorialRoot{
-        top: 9px !important;
-        right: 18px !important;
-    }
+  .searchTutorialRoot {
+    top: 9px !important;
+    right: 18px !important;
+  }
 
-    .tuto-aside-nav{
-        top: 90px !important;
-        height: calc(100vh - 90px) !important;
-    }
+  .tuto-aside-nav {
+    top: 90px !important;
+    height: calc(100vh - 90px) !important;
+  }
 
-    .mob-header-tuto{
-        display: flex;
-    }
+  .mob-header-tuto {
+    display: flex;
+  }
 
-    .openTutoSidebar{
-        left: 0 !important;
-    }
+  .openTutoSidebar {
+    left: 0 !important;
+  }
 
-    .showSidebarClose{
-display: flex;
-    }
+  .showSidebarClose {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .tutotab_parent {
+    position: relative !important;
+  }
+
+  .tuto_popup_tab_navbar {
+    position: absolute;
+    left: -100%;
+    z-index: 20;
+    /* left: 0; */
+  }
+
+  .tuto_popup_tab_navbar_open{
+    left: 0 !important;
+  }
+
+  .tuto_tab_content{
+    padding-left: 0px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .mob_logo {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .tutosidebar {
+    width: 260px !important;
+  }
 }

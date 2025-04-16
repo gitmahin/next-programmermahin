@@ -40,7 +40,7 @@ export const Search = () => {
         onClick={() => setOpen(true)}
         variant="secondary"
         radius="tablet"
-        className="px-2 fixed top-5 right-5 z-50 py-1 flex justify-center items-center gap-1 group searchTutorialRoot"
+        className="px-2 fixed top-5 right-5 py-1 flex justify-center items-center gap-1 group searchTutorialRoot"
       >
         <SearchIcon
           size={LUCIDE_DEFAULT_ICON_SIZE}
@@ -52,7 +52,11 @@ export const Search = () => {
         </div>
       </PMButton>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="bg-background-color_950C border-border-color_800C border max-w-[700px] h-[500px] w-full"></DialogContent>
+        <DialogContent className=" max-w-[700px] h-[500px] w-full p-2">
+          <div className="w-full h-full overflow-hidden bg-background-color_950C border-border-color_800C border rounded">
+
+          </div>
+        </DialogContent>
       </Dialog>
     </div>
   );
