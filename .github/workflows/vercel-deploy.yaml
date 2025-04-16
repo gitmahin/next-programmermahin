@@ -21,11 +21,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: List Tutorial App Contents
-        run: |
-          cd apps/tutorial
-          ls -al
-
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
@@ -43,9 +38,6 @@ jobs:
       - name: Install Vercel CLI
         run: pnpm install --global vercel@latest
 
-      - name: Link Vercel
-        run: vercel link --repo --yes --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
-
       - name: Pull Vercel Environment Variables
         run: cd apps/tutorial && vercel pull --yes --environment=production --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
 
@@ -59,4 +51,4 @@ jobs:
           NEXT_ALGOLIA_WRITE_API: ${{ secrets.NEXT_ALGOLIA_WRITE_API }}
 
       - name: Deploy Project
-        run: cd apps/tutorial && vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
+        run: cd apps/tutorial && vercel deploy --prod --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
