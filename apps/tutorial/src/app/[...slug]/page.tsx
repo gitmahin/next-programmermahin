@@ -8,13 +8,50 @@ import ContentAsideNav from "./content-aside-nav";
 import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import TutoPagination from "./paginatation";
+import { getTutorialsByKey, TutorialEnums } from "@/constants";
 
 interface ContentPagePropsType {
   params: Promise<{ slug: string[] }>;
 }
 
+export async function generateStaticParams() {
+  const tutorialTypes = ["cpp", "react", "nextjs", "devops", "git", "monorepo"];
+
+  const params: { slug: string[] }[] = [];
+
+  tutorialTypes.forEach((type) => {
+    const tutorials = getTutorialsByKey[type as TutorialEnums];
+
+    if (!tutorials) return;
+
+    Object.values(tutorials).forEach((section) => {
+      if (!section?.slug) return;
+
+      // Push the section route
+      params.push({
+        slug: [type, section.slug],
+      });
+
+      // Push nested items
+      section.items.forEach((item) => {
+        params.push({
+          slug: [type, section.slug, item.slug],
+        });
+      });
+    });
+  });
+
+  return params;
+}
+
 export default async function ContentPage({ params }: ContentPagePropsType) {
   const { slug } = await params;
+
+  if (process.env.NODE_ENV === "development") {
+    generateStaticParams().then((params) => {
+      console.log(params);
+    });
+  }
 
   try {
     const filePath = `src/content/${slug.join("/")}.mdx`;
