@@ -21,22 +21,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 10
-
-      - name: Setup Node.js
+      - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: "pnpm"
-
-      - name: Install Dependencies
-        run: pnpm install
+          node-version: 20
+          cache: 'npm'
+ 
+      - name: Install dependencies
+        run: npm install
 
       - name: Install Vercel CLI
-        run: pnpm install --global vercel@latest
+        run: npm install -g vercel@latest
 
       - name: Pull Vercel Environment Variables
         run: cd apps/tutorial && vercel pull --yes --environment=production --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
@@ -45,4 +40,4 @@ jobs:
         run: cd apps/tutorial && vercel build --prod --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
 
       - name: Deploy Project
-        run: cd apps/tutorial && vercel deploy --prod --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
+        run: cd apps/tutorial && vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
