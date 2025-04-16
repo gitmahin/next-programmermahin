@@ -10,6 +10,15 @@
     "lint": {
       "dependsOn": ["^lint"]
     },
+    "@programmer/ui#build": {
+      "outputs": ["dist/**"]
+    },
+    "@programmer/hooks#build": {
+      "outputs": ["dist/**"]
+    },
+    "@programmer/shared#build": {
+      "outputs": ["dist/**"]
+    },
     "check-types": {
       "dependsOn": ["^check-types"]
     },

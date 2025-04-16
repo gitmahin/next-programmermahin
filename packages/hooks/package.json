@@ -7,10 +7,11 @@
   },
   "scripts": {
     "dev": "tsc --watch",
+    "build": "tsup --dts --external react --minify",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
-      "clean": "rm -rf node_modules dist .turbo && echo 'Cleanup complete!'"
+    "clean": "rm -rf node_modules dist .turbo && echo 'Cleanup complete!'"
   },
   "devDependencies": {
     "@programmer/eslint-config": "workspace:*",
