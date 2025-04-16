@@ -50,7 +50,7 @@ jobs:
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
 
       - name: Build Project
-        run: pnpm run build --filter=tutorial
+        run: vercel build --prod --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
         env:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
@@ -59,4 +59,4 @@ jobs:
           NEXT_ALGOLIA_WRITE_API: ${{ secrets.NEXT_ALGOLIA_WRITE_API }}
 
       - name: Deploy Project
-        run: cd apps/tutorial && vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
