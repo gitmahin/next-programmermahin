@@ -1,10 +1,23 @@
-import { PMLogo } from "@programmer/ui";
+import { LUCIDE_DEFAULT_ICON_SIZE, PMButton, PMLogo } from "@programmer/ui";
+import { PanelRightClose } from "lucide-react";
 import React from "react";
 
 export default function MobileHeader() {
   return (
     <header className="fixed p-5 z-10 top-0 w-full left-0 h-[50px] mob-header-tuto backdrop-blur-lg border-b border-border-color_800C hidden justify-between items-center">
-      <PMLogo size="sm" />
+      <div className="flex justify-start items-center gap-2">
+        <PMButton
+          variant="silent"
+          className="group w-[25px] h-[25px] hover:border hover:border-border-color_800C flex justify-center items-center"
+          radius="tiny"
+        >
+          <PanelRightClose
+            size={LUCIDE_DEFAULT_ICON_SIZE}
+            className="text-text-svg_default_color group-hover:text-text-color_1"
+          />
+        </PMButton>
+        <PMLogo size="sm" />
+      </div>
     </header>
   );
 }
