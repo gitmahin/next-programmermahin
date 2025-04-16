@@ -2,13 +2,13 @@ import { FlattenedTutorialChapter } from "@/types/flattened-tutorial-ch";
 import { createSlice, PayloadAction, Slice } from "@reduxjs/toolkit";
 
 export interface tutoPaginateStateType {
-  next: FlattenedTutorialChapter | null;
-  prev: FlattenedTutorialChapter | null;
+  next: FlattenedTutorialChapter | undefined;
+  prev: FlattenedTutorialChapter | undefined;
 }
 
 const initialState: tutoPaginateStateType = {
-  next: null,
-  prev: null,
+  next: undefined,
+  prev: undefined,
 };
 
 export const tutoPaginateSlice: Slice<tutoPaginateStateType> = createSlice({
@@ -23,11 +23,11 @@ export const tutoPaginateSlice: Slice<tutoPaginateStateType> = createSlice({
       }>
     ) => {
       const { currentIndex, flatTutoList } = action.payload;
-      state.prev = currentIndex > 0 ? flatTutoList[currentIndex - 1] : null;
+      state.prev = currentIndex > 0 ? flatTutoList[currentIndex - 1] : undefined;
       state.next =
         currentIndex < flatTutoList.length - 1
           ? flatTutoList[currentIndex + 1]
-          : null;
+          : undefined;
     },
   },
 });
