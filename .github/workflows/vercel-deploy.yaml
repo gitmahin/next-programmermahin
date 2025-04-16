@@ -50,7 +50,7 @@ jobs:
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
 
       - name: Build Project
-        run: pnpm run build --filter=tutorial
+        run: cd apps/tutorial && vercel build --prod --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
         env:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
