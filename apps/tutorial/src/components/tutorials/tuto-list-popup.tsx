@@ -142,7 +142,7 @@ setTimeout(() => {
       )}
       <Dialog open={open} onOpenChange={handleOpenChange}>
         <DialogContent className="p-2 outline-none overflow-hidden  max-w-[700px] h-[500px] w-full">
-          <div className="w-full h-full overflow-hidden flex justify-center items-center bg-background-color_950C border-border-color_800C tutotab_parent border rounded">
+          <div className="w-full h-full overflow-hidden flex justify-center items-center bg-background-color_950C border-border-color_800C relative border rounded">
             <PMButton
             onClick={() => setOpenTutoNavSide(!openTutoNavSize)}
               variant="secondary"
@@ -280,7 +280,7 @@ setTimeout(() => {
                       <PMButton
                         onClick={handleStartLrnButtonClicked}
                         radius="tiny"
-                        className="px-3 py-1 text-read_2 outline-none font-medium absolute bottom-3 right-6"
+                        className="px-3 py-1 text-read_2 outline-none font-medium absolute bottom-3 right-3"
                       >
                         Start Learning
                       </PMButton>

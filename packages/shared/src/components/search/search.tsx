@@ -40,7 +40,7 @@ export const Search = () => {
         onClick={() => setOpen(true)}
         variant="secondary"
         radius="tablet"
-        className="px-2 fixed top-5 right-5 py-1 flex justify-center items-center gap-1 group searchTutorialRoot"
+        className="px-2 fixed top-5 right-5 z-30 py-1 flex justify-center items-center gap-1 group searchTutorialRoot"
       >
         <SearchIcon
           size={LUCIDE_DEFAULT_ICON_SIZE}
