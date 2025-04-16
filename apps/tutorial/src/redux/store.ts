@@ -3,6 +3,7 @@ import tutoChaptersReducer from "./tutorials/tutoChaptersSlice";
 import tutoTabReducer from "./tutorials/tutoTabSlice";
 import processedContentRedcuer from "./tutorials/processedContentSlice";
 import tutoPaginateReducer from "./tutorials/tutoPaginateSlice";
+import mobSidebarOpenReducer from "./tutorials/mobSidebarOpen";
 // ...
 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
     tutoTab: tutoTabReducer,
     processedContent: processedContentRedcuer,
     tutoPaginate: tutoPaginateReducer,
+    mobSidebarOpen: mobSidebarOpenReducer,
   },
 });
 

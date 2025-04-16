@@ -21,4 +21,12 @@
     .mob-header-tuto{
         display: flex;
     }
+
+    .openTutoSidebar{
+        left: 0 !important;
+    }
+
+    .showSidebarClose{
+display: flex;
+    }
 }

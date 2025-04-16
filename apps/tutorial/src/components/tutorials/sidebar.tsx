@@ -1,7 +1,7 @@
 "use client";
 import { TUTORIALS_ICON, MAIN_NAV_LINKS, TutorialEnums } from "@/constants";
-import { LUCIDE_DEFAULT_ICON_SIZE, PMLogo } from "@programmer/ui";
-import { ChevronDown, Contrast, Moon, Sun } from "lucide-react";
+import { LUCIDE_DEFAULT_ICON_SIZE, PMButton, PMLogo } from "@programmer/ui";
+import { ChevronDown, Contrast, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,6 +20,7 @@ import MainNavs from "../main-navs";
 import { TutoListPopup } from "./tuto-list-popup";
 import { FlattenedTutorialChapter } from "@/types/flattened-tutorial-ch";
 import { setPagination } from "@/redux/tutorials/tutoPaginateSlice";
+import { setMobSidebarOpen } from "@/redux/tutorials/mobSidebarOpen";
 
 export const Sidebar = () => {
   const path_name = usePathname();
@@ -27,7 +28,13 @@ export const Sidebar = () => {
   const [tutoData, setTutoData] = useState<TutorialNavItemType | null>(null);
   const [isPending, startTransition] = useTransition();
   const dispatch = useDispatch();
-
+  const mobSidebarOpen = useSelector((state: RootState) => state.mobSidebarOpen.open)
+  
+  
+    const handleSidebarOff = () => {
+      if(!setMobSidebarOpen) return
+      dispatch(setMobSidebarOpen(false))
+    }
   // get the tutorial chapter data from redux
   const TUTORIAL_CHAPTERS = useSelector(
     (state: RootState) => state.tutoChapters.value
@@ -90,10 +97,10 @@ export const Sidebar = () => {
   }, [path_name, tutoData]);
 
   return (
-    <nav className="w-[280px] transition-all border-r border-border-color_800C bg-background-color_925C h-screen fixed left-0 top-0 tutosidebar">
+    <nav className={`w-[280px] z-50 transition-all border-r border-border-color_800C bg-background-color_925C h-screen fixed left-0 top-0 tutosidebar ${mobSidebarOpen ? "openTutoSidebar": ""}`}>
       <div className="w-[20px] h-screen absolute left-full top-0 border border-solid box-border border-l-0 border-r-1 border-b-0 border-border-color_800C border-x border-x-border-color_800C bg-[image:repeating-linear-gradient(315deg,_var(--border-color-800C)_0,_var(--border-color-800C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-800C)]/5 md:block dark:[--pattern-fg:var(--border-color-800C)]/10"></div>
 
-      <div className="w-full border-b border-border-color_800C px-4 py-3 flex justify-between items-center">
+      <div className="w-full border-b relative border-border-color_800C px-4 py-3 flex justify-between items-center">
         <PMLogo size="sm" />
         <div className="w-fit h-[30px] overflow-hidden rounded-tablet flex justify-between items-center border border-border-color_800C cursor-pointer">
           <div
@@ -143,6 +150,9 @@ export const Sidebar = () => {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
+        <PMButton onClick={handleSidebarOff} variant="secondary" className="w-[25px] h-[25px] absolute hidden showSidebarClose justify-center items-center right-[-32px] group hover:border hover:border-border-color_800C top-1/2 -translate-y-1/2" radius="tiny">
+        <X size={LUCIDE_DEFAULT_ICON_SIZE} className="text-text-svg_default_color flex justify-center items-center group-hover:text-text-color_1  " />
+        </PMButton>
       </div>
       <div className="px-4 py-4">
         <ul className="leading-8">
