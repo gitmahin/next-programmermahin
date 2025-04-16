@@ -43,6 +43,19 @@
     /* left: 0; */
   }
 
+  .open_tuto_nav_btn{
+    display: flex;
+  }
+
+  .tuto_side_nav_list{
+    margin-top: 25px;
+  }
+
+  .course_ovw{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .tuto_popup_tab_navbar_open{
     left: 0 !important;
   }
