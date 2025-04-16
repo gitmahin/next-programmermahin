@@ -1,8 +1,6 @@
-import { TutorialEnums } from "@/constants";
 import { TutorialNavItemType } from "@/constants/tutorials/type";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction, Slice } from "@reduxjs/toolkit";
-import { set } from "zod";
 
 export interface TutoTabSliceType {
   activeKey: string;

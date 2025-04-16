@@ -22,6 +22,7 @@ import {
   AccordionTrigger,
 } from "@programmer/ui";
 import {
+  ArrowRight,
   BookOpenCheck,
   ChevronRight,
   LockIcon,
@@ -129,7 +130,7 @@ export const TutoListPopup = ({
             <div className="flex-shrink-0 w-[240px] h-full border-r bg-background-color_925C border-border-color_800C p-4 relative">
               <div className="w-[15px] h-full absolute left-full top-0 border border-solid box-border border-l-0 border-r-1 border-b-0 border-border-color_800C border-x border-x-border-color_800C bg-[image:repeating-linear-gradient(315deg,_var(--border-color-800C)_0,_var(--border-color-800C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-800C)]/5 md:block dark:[--pattern-fg:var(--border-color-800C)]/10"></div>
 
-              <ul className="leading-8">
+              <ul className="leading-10">
                 {MAIN_NAV_TUTORIALS.map((item, i) => {
                   return (
                     <li
@@ -137,7 +138,7 @@ export const TutoListPopup = ({
                         handleMouseEnter(item.key, item.label)
                       }
                       key={i}
-                      className={`flex transition-colors duration-150 select-none rounded-tiny justify-start items-center gap-3 px-3 py-1 ${activeKey === item.key && item.bg_color}`}
+                      className={`flex relative transition-colors duration-150 select-none rounded-tiny justify-start items-center gap-3 px-3 py-1 ${activeKey === item.key && item.bg_color}`}
                     >
                       <div className="flex justify-center items-center">
                         <Image
@@ -151,6 +152,7 @@ export const TutoListPopup = ({
                       <span className="text-read_1 text-text-color_4 font-medium">
                         {item.label}
                       </span>
+                      
                     </li>
                   );
                 })}
