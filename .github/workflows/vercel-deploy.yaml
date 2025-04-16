@@ -33,7 +33,7 @@ jobs:
           cache: "pnpm"
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Install Vercel CLI
         run: pnpm install --global vercel@latest
@@ -46,5 +46,3 @@ jobs:
 
       - name: Deploy Project
         run: cd apps/tutorial && vercel deploy --prod --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
-        env:
-          VERCEL_PROJECT_SETTINGS__INSTALL_COMMAND: 'pnpm install'
