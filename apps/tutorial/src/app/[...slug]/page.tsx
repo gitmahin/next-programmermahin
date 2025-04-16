@@ -67,7 +67,7 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
             <ProcessedContent data={mdxContent} />
             <TutoPagination />
           </div>
-          <aside className="w-[300px] h-[calc(100vh-70px)] overflow-y-auto sticky top-[70px] tuto-aside-nav">
+          <aside className="w-[300px] h-[calc(100vh-70px)] overflow-y-auto sticky top-[70px] tuto-aside-nav tuto_cont_aside">
             <ContentAsideNav />
           </aside>
         </div>

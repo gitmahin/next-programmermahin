@@ -31,6 +31,19 @@
   }
 }
 
+@media screen and (max-width: 780px) {
+.tuto_cont_aside{
+    position: fixed;
+    right: 0;
+    background-color: var(--background);
+    width: 250px;
+    padding: 20px;
+    height: calc(100vh - 50px) !important;
+    top: 50px !important;
+    border-left:  1px solid var(--border-color-800C);
+}
+}
+
 @media screen and (max-width: 550px) {
   .tuto_popup_tab_navbar {
     position: absolute;
