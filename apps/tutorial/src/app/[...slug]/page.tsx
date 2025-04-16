@@ -26,11 +26,11 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
         <title>{metaData.title || "Untitled"}</title>
         <meta name="description" content={metaData.desc || "No Description"} />
         <div className="flex justify-center items-start gap-5">
-          <div className="max-w-[800px] w-full p-5 pt-14">
+          <div className="max-w-[800px] w-full p-5 pt-16">
             <ProcessedContent data={mdxContent} />
             <TutoPagination />
           </div>
-          <aside className="w-[300px] h-[calc(100vh-56px)] overflow-y-auto sticky top-[56px] tuto-aside-nav">
+          <aside className="w-[300px] h-[calc(100vh-70px)] overflow-y-auto sticky border top-[70px] tuto-aside-nav">
             <ContentAsideNav />
           </aside>
         </div>
