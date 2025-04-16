@@ -61,7 +61,8 @@ export default function MainNavs() {
                     width={100}
                     height={100}
                     alt="icon"
-                    className={`w-[18px] h-[18px] filter brightness-0 dark:invert`}
+                    priority
+                    className={`w-[18px] h-[18px] select-none filter brightness-0 dark:invert`}
                   />
                 </div>
                 <span className="text-read_2 text-text-color_4 font-medium">
