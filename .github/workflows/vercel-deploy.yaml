@@ -47,7 +47,7 @@ jobs:
         run: cd apps/tutorial && vercel pull --yes --environment=production --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
 
       - name: Build Project
-        run: pnpm run build -- --filter=tutorial
+        run: pnpm run build --filter=tutorial
 
       - name: Deploy Project
         run: cd apps/tutorial && vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
