@@ -205,9 +205,9 @@ setTimeout(() => {
               )}
             </div>
             {activeKey ? (
-              <div className="w-full h-full overflow-y-auto tuto_tab_content  pl-[15px]">
+              <div className="w-full h-full overflow-y-auto tuto_tab_content  pl-[15px] overflow-x-hidden">
                 <div className=" h-full">
-                  <div className="sticky z-[1] p-4 top-0 backdrop-blur-lg course_ovw">
+                  <div className="sticky z-[1] p-4 top-0 backdrop-blur-lg course_ovw rounded-tr-[7px]">
                     <span className="flex justify-center items-center px-2 py-[1px] font-medium font-geist_mono rounded-tablet bg-background-color_900C border border-border-color_800C w-fit text-[12px] text-text-color_2 ">
                       Course Overview
                     </span>
