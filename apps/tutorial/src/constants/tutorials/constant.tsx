@@ -67,7 +67,7 @@ interface MainNavTutorialsType {
   slug: string;
   icon: string;
   key: string;
-  hover_color?: string;
+  bg_color?: string;
 }
 
 export const MAIN_NAV_TUTORIALS: MainNavTutorialsType[] = [
@@ -76,42 +76,42 @@ export const MAIN_NAV_TUTORIALS: MainNavTutorialsType[] = [
     slug: "react",
     key: TutorialEnums.REACT,
     icon: "/icons/react.svg",
-    hover_color: "hover:bg-[#66ddfb52]",
+    bg_color: "bg-gradient-to-r from-[#66ddfb52] to-[#0897df4a]",
   },
   {
     label: "Devops",
     slug: "devops",
     key: TutorialEnums.DEVOPS,
     icon: "/icons/devops.svg",
-    hover_color: "hover:bg-gradient-to-r from-[#ffad2044] to-[#08a6df4a]",
+    bg_color: "bg-gradient-to-r from-[#ffad2044] to-[#08a6df4a]",
   },
   {
     label: "Git",
     slug: "git",
     key: TutorialEnums.GIT,
     icon: "/icons/git.svg",
-    hover_color: "hover:bg-[#f5585851]",
+    bg_color: "bg-gradient-to-r from-[#f5585851] to-[#f17b7b51]",
   },
   {
     label: "C++",
     slug: "cpp",
     key: TutorialEnums.CPP,
     icon: "/icons/cpp.svg",
-    hover_color: "hover:bg-[#1364fc51]",
+    bg_color: "bg-gradient-to-r from-[#1364fc51] to-[#994bf951]",
   },
   {
     label: "Nextjs",
     slug: "nextjs",
     key: TutorialEnums.NEXTJS,
     icon: "/icons/nextjs.svg",
-    hover_color: "hover:bg-background-color_800C",
+    bg_color: "bg-background-color_800C",
   },
   {
     label: "Monorepo",
     slug: "monorepo",
     key: TutorialEnums.MONOREPO,
     icon: "/icons/monorepo.svg",
-    hover_color: "hover:bg-background-color_800C",
+    bg_color: "bg-background-color_800C",
   },
 ];
 

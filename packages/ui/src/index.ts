@@ -9,3 +9,4 @@ export * from "./popover";
 export * from "./dropdown-menu";
 export * from "./pmbutton";
 export * from "./dialog";
+export * from "./accordion";
