@@ -5,6 +5,8 @@ import {
   TutorialEnums,
 } from "@/constants";
 import { TutorialNavItemType } from "@/constants/tutorials/type";
+import { RootState } from "@/redux/store";
+import { setOpenTutoTab, setTutoTabDetails } from "@/redux/tutorials/tutoTabSlice";
 import {
   Dialog,
   DialogContent,
@@ -18,48 +20,96 @@ import {
 import { BookOpenCheck, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-export const TutoListPopup = () => {
-  const [open, setOpen] = useState(false);
-  const [hoverData, setHoverData] = useState<TutorialNavItemType>({});
-  const [activekey, setActiveKey] = useState<string>("");
-  const [tutorialName, setTutorialName] = useState<string>("");
-  const [learningButtonURL, setLearningButtomURL] = useState("")
+interface TutoListPopupPropsType {
 
-  const handleMouseEnter = (tutorialtype: TutorialEnums, tutoName: string) => {
-    setActiveKey(tutorialtype);
-    setTutorialName(tutoName);
-    const data = getTutorialsByKey[tutorialtype] as TutorialNavItemType;
-    setHoverData(data);
+  showClickAbleTutoOpenBtn?: boolean;
+
+}
+
+export const TutoListPopup = ({
+  showClickAbleTutoOpenBtn = true,
+}: TutoListPopupPropsType) => {
+  const path_name = usePathname();
+  const [learningButtonURL, setLearningButtomURL] = useState("");
+
+  // redux values
+  const data = useSelector((state: RootState) => state.tutoTab.data);
+  const activeKey = useSelector((state: RootState) => state.tutoTab.activeKey);
+  const tutorialName = useSelector(
+    (state: RootState) => state.tutoTab.tutorialName
+  );
+  const open = useSelector((state: RootState) => state.tutoTab.open);
+  const dispatch = useDispatch();
+
+  const handleMouseEnter = (tutorialtype: string, tutoName: string) => {
+    if (!setTutoTabDetails) return;
+    dispatch(
+      setTutoTabDetails({
+        data: getTutorialsByKey[
+          tutorialtype as TutorialEnums
+        ] as TutorialNavItemType,
+        activeKey: tutorialtype,
+        tutorialName: tutoName,
+      })
+    );
   };
 
   useEffect(() => {
-    const firstEntry = Object.entries(hoverData)[0];
-  
+    const firstEntry = Object.entries(data)[0];
+
     if (firstEntry) {
       const [key, value] = firstEntry;
       const firstItemSlug = value.items?.[0]?.slug;
-  
+
       if (key && value.slug && firstItemSlug) {
-        setLearningButtomURL(`/${activekey}/${value.slug}/${firstItemSlug}`);
+        setLearningButtomURL(`/${activeKey}/${value.slug}/${firstItemSlug}`);
       }
     }
+  }, [data, activeKey, handleMouseEnter]);
 
-  }, [hoverData, activekey]);
+  const handleOpenChange = (value: boolean) => {
+    if (!setOpenTutoTab) return;
+    dispatch(setOpenTutoTab(value));
+  };
+
+  const handleOpenTutoTab =() => {
+    if (!setOpenTutoTab) return;
+    dispatch(setOpenTutoTab(true));
+  }
+
+  const handleStartLrnButtonClicked = () => {
+    if (!setOpenTutoTab) return;
+    if (path_name === learningButtonURL) {
+      dispatch(setOpenTutoTab(false));
+    }
+  };
+
+  useEffect(() => {
+    if (!setOpenTutoTab) return;
+    dispatch(setOpenTutoTab(false));
+  }, [path_name])
 
   return (
     <>
-      <div
-        onClick={() => setOpen(true)}
-        className="flex justify-center items-center w-[25px] h-[25px] active:border-pm_purple-700 active:border flex-shrink-0 hover:bg-background-color_800C rounded-tiny cursor-pointer"
+      {showClickAbleTutoOpenBtn && (
+        <div
+          onClick={handleOpenTutoTab}
+          className="flex justify-center items-center w-[25px] h-[25px] active:border-pm_purple-700 active:border flex-shrink-0 hover:bg-background-color_800C rounded-tiny cursor-pointer"
+        >
+          <ChevronRight
+            size={LUCIDE_DEFAULT_ICON_SIZE}
+            className="text-text-svg_default_color"
+          />
+        </div>
+      )}
+      <Dialog
+        open={open}
+        onOpenChange={handleOpenChange}
       >
-        <ChevronRight
-          size={LUCIDE_DEFAULT_ICON_SIZE}
-          className="text-text-svg_default_color"
-        />
-      </div>
-      <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="bg-background-color_950C outline-none overflow-hidden border-border-color_800C border max-w-[700px] h-[500px] w-full">
           <div className="w-full h-full overflow-hidden flex justify-center items-center">
             <div className="flex-shrink-0 w-[240px] h-full border-r border-border-color_800C p-4 relative">
@@ -70,10 +120,10 @@ export const TutoListPopup = () => {
                   return (
                     <li
                       onMouseEnter={() =>
-                        handleMouseEnter(item.key as TutorialEnums, item.label)
+                        handleMouseEnter(item.key, item.label)
                       }
                       key={i}
-                      className={`flex transition-colors duration-150  rounded-tiny justify-start items-center gap-3 px-3 py-1 ${activekey === item.key && item.bg_color}`}
+                      className={`flex transition-colors duration-150  rounded-tiny justify-start items-center gap-3 px-3 py-1 ${activeKey === item.key && item.bg_color}`}
                     >
                       <div className="flex justify-center items-center">
                         <Image
@@ -107,7 +157,7 @@ export const TutoListPopup = () => {
                     <div className="mt-5 flex justify-start items-center">
                       <div className="border-r flex flex-col items-center w-fit pr-3 border-border-color_800C">
                         <span className="text-[25px]">
-                          {Object.keys(hoverData).length}
+                          {Object.keys(data).length}
                         </span>
                         <span className="text-[12px] text-text-color_2">
                           Chapters
@@ -115,7 +165,7 @@ export const TutoListPopup = () => {
                       </div>
                       <div className=" flex flex-col items-center w-fit pl-3">
                         <span className="text-[25px]">
-                          {Object.values(hoverData).reduce((acc, val) => {
+                          {Object.values(data).reduce((acc, val) => {
                             return acc + (val.items?.length || 0);
                           }, 0)}
                         </span>
@@ -136,39 +186,41 @@ export const TutoListPopup = () => {
                     <span>What will you learn?</span>
                   </div>
                   <div className="pb-16">
-
-                  
-                  {Object.entries(hoverData).map(([key, value], i) => {
-                    return (
-                      <Accordion type="single" collapsible key={i}>
-                        <AccordionItem
-                          value="item-1"
-                          className="border-border-color_800C"
-                        >
-                          <AccordionTrigger className="text-read_2 ">
-                            {key}
-                          </AccordionTrigger>
-                          {value.items.map((item, vi) => {
-                            return (
-                              <AccordionContent
-                                className="pl-5 one_line_ellipsis  text-read_2"
-                                key={vi}
-                              >
-                                <span className="text-text-color_4">
-                                  {item.label}
-                                </span>
-                              </AccordionContent>
-                            );
-                          })}
-                        </AccordionItem>
-                      </Accordion>
-                    );
-                  })}
+                    {Object.entries(data).map(([key, value], i) => {
+                      return (
+                        <Accordion type="single" collapsible key={i}>
+                          <AccordionItem
+                            value="item-1"
+                            className="border-border-color_800C"
+                          >
+                            <AccordionTrigger className="text-read_2 ">
+                              {key}
+                            </AccordionTrigger>
+                            {value.items.map((item, vi) => {
+                              return (
+                                <AccordionContent
+                                  className="pl-5 one_line_ellipsis  text-read_2"
+                                  key={vi}
+                                >
+                                  <span className="text-text-color_4">
+                                    {item.label}
+                                  </span>
+                                </AccordionContent>
+                              );
+                            })}
+                          </AccordionItem>
+                        </Accordion>
+                      );
+                    })}
                   </div>
                   <Link href={`${learningButtonURL}`}>
-                  <PMButton radius="tiny" className="px-3 py-1 text-read_2 outline-none font-medium absolute bottom-3 right-6">
-Start Learning
-                  </PMButton>
+                    <PMButton
+                      onClick={handleStartLrnButtonClicked}
+                      radius="tiny"
+                      className="px-3 py-1 text-read_2 outline-none font-medium absolute bottom-3 right-6"
+                    >
+                      Start Learning
+                    </PMButton>
                   </Link>
                 </div>
               </div>

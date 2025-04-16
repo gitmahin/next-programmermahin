@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import tutoChaptersReducer from "./tutorials/tutoChaptersSlice"
+import tutoTabReducer from "./tutorials/tutoTabSlice"
 // ...
 
 export const store = configureStore({
   reducer: {
     tutoChapters: tutoChaptersReducer,
+    tutoTab: tutoTabReducer
   },
 })
 
