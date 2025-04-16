@@ -7,4 +7,5 @@ export * from "./lib/utils";
 export * from "./constant";
 export * from "./popover";
 export * from "./dropdown-menu";
+export * from "./pmbutton";
 export * from "./dialog";

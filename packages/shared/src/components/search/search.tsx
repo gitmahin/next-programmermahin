@@ -6,12 +6,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  LUCIDE_DEFAULT_ICON_SIZE,
+  PMButton,
 } from "@programmer/ui";
 import React, { useEffect, useState } from "react";
 import {
   Calculator,
   Calendar,
   CreditCard,
+  SearchIcon,
   Settings,
   Smile,
   User,
@@ -33,11 +36,15 @@ export const Search = () => {
 
   return (
     <div>
-      <button className="fixed top-0 right-0">
-        <span>Search</span>
-      </button>
+      <PMButton onClick={() => setOpen(true)} variant="secondary" radius="tablet" className="px-2 fixed top-5 right-5 z-50 py-1 flex justify-center items-center gap-1 group">
+        <SearchIcon size={LUCIDE_DEFAULT_ICON_SIZE} className="text-text-svg_default_color group-hover:text-text-color_1" />
+        <span className="text-read_2 text-text-color_3">Search</span>
+        <div className="bg-background-color_750C text-[12px] text-text-color_2 px-1 rounded-tiny ml-2 ">
+          CTRL+k
+        </div>
+      </PMButton>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger>Open</DialogTrigger>
+        
         <DialogContent className="bg-background-color_950C border-border-color_800C border max-w-[700px] h-[500px] w-full"></DialogContent>
       </Dialog>
     </div>

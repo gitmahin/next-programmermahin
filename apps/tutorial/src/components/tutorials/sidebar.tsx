@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { TutorialNavItemType } from "@/constants/tutorials/type";
 import MainNavs from "../main-navs";
+import { TutoListPopup } from "./tuto-list-popup";
 
 export const Sidebar = () => {
   const path_name = usePathname();
@@ -157,12 +158,7 @@ export const Sidebar = () => {
                         </span>
                       )}
                     </div>
-                    <div className="flex justify-center items-center w-[25px] h-[25px] active:border-pm_purple-700 active:border flex-shrink-0 hover:bg-background-color_800C rounded-tiny cursor-pointer">
-                      <ChevronRight
-                        size={LUCIDE_DEFAULT_ICON_SIZE}
-                        className="text-text-svg_default_color"
-                      />
-                    </div>
+                    <TutoListPopup/>
                   </div>
 
                   <div className="px-4 ">

@@ -1,24 +1,29 @@
 import { GeneralNavItemType } from "@programmer/types";
 import { ICON_DEFAULT_COLOR, LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
 import { GraduationCap, HomeIcon } from "lucide-react";
+import { DEVOPS_TUTORIALS } from "./devops";
+import { TutorialNavItemType } from "./type";
+import { REACT_TUTORIALS } from "./react";
+import { GIT_TUTORIALS } from "./git";
+import { CPP_TUTORIALS } from "./cpp";
+import { NEXTJS_TUTORIALS } from "./nextjs";
+import { MONOREPO_TUTORIALS } from "./monorepo";
 
 export const MAIN_NAV_LINKS: GeneralNavItemType[] = [
   {
     label: "Home",
     slug: "/",
-    icon: (
-      <HomeIcon size={LUCIDE_DEFAULT_ICON_SIZE} />
-    ),
+    icon: <HomeIcon size={LUCIDE_DEFAULT_ICON_SIZE} />,
   },
 ];
 
-
-export enum TutorialEnums  {
+export enum TutorialEnums {
   GIT = "git",
   REACT = "react",
   DEVOPS = "devops",
   NEXTJS = "nextjs",
-  CPP = "cpp"
+  CPP = "cpp",
+  MONOREPO = "monorepo",
 }
 
 interface TutorialIconMetaDataType {
@@ -27,64 +32,95 @@ interface TutorialIconMetaDataType {
 }
 
 type TutorialIconsType = {
-  [key in TutorialEnums]: TutorialIconMetaDataType
-}
+  [key in TutorialEnums]: TutorialIconMetaDataType;
+};
 
 export const TUTORIALS_ICON: TutorialIconsType = {
   cpp: {
     svgPath: "/icons/cpp.svg",
-    name: "C++"
+    name: "C++",
   },
-  git:{
+  git: {
     svgPath: "/icons/git.svg",
-    name: "Git"
+    name: "Git",
   },
   react: {
     svgPath: "/icons/react.svg",
-    name: "React"
+    name: "React",
   },
   devops: {
     svgPath: "/icons/devops.svg",
-    name: "Devops"
+    name: "Devops",
   },
   nextjs: {
     svgPath: "/next.svg",
-    name: "Nextjs"
-  }
-}
+    name: "Nextjs",
+  },
+  monorepo: {
+    svgPath: "/icons/monorepo.svg",
+    name: "Monorepo",
+  },
+};
 
 interface MainNavTutorialsType {
   label: string;
   slug: string;
-  icon: string
+  icon: string;
+  key: string;
+  hover_color?: string;
 }
 
 export const MAIN_NAV_TUTORIALS: MainNavTutorialsType[] = [
   {
     label: "React",
     slug: "react",
-    icon: "/icons/react.svg"
+    key: TutorialEnums.REACT,
+    icon: "/icons/react.svg",
+    hover_color: "hover:bg-[#66ddfb52]",
   },
   {
     label: "Devops",
     slug: "devops",
-    icon: "/icons/devops.svg"
+    key: TutorialEnums.DEVOPS,
+    icon: "/icons/devops.svg",
+    hover_color: "hover:bg-gradient-to-r from-[#ffad2044] to-[#08a6df4a]",
   },
   {
     label: "Git",
     slug: "git",
-    icon: "/icons/git.svg"
+    key: TutorialEnums.GIT,
+    icon: "/icons/git.svg",
+    hover_color: "hover:bg-[#f5585851]",
   },
   {
     label: "C++",
     slug: "cpp",
-    icon: "/icons/cpp.svg"
+    key: TutorialEnums.CPP,
+    icon: "/icons/cpp.svg",
+    hover_color: "hover:bg-[#1364fc51]",
   },
   {
     label: "Nextjs",
     slug: "nextjs",
-    icon: "/icons/nextjs.svg"
-  }
-]
+    key: TutorialEnums.NEXTJS,
+    icon: "/icons/nextjs.svg",
+    hover_color: "hover:bg-background-color_800C",
+  },
+  {
+    label: "Monorepo",
+    slug: "monorepo",
+    key: TutorialEnums.MONOREPO,
+    icon: "/icons/monorepo.svg",
+    hover_color: "hover:bg-background-color_800C",
+  },
+];
 
 
+  export const getTutorialsByKey: Record<TutorialEnums, TutorialNavItemType> = {
+    [TutorialEnums.DEVOPS]: DEVOPS_TUTORIALS,
+    [TutorialEnums.REACT]: REACT_TUTORIALS,
+    [TutorialEnums.GIT]: GIT_TUTORIALS,
+    [TutorialEnums.CPP]: CPP_TUTORIALS,
+    [TutorialEnums.NEXTJS]: NEXTJS_TUTORIALS,
+    [TutorialEnums.MONOREPO]: MONOREPO_TUTORIALS,
+  };
