@@ -97,7 +97,7 @@ export const Sidebar = () => {
   }, [path_name, tutoData]);
 
   return (
-    <nav className={`w-[280px] z-50 transition-all border-r border-border-color_800C bg-background-color_925C h-screen fixed left-0 top-0 tutosidebar ${mobSidebarOpen ? "openTutoSidebar": ""}`}>
+    <nav className={`w-[280px] z-50 transition-all border-r border-border-color_800C bg-background-color_900C h-screen fixed left-0 top-0 tutosidebar ${mobSidebarOpen ? "openTutoSidebar": ""}`}>
       <div className="w-[20px] h-screen absolute left-full top-0 border border-solid box-border border-l-0 border-r-1 border-b-0 border-border-color_800C border-x border-x-border-color_800C bg-[image:repeating-linear-gradient(315deg,_var(--border-color-800C)_0,_var(--border-color-800C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-800C)]/5 md:block dark:[--pattern-fg:var(--border-color-800C)]/10"></div>
 
       <div className="w-full border-b relative border-border-color_800C px-4 py-3 flex justify-between items-center">
@@ -134,7 +134,7 @@ export const Sidebar = () => {
                 />
               </div>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="">
+            <DropdownMenuContent align="end">
               <DropdownMenuItem
                 className="group hover:bg-background-color_800C py-1 rounded-tiny"
                 onClick={() => setTheme("system")}
@@ -186,7 +186,9 @@ export const Sidebar = () => {
             <>
               {tutoData !== null && (
                 <>
-                  <div className="flex justify-between items-center px-4 pb-4">
+<div className="w-full px-4 ">
+
+                  <div className="flex justify-between items-center pb-4 border-t pt-4 border-border-color_800C">
                     <div className="flex justify-start items-center gap-2">
                       <Image
                         src={`${TUTORIALS_ICON[tutorialType as TutorialEnums]?.svgPath ?? ""}`}
@@ -194,7 +196,7 @@ export const Sidebar = () => {
                         height={100}
                         alt="icon"
                         className={`${tutorialType !== TutorialEnums.NEXTJS ? "w-[18px] h-[18px]" : "w-[65px]"}  filter brightness-0 dark:invert`}
-                      />
+                        />
 
                       {tutorialType !== TutorialEnums.NEXTJS && (
                         <span className="text-read_2 text-pm_purple-700 font-medium ">
@@ -205,6 +207,7 @@ export const Sidebar = () => {
                     </div>
                     <TutoListPopup />
                   </div>
+                      </div>
 
                   <div className="px-4 ">
                     {Object.entries(tutoData || {}).map(([Key, value], i) => {
@@ -222,7 +225,7 @@ export const Sidebar = () => {
                               />
                             )}
                             <span
-                              className={`text-read_2 one_line_ellipsis font-semibold font-geist_mono  uppercase ${path_name.split("/").includes(value.slug) ? "text-text-color_1" : "text-text-color_3"} `}
+                              className={`text-read_2 one_line_ellipsis font-semibold font-geist_mono  uppercase ${path_name.split("/").includes(value.slug) ? "text-text-color_1" : "text-text-color_2"} `}
                             >
                               {Key}
                             </span>

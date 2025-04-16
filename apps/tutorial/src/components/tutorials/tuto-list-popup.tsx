@@ -154,7 +154,7 @@ setTimeout(() => {
                 className={`text-text-svg_default_color `}
               />
             </PMButton>
-            <div className={`flex-shrink-0 transition-all w-[240px] h-full border-r bg-background-color_925C border-border-color_800C p-4 relative tuto_popup_tab_navbar ${openTutoNavSize && "tuto_popup_tab_navbar_open"}`}>
+            <div className={`flex-shrink-0 transition-all w-[240px] h-full border-r bg-background-color_900C border-border-color_800C p-4 relative tuto_popup_tab_navbar ${openTutoNavSize && "tuto_popup_tab_navbar_open"}`}>
               <div className="w-[15px] h-full absolute left-full top-0 border border-solid box-border border-l-0 border-r-1 border-b-0 border-border-color_800C border-x border-x-border-color_800C bg-[image:repeating-linear-gradient(315deg,_var(--border-color-800C)_0,_var(--border-color-800C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-800C)]/5 md:block dark:[--pattern-fg:var(--border-color-800C)]/10"></div>
 
               <ul className="leading-8 tuto_side_nav_list">
@@ -280,9 +280,12 @@ setTimeout(() => {
                       <PMButton
                         onClick={handleStartLrnButtonClicked}
                         radius="tiny"
-                        className="px-3 py-1 text-read_2 outline-none text-text-color_1 font-medium absolute bottom-3 right-3"
+                        className="px-3 py-1  outline-none text-text-zinc_white font-medium absolute bottom-3 right-3"
                       >
+                        <span className="text-read_2">
                         Start Learning
+
+                        </span>
                       </PMButton>
                     </Link>
                   </div>
