@@ -280,7 +280,7 @@ setTimeout(() => {
                       <PMButton
                         onClick={handleStartLrnButtonClicked}
                         radius="tiny"
-                        className="px-3 py-1 text-read_2 outline-none font-medium absolute bottom-3 right-3"
+                        className="px-3 py-1 text-read_2 outline-none text-text-color_1 font-medium absolute bottom-3 right-3"
                       >
                         Start Learning
                       </PMButton>
