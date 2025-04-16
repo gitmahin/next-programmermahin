@@ -36,7 +36,7 @@ jobs:
         run: pnpm install --shamefully-hoist
 
       - name: Install Vercel CLI
-        run: pnpm install --global vercel@latest
+        run: pnpm install --global vercel@33.2.0
 
       - name: Pull Vercel Environment Variables
         run: cd apps/tutorial && vercel pull --yes --environment=production --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
