@@ -115,12 +115,11 @@ export const MAIN_NAV_TUTORIALS: MainNavTutorialsType[] = [
   },
 ];
 
-
-  export const getTutorialsByKey: Record<TutorialEnums, TutorialNavItemType> = {
-    [TutorialEnums.DEVOPS]: DEVOPS_TUTORIALS,
-    [TutorialEnums.REACT]: REACT_TUTORIALS,
-    [TutorialEnums.GIT]: GIT_TUTORIALS,
-    [TutorialEnums.CPP]: CPP_TUTORIALS,
-    [TutorialEnums.NEXTJS]: NEXTJS_TUTORIALS,
-    [TutorialEnums.MONOREPO]: MONOREPO_TUTORIALS,
-  };
+export const getTutorialsByKey: Record<TutorialEnums, TutorialNavItemType> = {
+  [TutorialEnums.DEVOPS]: DEVOPS_TUTORIALS,
+  [TutorialEnums.REACT]: REACT_TUTORIALS,
+  [TutorialEnums.GIT]: GIT_TUTORIALS,
+  [TutorialEnums.CPP]: CPP_TUTORIALS,
+  [TutorialEnums.NEXTJS]: NEXTJS_TUTORIALS,
+  [TutorialEnums.MONOREPO]: MONOREPO_TUTORIALS,
+};

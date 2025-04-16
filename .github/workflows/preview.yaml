@@ -1,0 +1,45 @@
+name: Build & Deploy - Vercel
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID_TUTOPROG }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_TUTOPROG }}
+
+#   dont run this
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  Preview:
+    name: Deploy Preview Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Vercel CLI
+        run: pnpm install --global vercel
+
+      - name: Pull Vercel Environment Variables
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
+
+      - name: Build Project
+        run: vercel build --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
+
+      - name: Deploy Project
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_ACCESS_TOKEN }}

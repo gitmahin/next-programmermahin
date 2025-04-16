@@ -1,2 +1,2 @@
-export * from "./algolia"
-export * from "./constant"
+export * from "./algolia";
+export * from "./constant";

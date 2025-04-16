@@ -1,0 +1,20 @@
+@media screen and (max-width: 1114px) {
+    .tutosidebar{
+      left: -100% !important;   
+    }
+
+    .main-content{
+        padding-left: 0px !important;
+        padding-top: 45px;
+    }
+
+    .searchTutorialRoot{
+        top: 15px !important;
+        right: 15px !important;
+    }
+
+    .tuto-aside-nav{
+        top: 100px !important;
+        height: calc(100vh - 100px) !important;
+    }
+}

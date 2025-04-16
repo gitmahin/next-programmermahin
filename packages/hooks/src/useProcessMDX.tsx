@@ -13,11 +13,38 @@ import {
   transformerNotationDiff,
   transformerNotationErrorLevel,
 } from "@shikijs/transformers";
+import { visit } from "unist-util-visit";
+import slugify from "slugify";
+
+function rehypeSlugify() {
+  return (tree: any) => {
+    visit(tree, "element", (node) => {
+      if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(node.tagName)) {
+        const text =
+          node.children
+            ?.filter((n: any) => n.type === "text")
+            ?.map((n: any) => n.value)
+            ?.join(" ") ?? "";
+
+        const id = slugify(text, {
+          lower: true,
+          strict: true,
+          trim: false, // ✅ don't trim leading/trailing dashes
+        });
+
+        node.properties = {
+          ...node.properties,
+          id,
+        };
+      }
+    });
+  };
+}
 
 export const useProcessMDX = (data: string) => {
   const [content, setContent] = useState("");
 
- 
+  const { data: metaData, content: mdxContent } = matter(data);
 
   const processContent = useCallback(async () => {
     const processedData = await unified()
@@ -26,7 +53,7 @@ export const useProcessMDX = (data: string) => {
       .use(remarkRehype)
       .use(rehypeFormat)
       .use(rehypeStringify)
-      .use(rehypeSlug) // Generates IDs automatically
+      .use(rehypeSlugify) // Generates IDs automatically
       // .use(rehypeShiki, {
       //   theme: "material-theme-ocean",
       //   transformers: [
@@ -36,7 +63,7 @@ export const useProcessMDX = (data: string) => {
       //     // ...
       //   ],
       // })
-      .process(data);
+      .process(mdxContent);
 
     const htmlContent = processedData.toString();
     setContent(htmlContent);
@@ -47,6 +74,7 @@ export const useProcessMDX = (data: string) => {
   }, [processContent]);
 
   return {
-    content
+    content,
+    metaData,
   };
 };

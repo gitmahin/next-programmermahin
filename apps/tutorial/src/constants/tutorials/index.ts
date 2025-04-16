@@ -6,4 +6,3 @@ export * from "./monorepo";
 export * from "./nextjs";
 export * from "./react";
 export * from "./type";
-

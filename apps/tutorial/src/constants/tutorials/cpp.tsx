@@ -5,7 +5,7 @@ export const CPP_TUTORIALS: TutorialNavItemType = {
     slug: "cpp-getting-started",
     icon: "",
     items: [
-      { label: "What is C++?", slug: "cpp-what-is-cpp" },
+      { label: "Introduction To C++", slug: "introduction-to-cpp" },
       { label: "Setting up your environment", slug: "cpp-setup-environment" },
       { label: "Your first C++ program", slug: "cpp-first-program" },
     ],

@@ -1,1 +1,1 @@
-export const TUTORIAL_INDEX_NAME = "tutorials"
+export const TUTORIAL_INDEX_NAME = "tutorials";

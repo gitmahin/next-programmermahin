@@ -5,7 +5,10 @@ import { notFound, useParams, usePathname } from "next/navigation";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setTutorialChapters } from "@/redux/tutorials/tutoChaptersSlice";
-import { setLockMouseEnter, setOpenTutoTab } from "@/redux/tutorials/tutoTabSlice";
+import {
+  setLockMouseEnter,
+  setOpenTutoTab,
+} from "@/redux/tutorials/tutoTabSlice";
 
 interface ContentLayoutPropsType {
   children: React.ReactNode;
@@ -22,7 +25,7 @@ export default function ContentLayout({ children }: ContentLayoutPropsType) {
     if (!setTutorialChapters) return;
 
     const tutorialData = getTutorialsByKey[tutorialType as TutorialEnums];
-    
+
     if (!tutorialData) return notFound();
 
     dispatch(
@@ -31,18 +34,12 @@ export default function ContentLayout({ children }: ContentLayoutPropsType) {
         type: tutorialType,
       })
     );
-
   }, [dispatch, tutorialType]);
 
-
   useEffect(() => {
-    if(!setLockMouseEnter) return 
-    dispatch(setLockMouseEnter(false))
-  }, [])
+    if (!setLockMouseEnter) return;
+    dispatch(setLockMouseEnter(false));
+  }, []);
 
-  return (
-    <div>
-      {children}
-    </div>
-  );
+  return <div>{children}</div>;
 }

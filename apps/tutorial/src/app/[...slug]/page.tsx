@@ -4,6 +4,10 @@ import path from "path";
 import { fileURLToPath } from "url";
 import ProcessedContent from "./processed-content";
 import matter from "gray-matter";
+import ContentAsideNav from "./content-aside-nav";
+import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import TutoPagination from "./paginatation";
 
 interface ContentPagePropsType {
   params: Promise<{ slug: string[] }>;
@@ -22,20 +26,23 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
         <title>{metaData.title || "Untitled"}</title>
         <meta name="description" content={metaData.desc || "No Description"} />
         <div className="flex justify-center items-start gap-5">
-          <div className="max-w-[800px] w-full p-5 pt-14 h-[1500px]">
-            <ProcessedContent data={mdxContent}  />
+          <div className="max-w-[800px] w-full p-5 pt-14">
+            <ProcessedContent data={mdxContent} />
+            <TutoPagination />
           </div>
-          <aside className="w-[300px] h-screen border sticky top-0">
-
+          <aside className="w-[300px] h-[calc(100vh-56px)] overflow-y-auto sticky top-[56px] tuto-aside-nav">
+            <ContentAsideNav />
           </aside>
         </div>
       </>
     );
   } catch (error) {
-    return <div className="flex justify-center items-start gap-5">
-    <div className=" w-full p-5 pt-14 h-screen flex justify-center items-center">
-      <span>Not Found</span>
-    </div>
-  </div>
+    return (
+      <div className="flex justify-center items-start gap-5">
+        <div className=" w-full p-5 pt-14 h-screen flex justify-center items-center">
+          <span>Not Found</span>
+        </div>
+      </div>
+    );
   }
 }

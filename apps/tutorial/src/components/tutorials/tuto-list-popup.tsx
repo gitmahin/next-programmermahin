@@ -47,6 +47,7 @@ export const TutoListPopup = ({
 
   // redux values
   const data = useSelector((state: RootState) => state.tutoTab.data);
+  // activeKey for styling purpose
   const activeKey = useSelector((state: RootState) => state.tutoTab.activeKey);
   const tutorialName = useSelector(
     (state: RootState) => state.tutoTab.tutorialName
@@ -70,6 +71,7 @@ export const TutoListPopup = ({
     }
   };
 
+  // getting the first key from the data object, so that on click start learning user can go to the intro of the course
   useEffect(() => {
     const firstEntry = Object.entries(data)[0];
 
@@ -83,16 +85,20 @@ export const TutoListPopup = ({
     }
   }, [data, activeKey, handleMouseEnter]);
 
+  // This function handles changes in the open state of a tutorial tab
   const handleOpenChange = (value: boolean) => {
     if (!setOpenTutoTab) return;
+    // Dispatch an action to update the open state in Redux
     dispatch(setOpenTutoTab(value));
   };
 
+  // open tutorial selector tab on click
   const handleOpenTutoTab = () => {
     if (!setOpenTutoTab) return;
     dispatch(setOpenTutoTab(true));
   };
 
+  // if start learning button clicked close the tutorial selector tab
   const handleStartLrnButtonClicked = () => {
     if (!setOpenTutoTab) return;
     if (path_name === learningButtonURL) {
@@ -100,16 +106,18 @@ export const TutoListPopup = ({
     }
   };
 
+  // on path change close the tutorial selector tab
   useEffect(() => {
     if (!setOpenTutoTab) return;
     dispatch(setOpenTutoTab(false));
   }, [path_name]);
 
+  // unlock mouse enter if locked
   const UnlockOnMouseEnter = () => {
     if (!setLockMouseEnter) return;
     dispatch(setLockMouseEnter(false));
-    toast.success("UI Unlocked")
-  }
+    toast.success("UI Unlocked");
+  };
 
   return (
     <>
@@ -146,13 +154,13 @@ export const TutoListPopup = ({
                           width={250}
                           height={250}
                           alt="icon"
+                          priority
                           className={`w-[20px] h-[20px] select-none filter brightness-0 dark:invert`}
                         />
                       </div>
                       <span className="text-read_1 text-text-color_4 font-medium">
                         {item.label}
                       </span>
-                      
                     </li>
                   );
                 })}
@@ -162,13 +170,15 @@ export const TutoListPopup = ({
                   variant="secondary"
                   className="overflow-hidden bg-background-color_900C hover:bg-background-color_900C  w-fit outline-none absolute bottom-4 cursor-pointer rounded-tablet h-[25px] flex justify-center items-center"
                 >
-                  <div onClick={UnlockOnMouseEnter} className="w-fit px-[5px] pl-[8px] h-full hover:bg-background-color_800C flex justify-center items-center">
-
-                  <LockKeyholeIcon
-                    size={15}
-                    className="text-text-svg_default_color"
+                  <div
+                    onClick={UnlockOnMouseEnter}
+                    className="w-fit px-[5px] pl-[8px] h-full hover:bg-background-color_800C flex justify-center items-center"
+                  >
+                    <LockKeyholeIcon
+                      size={15}
+                      className="text-text-svg_default_color"
                     />
-                    </div>
+                  </div>
                   <div className="text-[12px] h-full pr-[8px] px-1 hover:bg-background-color_800C font-medium text-text-color_2 flex justify-center items-center">
                     UI Locked
                   </div>

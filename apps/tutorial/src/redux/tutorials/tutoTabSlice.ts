@@ -44,6 +44,7 @@ export const tutoTabSlice: Slice<TutoTabSliceType> = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setTutoTabDetails, setOpenTutoTab, setLockMouseEnter } = tutoTabSlice.actions;
+export const { setTutoTabDetails, setOpenTutoTab, setLockMouseEnter } =
+  tutoTabSlice.actions;
 
 export default tutoTabSlice.reducer;

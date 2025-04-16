@@ -1,0 +1,97 @@
+---
+title: "Setting up your environment"
+description: "Learn how to set up your C++ development environment on Windows, macOS, or Linux."
+---
+
+# Setting Up Your C++ Environment
+
+Before you can start writing and running C++ programs, you need to set up your development environment. This includes installing a compiler, an editor or IDE, and configuring your system for development.
+
+## What You’ll Need
+
+- A C++ compiler (e.g., GCC, Clang, or MSVC)
+- A code editor (e.g., VS Code) or an IDE (e.g., CLion, Code::Blocks)
+
+---
+
+## Installing on Windows
+
+### Option 1: Install **MSYS2** + **GCC**
+
+1. Download and install **[MSYS2](https://www.msys2.org/)**.
+2. Open the MSYS2 terminal and run:
+
+```
+pacman -Syu
+pacman -S mingw-w64-x86_64-gcc
+```
+
+3. Add the path to your compiler to the `PATH` environment variable.
+
+### Option 2: Use **Visual Studio**
+
+- Download **Visual Studio** and install the **Desktop development with C++** workload.
+
+---
+
+## Installing on macOS
+
+Use **Homebrew** to install the latest version of GCC or Clang:
+
+```
+brew install gcc
+```
+
+You can also use the pre-installed Clang compiler by default.
+
+---
+
+## Installing on Linux
+
+Most distributions already come with a compiler. To ensure it's installed:
+
+For Debian/Ubuntu:
+
+```
+sudo apt update
+sudo apt install build-essential
+```
+
+For Fedora:
+
+```
+sudo dnf install gcc-c++
+```
+
+---
+
+## Setting Up VS Code (Optional)
+
+1. Install **[Visual Studio Code](https://code.visualstudio.com/)**.
+2. Install the **C/C++ extension** by Microsoft.
+3. Configure your `tasks.json` and `launch.json` files for compiling and running code.
+
+
+---
+
+## Verify Installation
+
+To check if your compiler is working, run:
+
+```
+g++ --version
+```
+
+Or for Clang:
+
+```
+clang++ --version
+```
+
+You’re now ready to write your first C++ program!
+
+---
+
+## Next Up
+
+👉 [Your first C++ program](/cpp/cpp-getting-started/cpp-first-program)

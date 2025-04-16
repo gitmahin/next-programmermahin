@@ -1,8 +1,7 @@
 "use client";
 import { TUTORIALS_ICON, MAIN_NAV_LINKS, TutorialEnums } from "@/constants";
-import { DEVOPS_TUTORIALS } from "@/constants/tutorials/devops";
 import { LUCIDE_DEFAULT_ICON_SIZE, PMLogo } from "@programmer/ui";
-import { ChevronDown, ChevronRight, Contrast, Moon, Sun } from "lucide-react";
+import { ChevronDown, Contrast, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,17 +13,20 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@programmer/ui";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { TutorialNavItemType } from "@/constants/tutorials/type";
 import MainNavs from "../main-navs";
 import { TutoListPopup } from "./tuto-list-popup";
+import { FlattenedTutorialChapter } from "@/types/flattened-tutorial-ch";
+import { setPagination } from "@/redux/tutorials/tutoPaginateSlice";
 
 export const Sidebar = () => {
   const path_name = usePathname();
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [tutoData, setTutoData] = useState<TutorialNavItemType | null>(null);
   const [isPending, startTransition] = useTransition();
+  const dispatch = useDispatch();
 
   // get the tutorial chapter data from redux
   const TUTORIAL_CHAPTERS = useSelector(
@@ -54,8 +56,41 @@ export const Sidebar = () => {
     });
   }, [TUTORIAL_CHAPTERS]);
 
+  useEffect(() => {
+    if (!setPagination) return;
+
+    const flattenDocs = (
+      data: TutorialNavItemType
+    ): FlattenedTutorialChapter[] => {
+      const result: FlattenedTutorialChapter[] = [];
+
+      for (const [, section] of Object.entries(data)) {
+        section.items.forEach((item) => {
+          result.push({
+            label: item.label,
+            slug: item.slug,
+            path: `/${tutorialType}/${section.slug}/${item.slug}`,
+          });
+        });
+      }
+
+      return result;
+    };
+
+    if (!tutoData) return;
+
+    console.log(flattenDocs(tutoData));
+
+    const flatDocList = flattenDocs(tutoData);
+    const currentIndex = flatDocList.findIndex(
+      (navItem) => decodeURIComponent(path_name) === navItem.path
+    );
+
+    dispatch(setPagination({ currentIndex, flatTutoList: flatDocList }));
+  }, [path_name, tutoData]);
+
   return (
-    <nav className="w-[280px] border-r border-border-color_800C bg-background-color_925C h-screen fixed left-0 top-0">
+    <nav className="w-[280px] transition-all border-r border-border-color_800C bg-background-color_925C h-screen fixed left-0 top-0 tutosidebar">
       <div className="w-[20px] h-screen absolute left-full top-0 border border-solid box-border border-l-0 border-r-1 border-b-0 border-border-color_800C border-x border-x-border-color_800C bg-[image:repeating-linear-gradient(315deg,_var(--border-color-800C)_0,_var(--border-color-800C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-800C)]/5 md:block dark:[--pattern-fg:var(--border-color-800C)]/10"></div>
 
       <div className="w-full border-b border-border-color_800C px-4 py-3 flex justify-between items-center">
@@ -158,7 +193,7 @@ export const Sidebar = () => {
                         </span>
                       )}
                     </div>
-                    <TutoListPopup/>
+                    <TutoListPopup />
                   </div>
 
                   <div className="px-4 ">
@@ -219,7 +254,7 @@ export const Sidebar = () => {
           )}
         </>
       ) : (
-        <MainNavs/>
+        <MainNavs />
       )}
     </nav>
   );

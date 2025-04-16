@@ -8,8 +8,7 @@ import {
 import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
 import { GraduationCap } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { TutoListPopup } from "./tutorials";
 import { useDispatch } from "react-redux";
 import {
