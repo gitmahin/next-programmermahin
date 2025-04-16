@@ -5,11 +5,11 @@ import type { PayloadAction, Slice } from "@reduxjs/toolkit";
 import { set } from "zod";
 
 export interface TutoTabSliceType {
-  activeKey: string ;
+  activeKey: string;
   tutorialName: string;
   data: TutorialNavItemType | {};
   open: boolean;
-
+  lock: boolean;
 }
 
 const initialState: TutoTabSliceType = {
@@ -17,6 +17,7 @@ const initialState: TutoTabSliceType = {
   tutorialName: "",
   data: {},
   open: false,
+  lock: false,
 };
 
 export const tutoTabSlice: Slice<TutoTabSliceType> = createSlice({
@@ -26,9 +27,16 @@ export const tutoTabSlice: Slice<TutoTabSliceType> = createSlice({
     setOpenTutoTab: (state, action: PayloadAction<boolean>) => {
       state.open = action.payload;
     },
+    setLockMouseEnter: (state, action: PayloadAction<boolean>) => {
+      state.lock = action.payload;
+    },
     setTutoTabDetails: (
       state,
-      action: PayloadAction<{ data: TutorialNavItemType; activeKey: string; tutorialName: string; }>
+      action: PayloadAction<{
+        data: TutorialNavItemType;
+        activeKey: string;
+        tutorialName: string;
+      }>
     ) => {
       state.activeKey = action.payload.activeKey;
       state.tutorialName = action.payload.tutorialName;
@@ -38,6 +46,6 @@ export const tutoTabSlice: Slice<TutoTabSliceType> = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setTutoTabDetails, setOpenTutoTab } = tutoTabSlice.actions;
+export const { setTutoTabDetails, setOpenTutoTab, setLockMouseEnter } = tutoTabSlice.actions;
 
 export default tutoTabSlice.reducer;

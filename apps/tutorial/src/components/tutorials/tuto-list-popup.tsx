@@ -6,7 +6,11 @@ import {
 } from "@/constants";
 import { TutorialNavItemType } from "@/constants/tutorials/type";
 import { RootState } from "@/redux/store";
-import { setOpenTutoTab, setTutoTabDetails } from "@/redux/tutorials/tutoTabSlice";
+import {
+  setLockMouseEnter,
+  setOpenTutoTab,
+  setTutoTabDetails,
+} from "@/redux/tutorials/tutoTabSlice";
 import {
   Dialog,
   DialogContent,
@@ -17,17 +21,21 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@programmer/ui";
-import { BookOpenCheck, ChevronRight } from "lucide-react";
+import {
+  BookOpenCheck,
+  ChevronRight,
+  LockIcon,
+  LockKeyholeIcon,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "sonner";
 
 interface TutoListPopupPropsType {
-
   showClickAbleTutoOpenBtn?: boolean;
-
 }
 
 export const TutoListPopup = ({
@@ -42,20 +50,23 @@ export const TutoListPopup = ({
   const tutorialName = useSelector(
     (state: RootState) => state.tutoTab.tutorialName
   );
+  const lockMouseEnter = useSelector((state: RootState) => state.tutoTab.lock);
   const open = useSelector((state: RootState) => state.tutoTab.open);
   const dispatch = useDispatch();
 
   const handleMouseEnter = (tutorialtype: string, tutoName: string) => {
-    if (!setTutoTabDetails) return;
-    dispatch(
-      setTutoTabDetails({
-        data: getTutorialsByKey[
-          tutorialtype as TutorialEnums
-        ] as TutorialNavItemType,
-        activeKey: tutorialtype,
-        tutorialName: tutoName,
-      })
-    );
+    if (!lockMouseEnter) {
+      if (!setTutoTabDetails) return;
+      dispatch(
+        setTutoTabDetails({
+          data: getTutorialsByKey[
+            tutorialtype as TutorialEnums
+          ] as TutorialNavItemType,
+          activeKey: tutorialtype,
+          tutorialName: tutoName,
+        })
+      );
+    }
   };
 
   useEffect(() => {
@@ -76,10 +87,10 @@ export const TutoListPopup = ({
     dispatch(setOpenTutoTab(value));
   };
 
-  const handleOpenTutoTab =() => {
+  const handleOpenTutoTab = () => {
     if (!setOpenTutoTab) return;
     dispatch(setOpenTutoTab(true));
-  }
+  };
 
   const handleStartLrnButtonClicked = () => {
     if (!setOpenTutoTab) return;
@@ -91,7 +102,13 @@ export const TutoListPopup = ({
   useEffect(() => {
     if (!setOpenTutoTab) return;
     dispatch(setOpenTutoTab(false));
-  }, [path_name])
+  }, [path_name]);
+
+  const UnlockOnMouseEnter = () => {
+    if (!setLockMouseEnter) return;
+    dispatch(setLockMouseEnter(false));
+    toast.success("UI Unlocked")
+  }
 
   return (
     <>
@@ -106,13 +123,10 @@ export const TutoListPopup = ({
           />
         </div>
       )}
-      <Dialog
-        open={open}
-        onOpenChange={handleOpenChange}
-      >
+      <Dialog open={open} onOpenChange={handleOpenChange}>
         <DialogContent className="bg-background-color_950C outline-none overflow-hidden border-border-color_800C border max-w-[700px] h-[500px] w-full">
           <div className="w-full h-full overflow-hidden flex justify-center items-center">
-            <div className="flex-shrink-0 w-[240px] h-full border-r border-border-color_800C p-4 relative">
+            <div className="flex-shrink-0 w-[240px] h-full border-r bg-background-color_925C border-border-color_800C p-4 relative">
               <div className="w-[15px] h-full absolute left-full top-0 border border-solid box-border border-l-0 border-r-1 border-b-0 border-border-color_800C border-x border-x-border-color_800C bg-[image:repeating-linear-gradient(315deg,_var(--border-color-800C)_0,_var(--border-color-800C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-800C)]/5 md:block dark:[--pattern-fg:var(--border-color-800C)]/10"></div>
 
               <ul className="leading-8">
@@ -123,7 +137,7 @@ export const TutoListPopup = ({
                         handleMouseEnter(item.key, item.label)
                       }
                       key={i}
-                      className={`flex transition-colors duration-150  rounded-tiny justify-start items-center gap-3 px-3 py-1 ${activeKey === item.key && item.bg_color}`}
+                      className={`flex transition-colors duration-150 select-none rounded-tiny justify-start items-center gap-3 px-3 py-1 ${activeKey === item.key && item.bg_color}`}
                     >
                       <div className="flex justify-center items-center">
                         <Image
@@ -131,7 +145,7 @@ export const TutoListPopup = ({
                           width={250}
                           height={250}
                           alt="icon"
-                          className={`w-[20px] h-[20px] filter brightness-0 dark:invert`}
+                          className={`w-[20px] h-[20px] select-none filter brightness-0 dark:invert`}
                         />
                       </div>
                       <span className="text-read_1 text-text-color_4 font-medium">
@@ -141,11 +155,28 @@ export const TutoListPopup = ({
                   );
                 })}
               </ul>
+              {lockMouseEnter && (
+                <PMButton
+                  variant="secondary"
+                  className="overflow-hidden bg-background-color_900C hover:bg-background-color_900C  w-fit outline-none absolute bottom-4 cursor-pointer rounded-tablet h-[25px] flex justify-center items-center"
+                >
+                  <div onClick={UnlockOnMouseEnter} className="w-fit px-[5px] pl-[8px] h-full hover:bg-background-color_800C flex justify-center items-center">
+
+                  <LockKeyholeIcon
+                    size={15}
+                    className="text-text-svg_default_color"
+                    />
+                    </div>
+                  <div className="text-[12px] h-full pr-[8px] px-1 hover:bg-background-color_800C font-medium text-text-color_2 flex justify-center items-center">
+                    UI Locked
+                  </div>
+                </PMButton>
+              )}
             </div>
             <div className="w-full h-full overflow-y-auto  pl-[15px]">
               <div className=" h-full">
                 <div className="sticky z-[1] p-4 top-0 backdrop-blur-lg">
-                  <span className="flex justify-center items-center px-2 py-[1px] font-medium font-geist_mono rounded-tablet bg-background-color_800C w-fit text-[12px] text-text-color_2 ">
+                  <span className="flex justify-center items-center px-2 py-[1px] font-medium font-geist_mono rounded-tablet bg-background-color_900C border border-border-color_800C w-fit text-[12px] text-text-color_2 ">
                     Course Overview
                   </span>
                 </div>

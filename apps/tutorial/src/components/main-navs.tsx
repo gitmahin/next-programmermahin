@@ -13,14 +13,16 @@ import React, { useState } from "react";
 import { TutoListPopup } from "./tutorials";
 import { useDispatch } from "react-redux";
 import {
+  setLockMouseEnter,
   setOpenTutoTab,
   setTutoTabDetails,
 } from "@/redux/tutorials/tutoTabSlice";
 
 export default function MainNavs() {
   const dispatch = useDispatch();
+
   const handleTutorialListClick = (tutoType: string, tutoName: string) => {
-    if (!setOpenTutoTab || !setTutoTabDetails) return;
+    if (!setOpenTutoTab || !setTutoTabDetails || !setLockMouseEnter) return;
     dispatch(setOpenTutoTab(true));
     dispatch(
       setTutoTabDetails({
@@ -31,6 +33,7 @@ export default function MainNavs() {
         tutorialName: tutoName,
       })
     );
+    dispatch(setLockMouseEnter(true));
   };
   return (
     <nav className="px-4 w-full ">
