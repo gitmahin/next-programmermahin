@@ -2,17 +2,24 @@
 import { setMobSidebarOpen } from "@/redux/tutorials/mobSidebarOpen";
 import { LUCIDE_DEFAULT_ICON_SIZE, PMButton, PMLogo } from "@programmer/ui";
 import { PanelRightClose } from "lucide-react";
-import React from "react";
+import { usePathname } from "next/navigation";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 export default function MobileHeader() {
   const dispatch = useDispatch()
+  const path_name = usePathname()
 
 
   const handleOpenSidebar = () => {
     if(!setMobSidebarOpen) return
     dispatch(setMobSidebarOpen(true))
   }
+
+  useEffect(() => {
+    if(!setMobSidebarOpen) return
+    dispatch(setMobSidebarOpen(false))
+  }, [path_name])
 
   return (
     <header className="fixed p-5 z-10 top-0 w-full left-0 h-[50px] mob-header-tuto backdrop-blur-lg border-b border-border-color_800C hidden justify-between items-center">

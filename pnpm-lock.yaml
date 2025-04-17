@@ -50,6 +50,9 @@ importers:
       react-redux:
         specifier: ^9.2.0
         version: 9.2.0(@types/react@19.1.0)(react@19.1.0)(redux@5.0.1)
+      react-typed:
+        specifier: ^2.0.12
+        version: 2.0.12(react@19.1.0)
       slugify:
         specifier: ^1.6.6
         version: 1.6.6
@@ -3237,6 +3240,11 @@ packages:
       '@types/react':
         optional: true
 
+  react-typed@2.0.12:
+    resolution: {integrity: sha512-sn59lrb4NKgvQLDGBRWM4wRNEz5Fp37F0BrLA2cKUmDqPSyQJOOiFigz+6wJof0o99QoE16nVCa3B3ID34ejsg==}
+    peerDependencies:
+      react: '>16.8.0'
+
   react@19.1.0:
     resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
     engines: {node: '>=0.10.0'}
@@ -3787,6 +3795,9 @@ packages:
   typed-array-length@1.0.7:
     resolution: {integrity: sha512-3KS2b+kL7fsuk/eJZ7EQdnEmQoaho/r6KUef7hxvltNA5DR8NAUM+8wJMbJyZ4G9/7i3v5zPBIMN5aybAh2/Jg==}
     engines: {node: '>= 0.4'}
+
+  typed.js@2.1.0:
+    resolution: {integrity: sha512-bDuXEf7YcaKN4g08NMTUM6G90XU25CK3bh6U0THC/Mod/QPKlEt9g/EjvbYB8x2Qwr2p6J6I3NrsoYaVnY6wsQ==}
 
   typescript-eslint@8.29.0:
     resolution: {integrity: sha512-ep9rVd9B4kQsZ7ZnWCVxUE/xDLUUUsRzE0poAeNu+4CkFErLfuvPt/qtm2EpnSyfvsR0S6QzDFSrPCFBwf64fg==}
@@ -7233,6 +7244,11 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.1.0
 
+  react-typed@2.0.12(react@19.1.0):
+    dependencies:
+      react: 19.1.0
+      typed.js: 2.1.0
+
   react@19.1.0: {}
 
   read-cache@1.0.0:
@@ -7960,6 +7976,8 @@ snapshots:
       is-typed-array: 1.1.15
       possible-typed-array-names: 1.1.0
       reflect.getprototypeof: 1.0.10
+
+  typed.js@2.1.0: {}
 
   typescript-eslint@8.29.0(eslint@9.24.0(jiti@1.21.7))(typescript@5.8.2):
     dependencies:

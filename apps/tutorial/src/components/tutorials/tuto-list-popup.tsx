@@ -28,6 +28,7 @@ import {
   LockIcon,
   LockKeyholeIcon,
   PanelRightClose,
+  PanelRightOpen,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -149,10 +150,14 @@ setTimeout(() => {
               className="w-[30px] h-[30px] justify-center items-center hidden open_tuto_nav_btn absolute z-[999] top-1 left-1"
               radius="tiny"
             >
+              {
+                openTutoNavSize ?  <PanelRightOpen  size={LUCIDE_DEFAULT_ICON_SIZE}
+                className={` ${openTutoNavSize ? "text-text-color_1": "text-text-svg_default_color"}`} />:
               <PanelRightClose
-                size={LUCIDE_DEFAULT_ICON_SIZE}
-                className={`text-text-svg_default_color `}
+              size={LUCIDE_DEFAULT_ICON_SIZE}
+              className={`text-text-svg_default_color `}
               />
+            }
             </PMButton>
             <div className={`flex-shrink-0 transition-all w-[240px] h-full border-r bg-background-color_900C border-border-color_800C p-4 relative tuto_popup_tab_navbar ${openTutoNavSize && "tuto_popup_tab_navbar_open"}`}>
               <div className="w-[15px] h-full absolute left-full top-0 border border-solid box-border border-l-0 border-r-1 border-b-0 border-border-color_800C border-x border-x-border-color_800C bg-[image:repeating-linear-gradient(315deg,_var(--border-color-800C)_0,_var(--border-color-800C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-800C)]/5 md:block dark:[--pattern-fg:var(--border-color-800C)]/10"></div>

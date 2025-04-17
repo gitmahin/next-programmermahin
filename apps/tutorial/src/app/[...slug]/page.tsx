@@ -1,12 +1,8 @@
 import React from "react";
 import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
 import ProcessedContent from "./processed-content";
 import matter from "gray-matter";
 import ContentAsideNav from "./content-aside-nav";
-import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import TutoPagination from "./paginatation";
 import { getTutorialsByKey, TutorialEnums } from "@/constants";
 
@@ -67,9 +63,9 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
             <ProcessedContent data={mdxContent} />
             <TutoPagination />
           </div>
-          <aside className="w-[300px] h-[calc(100vh-70px)] overflow-y-auto sticky top-[70px] tuto-aside-nav tuto_cont_aside">
+          
             <ContentAsideNav />
-          </aside>
+        
         </div>
       </>
     );

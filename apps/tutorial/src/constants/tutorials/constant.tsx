@@ -1,6 +1,6 @@
 import { GeneralNavItemType } from "@programmer/types";
-import { ICON_DEFAULT_COLOR, LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
-import { GraduationCap, HomeIcon } from "lucide-react";
+import {  LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
+import { HomeIcon } from "lucide-react";
 import { DEVOPS_TUTORIALS } from "./devops";
 import { TutorialNavItemType } from "./type";
 import { REACT_TUTORIALS } from "./react";

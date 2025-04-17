@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
 import { useProcessMDX } from "@programmer/hooks";
-import { usePathname } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setProcessedContent } from "@/redux/tutorials/processedContentSlice";
 

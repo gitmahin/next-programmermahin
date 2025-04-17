@@ -1,8 +1,8 @@
 "use client";
 import { RootState } from "@/redux/store";
 import { useGetAnchors, useProcessMDX } from "@programmer/hooks";
-import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
-import { AlignLeft } from "lucide-react";
+import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
+import { AlignLeft, TableOfContents, X } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -18,6 +18,7 @@ interface AnchorsType {
 export default function ContentAsideNav() {
   const [anchors, setAnchors] = useState<AnchorsType[]>([]);
   const [activeHash, setActiveHash] = useState<string>("");
+  const [openAside, setOpenAside] = useState<boolean>(false);
 
   const htmlContent = useSelector(
     (state: RootState) => state.processedContent.content
@@ -102,29 +103,39 @@ export default function ContentAsideNav() {
   };
 
   return (
-    <div className="w-full">
-      <div className="flex justify-start items-center sticky top-0 pb-4 bg-background-color_950C gap-2">
-        <AlignLeft
-          size={LUCIDE_DEFAULT_ICON_SIZE}
-          className="text-text-color_1"
-        />
-        <span className="text-read_1 font-medium">On this page</span>
+    <>
+        <PMButton variant="silent" onClick={() => setOpenAside(!openAside)} className="fixed backdrop-blur-lg z-10 top-16 right-4 p-2 border border-border-color_800C flex justify-center items-center" radius="tiny">
+          {
+            openAside ? <X size={LUCIDE_DEFAULT_ICON_SIZE} className="text-text-color_1" /> :
+          <TableOfContents size={LUCIDE_DEFAULT_ICON_SIZE} className={`text-text-svg_default_color`} />
+          }
+        </PMButton>
+    <aside className={`w-[300px] h-[calc(100vh-70px)] overflow-y-auto sticky top-[70px] tuto-aside-nav tuto_cont_aside transition-all ${openAside && "right-[0_!important]"}`}>
+      <div className="w-full">
+        <div className="flex justify-start items-center sticky top-0 pb-4 bg-background-color_950C gap-2">
+          <AlignLeft
+            size={LUCIDE_DEFAULT_ICON_SIZE}
+            className="text-text-color_1"
+            />
+          <span className="text-read_1 font-medium">On this page</span>
+        </div>
+        <ul className="w-full leading-7 pr-5">
+          {anchors.map((item, i: number) => {
+            return (
+              <Link href={`#${item.anchor}`} key={i} className="">
+                <li
+                  onClick={() => handleHashClick(`#${item.anchor}`)}
+                  className={`one_line_ellipsis text-read_2 ${activeHash === `#${item.anchor}` ? "text-pm_purple-700 font-medium" : "text-text-color_2"}`}
+                  style={{ marginLeft: `${(item.level - 2) * 10}px` }}
+                  >
+                  {item.text}
+                </li>
+              </Link>
+            );
+          })}
+        </ul>
       </div>
-      <ul className="w-full leading-7 pr-5">
-        {anchors.map((item, i: number) => {
-          return (
-            <Link href={`#${item.anchor}`} key={i} className="">
-              <li
-                onClick={() => handleHashClick(`#${item.anchor}`)}
-                className={`one_line_ellipsis text-read_2 ${activeHash === `#${item.anchor}` ? "text-pm_purple-700 font-medium" : "text-text-color_2"}`}
-                style={{ marginLeft: `${(item.level - 2) * 10}px` }}
-              >
-                {item.text}
-              </li>
-            </Link>
-          );
-        })}
-      </ul>
-    </div>
+    </aside>
+          </>
   );
 }
