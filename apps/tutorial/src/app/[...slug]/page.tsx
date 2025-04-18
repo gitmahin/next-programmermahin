@@ -5,39 +5,105 @@ import matter from "gray-matter";
 import ContentAsideNav from "./content-aside-nav";
 import TutoPagination from "./paginatation";
 import { getTutorialsByKey, TutorialEnums } from "@/constants";
+import { algolia, IndexTutorialsType } from "@programmer/shared";
+import toc from "toc";
+import { AnchorsType } from "@programmer/types";
+import slugify from "slugify";
+import { remark } from "remark";
+import html from "remark-html";
 
 interface ContentPagePropsType {
   params: Promise<{ slug: string[] }>;
 }
 
 export async function generateStaticParams() {
-  const tutorialTypes = ["cpp", "react", "nextjs", "devops", "git", "monorepo"];
+  try {
+    const tutorialTypes = [
+      "cpp",
+      "react",
+      "nextjs",
+      "devops",
+      "git",
+      "monorepo",
+    ];
 
-  const params: { slug: string[] }[] = [];
+    const params: { slug: string[] }[] = [];
 
-  tutorialTypes.forEach((type) => {
-    const tutorials = getTutorialsByKey[type as TutorialEnums];
+    tutorialTypes.forEach((type) => {
+      const tutorials = getTutorialsByKey[type as TutorialEnums];
 
-    if (!tutorials) return;
+      if (!tutorials) return;
 
-    Object.values(tutorials).forEach((section) => {
-      if (!section?.slug) return;
+      Object.values(tutorials).forEach((section) => {
+        if (!section?.slug) return;
 
-      // Push the section route
-      params.push({
-        slug: [type, section.slug],
-      });
-
-      // Push nested items
-      section.items.forEach((item) => {
-        params.push({
-          slug: [type, section.slug, item.slug],
+        // Push nested items
+        section.items.forEach((item) => {
+          params.push({
+            slug: [type, section.slug, item.slug],
+          });
         });
       });
     });
-  });
 
-  return params;
+    // Indexing data to algolia
+
+    // const dataForAlgo: IndexTutorialsType[] = await Promise.all(
+    //   params.map(async (param): Promise<IndexTutorialsType> => {
+    //     const joinedSlug = param.slug.join("/").toString();
+    //     const filePath = `src/content/${joinedSlug}.mdx`;
+    //     console.log("file path is", filePath);
+
+    //     let getData = "";
+
+    //     try {
+    //       getData = fs.readFileSync(filePath, "utf-8");
+    //     } catch (error) {
+    //       console.log("Error file reading");
+    //     }
+
+    //     const { data, content } = matter(getData);
+
+    //     // Convert MDX/Markdown to HTML
+    //     const processedContent = await remark().use(html).process(content);
+
+    //     const contentHtml = processedContent.toString();
+    //     const { headers } = toc.anchorize(contentHtml, []);
+    //     const parsedAnchors = headers.map((header: AnchorsType) => ({
+    //       ...header,
+    //       anchor: slugify(header.text || "", {
+    //         replacement: "-",
+    //         lower: true,
+    //         strict: true,
+    //         trim: true,
+    //       }),
+    //     }));
+
+    //     return {
+    //       label: data?.title,
+    //       desc: data?.description,
+    //       type: "tutorial",
+    //       slug: joinedSlug,
+    //       onthispage: parsedAnchors.map((item: AnchorsType) => ({
+    //         label: item.text,
+    //         slug: item.anchor,
+    //       })) || [{}],
+    //     };
+    //   })
+    // );
+
+    // console.log(dataForAlgo);
+
+    // try {
+    //   await algolia.indexTutorial(dataForAlgo);
+    // } catch (error) {
+    //   throw new Error("Failed to index data in Algolia");
+    // }
+
+    return params;
+  } catch (error) {
+    throw new Error("Failed to generate static params");
+  }
 }
 
 export default async function ContentPage({ params }: ContentPagePropsType) {
@@ -63,9 +129,8 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
             <ProcessedContent data={mdxContent} />
             <TutoPagination />
           </div>
-          
-            <ContentAsideNav />
-        
+
+          <ContentAsideNav />
         </div>
       </>
     );

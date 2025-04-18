@@ -231,11 +231,11 @@ export const Sidebar = () => {
                             </span>
                           </div>
                           <div className="leading-8 border-l border-border-color_800C pl-2 mt-4">
-                            {value.items.map((item, i) => {
+                            {value.items.map((item, j) => {
                               const isActivePath = segments.includes(item.slug);
                               return (
                                 <Link
-                                  key={i}
+                                  key={j}
                                   href={`/${tutorialType}/${value.slug}/${item.slug}`}
                                   className="group"
                                 >

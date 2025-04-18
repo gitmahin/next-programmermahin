@@ -1,6 +1,5 @@
 "use client";
 import { RootState } from "@/redux/store";
-import { useGetAnchors, useProcessMDX } from "@programmer/hooks";
 import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
 import { AlignLeft, TableOfContents, X } from "lucide-react";
 import Link from "next/link";
@@ -8,12 +7,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import toc from "toc";
 import slugify from "slugify";
-
-interface AnchorsType {
-  level: number;
-  text: string;
-  anchor: string;
-}
+import { AnchorsType } from "@programmer/types";
 
 export default function ContentAsideNav() {
   const [anchors, setAnchors] = useState<AnchorsType[]>([]);
