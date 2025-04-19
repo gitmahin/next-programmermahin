@@ -11,8 +11,9 @@ const initialState: tutoPaginateStateType = {
   prev: undefined,
 };
 
+export const tutoPaginateSliceName = "tutoPaginate";
 export const tutoPaginateSlice: Slice<tutoPaginateStateType> = createSlice({
-  name: "tutoPaginate",
+  name: tutoPaginateSliceName,
   initialState,
   reducers: {
     setPagination: (

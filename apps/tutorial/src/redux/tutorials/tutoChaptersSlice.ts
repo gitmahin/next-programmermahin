@@ -13,8 +13,10 @@ const initialState: TutorialsChapterState = {
   type: "",
 };
 
+export const tutoChaptersSliceName = "tutoChapters";
 export const tutoChaptersSlice: Slice<TutorialsChapterState> = createSlice({
-  name: "tutoChapters",
+  name: tutoChaptersSliceName,
+
   initialState,
   reducers: {
     setTutorialChapters: (

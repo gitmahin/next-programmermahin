@@ -8,9 +8,9 @@ export interface ProcessedContentType {
 const initialState: ProcessedContentType = {
   content: "",
 };
-
+export const processedContentSliceName = "processedContent";
 export const processedContentSlice: Slice<ProcessedContentType> = createSlice({
-  name: "processedContent",
+  name: processedContentSliceName,
   initialState,
   reducers: {
     setProcessedContent: (state, action: PayloadAction<string>) => {

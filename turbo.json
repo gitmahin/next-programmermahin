@@ -23,6 +23,7 @@
       "dependsOn": ["^check-types"]
     },
     "dev": {
+      "env": ["NEXT_ALGOLIA_WRITE_API"],
       "cache": false,
       "persistent": true,
       "inputs": [

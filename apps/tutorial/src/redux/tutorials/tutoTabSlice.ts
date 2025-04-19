@@ -18,8 +18,9 @@ const initialState: TutoTabSliceType = {
   lock: false,
 };
 
+export const tutoTabSliceName = "tutoTab";
 export const tutoTabSlice: Slice<TutoTabSliceType> = createSlice({
-  name: "tutoTab",
+  name: tutoTabSliceName,
   initialState,
   reducers: {
     setOpenTutoTab: (state, action: PayloadAction<boolean>) => {

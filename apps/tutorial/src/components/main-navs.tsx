@@ -10,15 +10,15 @@ import { GraduationCap } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import { TutoListPopup } from "./tutorials";
-import { useDispatch } from "react-redux";
 import {
   setLockMouseEnter,
   setOpenTutoTab,
   setTutoTabDetails,
 } from "@/redux/tutorials/tutoTabSlice";
+import { useAppDispatch } from "@/hooks/redux.hook";
 
 export default function MainNavs() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleTutorialListClick = (tutoType: string, tutoName: string) => {
     if (!setOpenTutoTab || !setTutoTabDetails || !setLockMouseEnter) return;

@@ -1,18 +1,31 @@
 import { configureStore } from "@reduxjs/toolkit";
-import tutoChaptersReducer from "./tutorials/tutoChaptersSlice";
-import tutoTabReducer from "./tutorials/tutoTabSlice";
-import processedContentRedcuer from "./tutorials/processedContentSlice";
-import tutoPaginateReducer from "./tutorials/tutoPaginateSlice";
-import mobSidebarOpenReducer from "./tutorials/mobSidebarOpen";
+import tutoChaptersReducer, {
+  tutoChaptersSliceName,
+} from "./tutorials/tutoChaptersSlice";
+import tutoTabReducer, { tutoTabSliceName } from "./tutorials/tutoTabSlice";
+import processedContentRedcuer, {
+  processedContentSliceName,
+} from "./tutorials/processedContentSlice";
+import tutoPaginateReducer, {
+  tutoPaginateSliceName,
+} from "./tutorials/tutoPaginateSlice";
+import mobSidebarOpenReducer, {
+  mobSidebarOpenSliceName,
+} from "./tutorials/mobSidebarOpen";
+import {
+  searchOnThisPageReducer,
+  searchOnThisPageSliceName,
+} from "@programmer/shared";
 // ...
 
 export const store = configureStore({
   reducer: {
-    tutoChapters: tutoChaptersReducer,
-    tutoTab: tutoTabReducer,
-    processedContent: processedContentRedcuer,
-    tutoPaginate: tutoPaginateReducer,
-    mobSidebarOpen: mobSidebarOpenReducer,
+    [tutoChaptersSliceName]: tutoChaptersReducer,
+    [tutoTabSliceName]: tutoTabReducer,
+    [processedContentSliceName]: processedContentRedcuer,
+    [tutoPaginateSliceName]: tutoPaginateReducer,
+    [mobSidebarOpenSliceName]: mobSidebarOpenReducer,
+    [searchOnThisPageSliceName]: searchOnThisPageReducer,
   },
 });
 
