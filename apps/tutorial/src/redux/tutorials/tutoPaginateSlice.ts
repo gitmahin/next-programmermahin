@@ -24,7 +24,8 @@ export const tutoPaginateSlice: Slice<tutoPaginateStateType> = createSlice({
       }>
     ) => {
       const { currentIndex, flatTutoList } = action.payload;
-      state.prev = currentIndex > 0 ? flatTutoList[currentIndex - 1] : undefined;
+      state.prev =
+        currentIndex > 0 ? flatTutoList[currentIndex - 1] : undefined;
       state.next =
         currentIndex < flatTutoList.length - 1
           ? flatTutoList[currentIndex + 1]

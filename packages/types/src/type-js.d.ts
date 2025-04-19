@@ -1,1 +1,1 @@
-declare module 'typed-js';
+declare module "typed-js";

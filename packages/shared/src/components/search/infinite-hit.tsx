@@ -51,14 +51,13 @@ export function InfiniteHits({
                 </span>
               </div>
               <div className="bg-background-color_950C mt-2 rounded p-2">
-
-              {groupedHits &&
-                groupedHits[label]?.map((hit) => (
-                  <div key={hit.objectID} className="ais-InfiniteHits-item  ">
-                    <HitComponent hit={hit} />
-                  </div>
-                ))}
-                </div>
+                {groupedHits &&
+                  groupedHits[label]?.map((hit) => (
+                    <div key={hit.objectID} className="ais-InfiniteHits-item  ">
+                      <HitComponent hit={hit} />
+                    </div>
+                  ))}
+              </div>
             </div>
           </React.Fragment>
         ))}

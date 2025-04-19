@@ -4,9 +4,7 @@ import { notFound, useParams } from "next/navigation";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setTutorialChapters } from "@/redux/tutorials/tutoChaptersSlice";
-import {
-  setLockMouseEnter,
-} from "@/redux/tutorials/tutoTabSlice";
+import { setLockMouseEnter } from "@/redux/tutorials/tutoTabSlice";
 
 interface ContentLayoutPropsType {
   children: React.ReactNode;

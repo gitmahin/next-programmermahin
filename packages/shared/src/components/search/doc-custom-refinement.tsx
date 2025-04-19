@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { useRefinementList, UseRefinementListProps } from "react-instantsearch";
 
@@ -30,7 +29,7 @@ export default function DocCustomRefinementList(props: UseRefinementListProps) {
             key={item.label}
             className={`${item.isRefined ? "bg-pm_purple-700 text-text-zinc_white" : "bg-background-color_800C text-text-color_4"}  px-2 rounded-tiny font-medium flex-shrink-0`}
           >
-            <label >
+            <label>
               <input
                 className="hidden"
                 type="checkbox"
@@ -38,8 +37,7 @@ export default function DocCustomRefinementList(props: UseRefinementListProps) {
                 onChange={() => handleCheckboxChange(item.value)}
               />
               <span className="text-read_2">
-              {item.label.charAt(0).toUpperCase() + item.label.slice(1)}
-
+                {item.label.charAt(0).toUpperCase() + item.label.slice(1)}
               </span>
             </label>
           </li>

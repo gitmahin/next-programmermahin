@@ -1,5 +1,5 @@
 import { GeneralNavItemType } from "@programmer/types";
-import {  LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
+import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
 import { HomeIcon } from "lucide-react";
 import { DEVOPS_TUTORIALS } from "./devops";
 import { TutorialNavItemType } from "./type";

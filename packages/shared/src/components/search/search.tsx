@@ -6,10 +6,7 @@ import {
   PMButton,
 } from "@programmer/ui";
 import React, { useEffect, useState } from "react";
-import {
-  ChevronRight,
-  SearchIcon,
-} from "lucide-react";
+import { ChevronRight, SearchIcon } from "lucide-react";
 import { InstantSearch, SearchBox } from "react-instantsearch";
 import { searchAlgolia } from "../../helpers/algolia/search.helper";
 import NoResultsBoundary from "./no-results-boundary";

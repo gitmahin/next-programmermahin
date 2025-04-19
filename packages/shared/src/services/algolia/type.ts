@@ -6,5 +6,5 @@ export type AlgoliaIndexType = {
 export type IndexTutorialsType = AlgoliaIndexType & {
   type: string;
   desc: string;
-  onthispage: AlgoliaIndexType[]
+  onthispage: AlgoliaIndexType[];
 };

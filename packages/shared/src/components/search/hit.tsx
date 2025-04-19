@@ -7,7 +7,6 @@ import { setSearchOnThisPage, useSliceDispatch } from "../../redux";
 import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
 import { ChevronRight, Text } from "lucide-react";
 
-
 interface HitProps {
   hit: {
     label: string;
@@ -71,21 +70,25 @@ export default function Hit({ hit }: HitProps) {
           <div>
             <p className="text-read_2 one_line_ellipsis font-medium text-text-color_4">
               <Highlight
-                  classNames={{
-                    highlighted: "bg-transparent text-pm_purple-700",
-                  }}
-                  attribute="label"
-                  hit={hit}
-                />
+                classNames={{
+                  highlighted: "bg-transparent text-pm_purple-700",
+                }}
+                attribute="label"
+                hit={hit}
+              />
             </p>
             <p className="text-text-color_3 overflow-hidden font-medium text-read_3 mt-1 flex justify-start items-center gap-[2px]">
-              <span className="one_line_ellipsis">{hit.slug.split("/")[0]?.replace(/^\w/, (c) => c.toUpperCase())}</span>
+              <span className="one_line_ellipsis">
+                {hit.slug.split("/")[0]?.replace(/^\w/, (c) => c.toUpperCase())}
+              </span>
               <ChevronRight size={15} className="text-text-color_3" />
-              <span className="one_line_ellipsis">{hit.slug
+              <span className="one_line_ellipsis">
+                {hit.slug
                   .split("/")[1]
                   ?.replace(/^\d+-/, "")
                   .replace(/-/g, " ")
-                  .replace(/^\w/, (c) => c.toUpperCase())}</span>
+                  .replace(/^\w/, (c) => c.toUpperCase())}
+              </span>
             </p>
           </div>
         </div>

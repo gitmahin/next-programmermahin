@@ -27,21 +27,16 @@ export const Sidebar = () => {
   const [tutoData, setTutoData] = useState<TutorialNavItemType | null>(null);
   const [isPending, startTransition] = useTransition();
   const dispatch = useAppDispatch();
-  const mobSidebarOpen = useAppSelector((state) => state.mobSidebarOpen.open)
-  
+  const mobSidebarOpen = useAppSelector((state) => state.mobSidebarOpen.open);
 
-    const handleSidebarOff = () => {
-      if(!setMobSidebarOpen) return
-      dispatch(setMobSidebarOpen(false))
-    }
+  const handleSidebarOff = () => {
+    if (!setMobSidebarOpen) return;
+    dispatch(setMobSidebarOpen(false));
+  };
   // get the tutorial chapter data from redux
-  const TUTORIAL_CHAPTERS = useAppSelector(
-    (state) => state.tutoChapters.value
-  );
+  const TUTORIAL_CHAPTERS = useAppSelector((state) => state.tutoChapters.value);
   // get tutorial type from redux
-  const tutorialType = useAppSelector(
-    (state) => state.tutoChapters.type
-  );
+  const tutorialType = useAppSelector((state) => state.tutoChapters.type);
 
   const toggleTheme = () => {
     if (theme === "dark" || resolvedTheme === "dark") {
@@ -96,7 +91,9 @@ export const Sidebar = () => {
   }, [path_name, tutoData]);
 
   return (
-    <nav className={`w-[280px] z-50 transition-all border-r border-border-color_800C bg-background-color_900C h-screen fixed left-0 top-0 tutosidebar ${mobSidebarOpen ? "openTutoSidebar": ""}`}>
+    <nav
+      className={`w-[280px] z-50 transition-all border-r border-border-color_800C bg-background-color_900C h-screen fixed left-0 top-0 tutosidebar ${mobSidebarOpen ? "openTutoSidebar" : ""}`}
+    >
       <div className="w-[20px] h-screen absolute left-full top-0 border border-solid box-border border-l-0 border-r-1 border-b-0 border-border-color_800C border-x border-x-border-color_800C bg-[image:repeating-linear-gradient(315deg,_var(--border-color-800C)_0,_var(--border-color-800C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-800C)]/5 md:block dark:[--pattern-fg:var(--border-color-800C)]/10"></div>
 
       <div className="w-full border-b relative border-border-color_800C px-4 py-3 flex justify-between items-center">
@@ -149,8 +146,16 @@ export const Sidebar = () => {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-        <PMButton onClick={handleSidebarOff} variant="secondary" className="w-[25px] h-[25px] absolute hidden showSidebarClose justify-center items-center right-[-32px] group hover:border hover:border-border-color_800C top-1/2 -translate-y-1/2" radius="tiny">
-        <X size={LUCIDE_DEFAULT_ICON_SIZE} className=" flex justify-center items-center text-text-color_1  " />
+        <PMButton
+          onClick={handleSidebarOff}
+          variant="secondary"
+          className="w-[25px] h-[25px] absolute hidden showSidebarClose justify-center items-center right-[-32px] group hover:border hover:border-border-color_800C top-1/2 -translate-y-1/2"
+          radius="tiny"
+        >
+          <X
+            size={LUCIDE_DEFAULT_ICON_SIZE}
+            className=" flex justify-center items-center text-text-color_1  "
+          />
         </PMButton>
       </div>
       <div className="px-4 py-4">
@@ -185,28 +190,27 @@ export const Sidebar = () => {
             <>
               {tutoData !== null && (
                 <>
-<div className="w-full px-4 ">
-
-                  <div className="flex justify-between items-center pb-4 border-t pt-4 border-border-color_800C">
-                    <div className="flex justify-start items-center gap-2">
-                      <Image
-                        src={`${TUTORIALS_ICON[tutorialType as TutorialEnums]?.svgPath ?? ""}`}
-                        width={100}
-                        height={100}
-                        alt="icon"
-                        className={`${tutorialType !== TutorialEnums.NEXTJS ? "w-[18px] h-[18px]" : "w-[65px]"}  filter brightness-0 dark:invert`}
+                  <div className="w-full px-4 ">
+                    <div className="flex justify-between items-center pb-4 border-t pt-4 border-border-color_800C">
+                      <div className="flex justify-start items-center gap-2">
+                        <Image
+                          src={`${TUTORIALS_ICON[tutorialType as TutorialEnums]?.svgPath ?? ""}`}
+                          width={100}
+                          height={100}
+                          alt="icon"
+                          className={`${tutorialType !== TutorialEnums.NEXTJS ? "w-[18px] h-[18px]" : "w-[65px]"}  filter brightness-0 dark:invert`}
                         />
 
-                      {tutorialType !== TutorialEnums.NEXTJS && (
-                        <span className="text-read_2 text-pm_purple-700 font-medium ">
-                          {TUTORIALS_ICON[tutorialType as TutorialEnums]
-                            ?.name ?? ""}
-                        </span>
-                      )}
-                    </div>
-                    <TutoListPopup />
-                  </div>
+                        {tutorialType !== TutorialEnums.NEXTJS && (
+                          <span className="text-read_2 text-pm_purple-700 font-medium ">
+                            {TUTORIALS_ICON[tutorialType as TutorialEnums]
+                              ?.name ?? ""}
+                          </span>
+                        )}
                       </div>
+                      <TutoListPopup />
+                    </div>
+                  </div>
 
                   <div className="px-4 ">
                     {Object.entries(tutoData || {}).map(([Key, value], i) => {

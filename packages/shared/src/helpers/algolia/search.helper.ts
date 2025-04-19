@@ -1,4 +1,3 @@
-
 import { liteClient as algoliasearch, LiteClient } from "algoliasearch/lite";
 import {
   createNullCache,

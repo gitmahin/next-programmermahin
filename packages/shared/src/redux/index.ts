@@ -1,1 +1,1 @@
-export * from "./searchOnThisPageSlice"
+export * from "./searchOnThisPageSlice";

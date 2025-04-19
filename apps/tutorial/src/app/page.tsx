@@ -76,7 +76,9 @@ const page = () => {
                   />
                   <div>
                     <h3 className="text-read_2 font-medium">{item.title}</h3>
-                    <p className="mt-2 text-text-color_2 text-read_3 font-medium">{item.desc}</p>
+                    <p className="mt-2 text-text-color_2 text-read_3 font-medium">
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
               );

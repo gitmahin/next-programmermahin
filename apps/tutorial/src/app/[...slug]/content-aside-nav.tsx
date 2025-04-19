@@ -98,38 +98,49 @@ export default function ContentAsideNav() {
 
   return (
     <>
-        <PMButton variant="silent" onClick={() => setOpenAside(!openAside)} className="fixed backdrop-blur-lg z-10 top-16 right-4 p-2 border border-border-color_800C flex justify-center items-center" radius="tiny">
-          {
-            openAside ? <X size={LUCIDE_DEFAULT_ICON_SIZE} className="text-text-color_1" /> :
-          <TableOfContents size={LUCIDE_DEFAULT_ICON_SIZE} className={`text-text-svg_default_color`} />
-          }
-        </PMButton>
-    <aside className={`w-[300px] h-[calc(100vh-70px)] overflow-y-auto sticky top-[70px] tuto-aside-nav tuto_cont_aside transition-all ${openAside && "right-[0_!important]"}`}>
-      <div className="w-full">
-        <div className="flex justify-start items-center sticky top-0 pb-4 bg-background-color_950C gap-2">
-          <AlignLeft
+      <PMButton
+        variant="silent"
+        onClick={() => setOpenAside(!openAside)}
+        className="fixed backdrop-blur-lg z-10 top-16 right-4 p-2 border border-border-color_800C flex justify-center items-center"
+        radius="tiny"
+      >
+        {openAside ? (
+          <X size={LUCIDE_DEFAULT_ICON_SIZE} className="text-text-color_1" />
+        ) : (
+          <TableOfContents
             size={LUCIDE_DEFAULT_ICON_SIZE}
-            className="text-text-color_1"
+            className={`text-text-svg_default_color`}
+          />
+        )}
+      </PMButton>
+      <aside
+        className={`w-[300px] h-[calc(100vh-70px)] overflow-y-auto sticky top-[70px] tuto-aside-nav tuto_cont_aside transition-all ${openAside && "right-[0_!important]"}`}
+      >
+        <div className="w-full">
+          <div className="flex justify-start items-center sticky top-0 pb-4 bg-background-color_950C gap-2">
+            <AlignLeft
+              size={LUCIDE_DEFAULT_ICON_SIZE}
+              className="text-text-color_1"
             />
-          <span className="text-read_1 font-medium">On this page</span>
-        </div>
-        <ul className="w-full leading-7 pr-5">
-          {anchors.map((item, i: number) => {
-            return (
-              <Link href={`#${item.anchor}`} key={i} className="">
-                <li
-                  onClick={() => handleHashClick(`#${item.anchor}`)}
-                  className={`one_line_ellipsis text-read_2 ${activeHash === `#${item.anchor}` ? "text-pm_purple-700 font-medium" : "text-text-color_2"}`}
-                  style={{ marginLeft: `${(item.level - 2) * 10}px` }}
+            <span className="text-read_1 font-medium">On this page</span>
+          </div>
+          <ul className="w-full leading-7 pr-5">
+            {anchors.map((item, i: number) => {
+              return (
+                <Link href={`#${item.anchor}`} key={i} className="">
+                  <li
+                    onClick={() => handleHashClick(`#${item.anchor}`)}
+                    className={`one_line_ellipsis text-read_2 ${activeHash === `#${item.anchor}` ? "text-pm_purple-700 font-medium" : "text-text-color_2"}`}
+                    style={{ marginLeft: `${(item.level - 2) * 10}px` }}
                   >
-                  {item.text}
-                </li>
-              </Link>
-            );
-          })}
-        </ul>
-      </div>
-    </aside>
-          </>
+                    {item.text}
+                  </li>
+                </Link>
+              );
+            })}
+          </ul>
+        </div>
+      </aside>
+    </>
   );
 }
