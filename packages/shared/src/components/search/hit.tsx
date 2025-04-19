@@ -3,8 +3,6 @@
 import Link from "next/link";
 import { Highlight } from "react-instantsearch";
 import { AlgoliaIndexType } from "../../services";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { setSearchOnThisPage, useSliceDispatch } from "../../redux";
 import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
 import { ChevronRight, Text } from "lucide-react";

@@ -2,7 +2,7 @@
   "extends": "@programmer/typescript-config/nextjs.json",
   "compilerOptions": {
     "outDir": "dist",
-    "lib": ["DOM", "ES2024"],
+    "lib": ["ES2024"],
     "target": "ES2024",
   },
   "include": [

@@ -2,23 +2,13 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
   LUCIDE_DEFAULT_ICON_SIZE,
   PMButton,
 } from "@programmer/ui";
 import React, { useEffect, useState } from "react";
 import {
-  Calculator,
-  Calendar,
   ChevronRight,
-  CreditCard,
   SearchIcon,
-  Settings,
-  Smile,
-  User,
 } from "lucide-react";
 import { InstantSearch, SearchBox } from "react-instantsearch";
 import { searchAlgolia } from "../../helpers/algolia/search.helper";
@@ -26,9 +16,8 @@ import NoResultsBoundary from "./no-results-boundary";
 import NoResults from "./no-results";
 import DocCustomRefinementList from "./doc-custom-refinement";
 import Hit from "./hit";
-import { IndexTutorialsType, TUTORIAL_INDEX_NAME } from "../../services";
+import { TUTORIAL_INDEX_NAME } from "../../services";
 import { InfiniteHits } from "./infinite-hit";
-import { useSelector } from "react-redux";
 import { usePathname } from "next/navigation";
 import {
   SearchOnThePageValue,
