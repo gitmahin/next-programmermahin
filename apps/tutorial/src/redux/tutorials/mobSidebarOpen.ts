@@ -9,8 +9,9 @@ const initialState: MobSidebarOpen = {
   open: false,
 };
 
+export const mobSidebarOpenSliceName = "mobSidebarOpen";
 export const mobSidebarOpenSlice: Slice<MobSidebarOpen> = createSlice({
-  name: "mobSidebarOpen",
+  name: mobSidebarOpenSliceName,
   initialState,
   reducers: {
     setMobSidebarOpen: (state, action: PayloadAction<boolean>) => {

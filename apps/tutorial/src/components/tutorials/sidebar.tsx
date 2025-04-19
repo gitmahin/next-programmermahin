@@ -13,35 +13,34 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@programmer/ui";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
 import { TutorialNavItemType } from "@/constants/tutorials/type";
 import MainNavs from "../main-navs";
 import { TutoListPopup } from "./tuto-list-popup";
 import { FlattenedTutorialChapter } from "@/types/flattened-tutorial-ch";
 import { setPagination } from "@/redux/tutorials/tutoPaginateSlice";
 import { setMobSidebarOpen } from "@/redux/tutorials/mobSidebarOpen";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux.hook";
 
 export const Sidebar = () => {
   const path_name = usePathname();
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [tutoData, setTutoData] = useState<TutorialNavItemType | null>(null);
   const [isPending, startTransition] = useTransition();
-  const dispatch = useDispatch();
-  const mobSidebarOpen = useSelector((state: RootState) => state.mobSidebarOpen.open)
+  const dispatch = useAppDispatch();
+  const mobSidebarOpen = useAppSelector((state) => state.mobSidebarOpen.open)
   
-  
+
     const handleSidebarOff = () => {
       if(!setMobSidebarOpen) return
       dispatch(setMobSidebarOpen(false))
     }
   // get the tutorial chapter data from redux
-  const TUTORIAL_CHAPTERS = useSelector(
-    (state: RootState) => state.tutoChapters.value
+  const TUTORIAL_CHAPTERS = useAppSelector(
+    (state) => state.tutoChapters.value
   );
   // get tutorial type from redux
-  const tutorialType = useSelector(
-    (state: RootState) => state.tutoChapters.type
+  const tutorialType = useAppSelector(
+    (state) => state.tutoChapters.type
   );
 
   const toggleTheme = () => {

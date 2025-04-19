@@ -5,7 +5,7 @@ import {
   TutorialEnums,
 } from "@/constants";
 import { TutorialNavItemType } from "@/constants/tutorials/type";
-import { RootState } from "@/redux/store";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux.hook";
 import {
   setLockMouseEnter,
   setOpenTutoTab,
@@ -34,7 +34,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 
 interface TutoListPopupPropsType {
@@ -49,15 +48,15 @@ export const TutoListPopup = ({
   const [openTutoNavSize, setOpenTutoNavSide] = useState(false)
 
   // redux values
-  const data = useSelector((state: RootState) => state.tutoTab.data);
+  const data = useAppSelector((state) => state.tutoTab.data);
   // activeKey for styling purpose
-  const activeKey = useSelector((state: RootState) => state.tutoTab.activeKey);
-  const tutorialName = useSelector(
-    (state: RootState) => state.tutoTab.tutorialName
+  const activeKey = useAppSelector((state) => state.tutoTab.activeKey);
+  const tutorialName = useAppSelector(
+    (state) => state.tutoTab.tutorialName
   );
-  const lockMouseEnter = useSelector((state: RootState) => state.tutoTab.lock);
-  const open = useSelector((state: RootState) => state.tutoTab.open);
-  const dispatch = useDispatch();
+  const lockMouseEnter = useAppSelector((state) => state.tutoTab.lock);
+  const open = useAppSelector((state) => state.tutoTab.open);
+  const dispatch = useAppDispatch();
 
   const handleMouseEnter = (tutorialtype: string, tutoName: string) => {
     if (!lockMouseEnter) {

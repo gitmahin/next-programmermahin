@@ -1,8 +1,12 @@
 {
-  "extends": "@programmer/typescript-config/react-library.json",
+  "extends": "@programmer/typescript-config/nextjs.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "lib": ["ES2024"],
+    "target": "ES2024",
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+   "src"
+  ],
+  "exclude": ["node_modules"]
 }

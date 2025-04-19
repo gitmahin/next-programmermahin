@@ -1,5 +1,6 @@
 "use client";
 
+// currently not using this file
 import { TutorialNavItemType } from "@/constants/tutorials/type";
 import { createContext, useContext } from "react";
 
