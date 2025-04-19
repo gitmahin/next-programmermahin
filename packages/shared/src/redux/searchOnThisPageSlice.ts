@@ -10,7 +10,7 @@ export interface SearchOnThisPage {
     label: string;
     slug: string;
   }[];
-  navigationText: string[]
+  navigationText: string[];
 }
 
 const initialState: SearchOnThisPage = {
@@ -39,28 +39,31 @@ type searchOnThisPageInterface = { searchOnThisPage: SearchOnThisPage };
 export let useSliceSelector: TypedUseSelectorHook<searchOnThisPageInterface> =
   useSelector;
 
-// This function would configure a "local" store if called, but currently it is
-// not called, and is just used for type inference.
+// Defines a local store for type inference only; not actively used.
 const configureLocalStore = () =>
   configureStore({
     reducer: { searchOnThisPage: searchOnThisPageSlice.reducer },
   });
 
-export const SearchOnThePagetitleValue = (state: searchOnThisPageInterface) => state.searchOnThisPage.title;
-export const SearchOnThePageDescValue = (state: searchOnThisPageInterface) => state.searchOnThisPage.desc;
-export const SearchOnThePageSlugValue = (state: searchOnThisPageInterface) => state.searchOnThisPage.slug;
-export const SearchOnThePageValue = (state: searchOnThisPageInterface) => state.searchOnThisPage.onThisPage;
-export const SearchOnThePageNavigationTextValue = (state: searchOnThisPageInterface) => state.searchOnThisPage.navigationText;
+export const SearchOnThePagetitleValue = (state: searchOnThisPageInterface) =>
+  state.searchOnThisPage.title;
+export const SearchOnThePageDescValue = (state: searchOnThisPageInterface) =>
+  state.searchOnThisPage.desc;
+export const SearchOnThePageSlugValue = (state: searchOnThisPageInterface) =>
+  state.searchOnThisPage.slug;
+export const SearchOnThePageValue = (state: searchOnThisPageInterface) =>
+  state.searchOnThisPage.onThisPage;
+export const SearchOnThePageNavigationTextValue = (
+  state: searchOnThisPageInterface
+) => state.searchOnThisPage.navigationText;
 
-// Infer the type of the dispatch that would be needed for a store that consisted of
-// just this slice
+// Infers dispatch type for a store using only this slice.
 type SliceDispatch = ReturnType<typeof configureLocalStore>["dispatch"];
 export let useSliceDispatch = () => useDispatch<SliceDispatch>();
 
-// Allows initializing of this package by a calling package with the "global"
-// dispatch and selector hooks of that package, provided they satisfy this packages
-// state and dispatch interfaces--which they will if the imported this package and
-// used it to compose their store.
+// Enables external packages to provide their own useDispatch and useSelector
+// hooks, assuming their Redux store integrates this package’s reducers.
+// This ensures compatibility with the global store setup in the consuming app.
 export const initializeSlicePackage = (
   useAppDispatch: typeof useSliceDispatch,
   useAppSelector: typeof useSliceSelector
@@ -69,7 +72,6 @@ export const initializeSlicePackage = (
   useSliceSelector = useAppSelector;
 };
 
-// Action creators are generated for each case reducer function
 export const { setSearchOnThisPage } = searchOnThisPageSlice.actions;
 
 export const searchOnThisPageReducer = searchOnThisPageSlice.reducer;
