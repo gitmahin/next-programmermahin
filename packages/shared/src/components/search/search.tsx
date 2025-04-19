@@ -131,7 +131,7 @@ export const Search = () => {
                       />
                     </div>
                       <div
-                        className={`w-full h-full rounded bg-background-color_925C`}
+                        className={`w-full h-full rounded bg-background-color_925C overflow-y-auto custom_scrollbar`}
                       >
                         <div className="p-4 pb-0">
                           <div className="w-full flex justify-center items-center">
@@ -164,7 +164,7 @@ export const Search = () => {
                           {searchDescSelector}
                         </p>
                         <div className="px-4 mt-5">
-                          <p className="uppercase font-geist_mono font-medium text-read_3">
+                          <p className="uppercase font-geist_mono font-medium text-read_3 text-text-color_3">
                             On This Page
                           </p>
                           <ul className="mt-2 leading-7">

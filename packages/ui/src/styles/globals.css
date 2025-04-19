@@ -236,3 +236,10 @@ body {
     overflow-y: hidden;
   }
 }
+
+  /* scrollbar */
+  .custom_scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--background-color-800C) transparent;
+    scrollbar-gutter: stable;
+  }

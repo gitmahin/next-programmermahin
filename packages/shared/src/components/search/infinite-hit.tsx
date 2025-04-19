@@ -35,7 +35,7 @@ export function InfiniteHits({
   const groupedHits = Object.groupBy(items, (hit) => hit.slug.split("/")[0])!;
 
   return (
-    <div className={`ais-InfiniteHits mt-2 w-full pb-1 ${className}`}>
+    <div className={`ais-InfiniteHits mt-2 w-full ${className}`}>
       <div className="ais-InfiniteHits-list">
         {Object.keys(groupedHits).map((label, i) => (
           <React.Fragment key={i}>

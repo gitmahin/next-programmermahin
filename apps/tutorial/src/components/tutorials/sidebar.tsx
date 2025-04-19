@@ -80,8 +80,6 @@ export const Sidebar = () => {
 
     if (!tutoData) return;
 
-    console.log(flattenDocs(tutoData));
-
     const flatDocList = flattenDocs(tutoData);
     const currentIndex = flatDocList.findIndex(
       (navItem) => decodeURIComponent(path_name) === navItem.path
