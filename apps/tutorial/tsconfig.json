@@ -11,6 +11,7 @@
         "name": "next"
       }
     ],
+    "lib": ["ES2024"],
     "target": "ES2024"
   },
   "include": [
