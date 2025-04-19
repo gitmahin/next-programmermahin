@@ -19,14 +19,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cache turbo build setup
-        uses: actions/cache@v4
-        with:
-          path: .turbo
-          key: ${{ runner.os }}-turbo-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-turbo-
-
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
@@ -49,6 +41,9 @@ jobs:
 
       - name: Build Project
         run: cd apps/tutorial && pnpm build
+        env: 
+          NEXT_PUBLIC_ALGOLIA_APPLICATION_ID: ${{ vars.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID }}
+          NEXT_PUBLIC_ALGOLIA_SEARCH_API: ${{ vars.NEXT_PUBLIC_ALGOLIA_SEARCH_API }}
 
       - name: Deploy Project
         run: cd apps/tutorial && vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
