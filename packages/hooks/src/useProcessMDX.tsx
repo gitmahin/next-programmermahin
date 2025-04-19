@@ -4,10 +4,8 @@ import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
-import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import matter from "gray-matter";
-import rehypeShiki from "@shikijs/rehype";
 import {
   transformerNotationHighlight,
   transformerNotationDiff,
