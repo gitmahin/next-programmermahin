@@ -26,4 +26,4 @@ jobs:
           vercel-args: '--prod' #Optional
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID_TUTOPROG}}  
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_TUTOPROG}}
-          working-directory: ./apps/tutorial
+       
