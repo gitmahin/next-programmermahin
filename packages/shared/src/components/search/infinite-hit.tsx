@@ -35,6 +35,7 @@ export function InfiniteHits({
   const groupedHits = Object.groupBy(items, (hit) => hit.slug.split("/")[0])!;
 
   return (
+    // Keep `pb-5` to ensure Infinite Scroll sentinel stays in view when loading
     <div className={`ais-InfiniteHits mt-2 w-full pb-5 ${className}`}>
       <div className="ais-InfiniteHits-list">
         {Object.keys(groupedHits).map((label, i) => (

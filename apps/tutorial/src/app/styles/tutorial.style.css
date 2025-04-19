@@ -42,6 +42,10 @@
     top: 50px !important;
     border-left:  1px solid var(--border-color-800C);
 }
+
+.toc_open_btn{
+  display: flex;
+}
 }
 
 @media screen and (max-width: 550px) {
@@ -51,6 +55,8 @@
     z-index: 20;
     /* left: 0; */
   }
+
+
 
   .open_tuto_nav_btn{
     display: flex;
@@ -84,4 +90,6 @@
   .tutosidebar {
     width: 260px !important;
   }
+
+  
 }

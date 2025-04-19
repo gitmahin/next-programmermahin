@@ -101,7 +101,7 @@ export default function ContentAsideNav() {
       <PMButton
         variant="silent"
         onClick={() => setOpenAside(!openAside)}
-        className="fixed backdrop-blur-lg z-10 top-16 right-4 p-2 border border-border-color_800C flex justify-center items-center"
+        className="fixed backdrop-blur-lg z-10 top-16 right-4 p-2 border border-border-color_800C hidden justify-center items-center toc_open_btn"
         radius="tiny"
       >
         {openAside ? (
