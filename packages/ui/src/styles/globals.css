@@ -184,3 +184,55 @@ body {
     overflow: hidden;
   }
 }
+
+@media screen and (max-width: 830px) {
+  .search_meta_info_tab{
+    width: 0px ;
+    overflow: hidden ;
+    padding: 0px;
+    margin-left: 8px;
+  }
+
+  .search_result_wrapper{
+    gap: 0px;
+
+  }
+
+  .search_meta_info_tab_open{
+    width: 100% ;
+    flex-shrink: 0;
+    overflow: visible ;
+    padding: 8px;
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+
+
+  .show_search_meta_info_btn{
+    border: 1px solid var(--border-color-800C);
+    width: 30px;
+    height: 30px;
+    background-color: var(--background-color-900C);
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+  }
+
+  .show_search_meta_info_btn:hover {
+    outline: 2px solid var(--color-purple-700);
+
+  }
+
+  .close_search_meta_info{
+    display: flex;
+  }
+
+  .search_result_wrapper_opened{
+    overflow: hidden;
+    overflow-y: hidden;
+  }
+}

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Highlight } from "react-instantsearch";
 import { AlgoliaIndexType } from "../../services";
-import { setSearchOnThisPage, useSliceDispatch } from "../../redux";
+import { setSearchMobInfoOpen, setSearchMetaInfo, useSearchMobInfoDispatch, useSliceDispatch, useSliceSelector, searchMetaInfoActiveKeyValue } from "../../redux";
 import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
 import { ChevronRight, Text } from "lucide-react";
 
@@ -21,28 +21,37 @@ interface HitProps {
 
 export default function Hit({ hit }: HitProps) {
   const dispatch = useSliceDispatch();
+  const searchMobInfoDispatch = useSearchMobInfoDispatch()
+  const searchMetaInfoActiveKey = useSliceSelector(searchMetaInfoActiveKeyValue)
   const handleMouseHover = (
     title: string,
     desc: string,
     slug: string,
     onThisPageData: AlgoliaIndexType[],
-    navigationText: string[]
+    navigationText: string[],
+    activeKey: string
   ) => {
     console.log(title);
     console.log(desc);
     console.log(onThisPageData);
 
-    if (!setSearchOnThisPage) return;
+    if (!setSearchMetaInfo) return;
     dispatch(
-      setSearchOnThisPage({
+      setSearchMetaInfo({
         title,
         desc,
         slug,
         onThisPage: onThisPageData,
         navigationText,
+        activeKey
       })
     );
   };
+
+  const handleMobShowSearchMetaInfoClicked = () => {
+    if(!setSearchMobInfoOpen) return
+    searchMobInfoDispatch(setSearchMobInfoOpen(true))
+  }
 
   return (
     <Link
@@ -56,10 +65,10 @@ export default function Hit({ hit }: HitProps) {
             ?.replace(/^\d+-/, "")
             .replace(/-/g, " ")
             .replace(/^\w/, (c) => c.toUpperCase())}`,
-        ])
+        ], hit.objectID.toString())
       }
     >
-      <li className="w-full flex justify-between items-center list-none group p-3 hover:bg-background-color_800C rounded-tiny">
+      <li className={`w-full flex justify-between items-center list-none group p-3 ${searchMetaInfoActiveKey === hit.objectID.toString() && "bg-background-color_800C"} rounded-tiny`}>
         <div className="flex justify-start items-center gap-3">
           <div className="flex-shrink-0 bg-background-color_925C w-[30px] h-[30px] rounded-tiny flex justify-center items-center">
             <Text
@@ -92,10 +101,26 @@ export default function Hit({ hit }: HitProps) {
             </p>
           </div>
         </div>
-        <ChevronRight
-          size={LUCIDE_DEFAULT_ICON_SIZE}
-          className="text-text-color_3"
-        />
+        <div
+          className="pointer-events-none show_search_meta_info_btn"
+          onClick={(e) => {
+            handleMobShowSearchMetaInfoClicked()
+            handleMouseHover(hit.label, hit.desc, hit.slug, hit.onthispage, [
+              `${hit.slug.split("/")[0]?.replace(/^\w/, (c) => c.toUpperCase())}`,
+              `${hit.slug
+                .split("/")[1]
+                ?.replace(/^\d+-/, "")
+                .replace(/-/g, " ")
+                .replace(/^\w/, (c) => c.toUpperCase())}`,
+            ],  hit.objectID.toString())
+            e.preventDefault();
+          }}
+        >
+          <ChevronRight
+            size={LUCIDE_DEFAULT_ICON_SIZE}
+            className="text-text-color_3"
+          />
+        </div>
       </li>
     </Link>
   );

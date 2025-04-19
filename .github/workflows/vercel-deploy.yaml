@@ -9,8 +9,8 @@ on:
   workflow_dispatch: 
 
 jobs:
-  Release:
-    name: Deploy Production Build
+  release_tutorial:
+    name: Deploy Tutorial-App Production Build
     runs-on: ubuntu-latest
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}

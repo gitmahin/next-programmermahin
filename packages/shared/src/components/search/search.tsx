@@ -6,7 +6,7 @@ import {
   PMButton,
 } from "@programmer/ui";
 import React, { useEffect, useState } from "react";
-import { ChevronRight, SearchIcon } from "lucide-react";
+import { ChevronRight, PanelRight, SearchIcon, X } from "lucide-react";
 import { InstantSearch, SearchBox } from "react-instantsearch";
 import { searchAlgolia } from "../../helpers/algolia/search.helper";
 import NoResultsBoundary from "./no-results-boundary";
@@ -17,24 +17,38 @@ import { TUTORIAL_INDEX_NAME } from "../../services";
 import { InfiniteHits } from "./infinite-hit";
 import { usePathname } from "next/navigation";
 import {
-  SearchOnThePageValue,
-  SearchOnThePagetitleValue,
   useSliceSelector,
-  SearchOnThePageNavigationTextValue,
-  SearchOnThePageSlugValue,
+  useSearchMobInfoSelector,
+  searchMobInfoOpenValue,
+  useSearchMobInfoDispatch,
+  setSearchMobInfoOpen,
+  searchMetaInfoTitleValue,
+  searchMetaInfoDescValue,
+  searchMetaInfoSlugValue,
+  searchMetaInfoNavigationTextValue,
+  searchMetaInfoOnThisPageValue,
 } from "../../redux";
 import Link from "next/link";
 
 export const Search = () => {
   const path_name = usePathname();
-  const searchTitleSelector = useSliceSelector(SearchOnThePagetitleValue);
-  const searchDescSelector = useSliceSelector(SearchOnThePagetitleValue);
-  const searchOnThePageSelector = useSliceSelector(SearchOnThePageValue);
-  const searchSlugSelector = useSliceSelector(SearchOnThePageSlugValue);
+  const searchTitleSelector = useSliceSelector(searchMetaInfoTitleValue);
+  const searchDescSelector = useSliceSelector(searchMetaInfoDescValue);
+  const searchOnThePageSelector = useSliceSelector(searchMetaInfoOnThisPageValue);
+  const searchSlugSelector = useSliceSelector(searchMetaInfoSlugValue);
   const searchNavigationTextSelector = useSliceSelector(
-    SearchOnThePageNavigationTextValue
+    searchMetaInfoNavigationTextValue
   );
+
   const [open, setOpen] = useState(false);
+  const openSearchMobInfo = useSearchMobInfoSelector(searchMobInfoOpenValue);
+  const searchMobInfoDispatch = useSearchMobInfoDispatch();
+
+  const handleMobCloseSearchMetaInfoClicked = () => {
+    if (!setSearchMobInfoOpen) return;
+    searchMobInfoDispatch(setSearchMobInfoOpen(false));
+  };
+
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
@@ -96,12 +110,26 @@ export const Search = () => {
                 </div>
                 <div className={`h-full`}>
                   <div
-                    className={`overflow-y-auto h-[calc(100%-86px)] flex justify-center items-start ${searchTitleSelector === "" ? "gap-0" : "gap-2"}  pl-2 bg-transparent border-none`}
+                    className={`overflow-y-auto h-[calc(100%-86px)] flex justify-center items-start ${searchTitleSelector === "" ? "gap-0" : "gap-2"}  pl-2 bg-transparent border-none search_result_wrapper ${openSearchMobInfo && "search_result_wrapper_opened"}`}
                   >
-                    <InfiniteHits hitComponent={Hit} />
+                    <InfiniteHits
+                      hitComponent={Hit}
+                      className={`${openSearchMobInfo && "w-0 overflow-hidden"}`}
+                    />
+
+                   
                     <div
-                      className={`flex-shrink-0 h-full p-2 pl-0 sticky top-0 transition-all duration-300 ${searchTitleSelector === "" ? "w-0 overflow-hidden" : "w-[400px]"}`}
+                      className={`flex-shrink-0 h-full p-2 pl-0 sticky top-0 transition-all duration-300 ${searchTitleSelector === "" ? "w-0 overflow-hidden" : "w-[400px]"} search_meta_info_tab ${openSearchMobInfo && "search_meta_info_tab_open"}`}
                     >
+                       <div
+                      onClick={handleMobCloseSearchMetaInfoClicked}
+                      className="w-[30px] z-10 h-[30px] border rounded-tiny border-border-color_800C absolute top-4 left-2 bg-background-color_900C justify-center close_search_meta_info hidden items-center close"
+                    >
+                      <X
+                        size={LUCIDE_DEFAULT_ICON_SIZE}
+                        className={`text-text-svg_default_color`}
+                      />
+                    </div>
                       <div
                         className={`w-full h-full rounded bg-background-color_925C`}
                       >

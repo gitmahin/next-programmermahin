@@ -5,9 +5,11 @@ import { useInfiniteHits } from "react-instantsearch";
 
 export function InfiniteHits({
   hitComponent: HitComponent,
+  className,
   ...props
 }: {
   hitComponent: React.ElementType;
+  className?: string
 }) {
   const { items, isLastPage, showMore } = useInfiniteHits(props);
   const sentinelRef = useRef(null);
@@ -33,7 +35,7 @@ export function InfiniteHits({
   const groupedHits = Object.groupBy(items, (hit) => hit.slug.split("/")[0])!;
 
   return (
-    <div className="ais-InfiniteHits mt-2 w-full pb-1">
+    <div className={`ais-InfiniteHits mt-2 w-full pb-1 ${className}`}>
       <div className="ais-InfiniteHits-list">
         {Object.keys(groupedHits).map((label, i) => (
           <React.Fragment key={i}>

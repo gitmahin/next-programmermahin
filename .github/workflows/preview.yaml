@@ -6,14 +6,15 @@ env:
 
 #   dont run this
 on:
-  push:
-    branches-ignore:
-      - main
+  workflow_dispatch: 
 
 jobs:
-  Preview:
-    name: Deploy Preview Build
+  tutorial_preview:
+    name: Tutorial-App Preview Build
     runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,16 +31,13 @@ jobs:
           cache: "pnpm"
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Install Vercel CLI
-        run: pnpm install --global vercel
+        run: pnpm install --global vercel@latest
 
       - name: Pull Vercel Environment Variables
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
+        run: cd apps/tutorial && vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
 
       - name: Build Project
-        run: vercel build --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
-
-      - name: Deploy Project
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
+        run: cd apps/tutorial && vercel build --token=${{ secrets.VERCEL_ACCESS_TOKEN }}

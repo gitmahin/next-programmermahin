@@ -2,7 +2,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction, Slice } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
-export interface SearchOnThisPage {
+export interface SearchMetaInfoSliceType {
   title: string;
   desc: string;
   slug: string;
@@ -11,51 +11,57 @@ export interface SearchOnThisPage {
     slug: string;
   }[];
   navigationText: string[];
+  activeKey: string;
 }
 
-const initialState: SearchOnThisPage = {
+const initialState: SearchMetaInfoSliceType = {
   title: "",
   desc: "",
   slug: "",
   onThisPage: [],
   navigationText: [],
+  activeKey: ""
 };
-export const searchOnThisPageSliceName = "searchOnThisPage";
-export const searchOnThisPageSlice: Slice<SearchOnThisPage> = createSlice({
-  name: searchOnThisPageSliceName,
+export const searchMetaInfoSliceName = "searchMetaInfo";
+export const searchMetaInfoSlice: Slice<SearchMetaInfoSliceType> = createSlice({
+  name: searchMetaInfoSliceName,
   initialState,
   reducers: {
-    setSearchOnThisPage: (state, action: PayloadAction<SearchOnThisPage>) => {
+    setSearchMetaInfo: (state, action: PayloadAction<SearchMetaInfoSliceType>) => {
       state.title = action.payload.title;
       state.desc = action.payload.desc;
       state.slug = action.payload.slug;
       state.onThisPage = action.payload.onThisPage;
       state.navigationText = action.payload.navigationText;
+      state.activeKey = action.payload.activeKey;
     },
   },
 });
 
-type searchOnThisPageInterface = { searchOnThisPage: SearchOnThisPage };
-export let useSliceSelector: TypedUseSelectorHook<searchOnThisPageInterface> =
+type searchMetaInfoInterface = { searchMetaInfo: SearchMetaInfoSliceType };
+export let useSliceSelector: TypedUseSelectorHook<searchMetaInfoInterface> =
   useSelector;
 
 // Defines a local store for type inference only; not actively used.
 const configureLocalStore = () =>
   configureStore({
-    reducer: { searchOnThisPage: searchOnThisPageSlice.reducer },
+    reducer: { searchMetaInfo: searchMetaInfoSlice.reducer },
   });
 
-export const SearchOnThePagetitleValue = (state: searchOnThisPageInterface) =>
-  state.searchOnThisPage.title;
-export const SearchOnThePageDescValue = (state: searchOnThisPageInterface) =>
-  state.searchOnThisPage.desc;
-export const SearchOnThePageSlugValue = (state: searchOnThisPageInterface) =>
-  state.searchOnThisPage.slug;
-export const SearchOnThePageValue = (state: searchOnThisPageInterface) =>
-  state.searchOnThisPage.onThisPage;
-export const SearchOnThePageNavigationTextValue = (
-  state: searchOnThisPageInterface
-) => state.searchOnThisPage.navigationText;
+export const searchMetaInfoTitleValue = (state: searchMetaInfoInterface) =>
+  state.searchMetaInfo.title;
+export const searchMetaInfoDescValue = (state: searchMetaInfoInterface) =>
+  state.searchMetaInfo.desc;
+export const searchMetaInfoSlugValue = (state: searchMetaInfoInterface) =>
+  state.searchMetaInfo.slug;
+export const searchMetaInfoOnThisPageValue = (state: searchMetaInfoInterface) =>
+  state.searchMetaInfo.onThisPage;
+export const searchMetaInfoNavigationTextValue = (
+  state: searchMetaInfoInterface
+) => state.searchMetaInfo.navigationText;
+export const searchMetaInfoActiveKeyValue = (
+  state: searchMetaInfoInterface
+) => state.searchMetaInfo.activeKey;
 
 // Infers dispatch type for a store using only this slice.
 type SliceDispatch = ReturnType<typeof configureLocalStore>["dispatch"];
@@ -72,6 +78,6 @@ export const initializeSlicePackage = (
   useSliceSelector = useAppSelector;
 };
 
-export const { setSearchOnThisPage } = searchOnThisPageSlice.actions;
+export const { setSearchMetaInfo } = searchMetaInfoSlice.actions;
 
-export const searchOnThisPageReducer = searchOnThisPageSlice.reducer;
+export const searchMetaInfoReducer = searchMetaInfoSlice.reducer;

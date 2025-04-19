@@ -13,8 +13,10 @@ import mobSidebarOpenReducer, {
   mobSidebarOpenSliceName,
 } from "./tutorials/mobSidebarOpen";
 import {
-  searchOnThisPageReducer,
-  searchOnThisPageSliceName,
+  searchMobInfoOpenReducer,
+  searchMobInfoOpenSliceName,
+  searchMetaInfoReducer,
+  searchMetaInfoSliceName,
 } from "@programmer/shared";
 // ...
 
@@ -25,7 +27,8 @@ export const store = configureStore({
     [processedContentSliceName]: processedContentRedcuer,
     [tutoPaginateSliceName]: tutoPaginateReducer,
     [mobSidebarOpenSliceName]: mobSidebarOpenReducer,
-    [searchOnThisPageSliceName]: searchOnThisPageReducer,
+    [searchMetaInfoSliceName]: searchMetaInfoReducer,
+    [searchMobInfoOpenSliceName]: searchMobInfoOpenReducer
   },
 });
 
