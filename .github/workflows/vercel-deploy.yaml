@@ -27,22 +27,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-turbo-
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 10
-
-      - name: Setup Node.js
+      - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: "pnpm"
+          node-version: 20
+          cache: 'npm'
 
       - name: Install Dependencies
-        run: pnpm install --force
+        run: npm install
 
       - name: Install Vercel CLI
-        run: pnpm install --global vercel@latest
+        run: npm install -g vercel@latest
 
       - name: Pull Vercel Environment Variables
         run: cd apps/tutorial && vercel pull --yes --environment=production --token=${{ secrets.VERCEL_ACCESS_TOKEN }}
