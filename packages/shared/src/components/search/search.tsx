@@ -13,6 +13,7 @@ import React, { useEffect, useState } from "react";
 import {
   Calculator,
   Calendar,
+  ChevronRight,
   CreditCard,
   SearchIcon,
   Settings,
@@ -28,16 +29,25 @@ import Hit from "./hit";
 import { IndexTutorialsType, TUTORIAL_INDEX_NAME } from "../../services";
 import { InfiniteHits } from "./infinite-hit";
 import { useSelector } from "react-redux";
+import { usePathname } from "next/navigation";
 import {
-  SearchOnThePageOnValue,
+  SearchOnThePageValue,
   SearchOnThePagetitleValue,
   useSliceSelector,
+  SearchOnThePageNavigationTextValue,
+  SearchOnThePageSlugValue,
 } from "../../redux";
+import Link from "next/link";
 
 export const Search = () => {
+  const path_name = usePathname();
   const searchTitleSelector = useSliceSelector(SearchOnThePagetitleValue);
   const searchDescSelector = useSliceSelector(SearchOnThePagetitleValue);
-  const searchOnThePageSelector = useSliceSelector(SearchOnThePageOnValue);
+  const searchOnThePageSelector = useSliceSelector(SearchOnThePageValue);
+  const searchSlugSelector = useSliceSelector(SearchOnThePageSlugValue);
+  const searchNavigationTextSelector = useSliceSelector(
+    SearchOnThePageNavigationTextValue
+  );
   const [open, setOpen] = useState(false);
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -50,6 +60,10 @@ export const Search = () => {
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
   }, []);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [path_name]);
 
   return (
     <div>
@@ -94,12 +108,72 @@ export const Search = () => {
                 <div className="w-full border-b border-border-color_800C sticky top-[0px] left-0 h-[40px] flex justify-center items-center flex-shrink-0 z-10">
                   <DocCustomRefinementList sortBy={["name"]} attribute="type" />
                 </div>
-                <div className="h-full">
-                  <div className="overflow-y-auto h-[calc(100%-86px)] flex justify-center items-start gap-2 pl-2 bg-transparent border-none">
+                <div className={`h-full`}>
+                  <div
+                    className={`overflow-y-auto h-[calc(100%-86px)] flex justify-center items-start ${searchTitleSelector === "" ? "gap-0" : "gap-2"}  pl-2 bg-transparent border-none`}
+                  >
                     <InfiniteHits hitComponent={Hit} />
-                    <div className="w-[400px] flex-shrink-0 h-full border bg-red-500 sticky top-0">
-                      {searchTitleSelector}
-                      {searchDescSelector}
+                    <div
+                      className={`flex-shrink-0 h-full p-2 pl-0 sticky top-0 transition-all duration-300 ${searchTitleSelector === "" ? "w-0 overflow-hidden" : "w-[400px]"}`}
+                    >
+                      <div
+                        className={`w-full h-full rounded bg-background-color_925C`}
+                      >
+                        <div className="p-4 pb-0">
+                          <div className="w-full flex justify-center items-center">
+                            {searchNavigationTextSelector.map((item, i) => {
+                              return (
+                                <p
+                                  key={i}
+                                  className="flex justify-center items-center gap-1 w-fit "
+                                >
+                                  <span className="text-text-color_2 text-read_3">
+                                    {item}
+                                  </span>
+                                  {i <
+                                    searchNavigationTextSelector.length - 1 && (
+                                    <ChevronRight
+                                      size={15}
+                                      className="text-text-color_3"
+                                    />
+                                  )}
+                                </p>
+                              );
+                            })}
+                          </div>
+                          <h3 className="text-center text-[20px] font-medium mt-1 one_line_ellipsis">
+                            {searchTitleSelector}
+                          </h3>
+                        </div>
+
+                        <p className="text-read_2 text-text-color_4 three_line_ellipsis mt-5 px-4 ">
+                          {searchDescSelector}
+                        </p>
+                        <div className="px-4 mt-5">
+                          <p className="uppercase font-geist_mono font-medium text-read_3">
+                            On This Page
+                          </p>
+                          <ul className="mt-2 leading-7">
+                            {searchOnThePageSelector.map((item, i) => {
+                              return (
+                                <Link
+                                  href={`/${searchSlugSelector}#${item.slug}`}
+                                  key={i}
+                                >
+                                  <li className="grid grid-cols-[25px_1fr]  text-read_2 group">
+                                    <span className="text-text-color_3 group-hover:text-text-color_1">
+                                      {i + 1}.
+                                    </span>
+                                    <span className="text-text-color_2 group-hover:text-pm_purple-700">
+                                      {item.label}
+                                    </span>
+                                  </li>
+                                </Link>
+                              );
+                            })}
+                          </ul>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -5,19 +5,20 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 export interface SearchOnThisPage {
   title: string;
   desc: string;
+  slug: string;
   onThisPage: {
     label: string;
     slug: string;
-  };
+  }[];
+  navigationText: string[]
 }
 
 const initialState: SearchOnThisPage = {
   title: "",
   desc: "",
-  onThisPage: {
-    label: "",
-    slug: "",
-  },
+  slug: "",
+  onThisPage: [],
+  navigationText: [],
 };
 export const searchOnThisPageSliceName = "searchOnThisPage";
 export const searchOnThisPageSlice: Slice<SearchOnThisPage> = createSlice({
@@ -27,7 +28,9 @@ export const searchOnThisPageSlice: Slice<SearchOnThisPage> = createSlice({
     setSearchOnThisPage: (state, action: PayloadAction<SearchOnThisPage>) => {
       state.title = action.payload.title;
       state.desc = action.payload.desc;
+      state.slug = action.payload.slug;
       state.onThisPage = action.payload.onThisPage;
+      state.navigationText = action.payload.navigationText;
     },
   },
 });
@@ -45,7 +48,9 @@ const configureLocalStore = () =>
 
 export const SearchOnThePagetitleValue = (state: searchOnThisPageInterface) => state.searchOnThisPage.title;
 export const SearchOnThePageDescValue = (state: searchOnThisPageInterface) => state.searchOnThisPage.desc;
-export const SearchOnThePageOnValue = (state: searchOnThisPageInterface) => state.searchOnThisPage.onThisPage;
+export const SearchOnThePageSlugValue = (state: searchOnThisPageInterface) => state.searchOnThisPage.slug;
+export const SearchOnThePageValue = (state: searchOnThisPageInterface) => state.searchOnThisPage.onThisPage;
+export const SearchOnThePageNavigationTextValue = (state: searchOnThisPageInterface) => state.searchOnThisPage.navigationText;
 
 // Infer the type of the dispatch that would be needed for a store that consisted of
 // just this slice
