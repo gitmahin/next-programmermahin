@@ -1,4 +1,4 @@
-name: Build & Deploy - Vercel
+name: Preview Build - Vercel
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID_TUTOPROG }}
