@@ -35,7 +35,7 @@ export function InfiniteHits({
   const groupedHits = Object.groupBy(items, (hit) => hit.slug.split("/")[0])!;
 
   return (
-    <div className={`ais-InfiniteHits mt-2 w-full ${className}`}>
+    <div className={`ais-InfiniteHits mt-2 w-full pb-5 ${className}`}>
       <div className="ais-InfiniteHits-list">
         {Object.keys(groupedHits).map((label, i) => (
           <React.Fragment key={i}>
@@ -43,9 +43,9 @@ export function InfiniteHits({
               <div className={` flex justify-start items-center gap-2 `}>
                 <Folder
                   size={LUCIDE_DEFAULT_ICON_SIZE}
-                  className="text-text-svg_default_color"
+                  className="text-text-color_1"
                 />
-                <span className="text-read_1 font-medium text-text-color_2">
+                <span className="text-read_1 font-medium text-text-color_1">
                   {label
                     .replace(/^\d+-/, "")
                     .replace(/-/g, " ")
@@ -64,7 +64,7 @@ export function InfiniteHits({
           </React.Fragment>
         ))}
         <div
-          className="ais-InfiniteHits-sentinel"
+          className="ais-InfiniteHits-sentinel border-none"
           ref={sentinelRef}
           aria-hidden="true"
         />
