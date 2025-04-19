@@ -10,7 +10,8 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "target": "ES2024"
   },
   "include": [
     "**/*.ts",
