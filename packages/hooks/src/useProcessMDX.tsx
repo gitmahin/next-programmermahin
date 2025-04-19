@@ -12,9 +12,13 @@ import {
   transformerNotationHighlight,
   transformerNotationDiff,
   transformerNotationErrorLevel,
+  transformerNotationWordHighlight,
+  transformerNotationFocus,
 } from "@shikijs/transformers";
 import { visit } from "unist-util-visit";
 import slugify from "slugify";
+import rehypePrettyCode from 'rehype-pretty-code';
+import { transformerCopyButton } from '@rehype-pretty/transformers';
 
 function rehypeSlugify() {
   return (tree: any) => {
@@ -29,7 +33,7 @@ function rehypeSlugify() {
         const id = slugify(text, {
           lower: true,
           strict: true,
-          trim: false, // ✅ don't trim leading/trailing dashes
+          trim: false,
         });
 
         node.properties = {
@@ -54,15 +58,20 @@ export const useProcessMDX = (data: string) => {
       .use(rehypeFormat)
       .use(rehypeStringify)
       .use(rehypeSlugify) // Generates IDs automatically
-      // .use(rehypeShiki, {
-      //   theme: "material-theme-ocean",
-      //   transformers: [
-      //     transformerNotationHighlight(),
-      //     transformerNotationDiff(),
-      //     transformerNotationErrorLevel(),
-      //     // ...
-      //   ],
-      // })
+      .use(rehypePrettyCode, {
+        theme: "material-theme-ocean",
+        transformers: [
+          transformerNotationDiff(),
+          transformerNotationHighlight(),
+          transformerNotationErrorLevel(),
+          transformerNotationWordHighlight(),
+          transformerNotationFocus(),
+          transformerCopyButton({
+            visibility: 'always',
+            feedbackDuration: 3_000
+          }),
+        ],
+      })
       .process(mdxContent);
 
     const htmlContent = processedData.toString();

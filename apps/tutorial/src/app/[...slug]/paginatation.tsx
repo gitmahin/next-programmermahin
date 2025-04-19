@@ -25,11 +25,11 @@ export default function TutoPagination() {
                 className="text-text-svg_default_color group-hover:text-text-color_1"
               />
 
-              <span className="text-read_2 text-text-color_2 group-hover:text-text-color_1">
+              <span className="text-read_2 text-text-color_2 font-medium group-hover:text-text-color_1">
                 Previous
               </span>
             </div>
-            <p className="text-read_1 pt-2 one_line_ellipsis">{prev?.label}</p>
+            <p className="text-read_1 pt-2 one_line_ellipsis font-medium">{prev?.label}</p>
           </PMButton>
         </Link>
       )}
@@ -42,7 +42,7 @@ export default function TutoPagination() {
             radius="primary"
           >
             <div className="flex justify-center w-fit items-center gap-1">
-              <span className="text-read_2 text-text-color_2 group-hover:text-text-color_1">
+              <span className="text-read_2 text-text-color_2 font-medium group-hover:text-text-color_1">
                 Next
               </span>
               <ChevronRight
@@ -50,7 +50,7 @@ export default function TutoPagination() {
                 className="text-text-svg_default_color group-hover:text-text-color_1"
               />
             </div>
-            <p className="text-read_1 pt-2 one_line_ellipsis">{next?.label}</p>
+            <p className="text-read_1 pt-2 one_line_ellipsis font-medium">{next?.label}</p>
           </PMButton>
         </Link>
       )}

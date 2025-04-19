@@ -81,7 +81,7 @@ export async function generateStaticParams() {
 
           return {
             label: data?.title,
-            desc: data?.description,
+            desc: data?.desc,
             type: "tutorial",
             slug: joinedSlug,
             onthispage: parsedAnchors.map((item: AnchorsType) => ({

@@ -5,27 +5,35 @@ export const REACT_TUTORIALS: TutorialNavItemType = {
     slug: "react-fundamentals",
     icon: "",
     items: [
-      { label: "JSX and Components", slug: "react-jsx-components" },
-      { label: "State and Props", slug: "react-state-props" },
-      { label: "Handling Events", slug: "react-events" },
+      { label: "Getting Started", slug: "getting-started" },
+      { label: "Understanding JSX", slug: "understanding-jsx" },
+      { label: "Setup React Project", slug: "setup-react-project" },
+      { "label": "Using Props", "slug": "using-props" },
+      { "label": "React Router", "slug": "react-router" },
+      { "label": "State Management", "slug": "state-management" }
     ],
   },
-  "Advanced React": {
-    slug: "react-advanced",
+  "React Hooks": {
+    slug: "react-hooks",
     icon: "",
     items: [
-      { label: "React Hooks", slug: "react-hooks" },
-      { label: "Context API", slug: "react-context" },
-      { label: "Performance Optimization", slug: "react-performance" },
+      { "label": "What Is a Hook?", "slug": "what-is-a-hook" },
+      { "label": "useState", "slug": "use-state" },
+      { "label": "useEffect", "slug": "use-effect" },
+      { "label": "useCallback", "slug": "use-callback" },
+      { "label": "useRef", "slug": "use-ref" },
+      { "label": "useContext", "slug": "use-context" },
+      { "label": "Custom Hooks", "slug": "custom-hooks" },
     ],
   },
-  "React Ecosystem": {
-    slug: "react-ecosystem",
+  "React + Express": {
+    slug: "react-with-express",
     icon: "",
     items: [
-      { label: "React Router", slug: "react-router" },
-      { label: "State Management Tools", slug: "react-state-management" },
-      { label: "Testing React Apps", slug: "react-testing" },
+      { label: "Setup Express", slug: "setup-express" },
+      { label: "Creating APIs", slug: "creating-rest-apis" },
+      { label: "Connect to React", slug: "connecting-react-express" },
+      { label: "Fetch Data", slug: "handling-data" }
     ],
   },
 };

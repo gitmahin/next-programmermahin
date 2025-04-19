@@ -1,0 +1,66 @@
+---
+title: "Setting Up a React Project with Vite"
+desc: "A step-by-step guide to creating a React project with Vite. This guide is perfect for beginners."
+---
+
+# Setting Up a React Project with Vite
+
+In this tutorial, we will guide you through setting up a React project using **Vite**, a fast build tool that provides a modern and efficient way to work with React. Vite is a great alternative to tools like Webpack, offering faster builds and hot module replacement.
+
+## Prerequisites
+
+Before you start, ensure you have the following installed:
+
+- **Node.js**
+- **npm** (comes with Node.js)
+
+You can check if these are installed by running:
+
+```bash
+node -v
+npm -v
+```
+If not, you can download and install Node.js from the [official website](https://nodejs.org/en).
+
+### Step 1: Create a New React Project with Vite
+1. Open your terminal or command prompt.
+2. Run the following command to create a new project using Vite:
+
+```
+ npm create vite@latest
+```
+This command does the following:
+
+- Creates a new project folder called my-react-app.
+
+- Initializes a new React project using the Vite template.
+
+You will be prompted to select a framework template. Select React when prompted.
+
+or,
+```
+npm create vite@latest my-react-app --template react
+```
+
+### Step 2: Install Dependencies
+
+Navigate into your project directory:
+```bash
+cd my-react-app
+```
+Next, install the necessary dependencies:
+```bash
+npm install
+```
+This command installs all the dependencies that Vite and React need for your project.
+
+### Step 3: Start the Development Server
+Now that the dependencies are installed, you can start the development server:
+```bash
+npm run dev
+```
+This command will start the Vite development server and you can view your application in the browser by going to: `http://localhost:3000`
+
+---
+
+Congratulations!🎉 You've successfully set up a React project using Vite. You can now start building your React application

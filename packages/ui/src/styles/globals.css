@@ -161,7 +161,6 @@ body {
   font-family: var(--font-geist-sans);
 }
 
-
 @layer utilities {
   .three_line_ellipsis {
     display: -webkit-box;
@@ -186,29 +185,27 @@ body {
 }
 
 @media screen and (max-width: 830px) {
-  .search_meta_info_tab{
-    width: 0px ;
-    overflow: hidden ;
+  .search_meta_info_tab {
+    width: 0px;
+    overflow: hidden;
     padding: 0px;
     margin-left: 8px;
   }
 
-  .search_result_wrapper{
+  .search_result_wrapper {
     gap: 0px;
-
   }
 
-  .search_meta_info_tab_open{
-    width: 100% ;
+  .search_meta_info_tab_open {
+    width: 100%;
     flex-shrink: 0;
-    overflow: visible ;
+    overflow: visible;
     padding: 8px;
     margin-left: 0px;
     padding-left: 0px;
   }
 
-
-  .show_search_meta_info_btn{
+  .show_search_meta_info_btn {
     border: 1px solid var(--border-color-800C);
     width: 30px;
     height: 30px;
@@ -224,22 +221,121 @@ body {
 
   .show_search_meta_info_btn:hover {
     outline: 2px solid var(--color-purple-700);
-
   }
 
-  .close_search_meta_info{
+  .close_search_meta_info {
     display: flex;
   }
 
-  .search_result_wrapper_opened{
+  .search_result_wrapper_opened {
     overflow: hidden;
     overflow-y: hidden;
   }
 }
 
-  /* scrollbar */
-  .custom_scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: var(--background-color-800C) transparent;
-    scrollbar-gutter: stable;
+/* scrollbar */
+.custom_scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--background-color-800C) transparent;
+  scrollbar-gutter: stable;
+}
+
+.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  color: blue;
+  text-decoration: none;
+  font-weight: inherit;
+}
+
+.prose code::before,
+.prose code::after {
+  content: none; /* Remove the backtick or any unwanted content before the code */
+}
+
+/* Ensure the code block styling is applied without extra formatting */
+.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  background-color: var(--background-color-800C);
+  padding: 2px 5px;
+  border-radius: 5px;
+  font-weight: inherit;
+  font-size: inherit;
+  color: inherit;
+  font-family: var(--font-jetbrains-mono);
+}
+
+/* single code highlight */
+.light
+  .prose
+  :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  background-color: var(--background-color-800C);
+}
+
+pre {
+  padding: 15px 0px !important;
+}
+
+pre code {
+  background-color: transparent !important;
+  padding: 0px !important;
+  border-radius: 0px !important;
+  display: grid;
+
+  [data-line] {
+    padding-inline: 20px;
   }
+
+  [data-highlighted-line] {
+    background-color: #ffffff24;
+    border-left: 2px solid var(--color-purple-700);
+  }
+
+  .highlighted {
+    background-color: #ffffff24;
+    border-left: 2px solid var(--color-purple-700);
+  }
+
+  .add {
+    background-color: #00800030;
+  }
+
+  .remove {
+    background-color: #ff00003e;
+  }
+
+  .warning {
+    background-color: #ffc1073d;
+    border-left: none;
+  }
+
+  .error {
+    border: 2px solid #dc3546;
+    background-color: #dc35463d;
+  }
+
+  .highlighted-word{
+    background-color: #ffffff24;
+    border: 1px solid var(--border-color-700C);
+    padding: 1px;
+    border-radius: 3px;
+  }
+}
+
+
+/* Apply blur to everything inside <pre> except for .focused elements */
+pre:has(.focused) span  {
+  filter: blur(3px);
+  transition: filter 0.2s ease-in-out;
+}
+
+pre code .focused * {
+  filter: none !important;
+
+}
+pre code .focused {
+  filter: none !important;
+}
+
+
+/* Optional: On hover, remove the blur from everything */
+pre:has(.focused):hover span {
+  filter: none;
+}
