@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { TutoListPopup } from "./tuto-list-popup";
 import {
   TutorialEnums,
@@ -16,6 +16,7 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import { setLockMouseEnter } from "@/redux/tutorials/tutoTabSlice";
 
+const MEM_SLUG_NAME_LOCSTRG = "slug";
 export const TutoSidebar = ({
   tutoData,
   tutorialType,
@@ -25,8 +26,18 @@ export const TutoSidebar = ({
 }) => {
   const path_name = usePathname();
   const dispatch = useAppDispatch();
+  const lessons = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
 
   useEffect(() => {
+    const lastPath = localStorage.getItem(MEM_SLUG_NAME_LOCSTRG);
+    const el = lessons.current[lastPath ?? ""];
+    if (el) {
+      el.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+
     if (!setPagination) return;
 
     const flattenDocs = (
@@ -57,12 +68,25 @@ export const TutoSidebar = ({
     dispatch(setPagination({ currentIndex, flatTutoList: flatDocList }));
   }, [path_name, tutoData]);
 
-
   // unlock tutoTab sidebar ui if path is in tutorial
   useEffect(() => {
     if (!setLockMouseEnter) return;
     dispatch(setLockMouseEnter(false));
   }, []);
+
+  useEffect(() => {
+    const lastPath = path_name.split("/").pop();
+    localStorage.setItem(MEM_SLUG_NAME_LOCSTRG, lastPath ?? "");
+    
+    const el = lessons.current[lastPath ?? ""];
+    if (el) {
+      el.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [path_name]);
+
 
   return (
     <>
@@ -114,6 +138,9 @@ export const TutoSidebar = ({
                   return (
                     <Link
                       key={j}
+                      ref={(el) => {
+                        lessons.current[item.slug] = el;
+                      }}
                       href={`/${tutorialType}/${value.slug}/${item.slug}`}
                       className="group"
                     >
@@ -141,4 +168,4 @@ export const TutoSidebar = ({
       </div>
     </>
   );
-}
+};

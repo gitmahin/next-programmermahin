@@ -13,7 +13,7 @@ import { remark } from "remark";
 import html from "remark-html";
 
 interface ContentPagePropsType {
-  params: Promise<{ slug: string[] }>;
+  params: Promise<{ tutoType: string; slug: string[] }>;
 }
 
 export async function generateStaticParams() {
@@ -105,7 +105,7 @@ export async function generateStaticParams() {
 }
 
 export default async function ContentPage({ params }: ContentPagePropsType) {
-  const { slug } = await params;
+  const { tutoType, slug } = await params;
 
   if (process.env.NODE_ENV === "development") {
     generateStaticParams().then((params) => {
@@ -114,7 +114,7 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
   }
 
   try {
-    const filePath = `src/content/${slug.join("/")}.mdx`;
+    const filePath = `src/content/${tutoType}/${slug.join("/")}.mdx`;
     const getData = fs.readFileSync(filePath, "utf-8");
     const { data: metaData, content: mdxContent } = matter(getData);
 
