@@ -3,5 +3,5 @@ import { ALGOLIA_APPLICATION_ID } from "../common.helper";
 
 export const writeAlgolia = algoliaWrite(
   ALGOLIA_APPLICATION_ID || "",
-  process.env.NEXT_ALGOLIA_WRITE_API || ""
+  process.env.ALGOLIA_WRITE_API || ""
 );

@@ -4,7 +4,9 @@
   "globalDependencies": [".env"],
   "globalEnv": [
     "TURBO_TOKEN",
-    "TURBO_TEAM"
+    "TURBO_TEAM",
+    "ALGOLIA_SEARCH_API",
+    "ALGOLIA_APPLICATION_ID"
   ],
   "tasks": {
     "build": {
