@@ -84,7 +84,7 @@ export const TutoSidebar = ({
         block: "center",
       });
     }
-  }, [tutoData, tutorialType])
+  }, [tutoData, tutorialType, dispatch, lessons])
 
   return (
     <>
