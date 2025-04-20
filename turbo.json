@@ -2,6 +2,10 @@
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui", 
   "globalDependencies": [".env"],
+  "globalEnv": [
+    "TURBO_TOKEN",
+    "TURBO_TEAM"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
