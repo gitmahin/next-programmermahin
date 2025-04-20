@@ -29,16 +29,15 @@ export async function generateStaticParams() {
 
     const params: { slug: string[] }[] = [];
 
-    tutorialTypes.forEach((type) => {
+    tutorialTypes.map((type, _) => {
       const tutorials = getTutorialsByKey[type as TutorialEnums];
 
       if (!tutorials) return;
 
-      Object.values(tutorials).forEach((section) => {
+      Object.values(tutorials).map((section, _) => {
         if (!section?.slug) return;
-
         // Push nested items
-        section.items.forEach((item) => {
+        section.items.map((item, _) => {
           params.push({
             slug: [type, section.slug, item.slug],
           });
@@ -46,8 +45,7 @@ export async function generateStaticParams() {
       });
     });
 
-    // Indexing data to algolia
-
+    // Preparing data for indexing in Algolia
     if (process.env.NODE_ENV === "production") {
       const dataForAlgo: IndexTutorialsType[] = await Promise.all(
         params.map(async (param): Promise<IndexTutorialsType> => {
@@ -66,8 +64,9 @@ export async function generateStaticParams() {
 
           // Convert MDX/Markdown to HTML
           const processedContent = await remark().use(html).process(content);
-
+          // convert to string
           const contentHtml = processedContent.toString();
+          // create anchor for headings with id
           const { headers } = toc.anchorize(contentHtml, []);
           const parsedAnchors = headers.map((header: AnchorsType) => ({
             ...header,

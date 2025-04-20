@@ -3,12 +3,12 @@ import localFont from "next/font/local";
 import "@programmer/ui/globalcss";
 import { GlobalThemeProvider } from "@programmer/ui";
 import { JetBrains_Mono } from "next/font/google";
-import { Sidebar } from "@/components/tutorials";
 import ReduxProvider from "@/components/redux-provider";
 import "./styles/tutorial.style.css";
 import "./styles/home.style.css";
 import { Search } from "@programmer/shared";
 import MobileHeader from "@/components/header";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -43,7 +43,6 @@ export default async function RootLayout({
       >
         <ReduxProvider>
           <GlobalThemeProvider>
-            <Sidebar />
             <div className="pl-[300px] main-content">
               <Search />
               <MobileHeader />
