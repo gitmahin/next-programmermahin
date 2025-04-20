@@ -1,38 +1,54 @@
-"use client";
 import { getTutorialsByKey, TutorialEnums } from "@/constants";
-import { notFound, useParams } from "next/navigation";
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setTutorialChapters } from "@/redux/tutorials/tutoChaptersSlice";
-import { setLockMouseEnter } from "@/redux/tutorials/tutoTabSlice";
+import React from "react";
+import { Sidebar, TutoSidebar } from "@/components/tutorials";
 
 interface ContentLayoutPropsType {
   children: React.ReactNode;
+  params: Promise<{ slug: string[] }>;
 }
 
-export default function ContentLayout({ children }: ContentLayoutPropsType) {
-  const params = useParams();
-  const dispatch = useDispatch();
-  const tutorialType = params.slug?.[0];
+export async function generateStaticParams() {
+  try {
+    const tutorialTypes = [
+      "cpp",
+      "react",
+      "nextjs",
+      "devops",
+      "git",
+      "monorepo",
+    ];
 
-  useEffect(() => {
-    // set tutorial chapter values in redux
-    if (!setTutorialChapters) return;
-    const tutorialData = getTutorialsByKey[tutorialType as TutorialEnums];
-    if (!tutorialData) return notFound();
+    return tutorialTypes.map((item, _) => {
+      return {
+        slug: [item],
+      };
+    });
+  } catch (error) {
+    throw new Error("Failed to generate static params");
+  }
+}
 
-    dispatch(
-      setTutorialChapters({
-        data: tutorialData,
-        type: tutorialType,
-      })
-    );
-  }, [dispatch, tutorialType]);
+export default async function ContentLayout({
+  children,
+  params,
+}: ContentLayoutPropsType) {
+  const { slug } = await params;
 
-  useEffect(() => {
-    if (!setLockMouseEnter) return;
-    dispatch(setLockMouseEnter(false));
-  }, []);
+  if (process.env.NODE_ENV === "development") {
+    generateStaticParams().then((params) => {
+      console.log(params);
+    });
+  }
 
-  return <div>{children}</div>;
+  const tutorialType = slug?.[0] as TutorialEnums;
+  const tutorialData = getTutorialsByKey[tutorialType as TutorialEnums];
+
+  return (
+    <>
+      <Sidebar>
+        <TutoSidebar tutorialType={tutorialType} tutoData={tutorialData} />
+      </Sidebar>
+      {children}
+    </>
+  );
 }

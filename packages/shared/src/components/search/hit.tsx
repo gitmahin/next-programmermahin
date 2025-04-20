@@ -3,9 +3,18 @@
 import Link from "next/link";
 import { Highlight } from "react-instantsearch";
 import { AlgoliaIndexType } from "../../services";
-import { setSearchMobInfoOpen, setSearchMetaInfo, useSearchMobInfoDispatch, useSliceDispatch, useSliceSelector, searchMetaInfoActiveKeyValue } from "../../redux";
+import {
+  setSearchMobInfoOpen,
+  setSearchMetaInfo,
+  useSearchMobInfoDispatch,
+  useSliceDispatch,
+  useSliceSelector,
+  searchMetaInfoActiveKeyValue,
+} from "../../redux";
 import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
 import { ChevronRight, Text } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { toast } from "sonner";
 
 interface HitProps {
   hit: {
@@ -20,9 +29,12 @@ interface HitProps {
 }
 
 export default function Hit({ hit }: HitProps) {
+  const path_name = usePathname();
   const dispatch = useSliceDispatch();
-  const searchMobInfoDispatch = useSearchMobInfoDispatch()
-  const searchMetaInfoActiveKey = useSliceSelector(searchMetaInfoActiveKeyValue)
+  const searchMobInfoDispatch = useSearchMobInfoDispatch();
+  const searchMetaInfoActiveKey = useSliceSelector(
+    searchMetaInfoActiveKeyValue
+  );
   const handleMouseHover = (
     title: string,
     desc: string,
@@ -31,10 +43,6 @@ export default function Hit({ hit }: HitProps) {
     navigationText: string[],
     activeKey: string
   ) => {
-    console.log(title);
-    console.log(desc);
-    console.log(onThisPageData);
-
     if (!setSearchMetaInfo) return;
     dispatch(
       setSearchMetaInfo({
@@ -43,32 +51,53 @@ export default function Hit({ hit }: HitProps) {
         slug,
         onThisPage: onThisPageData,
         navigationText,
-        activeKey
+        activeKey,
       })
     );
   };
 
   const handleMobShowSearchMetaInfoClicked = () => {
-    if(!setSearchMobInfoOpen) return
-    searchMobInfoDispatch(setSearchMobInfoOpen(true))
-  }
+    if (!setSearchMobInfoOpen) return;
+    searchMobInfoDispatch(setSearchMobInfoOpen(true));
+  };
+
+  const checkoutCurrentRoute = (slug: string) => {
+    if (slug === path_name) {
+      toast.message("Already in the same route!");
+    }
+  };
 
   return (
     <Link
       href={`/${hit.slug}`}
-      className="w-full"
-      onMouseEnter={() =>
-        handleMouseHover(hit.label, hit.desc, hit.slug, hit.onthispage, [
-          `${hit.slug.split("/")[0]?.replace(/^\w/, (c) => c.toUpperCase())}`,
-          `${hit.slug
-            .split("/")[1]
-            ?.replace(/^\d+-/, "")
-            .replace(/-/g, " ")
-            .replace(/^\w/, (c) => c.toUpperCase())}`,
-        ], hit.objectID.toString())
+      onClick={() => 
+
+        checkoutCurrentRoute(`/${hit.slug}`)
       }
+      className="w-full"
+      onMouseEnter={() => {
+        if (window.matchMedia("(hover: hover)").matches) {
+          handleMouseHover(
+            hit.label,
+            hit.desc,
+            hit.slug,
+            hit.onthispage,
+            [
+              `${hit.slug.split("/")[0]?.replace(/^\w/, (c) => c.toUpperCase())}`,
+              `${hit.slug
+                .split("/")[1]
+                ?.replace(/^\d+-/, "")
+                .replace(/-/g, " ")
+                .replace(/^\w/, (c) => c.toUpperCase())}`,
+            ],
+            hit.objectID.toString()
+          );
+        }
+      }}
     >
-      <li className={`w-full flex justify-between items-center list-none group p-3 ${searchMetaInfoActiveKey === hit.objectID.toString() && "bg-background-color_800C"} rounded-tiny`}>
+      <li
+        className={`w-full flex justify-between items-center list-none group p-3 ${searchMetaInfoActiveKey === hit.objectID.toString() && "bg-background-color_800C"} hover:bg-background-color_800C rounded-tiny`}
+      >
         <div className="flex justify-start items-center gap-3">
           <div className="flex-shrink-0 bg-background-color_925C w-[30px] h-[30px] rounded-tiny flex justify-center items-center">
             <Text
@@ -102,19 +131,26 @@ export default function Hit({ hit }: HitProps) {
           </div>
         </div>
         <div
-          className="pointer-events-none show_search_meta_info_btn"
+          className="pointer-events-none flex-shrink-0 show_search_meta_info_btn"
           onClick={(e) => {
-            handleMobShowSearchMetaInfoClicked()
-            handleMouseHover(hit.label, hit.desc, hit.slug, hit.onthispage, [
-              `${hit.slug.split("/")[0]?.replace(/^\w/, (c) => c.toUpperCase())}`,
-              `${hit.slug
-                .split("/")[1]
-                ?.replace(/^\d+-/, "")
-                .replace(/-/g, " ")
-                .replace(/^\w/, (c) => c.toUpperCase())}`,
-            ],  hit.objectID.toString())
-            e.preventDefault();
-          }}
+            handleMobShowSearchMetaInfoClicked();
+            handleMouseHover(
+              hit.label,
+              hit.desc,
+              hit.slug,
+              hit.onthispage,
+              [
+                `${hit.slug.split("/")[0]?.replace(/^\w/, (c) => c.toUpperCase())}`,
+                `${hit.slug
+                  .split("/")[1]
+                  ?.replace(/^\d+-/, "")
+                  .replace(/-/g, " ")
+                  .replace(/^\w/, (c) => c.toUpperCase())}`,
+                ],
+                hit.objectID.toString()
+              );
+              e.preventDefault();
+            }}
         >
           <ChevronRight
             size={LUCIDE_DEFAULT_ICON_SIZE}

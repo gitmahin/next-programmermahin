@@ -6,11 +6,13 @@ import { setProcessedContent } from "@/redux/tutorials/processedContentSlice";
 
 export default function ProcessedContent({ data }: { data: string }) {
   const dispatch = useDispatch();
+  // Extract the compiled HTML content from the processed MDX data
   const { content } = useProcessMDX(data);
 
   useEffect(() => {
     if (!setProcessedContent) return;
-    // to generate toc we are passing the content in redux
+    // To generate the table of contents, we dispatch the content to Redux
+    // so it can be accessed by any component.
     dispatch(setProcessedContent(content));
   }, [content]);
 
