@@ -29,8 +29,11 @@ export const TutoSidebar = ({
   const lessons = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
 
   useEffect(() => {
-    const lastPath = localStorage.getItem(MEM_SLUG_NAME_LOCSTRG);
-    const el = lessons.current[lastPath ?? ""];
+    const lastPath = path_name.split("/").pop();
+    localStorage.setItem(MEM_SLUG_NAME_LOCSTRG, lastPath ?? "");
+    const storedLastPath = localStorage.getItem(MEM_SLUG_NAME_LOCSTRG);
+
+    const el = lessons.current[lastPath ?? storedLastPath ?? ""];
     if (el) {
       el.scrollIntoView({
         behavior: "smooth",
@@ -66,31 +69,15 @@ export const TutoSidebar = ({
     );
 
     dispatch(setPagination({ currentIndex, flatTutoList: flatDocList }));
-  }, [path_name, tutoData]);
 
-  // unlock tutoTab sidebar ui if path is in tutorial
-  useEffect(() => {
+    // unlock tutoTab sidebar ui if path is in tutorial
     if (!setLockMouseEnter) return;
     dispatch(setLockMouseEnter(false));
-  }, []);
-
-  useEffect(() => {
-    const lastPath = path_name.split("/").pop();
-    localStorage.setItem(MEM_SLUG_NAME_LOCSTRG, lastPath ?? "");
-    
-    const el = lessons.current[lastPath ?? ""];
-    if (el) {
-      el.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    }
-  }, [path_name]);
-
+  }, [path_name, tutoData]);
 
   return (
     <>
-      <div className="w-full px-4 ">
+      <div className="w-full px-4">
         <div className="flex justify-between items-center pb-4 border-t pt-4 border-border-color_800C">
           <div className="flex justify-start items-center gap-2">
             <Image
