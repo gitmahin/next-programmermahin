@@ -29,16 +29,6 @@ export const TutoSidebar = ({
   const lessons = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
 
   useEffect(() => {
-    const lastPath = path_name.split("/").pop();
-
-    const el = lessons.current[lastPath ?? ""];
-    if (el) {
-      el.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    }
-
     if (!setPagination) return;
 
     const flattenDocs = (
@@ -72,6 +62,20 @@ export const TutoSidebar = ({
     if (!setLockMouseEnter) return;
     dispatch(setLockMouseEnter(false));
   }, [path_name, tutoData]);
+
+  useEffect(() => {
+    const lastPath = path_name.split("/").pop();
+
+    const el = lessons.current[lastPath ?? ""];
+    setTimeout(() => {
+      if (el) {
+        el.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }
+    }, 300);
+  }, [path_name, lessons, tutoData]);
 
   return (
     <>
