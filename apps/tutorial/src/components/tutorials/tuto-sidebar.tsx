@@ -31,9 +31,8 @@ export const TutoSidebar = ({
   useEffect(() => {
     const lastPath = path_name.split("/").pop();
     localStorage.setItem(MEM_SLUG_NAME_LOCSTRG, lastPath ?? "");
-    const storedLastPath = localStorage.getItem(MEM_SLUG_NAME_LOCSTRG);
 
-    const el = lessons.current[lastPath ?? storedLastPath ?? ""];
+    const el = lessons.current[lastPath ?? ""];
     if (el) {
       el.scrollIntoView({
         behavior: "smooth",
@@ -74,6 +73,18 @@ export const TutoSidebar = ({
     if (!setLockMouseEnter) return;
     dispatch(setLockMouseEnter(false));
   }, [path_name, tutoData]);
+
+  useEffect(() => {
+    const storedLastPath = localStorage.getItem(MEM_SLUG_NAME_LOCSTRG);
+
+    const el = lessons.current[storedLastPath ?? ""];
+    if (el) {
+      el.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [])
 
   return (
     <>
