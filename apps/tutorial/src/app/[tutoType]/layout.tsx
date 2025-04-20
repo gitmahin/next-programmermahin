@@ -4,7 +4,7 @@ import { Sidebar, TutoSidebar } from "@/components/tutorials";
 
 interface ContentLayoutPropsType {
   children: React.ReactNode;
-  params: Promise<{ slug: string[] }>;
+  params: Promise<{ tutoType: string }>;
 }
 
 export async function generateStaticParams() {
@@ -20,7 +20,7 @@ export async function generateStaticParams() {
 
     return tutorialTypes.map((item, _) => {
       return {
-        slug: [item],
+        tutoType: item,
       };
     });
   } catch (error) {
@@ -32,7 +32,7 @@ export default async function ContentLayout({
   children,
   params,
 }: ContentLayoutPropsType) {
-  const { slug } = await params;
+  const { tutoType } = await params;
 
   if (process.env.NODE_ENV === "development") {
     generateStaticParams().then((params) => {
@@ -40,7 +40,7 @@ export default async function ContentLayout({
     });
   }
 
-  const tutorialType = slug?.[0] as TutorialEnums;
+  const tutorialType = tutoType as TutorialEnums;
   const tutorialData = getTutorialsByKey[tutorialType as TutorialEnums];
 
   return (

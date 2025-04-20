@@ -50,12 +50,6 @@ export const Search = () => {
     );
   };
 
-  const handleMobCloseSearchMetaInfoClicked = () => {
-    if (!setSearchMobInfoOpen) return;
-    searchMobInfoDispatch(setSearchMobInfoOpen(false));
-    clearSearchMetaInfoOnClose();
-  };
-
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
@@ -136,7 +130,6 @@ export const Search = () => {
                       className={`flex-shrink-0 h-full p-2 pl-0 sticky top-0 transition-all duration-300 ${searchMetaInfo.title === "" ? "w-0 overflow-hidden" : "w-[400px]"} search_meta_info_tab ${openSearchMobInfo && "search_meta_info_tab_open"}`}
                     >
                       <div
-                        onClick={handleMobCloseSearchMetaInfoClicked}
                         className="w-[30px] z-10 h-[30px] border rounded-tiny border-border-color_800C absolute top-4 left-2 bg-background-color_900C justify-center close_search_meta_info hidden items-center close"
                       >
                         <X

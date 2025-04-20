@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { TutoListPopup } from "./tuto-list-popup";
 import {
   TutorialEnums,
@@ -16,6 +16,7 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import { setLockMouseEnter } from "@/redux/tutorials/tutoTabSlice";
 
+const MEM_SLUG_NAME_LOCSTRG = "slug";
 export const TutoSidebar = ({
   tutoData,
   tutorialType,
@@ -25,6 +26,7 @@ export const TutoSidebar = ({
 }) => {
   const path_name = usePathname();
   const dispatch = useAppDispatch();
+  const lessons = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
 
   useEffect(() => {
     if (!setPagination) return;
@@ -55,18 +57,29 @@ export const TutoSidebar = ({
     );
 
     dispatch(setPagination({ currentIndex, flatTutoList: flatDocList }));
-  }, [path_name, tutoData]);
 
-
-  // unlock tutoTab sidebar ui if path is in tutorial
-  useEffect(() => {
+    // unlock tutoTab sidebar ui if path is in tutorial
     if (!setLockMouseEnter) return;
     dispatch(setLockMouseEnter(false));
-  }, []);
+  }, [path_name, tutoData]);
+
+  useEffect(() => {
+    const lastPath = path_name.split("/").pop();
+
+    const el = lessons.current[lastPath ?? ""];
+    setTimeout(() => {
+      if (el) {
+        el.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }
+    }, 300);
+  }, [path_name, lessons, tutoData]);
 
   return (
     <>
-      <div className="w-full px-4 ">
+      <div className="w-full px-4">
         <div className="flex justify-between items-center pb-4 border-t pt-4 border-border-color_800C">
           <div className="flex justify-start items-center gap-2">
             <Image
@@ -114,6 +127,9 @@ export const TutoSidebar = ({
                   return (
                     <Link
                       key={j}
+                      ref={(el) => {
+                        lessons.current[item.slug] = el;
+                      }}
                       href={`/${tutorialType}/${value.slug}/${item.slug}`}
                       className="group"
                     >
@@ -141,4 +157,4 @@ export const TutoSidebar = ({
       </div>
     </>
   );
-}
+};
