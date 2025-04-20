@@ -21,7 +21,7 @@ export default function MobileHeader() {
   }, [path_name]);
 
   return (
-    <header className="fixed p-5 z-10 top-0 w-full left-0 h-[50px] mob-header-tuto backdrop-blur-lg border-b border-border-color_800C hidden justify-between items-center">
+    <header className="fixed p-5 py-0 z-10 top-0 w-full left-0 h-[50px] mob-header-tuto backdrop-blur-lg border-b border-border-color_800C hidden justify-between items-center">
       <div className="flex justify-start items-center gap-2">
         <PMButton
           variant="silent"

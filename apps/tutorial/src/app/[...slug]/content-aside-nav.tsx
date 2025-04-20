@@ -31,6 +31,8 @@ export default function ContentAsideNav() {
         }),
       }));
       setAnchors(parsedAnchors);
+    }else{
+      setAnchors([]);
     }
   }, [htmlContent]);
 
@@ -114,9 +116,9 @@ export default function ContentAsideNav() {
         )}
       </PMButton>
       <aside
-        className={`w-[300px] h-[calc(100vh-70px)] overflow-y-auto sticky top-[70px] tuto-aside-nav tuto_cont_aside transition-all ${openAside && "right-[0_!important]"}`}
+        className={`w-[270px] h-screen flex-shrink-0 sticky pt-[70px] overflow-hidden top-0 tuto_cont_aside transition-all ${openAside && "right-[0_!important]"}`}
       >
-        <div className="w-full">
+        <div className="w-full h-full overflow-y-auto custom_scrollbar tuto_toc_main">
           <div className="flex justify-start items-center sticky top-0 pb-4 bg-background-color_950C gap-2">
             <AlignLeft
               size={LUCIDE_DEFAULT_ICON_SIZE}
@@ -141,6 +143,7 @@ export default function ContentAsideNav() {
           </ul>
         </div>
       </aside>
+      
     </>
   );
 }

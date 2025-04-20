@@ -5,17 +5,15 @@
 
   .main-content {
     padding-left: 0px !important;
-    padding-top: 30px;
+  }
+
+  .main-article{
+    padding-top: 20px;
   }
 
   .searchTutorialRoot {
     top: 9px !important;
     right: 18px !important;
-  }
-
-  .tuto-aside-nav {
-    top: 90px !important;
-    height: calc(100vh - 90px) !important;
   }
 
   .mob-header-tuto {
@@ -29,23 +27,30 @@
   .showSidebarClose {
     display: flex;
   }
+
+
+  .tuto_cont_aside{
+    padding-top: 85px;
+  }
 }
 
-@media screen and (max-width: 780px) {
-.tuto_cont_aside{
+@media screen and (max-width: 850px) {
+  .tuto_cont_aside {
     position: fixed;
     right: -100%;
     background-color: var(--background);
     width: 250px;
-    padding: 20px;
-    height: calc(100vh - 50px) !important;
-    top: 50px !important;
-    border-left:  1px solid var(--border-color-800C);
-}
+    padding-top: 85px;
+    border-left: 1px solid var(--border-color-800C);
+  }
 
-.toc_open_btn{
-  display: flex;
-}
+  .tuto_toc_main{
+    padding: 0px 20px;
+  }
+
+  .toc_open_btn {
+    display: flex;
+  }
 }
 
 @media screen and (max-width: 550px) {
@@ -56,26 +61,24 @@
     /* left: 0; */
   }
 
-
-
-  .open_tuto_nav_btn{
+  .open_tuto_nav_btn {
     display: flex;
   }
 
-  .tuto_side_nav_list{
+  .tuto_side_nav_list {
     margin-top: 25px;
   }
 
-  .course_ovw{
+  .course_ovw {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .tuto_popup_tab_navbar_open{
+  .tuto_popup_tab_navbar_open {
     left: 0 !important;
   }
 
-  .tuto_tab_content{
+  .tuto_tab_content {
     padding-left: 0px;
   }
 }
@@ -90,6 +93,4 @@
   .tutosidebar {
     width: 260px !important;
   }
-
-  
 }

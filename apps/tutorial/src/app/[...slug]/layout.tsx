@@ -18,9 +18,7 @@ export default function ContentLayout({ children }: ContentLayoutPropsType) {
   useEffect(() => {
     // set tutorial chapter values in redux
     if (!setTutorialChapters) return;
-
     const tutorialData = getTutorialsByKey[tutorialType as TutorialEnums];
-
     if (!tutorialData) return notFound();
 
     dispatch(

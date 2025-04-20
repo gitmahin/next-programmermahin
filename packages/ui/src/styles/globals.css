@@ -278,6 +278,8 @@ pre code {
   padding: 0px !important;
   border-radius: 0px !important;
   display: grid;
+  width: 100%;
+  text-wrap: wrap;
 
   [data-line] {
     padding-inline: 20px;
@@ -319,7 +321,6 @@ pre code {
   }
 }
 
-
 /* Apply blur to everything inside <pre> except for .focused elements */
 pre:has(.focused) span  {
   filter: blur(3px);
@@ -338,4 +339,9 @@ pre code .focused {
 /* Optional: On hover, remove the blur from everything */
 pre:has(.focused):hover span {
   filter: none;
+}
+
+.prose{
+  max-width: 100%;
+  min-width: 10px;
 }

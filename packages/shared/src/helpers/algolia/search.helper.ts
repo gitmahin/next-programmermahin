@@ -8,8 +8,9 @@ import {
 import { ALGOLIA_APPLICATION_ID, ALGOLIA_SEARCH_API } from "../common.helper";
 
 export const searchAlgolia: LiteClient = algoliasearch(
-  ALGOLIA_APPLICATION_ID || "",
-  ALGOLIA_SEARCH_API || "",
+    // temporary
+  ALGOLIA_APPLICATION_ID || "5Y8FAC7ILR",
+  ALGOLIA_SEARCH_API || "10c49dc3e38fe043ceeaede41894a9ee",
   {
     requestsCache: createBrowserLocalStorageCache({
       key: "algolia-search-cache",
