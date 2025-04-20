@@ -51,7 +51,8 @@ export async function generateStaticParams() {
       const dataForAlgo: IndexTutorialsType[] = await Promise.all(
         params.map(async (param): Promise<IndexTutorialsType> => {
           const joinedSlug = param.slug.join("/").toString();
-          const filePath = `src/content/${joinedSlug}.mdx`;
+          // getting the absolute path
+          const filePath = `src/content/${param.tutoType}/${joinedSlug}.mdx`;
 
           let getData = "";
 
