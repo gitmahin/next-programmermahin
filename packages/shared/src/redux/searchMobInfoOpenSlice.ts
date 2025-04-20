@@ -21,6 +21,8 @@ export const searchMobInfoOpenSlice: Slice<SearchMobInfoOpenSliceType> =
     },
   });
 
+// A typed selector hook limited to the `searchMobInfoOpen` slice,
+// useful for selecting values from this slice only, with type safety.
 type searchMonInfoOpenInterface = {
   searchMobInfoOpen: SearchMobInfoOpenSliceType;
 };
@@ -39,17 +41,6 @@ export const searchMobInfoOpenValue = (state: searchMonInfoOpenInterface) =>
 // Infers dispatch type for a store using only this slice.
 type SliceDispatch = ReturnType<typeof configureLocalStore>["dispatch"];
 export let useSearchMobInfoDispatch = () => useDispatch<SliceDispatch>();
-
-// Enables external packages to provide their own useDispatch and useSelector
-// hooks, assuming their Redux store integrates this package’s reducers.
-// This ensures compatibility with the global store setup in the consuming app.
-export const initializeSearchMobInfoPackage = (
-  useAppDispatch: typeof useSearchMobInfoDispatch,
-  useAppSelector: typeof useSearchMobInfoSelector
-) => {
-  useSearchMobInfoDispatch = useAppDispatch;
-  useSearchMobInfoSelector = useAppSelector;
-};
 
 export const { setSearchMobInfoOpen } = searchMobInfoOpenSlice.actions;
 

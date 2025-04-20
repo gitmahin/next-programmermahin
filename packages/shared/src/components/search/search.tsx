@@ -22,31 +22,38 @@ import {
   searchMobInfoOpenValue,
   useSearchMobInfoDispatch,
   setSearchMobInfoOpen,
-  searchMetaInfoTitleValue,
-  searchMetaInfoDescValue,
-  searchMetaInfoSlugValue,
-  searchMetaInfoNavigationTextValue,
-  searchMetaInfoOnThisPageValue,
+  searchMetaInfoValues,
+  setSearchMetaInfo,
+  useSliceDispatch,
 } from "../../redux";
 import Link from "next/link";
 
 export const Search = () => {
   const path_name = usePathname();
-  const searchTitleSelector = useSliceSelector(searchMetaInfoTitleValue);
-  const searchDescSelector = useSliceSelector(searchMetaInfoDescValue);
-  const searchOnThePageSelector = useSliceSelector(searchMetaInfoOnThisPageValue);
-  const searchSlugSelector = useSliceSelector(searchMetaInfoSlugValue);
-  const searchNavigationTextSelector = useSliceSelector(
-    searchMetaInfoNavigationTextValue
-  );
-
+  const searchMetaInfo = useSliceSelector(searchMetaInfoValues);
+  const dispatch = useSliceDispatch();
   const [open, setOpen] = useState(false);
   const openSearchMobInfo = useSearchMobInfoSelector(searchMobInfoOpenValue);
   const searchMobInfoDispatch = useSearchMobInfoDispatch();
 
+  const clearSearchMetaInfoOnClose = () => {
+    if (!setSearchMetaInfo) return;
+    dispatch(
+      setSearchMetaInfo({
+        title: "",
+        desc: "",
+        slug: "",
+        onThisPage: [],
+        navigationText: [],
+        activeKey: "",
+      })
+    );
+  };
+
   const handleMobCloseSearchMetaInfoClicked = () => {
     if (!setSearchMobInfoOpen) return;
     searchMobInfoDispatch(setSearchMobInfoOpen(false));
+    clearSearchMetaInfoOnClose();
   };
 
   useEffect(() => {
@@ -65,8 +72,16 @@ export const Search = () => {
     setOpen(false);
   }, [path_name]);
 
+  useEffect(() => {
+    if (!open) {
+      if (!setSearchMobInfoOpen) return;
+      searchMobInfoDispatch(setSearchMobInfoOpen(false));
+      clearSearchMetaInfoOnClose();
+    }
+  }, [open]);
+
   return (
-    <div>
+    <>
       <PMButton
         onClick={() => setOpen(true)}
         variant="secondary"
@@ -83,7 +98,7 @@ export const Search = () => {
         </div>
       </PMButton>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className=" max-w-[900px] h-[600px] w-full p-2">
+        <DialogContent className=" max-w-[950px] max-h-[650px] h-full w-full p-2">
           <div className="w-full h-full overflow-hidden bg-background-color_950C border-border-color_800C border rounded">
             <InstantSearch
               searchClient={searchAlgolia}
@@ -110,83 +125,86 @@ export const Search = () => {
                 </div>
                 <div className={`h-full`}>
                   <div
-                    className={`overflow-y-auto h-[calc(100%-86px)] flex justify-center items-start ${searchTitleSelector === "" ? "gap-0" : "gap-2"}  pl-2 bg-transparent border-none search_result_wrapper ${openSearchMobInfo && "search_result_wrapper_opened"}`}
+                    className={`overflow-y-auto h-[calc(100%-86px)] flex justify-center items-start ${searchMetaInfo.title === "" ? "gap-0" : "gap-2"}  pl-2 bg-transparent border-none search_result_wrapper ${openSearchMobInfo && "search_result_wrapper_opened"}`}
                   >
                     <InfiniteHits
                       hitComponent={Hit}
                       className={`${openSearchMobInfo && "w-0 overflow-hidden"}`}
                     />
 
-                   
                     <div
-                      className={`flex-shrink-0 h-full p-2 pl-0 sticky top-0 transition-all duration-300 ${searchTitleSelector === "" ? "w-0 overflow-hidden" : "w-[400px]"} search_meta_info_tab ${openSearchMobInfo && "search_meta_info_tab_open"}`}
+                      className={`flex-shrink-0 h-full p-2 pl-0 sticky top-0 transition-all duration-300 ${searchMetaInfo.title === "" ? "w-0 overflow-hidden" : "w-[400px]"} search_meta_info_tab ${openSearchMobInfo && "search_meta_info_tab_open"}`}
                     >
-                       <div
-                      onClick={handleMobCloseSearchMetaInfoClicked}
-                      className="w-[30px] z-10 h-[30px] border rounded-tiny border-border-color_800C absolute top-4 left-2 bg-background-color_900C justify-center close_search_meta_info hidden items-center close"
-                    >
-                      <X
-                        size={LUCIDE_DEFAULT_ICON_SIZE}
-                        className={`text-text-svg_default_color`}
-                      />
-                    </div>
+                      <div
+                        onClick={handleMobCloseSearchMetaInfoClicked}
+                        className="w-[30px] z-10 h-[30px] border rounded-tiny border-border-color_800C absolute top-4 left-2 bg-background-color_900C justify-center close_search_meta_info hidden items-center close"
+                      >
+                        <X
+                          size={LUCIDE_DEFAULT_ICON_SIZE}
+                          className={`text-text-svg_default_color`}
+                        />
+                      </div>
                       <div
                         className={`w-full h-full rounded bg-background-color_925C overflow-y-auto custom_scrollbar`}
                       >
-                        <div className="p-4 pb-0">
-                          <div className="w-full flex justify-center items-center">
-                            {searchNavigationTextSelector.map((item, i) => {
-                              return (
-                                <p
-                                  key={i}
-                                  className="flex justify-center items-center gap-1 w-fit "
-                                >
-                                  <span className="text-text-color_2 text-read_3">
-                                    {item}
-                                  </span>
-                                  {i <
-                                    searchNavigationTextSelector.length - 1 && (
-                                    <ChevronRight
-                                      size={15}
-                                      className="text-text-color_3"
-                                    />
-                                  )}
-                                </p>
-                              );
-                            })}
-                          </div>
-                          <h3 className="text-center text-[20px] font-medium mt-1 one_line_ellipsis">
-                            {searchTitleSelector}
-                          </h3>
-                        </div>
-
-                        <p className="text-read_2 text-text-color_4 three_line_ellipsis mt-5 px-4 ">
-                          {searchDescSelector}
-                        </p>
-                        <div className="px-4 mt-5">
-                          <p className="uppercase font-geist_mono font-medium text-read_3 text-text-color_3">
-                            On This Page
-                          </p>
-                          <ul className="mt-2 leading-7">
-                            {searchOnThePageSelector.map((item, i) => {
-                              return (
-                                <Link
-                                  href={`/${searchSlugSelector}#${item.slug}`}
-                                  key={i}
-                                >
-                                  <li className="grid grid-cols-[25px_1fr]  text-read_2 group">
-                                    <span className="text-text-color_3 group-hover:text-text-color_1">
-                                      {i + 1}.
-                                    </span>
-                                    <span className="text-text-color_2 group-hover:text-pm_purple-700">
-                                      {item.label}
-                                    </span>
-                                  </li>
-                                </Link>
-                              );
-                            })}
-                          </ul>
-                        </div>
+                      
+                            <div className="p-4 pb-0">
+                              <div className="w-full flex justify-center items-center">
+                                {searchMetaInfo.navigationText.map(
+                                  (item, i) => {
+                                    return (
+                                      <p
+                                        key={i}
+                                        className="flex justify-center items-center gap-1 w-fit "
+                                      >
+                                        <span className="text-text-color_2 text-read_3">
+                                          {item}
+                                        </span>
+                                        {i <
+                                          searchMetaInfo.navigationText.length -
+                                            1 && (
+                                          <ChevronRight
+                                            size={15}
+                                            className="text-text-color_3"
+                                          />
+                                        )}
+                                      </p>
+                                    );
+                                  }
+                                )}
+                              </div>
+                              <h3 className="text-center text-[20px] font-medium mt-1 two_line_ellipsis">
+                                {searchMetaInfo.title}
+                              </h3>
+                            </div>
+                            <p className="text-read_2 text-text-color_4 three_line_ellipsis mt-5 px-4 ">
+                              {searchMetaInfo.desc}
+                            </p>
+                            <div className="px-4 mt-5">
+                              <p className="uppercase font-geist_mono font-medium text-read_3 text-text-color_3">
+                                On This Page
+                              </p>
+                              <ul className="mt-2 leading-7 mb-3">
+                                {searchMetaInfo.onThisPage.map((item, i) => {
+                                  return (
+                                    <Link
+                                      href={`/${searchMetaInfo.slug}#${item.slug}`}
+                                      key={i}
+                                    >
+                                      <li className="grid grid-cols-[25px_1fr]  text-read_2 group">
+                                        <span className="text-text-color_3 group-hover:text-text-color_1">
+                                          {i + 1}.
+                                        </span>
+                                        <span className="text-text-color_2 group-hover:text-pm_purple-700">
+                                          {item.label}
+                                        </span>
+                                      </li>
+                                    </Link>
+                                  );
+                                })}
+                              </ul>
+                            </div>
+                     
                       </div>
                     </div>
                   </div>
@@ -196,6 +214,6 @@ export const Search = () => {
           </div>
         </DialogContent>
       </Dialog>
-    </div>
+    </>
   );
 };

@@ -38,6 +38,8 @@ export const searchMetaInfoSlice: Slice<SearchMetaInfoSliceType> = createSlice({
   },
 });
 
+// A typed selector hook limited to the `searchMetaInfo` slice,
+// useful for selecting values from this slice only, with type safety.
 type searchMetaInfoInterface = { searchMetaInfo: SearchMetaInfoSliceType };
 export let useSliceSelector: TypedUseSelectorHook<searchMetaInfoInterface> =
   useSelector;
@@ -48,35 +50,24 @@ const configureLocalStore = () =>
     reducer: { searchMetaInfo: searchMetaInfoSlice.reducer },
   });
 
-export const searchMetaInfoTitleValue = (state: searchMetaInfoInterface) =>
-  state.searchMetaInfo.title;
-export const searchMetaInfoDescValue = (state: searchMetaInfoInterface) =>
-  state.searchMetaInfo.desc;
-export const searchMetaInfoSlugValue = (state: searchMetaInfoInterface) =>
-  state.searchMetaInfo.slug;
-export const searchMetaInfoOnThisPageValue = (state: searchMetaInfoInterface) =>
-  state.searchMetaInfo.onThisPage;
-export const searchMetaInfoNavigationTextValue = (
-  state: searchMetaInfoInterface
-) => state.searchMetaInfo.navigationText;
 export const searchMetaInfoActiveKeyValue = (
   state: searchMetaInfoInterface
 ) => state.searchMetaInfo.activeKey;
 
+export const searchMetaInfoValues = (state: searchMetaInfoInterface) => {
+  return {
+    title: state.searchMetaInfo.title,
+    desc: state.searchMetaInfo.desc,
+    slug: state.searchMetaInfo.slug,
+    onThisPage: state.searchMetaInfo.onThisPage,
+    navigationText: state.searchMetaInfo.navigationText,
+    activeKey: state.searchMetaInfo.activeKey
+  }
+}
+
 // Infers dispatch type for a store using only this slice.
 type SliceDispatch = ReturnType<typeof configureLocalStore>["dispatch"];
 export let useSliceDispatch = () => useDispatch<SliceDispatch>();
-
-// Enables external packages to provide their own useDispatch and useSelector
-// hooks, assuming their Redux store integrates this package’s reducers.
-// This ensures compatibility with the global store setup in the consuming app.
-export const initializeSlicePackage = (
-  useAppDispatch: typeof useSliceDispatch,
-  useAppSelector: typeof useSliceSelector
-) => {
-  useSliceDispatch = useAppDispatch;
-  useSliceSelector = useAppSelector;
-};
 
 export const { setSearchMetaInfo } = searchMetaInfoSlice.actions;
 
