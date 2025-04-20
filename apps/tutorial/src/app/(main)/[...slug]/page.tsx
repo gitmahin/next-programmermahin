@@ -124,7 +124,7 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
         <title>{metaData.title || "Untitled"}</title>
         <meta name="description" content={metaData.desc || "No Description"} />
         <div className="flex justify-center items-start gap-5">
-          <div className="max-w-[800px] w-full p-5 pt-16">
+          <div className="max-w-[750px] w-full p-5 pt-16">
             <ProcessedContent data={mdxContent} />
             <TutoPagination />
           </div>
