@@ -27,7 +27,7 @@ export async function generateStaticParams() {
       "monorepo",
     ];
 
-    const params: { slug: string[] }[] = [];
+    const params: {tutoType: string, slug: string[] }[] = [];
 
     tutorialTypes.map((type, _) => {
       const tutorials = getTutorialsByKey[type as TutorialEnums];
@@ -39,7 +39,8 @@ export async function generateStaticParams() {
         // Push nested items
         section.items.map((item, _) => {
           params.push({
-            slug: [type, section.slug, item.slug],
+            tutoType: type,
+            slug: [section.slug, item.slug],
           });
         });
       });
