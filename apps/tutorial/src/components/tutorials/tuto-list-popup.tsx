@@ -147,6 +147,7 @@ export const TutoListPopup = ({
               className="w-[30px] h-[30px] justify-center items-center hidden open_tuto_nav_btn absolute z-[999] top-1 left-1"
               radius="tiny"
             >
+            {/* fix the typo it should be Side not Size */}
               {openTutoNavSize ? (
                 <PanelRightOpen
                   size={LUCIDE_DEFAULT_ICON_SIZE}
