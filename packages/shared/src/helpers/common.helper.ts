@@ -1,6 +1,3 @@
-import dotenv from "dotenv";
-dotenv.config();
-
 export const ALGOLIA_SEARCH_API = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API;
 export const ALGOLIA_APPLICATION_ID =
   process.env.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID;

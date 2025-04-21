@@ -5,11 +5,12 @@ import {
   createMemoryCache,
   createFallbackableCache,
 } from "@algolia/client-common";
-import { ALGOLIA_APPLICATION_ID, ALGOLIA_SEARCH_API } from "../common.helper";
+import dotenv from "dotenv"
+dotenv.config()
 
 export const searchAlgolia: LiteClient = algoliasearch(
-  ALGOLIA_APPLICATION_ID || "",
-  ALGOLIA_SEARCH_API || "",
+  process.env.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID || "",
+  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API || "",
   {
     requestsCache: createBrowserLocalStorageCache({
       key: "algolia-search-cache",

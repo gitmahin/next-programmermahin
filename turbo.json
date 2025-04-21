@@ -4,9 +4,7 @@
   "globalDependencies": [".env"],
   "globalEnv": [
     "TURBO_TOKEN",
-    "TURBO_TEAM",
-    "ALGOLIA_SEARCH_API",
-    "ALGOLIA_APPLICATION_ID"
+    "TURBO_TEAM"
   ],
   "tasks": {
     "build": {
@@ -30,17 +28,8 @@
       "dependsOn": ["^check-types"]
     },
     "dev": {
-      "env": ["NEXT_ALGOLIA_WRITE_API"],
       "cache": false,
-      "persistent": true,
-      "inputs": [
-        "$TURBO_DEFAULT$",
-        ".env.development.local",
-        ".env.local",
-        ".env.development",
-        ".env"
-      ]
-      
+      "persistent": true
     }
   }
 }
