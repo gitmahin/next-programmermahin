@@ -2,7 +2,6 @@
 import {
   getTutorialsByKey,
   MAIN_NAV_TUTORIALS,
-  TutorialEnums,
 } from "@/constants";
 import { TutorialNavItemType } from "@/constants/tutorials/type";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux.hook";
@@ -11,6 +10,7 @@ import {
   setOpenTutoTab,
   setTutoTabDetails,
 } from "@/redux/tutorials/tutoTabSlice";
+import { TutorialEnums } from "@programmer/constants";
 import {
   Dialog,
   DialogContent,

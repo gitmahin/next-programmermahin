@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from "react";
 import { TutoListPopup } from "./tuto-list-popup";
 import {
-  TutorialEnums,
   TutorialNavItemType,
   TUTORIALS_ICON,
 } from "@/constants";
@@ -15,6 +14,7 @@ import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { setLockMouseEnter } from "@/redux/tutorials/tutoTabSlice";
+import { TutorialEnums } from "@programmer/constants";
 
 const MEM_SLUG_NAME_LOCSTRG = "slug";
 export const TutoSidebar = ({

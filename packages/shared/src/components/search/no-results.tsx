@@ -1,49 +1,61 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useInstantSearch } from "react-instantsearch";
+import { useDebounceCallback } from 'usehooks-ts'
+import { CPP_TUTORIALS, getTutorialsByKey, TutorialEnums, TutorialNavItemType } from '@programmer/constants'
 
 export default function NoResults() {
+  const [tutoPath, setTutoPath] = useState("")
+  const [tutoList, setTutoList] = useState<TutorialNavItemType>({})
+  const path_name = usePathname()
+  const debounced = useDebounceCallback(setTutoPath, 300)
   const { indexUiState } = useInstantSearch();
 
-  return (
-    <div className="p-3 w-full h-[calc(100%-50px)] fx-flex-center flex-col">
-      <div className="fx-flex-center gap-2 max-w-[500px] w-full ">
-        {/* <SadIcon width={24} height={24} className="flex-shrink-0" /> */}
-        <p className="text-[20px] font-medium text-text-color_2 one-line-ellipsis">
-          No results for <q>{indexUiState.query}</q>.
-        </p>
-      </div>
+  useEffect(() => {
+    debounced(`${path_name.split("/")[1]}`)
+  }, [indexUiState.query])
 
-      <div className="max-w-[500px] w-full mt-10">
-        <p className="text-[14px] text-text-color_3 font-medium">
-          Navigate to:
-        </p>
-        <ul className=" w-full mt-1 border border-border-color_1 overflow-hidden  fx-rounded">
-          {/* Fluctux is an advanced open source work and project management platform where users can join both public & private organizations, collaborate in teams, make friends, and share their daily work—all in one place. */}
-          <Link href={""}>
-            <li className="w-full p-3 fx-flex-between-ic gap-3 border-b border-border-color_1 text-text-color_2 hover:text-[var(--foreground)]  hover:bg-background-color_3">
-              <div className="fx-flex-cl gap-2">
-                {/* <UserIcon /> */}
-                <p>Quickstart for Users</p>
-              </div>
-              <div className="w-[20px] flex-shrink-0">
-                {/* <RightArrowIcon /> */}
-              </div>
-            </li>
-          </Link>
-          <Link href={""}>
-            <li className="w-full p-3 fx-flex-between-ic gap-3 text-text-color_2 hover:text-[var(--foreground)]  hover:bg-background-color_3">
-              <div className="fx-flex-cl gap-2">
-                {/* <CodeIcon /> */}
-                <p>Quickstart for Developers</p>
-              </div>
-              <div className="w-[20px] flex-shrink-0">
-                {/* <RightArrowIcon /> */}
-              </div>
-            </li>
-          </Link>
-        </ul>
+  useEffect(() => {
+    const oneTutorial = getTutorialsByKey[tutoPath as TutorialEnums]
+    setTutoList(oneTutorial)
+  }, [tutoPath])
+
+  return (
+    <div className="w-full h-full overflow-y-auto">
+      <div className="pt-10 bg-gradient-to-b from-background-color_925C">
+
+        <h3 className="text-wrap text-[20px] font-medium text-center">
+          
+          <span className="text-text-color_2">
+           <span className="text-text-color_3">
+            No Results For
+          </span> "{indexUiState.query}"
+          </span>
+        </h3>
+      </div>
+      <div className="mt-10 w-full p-3 pt-0">
+        <div className="w-full border-border-color_800C rounded-tiny overflow-hidden border">
+          <div className="py-2 px-3 w-full bg-background-color_925C">
+            <span className="text-read_1 font-medium text-text-color_3">Navigate to</span>
+          </div>
+          <div>
+            <div>
+              {
+                Object.entries(tutoList || {}).map(([key, value], i) => {
+                  const [firstItem] = value.items
+                  return <div key={i}>
+                    <p>{key}</p>
+                    <div>
+                    </div>
+                  </div>
+                })
+              }
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

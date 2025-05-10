@@ -8,6 +8,7 @@ import { GIT_TUTORIALS } from "./git";
 import { CPP_TUTORIALS } from "./cpp";
 import { NEXTJS_TUTORIALS } from "./nextjs";
 import { MONOREPO_TUTORIALS } from "./monorepo";
+import { TutorialEnums } from "@programmer/constants";
 
 export const MAIN_NAV_LINKS: GeneralNavItemType[] = [
   {
@@ -16,15 +17,6 @@ export const MAIN_NAV_LINKS: GeneralNavItemType[] = [
     icon: <HomeIcon size={LUCIDE_DEFAULT_ICON_SIZE} />,
   },
 ];
-
-export enum TutorialEnums {
-  GIT = "git",
-  REACT = "react",
-  DEVOPS = "devops",
-  NEXTJS = "nextjs",
-  CPP = "cpp",
-  MONOREPO = "monorepo",
-}
 
 interface TutorialIconMetaDataType {
   svgPath: string;
