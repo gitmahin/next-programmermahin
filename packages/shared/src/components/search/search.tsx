@@ -92,7 +92,7 @@ export const Search = () => {
         </div>
       </PMButton>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className=" max-w-[950px] max-h-[650px] h-full w-full p-2">
+        <DialogContent className="max-w-[950px] max-h-[650px] h-full w-full p-2 outline-none">
           <div className="w-full h-full overflow-hidden bg-background-color_950C border-border-color_800C border rounded">
             <InstantSearch
               searchClient={searchAlgolia}
