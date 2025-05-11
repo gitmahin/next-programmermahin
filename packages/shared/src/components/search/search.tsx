@@ -27,6 +27,7 @@ import {
   useSliceDispatch,
 } from "../../redux";
 import Link from "next/link";
+import { Autocomplete } from "./autocomplete";
 
 export const Search = () => {
   const path_name = usePathname();
@@ -94,11 +95,15 @@ export const Search = () => {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-[950px] max-h-[650px] h-full w-full p-2 outline-none">
           <div className="w-full h-full overflow-hidden bg-background-color_950C border-border-color_800C border rounded">
+            
             <InstantSearch
               searchClient={searchAlgolia}
               indexName={TUTORIAL_INDEX_NAME}
             >
-              <SearchBox
+              <div className="w-full bg-red-500 p-5 h-[500px] z-50">
+                    <Autocomplete   detachedMediaQuery="none"/>
+                  </div>
+              {/* <SearchBox
                 placeholder="Search documentation..."
                 autoFocus={true}
                 className="w-full border-b border-border-color_800C"
@@ -112,12 +117,13 @@ export const Search = () => {
                   resetIcon: "hidden",
                 }}
                 submitIconComponent={() => <SearchIcon />}
-              />
+              /> */}
               <NoResultsBoundary fallback={<NoResults />}>
                 <div className="w-full border-b border-border-color_800C sticky top-[0px] left-0 h-[40px] flex justify-center items-center flex-shrink-0 z-10">
                   <DocCustomRefinementList sortBy={["name"]} attribute="type" />
                 </div>
                 <div className={`h-full`}>
+                  
                   <div
                     className={`overflow-y-auto h-[calc(100%-86px)] flex justify-center items-start ${searchMetaInfo.title === "" ? "gap-0" : "gap-2"}  pl-2 bg-transparent border-none search_result_wrapper ${openSearchMobInfo && "search_result_wrapper_opened"}`}
                   >
