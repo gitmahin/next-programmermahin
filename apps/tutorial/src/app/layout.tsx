@@ -28,9 +28,10 @@ const jetbrains_mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: {
     default: "Tutorial | ProgrammerMahin",
-    template: "%s | ProgrammerMahin"
+    template: "%s | ProgrammerMahin",
   },
-  description: "Learn programming through clear, practical tutorials designed to help you build real-world skills step by step.",
+  description:
+    "Learn programming through clear, practical tutorials designed to help you build real-world skills step by step.",
 };
 
 export default async function RootLayout({

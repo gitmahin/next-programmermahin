@@ -126,7 +126,8 @@ export async function generateMetadata({
   } catch (error) {
     return {
       title: "Not Found",
-      description: "Sorry, the tutorial you're looking for doesn't exist or may have been moved. Explore other tutorials to keep learning!",
+      description:
+        "Sorry, the tutorial you're looking for doesn't exist or may have been moved. Explore other tutorials to keep learning!",
     };
   }
 }

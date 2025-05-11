@@ -162,6 +162,11 @@ body {
 }
 
 @layer utilities {
+
+  .grayScaleActiveImage {
+    @apply filter grayscale-0 brightness-100 contrast-100 dark:invert
+  }
+
   .three_line_ellipsis {
     display: -webkit-box;
     -webkit-line-clamp: 3;

@@ -51,7 +51,7 @@ export default function MainNavs() {
               <li
                 key={i}
                 onClick={() => handleTutorialListClick(item.key, item.label)}
-                className="flex justify-start items-center gap-3 px-3 py-1  hover:bg-background-color_800C rounded-tiny transition-colors duration-150"
+                className="flex group justify-start items-center gap-3 px-3 py-1  hover:bg-background-color_800C rounded-tiny transition-colors duration-150"
               >
                 <div>
                   <Image
@@ -60,7 +60,11 @@ export default function MainNavs() {
                     height={100}
                     alt="icon"
                     priority
-                    className={`w-[18px] h-[18px] select-none filter brightness-0 dark:invert`}
+                    className="w-[18px] h-[18px] select-none 
+                      filter grayscale brightness-125 contrast-[5%] 
+                      dark:invert 
+                      group-hover:grayScaleActiveImage
+                      transition-all duration-100"
                   />
                 </div>
                 <span className="text-read_2 text-text-color_4 font-medium">

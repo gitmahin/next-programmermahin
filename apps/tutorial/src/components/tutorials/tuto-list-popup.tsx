@@ -43,7 +43,7 @@ export const TutoListPopup = ({
   const [openTutoNavSize, setOpenTutoNavSide] = useState(false);
 
   const tutoTab = useAppSelector((state) => state.tutoTab);
-  const lockMouseEnter = tutoTab.lock
+  const lockMouseEnter = tutoTab.lock;
   const open = tutoTab.open;
   const dispatch = useAppDispatch();
 
@@ -147,7 +147,7 @@ export const TutoListPopup = ({
               ) : (
                 <PanelRightClose
                   size={LUCIDE_DEFAULT_ICON_SIZE}
-                  className={`text-text-svg_default_color `}
+                  className={`text-text-svg_default_color`}
                 />
               )}
             </PMButton>
@@ -164,7 +164,7 @@ export const TutoListPopup = ({
                         handleMouseEnter(item.key, item.label)
                       }
                       key={i}
-                      className={`flex relative transition-colors duration-150 select-none rounded-tiny justify-start items-center gap-3 px-3 py-1 ${tutoTab.activeKey === item.key && item.bg_color}`}
+                      className={`flex relative group transition-colors duration-150 select-none rounded-tiny justify-start items-center gap-3 px-3 py-1 ${tutoTab.activeKey === item.key && item.bg_color}`}
                     >
                       <div className="flex justify-center items-center">
                         <Image
@@ -173,7 +173,15 @@ export const TutoListPopup = ({
                           height={250}
                           alt="icon"
                           priority
-                          className={`w-[20px] h-[20px] select-none filter brightness-0 dark:invert`}
+                          className={`w-[20px] h-[20px] select-none 
+                            filter grayscale brightness-125 contrast-[5%] 
+                            dark:invert 
+                            group-hover:grayScaleActiveImage
+                            transition-all duration-100
+                            ${tutoTab.activeKey === item.key && 
+                            "grayScaleActiveImage"}
+                            `
+                          }
                         />
                       </div>
                       <span className="text-read_1 text-text-color_4 font-medium">
@@ -238,14 +246,16 @@ export const TutoListPopup = ({
                       </div>
                     </div>
 
-                    <div className="text-read_1 px-4 border-t border-border-color_700C pt-5  flex justify-start items-center gap-2 mt-5">
+                    <div className="text-read_1 px-4 border-t border-border-color_800C pt-5  flex justify-start items-center gap-2 mt-5">
                       <div>
                         <BookOpenCheck
                           size={LUCIDE_DEFAULT_ICON_SIZE}
                           className="text-text-svg_default_color"
                         />
                       </div>
-                      <span className="text-text-color_3">What will you learn?</span>
+                      <span className="text-text-color_3">
+                        What will you learn?
+                      </span>
                     </div>
                     <div className="pb-16 px-4">
                       {Object.entries(tutoTab.data).map(([key, value], i) => {
