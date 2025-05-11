@@ -22,6 +22,7 @@ This monorepo follows the **Turborepo** structure
 ## 🧠 Mission
 
 Building an open-source learning ecosystem where:
+
 - Developers can create and share tutorials
 - Learners can grow their skills for free
 - Contributors can collaborate on real-world projects
@@ -48,13 +49,16 @@ Whether you're fixing a typo, writing a new tutorial, or building a feature — 
    ```
 
 ## 💡 Ideas to Contribute
+
 - Add new tutorials or chapters
 - Improve UI/UX components
 - Fix bugs or performance issues
 - Suggest or implement new features
 
 ## 📬 Stay Connected
+
 If you have any questions or ideas, feel free to:
+
 - Create an issue
 - Open a pull request
 - [Join Discord](https://discord.com/invite/yDjXa9hu2P)

@@ -29,7 +29,9 @@ export default function TutoPagination() {
                 Previous
               </span>
             </div>
-            <p className="text-read_1 pt-2 one_line_ellipsis font-medium">{prev?.label}</p>
+            <p className="text-read_1 pt-2 one_line_ellipsis font-medium">
+              {prev?.label}
+            </p>
           </PMButton>
         </Link>
       )}
@@ -50,7 +52,9 @@ export default function TutoPagination() {
                 className="text-text-svg_default_color group-hover:text-text-color_1"
               />
             </div>
-            <p className="text-read_1 pt-2 one_line_ellipsis font-medium">{next?.label}</p>
+            <p className="text-read_1 pt-2 one_line_ellipsis font-medium">
+              {next?.label}
+            </p>
           </PMButton>
         </Link>
       )}

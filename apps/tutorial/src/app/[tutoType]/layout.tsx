@@ -1,5 +1,5 @@
-import { getTutorialsByKey, TutorialEnums } from "@/constants";
 import React from "react";
+import { getTutorialsByKey, TutorialEnums } from "@programmer/constants";
 import { Sidebar, TutoSidebar } from "@/components/tutorials";
 
 interface ContentLayoutPropsType {

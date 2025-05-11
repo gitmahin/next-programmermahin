@@ -28,7 +28,7 @@ export const store = configureStore({
     [tutoPaginateSliceName]: tutoPaginateReducer,
     [mobSidebarOpenSliceName]: mobSidebarOpenReducer,
     [searchMetaInfoSliceName]: searchMetaInfoReducer,
-    [searchMobInfoOpenSliceName]: searchMobInfoOpenReducer
+    [searchMobInfoOpenSliceName]: searchMobInfoOpenReducer,
   },
 });
 

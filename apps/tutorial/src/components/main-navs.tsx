@@ -1,10 +1,6 @@
 "use client";
-import {
-  getTutorialsByKey,
-  MAIN_NAV_TUTORIALS,
-  TutorialEnums,
-  TutorialNavItemType,
-} from "@/constants";
+import { MAIN_NAV_TUTORIALS } from "@/constants";
+import { TutorialNavItemType } from "@programmer/constants";
 import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
 import { GraduationCap } from "lucide-react";
 import Image from "next/image";
@@ -16,6 +12,7 @@ import {
   setTutoTabDetails,
 } from "@/redux/tutorials/tutoTabSlice";
 import { useAppDispatch } from "@/hooks/redux.hook";
+import { getTutorialsByKey, TutorialEnums } from "@programmer/constants";
 
 export default function MainNavs() {
   const dispatch = useAppDispatch();

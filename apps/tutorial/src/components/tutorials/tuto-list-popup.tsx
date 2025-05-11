@@ -1,16 +1,13 @@
 "use client";
-import {
-  getTutorialsByKey,
-  MAIN_NAV_TUTORIALS,
-  TutorialEnums,
-} from "@/constants";
-import { TutorialNavItemType } from "@/constants/tutorials/type";
+import { MAIN_NAV_TUTORIALS } from "@/constants";
+import { TutorialNavItemType } from "@programmer/constants";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux.hook";
 import {
   setLockMouseEnter,
   setOpenTutoTab,
   setTutoTabDetails,
 } from "@/redux/tutorials/tutoTabSlice";
+import { getTutorialsByKey, TutorialEnums } from "@programmer/constants";
 import {
   Dialog,
   DialogContent,
