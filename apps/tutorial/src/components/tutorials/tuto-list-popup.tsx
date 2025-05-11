@@ -211,8 +211,8 @@ export const TutoListPopup = ({
                       Course Overview
                     </span>
                   </div>
-                  <div className="px-4">
-                    <div className="mt-1">
+                  <div className="">
+                    <div className="mt-1 px-4">
                       <h2 className="font-medium text-[25px] text-text-color_1">
                         {tutoTab.tutorialName} Tutorial
                       </h2>
@@ -238,16 +238,16 @@ export const TutoListPopup = ({
                       </div>
                     </div>
 
-                    <div className="text-read_1 text-text-color_2 flex justify-start items-center gap-2 mt-5">
+                    <div className="text-read_1 px-4 border-t border-border-color_700C pt-5  flex justify-start items-center gap-2 mt-5">
                       <div>
                         <BookOpenCheck
                           size={LUCIDE_DEFAULT_ICON_SIZE}
                           className="text-text-svg_default_color"
                         />
                       </div>
-                      <span>What will you learn?</span>
+                      <span className="text-text-color_3">What will you learn?</span>
                     </div>
-                    <div className="pb-16">
+                    <div className="pb-16 px-4">
                       {Object.entries(tutoTab.data).map(([key, value], i) => {
                         return (
                           <Accordion type="single" collapsible key={i}>
