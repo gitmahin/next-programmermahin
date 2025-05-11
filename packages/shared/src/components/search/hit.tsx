@@ -71,22 +71,19 @@ export default function Hit({ hit }: HitProps) {
   return (
     <Link
       href={`/${hit.slug}`}
-      onClick={() => 
-
-        checkoutCurrentRoute(`/${hit.slug}`)
-      }
+      onClick={() => checkoutCurrentRoute(`/${hit.slug}`)}
       className="w-full"
       onMouseEnter={() => {
         if (window.matchMedia("(hover: hover)").matches) {
           handleMouseHover(
             hit.label,
             <Highlight
-                classNames={{
-                  highlighted: "bg-transparent text-pm_purple-700",
-                }}
-                attribute="desc"
-                hit={hit}
-              />,
+              classNames={{
+                highlighted: "bg-transparent text-pm_purple-700",
+              }}
+              attribute="desc"
+              hit={hit}
+            />,
             hit.slug,
             hit.onthispage,
             [
@@ -159,11 +156,11 @@ export default function Hit({ hit }: HitProps) {
                   ?.replace(/^\d+-/, "")
                   .replace(/-/g, " ")
                   .replace(/^\w/, (c) => c.toUpperCase())}`,
-                ],
-                hit.objectID.toString()
-              );
-              e.preventDefault();
-            }}
+              ],
+              hit.objectID.toString()
+            );
+            e.preventDefault();
+          }}
         >
           <ChevronRight
             size={LUCIDE_DEFAULT_ICON_SIZE}

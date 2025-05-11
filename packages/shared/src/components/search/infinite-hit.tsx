@@ -9,7 +9,7 @@ export function InfiniteHits({
   ...props
 }: {
   hitComponent: React.ElementType;
-  className?: string
+  className?: string;
 }) {
   const { items, isLastPage, showMore } = useInfiniteHits(props);
   const sentinelRef = useRef(null);

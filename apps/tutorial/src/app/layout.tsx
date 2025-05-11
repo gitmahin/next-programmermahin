@@ -9,7 +9,6 @@ import "./styles/home.style.css";
 import { Search } from "@programmer/shared";
 import MobileHeader from "@/components/header";
 
-
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",

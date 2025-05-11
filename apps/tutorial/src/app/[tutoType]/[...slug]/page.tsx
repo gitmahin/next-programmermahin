@@ -4,7 +4,7 @@ import ProcessedContent from "./processed-content";
 import matter from "gray-matter";
 import ContentAsideNav from "./content-aside-nav";
 import TutoPagination from "./paginatation";
-import { getTutorialsByKey } from "@/constants";
+import { getTutorialsByKey } from "@programmer/constants";
 import { algolia, IndexTutorialsType } from "@programmer/shared";
 import toc from "toc";
 import { AnchorsType } from "@programmer/types";
@@ -28,7 +28,7 @@ export async function generateStaticParams() {
       "monorepo",
     ];
 
-    const params: {tutoType: string, slug: string[] }[] = [];
+    const params: { tutoType: string; slug: string[] }[] = [];
 
     tutorialTypes.map((type, _) => {
       const tutorials = getTutorialsByKey[type as TutorialEnums];

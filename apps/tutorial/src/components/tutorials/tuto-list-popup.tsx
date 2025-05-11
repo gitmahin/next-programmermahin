@@ -1,16 +1,13 @@
 "use client";
-import {
-  getTutorialsByKey,
-  MAIN_NAV_TUTORIALS,
-} from "@/constants";
-import { TutorialNavItemType } from "@/constants/tutorials/type";
+import { MAIN_NAV_TUTORIALS } from "@/constants";
+import { TutorialNavItemType } from "@programmer/constants";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux.hook";
 import {
   setLockMouseEnter,
   setOpenTutoTab,
   setTutoTabDetails,
 } from "@/redux/tutorials/tutoTabSlice";
-import { TutorialEnums } from "@programmer/constants";
+import { getTutorialsByKey, TutorialEnums } from "@programmer/constants";
 import {
   Dialog,
   DialogContent,
@@ -147,7 +144,7 @@ export const TutoListPopup = ({
               className="w-[30px] h-[30px] justify-center items-center hidden open_tuto_nav_btn absolute z-[999] top-1 left-1"
               radius="tiny"
             >
-            {/* fix the typo it should be Side not Size */}
+              {/* fix the typo it should be Side not Size */}
               {openTutoNavSize ? (
                 <PanelRightOpen
                   size={LUCIDE_DEFAULT_ICON_SIZE}

@@ -21,14 +21,17 @@ const initialState: SearchMetaInfoSliceType = {
   slug: "",
   onThisPage: [],
   navigationText: [],
-  activeKey: ""
+  activeKey: "",
 };
 export const searchMetaInfoSliceName = "searchMetaInfo";
 export const searchMetaInfoSlice: Slice<SearchMetaInfoSliceType> = createSlice({
   name: searchMetaInfoSliceName,
   initialState,
   reducers: {
-    setSearchMetaInfo: (state, action: PayloadAction<SearchMetaInfoSliceType>) => {
+    setSearchMetaInfo: (
+      state,
+      action: PayloadAction<SearchMetaInfoSliceType>
+    ) => {
       state.title = action.payload.title;
       state.desc = action.payload.desc;
       state.slug = action.payload.slug;
@@ -51,9 +54,8 @@ const configureLocalStore = () =>
     reducer: { searchMetaInfo: searchMetaInfoSlice.reducer },
   });
 
-export const searchMetaInfoActiveKeyValue = (
-  state: searchMetaInfoInterface
-) => state.searchMetaInfo.activeKey;
+export const searchMetaInfoActiveKeyValue = (state: searchMetaInfoInterface) =>
+  state.searchMetaInfo.activeKey;
 
 export const searchMetaInfoValues = (state: searchMetaInfoInterface) => {
   return {
@@ -62,9 +64,9 @@ export const searchMetaInfoValues = (state: searchMetaInfoInterface) => {
     slug: state.searchMetaInfo.slug,
     onThisPage: state.searchMetaInfo.onThisPage,
     navigationText: state.searchMetaInfo.navigationText,
-    activeKey: state.searchMetaInfo.activeKey
-  }
-}
+    activeKey: state.searchMetaInfo.activeKey,
+  };
+};
 
 // Infers dispatch type for a store using only this slice.
 type SliceDispatch = ReturnType<typeof configureLocalStore>["dispatch"];

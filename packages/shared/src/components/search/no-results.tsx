@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useInstantSearch } from "react-instantsearch";
@@ -10,6 +11,7 @@ import {
   getTutorialsByKey,
   TutorialEnums,
   TutorialNavItemType,
+  TUTORIALS_ICON,
 } from "@programmer/constants";
 import { capitalizeFirstLetter } from "../../utils";
 import { ChevronRight, FileText } from "lucide-react";
@@ -63,8 +65,14 @@ export default function NoResults() {
                       key={i}
                       className="px-3 py-3 border-b border-border-color_800C"
                     >
-                      <div className="flex justify-start items-center gap-1">
-                        <FileText size={15} className="text-text-svg_default_color" />
+                      <div className="flex justify-start items-center gap-2">
+                        <Image
+                          src={`${TUTORIALS_ICON[key as TutorialEnums]?.svgPath ?? ""}`}
+                          width={100}
+                          height={100}
+                          alt="icon"
+                          className={`w-[16px] h-[16px] filter brightness-0 dark:invert`}
+                        />
                         <p className="text-text-color_1 text-read_2 font-medium">
                           {capitalizeFirstLetter(key)}
                         </p>
@@ -74,15 +82,21 @@ export default function NoResults() {
                           ([childKey, childValue], j) => {
                             const [eachFirstItem] = childValue.items;
                             return (
-                              <Link href={`/${key}/${childValue.slug}/${eachFirstItem?.slug}`} key={j}>
-                              <div className="py-1 px-2 rounded-tiny hover:bg-background-color_900C group">
-                                <div className="flex justify-start items-center gap-1 pl-3">
-                                  <ChevronRight size={15} className="hidden group-hover:block group-hover:text-text-color_1 font-medium" />
-                                <p className="text-text-color_2  text-read_2 font-medium one_line_ellipsis group-hover:text-pm_purple-700">
-                                  {eachFirstItem?.label}
-                                </p>
+                              <Link
+                                href={`/${key}/${childValue.slug}/${eachFirstItem?.slug}`}
+                                key={j}
+                              >
+                                <div className="py-1 px-2 rounded-tiny hover:bg-background-color_900C group">
+                                  <div className="flex justify-start items-center gap-1 pl-4">
+                                    <ChevronRight
+                                      size={15}
+                                      className="hidden group-hover:block group-hover:text-text-color_1 font-medium"
+                                    />
+                                    <p className="text-text-color_2  text-read_2 font-medium one_line_ellipsis group-hover:text-pm_purple-700">
+                                      {eachFirstItem?.label}
+                                    </p>
+                                  </div>
                                 </div>
-                              </div>
                               </Link>
                             );
                           }

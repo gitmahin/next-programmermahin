@@ -129,9 +129,7 @@ export const Search = () => {
                     <div
                       className={`flex-shrink-0 h-full p-2 pl-0 sticky top-0 transition-all duration-300 ${searchMetaInfo.title === "" ? "w-0 overflow-hidden" : "w-[400px]"} search_meta_info_tab ${openSearchMobInfo && "search_meta_info_tab_open"}`}
                     >
-                      <div
-                        className="w-[30px] z-10 h-[30px] border rounded-tiny border-border-color_800C absolute top-4 left-2 bg-background-color_900C justify-center close_search_meta_info hidden items-center close"
-                      >
+                      <div className="w-[30px] z-10 h-[30px] border rounded-tiny border-border-color_800C absolute top-4 left-2 bg-background-color_900C justify-center close_search_meta_info hidden items-center close">
                         <X
                           size={LUCIDE_DEFAULT_ICON_SIZE}
                           className={`text-text-svg_default_color`}
@@ -140,64 +138,60 @@ export const Search = () => {
                       <div
                         className={`w-full h-full rounded bg-background-color_925C overflow-y-auto custom_scrollbar`}
                       >
-                      
-                            <div className="p-4 pb-0">
-                              <div className="w-full flex justify-center items-center">
-                                {searchMetaInfo.navigationText.map(
-                                  (item, i) => {
-                                    return (
-                                      <p
-                                        key={i}
-                                        className="flex justify-center items-center gap-1 w-fit "
-                                      >
-                                        <span className="text-text-color_2 text-read_3">
-                                          {item}
-                                        </span>
-                                        {i <
-                                          searchMetaInfo.navigationText.length -
-                                            1 && (
-                                          <ChevronRight
-                                            size={15}
-                                            className="text-text-color_3"
-                                          />
-                                        )}
-                                      </p>
-                                    );
-                                  }
-                                )}
-                              </div>
-                              <h3 className="text-center text-[20px] font-medium mt-1 two_line_ellipsis">
-                                {searchMetaInfo.title}
-                              </h3>
-                            </div>
-                            <div className="text-read_2 text-text-color_4 three_line_ellipsis mt-5 px-4 ">
-                              {searchMetaInfo.desc}
-                            </div>
-                            <div className="px-4 mt-5">
-                              <p className="uppercase font-geist_mono font-medium text-read_3 text-text-color_3">
-                                On This Page
-                              </p>
-                              <ul className="mt-2 leading-7 mb-3">
-                                {searchMetaInfo.onThisPage.map((item, i) => {
-                                  return (
-                                    <Link
-                                      href={`/${searchMetaInfo.slug}#${item.slug}`}
-                                      key={i}
-                                    >
-                                      <li className="grid grid-cols-[25px_1fr]  text-read_2 group">
-                                        <span className="text-text-color_3 group-hover:text-text-color_1">
-                                          {i + 1}.
-                                        </span>
-                                        <span className="text-text-color_2 group-hover:text-pm_purple-700">
-                                          {item.label}
-                                        </span>
-                                      </li>
-                                    </Link>
-                                  );
-                                })}
-                              </ul>
-                            </div>
-                     
+                        <div className="p-4 pb-0">
+                          <div className="w-full flex justify-center items-center">
+                            {searchMetaInfo.navigationText.map((item, i) => {
+                              return (
+                                <p
+                                  key={i}
+                                  className="flex justify-center items-center gap-1 w-fit "
+                                >
+                                  <span className="text-text-color_2 text-read_3">
+                                    {item}
+                                  </span>
+                                  {i <
+                                    searchMetaInfo.navigationText.length -
+                                      1 && (
+                                    <ChevronRight
+                                      size={15}
+                                      className="text-text-color_3"
+                                    />
+                                  )}
+                                </p>
+                              );
+                            })}
+                          </div>
+                          <h3 className="text-center text-[20px] font-medium mt-1 two_line_ellipsis">
+                            {searchMetaInfo.title}
+                          </h3>
+                        </div>
+                        <div className="text-read_2 text-text-color_4 three_line_ellipsis mt-5 px-4 ">
+                          {searchMetaInfo.desc}
+                        </div>
+                        <div className="px-4 mt-5">
+                          <p className="uppercase font-geist_mono font-medium text-read_3 text-text-color_3">
+                            On This Page
+                          </p>
+                          <ul className="mt-2 leading-7 mb-3">
+                            {searchMetaInfo.onThisPage.map((item, i) => {
+                              return (
+                                <Link
+                                  href={`/${searchMetaInfo.slug}#${item.slug}`}
+                                  key={i}
+                                >
+                                  <li className="grid grid-cols-[25px_1fr]  text-read_2 group">
+                                    <span className="text-text-color_3 group-hover:text-text-color_1">
+                                      {i + 1}.
+                                    </span>
+                                    <span className="text-text-color_2 group-hover:text-pm_purple-700">
+                                      {item.label}
+                                    </span>
+                                  </li>
+                                </Link>
+                              );
+                            })}
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
