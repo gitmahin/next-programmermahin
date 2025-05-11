@@ -19,10 +19,8 @@ import {
   AccordionTrigger,
 } from "@programmer/ui";
 import {
-  ArrowRight,
   BookOpenCheck,
   ChevronRight,
-  LockIcon,
   LockKeyholeIcon,
   PanelRightClose,
   PanelRightOpen,
@@ -44,13 +42,9 @@ export const TutoListPopup = ({
   const [learningButtonURL, setLearningButtomURL] = useState("");
   const [openTutoNavSize, setOpenTutoNavSide] = useState(false);
 
-  // redux values
-  const data = useAppSelector((state) => state.tutoTab.data);
-  // activeKey for styling purpose
-  const activeKey = useAppSelector((state) => state.tutoTab.activeKey);
-  const tutorialName = useAppSelector((state) => state.tutoTab.tutorialName);
-  const lockMouseEnter = useAppSelector((state) => state.tutoTab.lock);
-  const open = useAppSelector((state) => state.tutoTab.open);
+  const tutoTab = useAppSelector((state) => state.tutoTab);
+  const lockMouseEnter = tutoTab.lock
+  const open = tutoTab.open;
   const dispatch = useAppDispatch();
 
   const handleMouseEnter = (tutorialtype: string, tutoName: string) => {
@@ -70,17 +64,19 @@ export const TutoListPopup = ({
 
   // getting the first key from the data object, so that on click start learning user can go to the intro of the course
   useEffect(() => {
-    const firstEntry = Object.entries(data)[0];
+    const firstEntry = Object.entries(tutoTab.data)[0];
 
     if (firstEntry) {
       const [key, value] = firstEntry;
       const firstItemSlug = value.items?.[0]?.slug;
 
       if (key && value.slug && firstItemSlug) {
-        setLearningButtomURL(`/${activeKey}/${value.slug}/${firstItemSlug}`);
+        setLearningButtomURL(
+          `/${tutoTab.activeKey}/${value.slug}/${firstItemSlug}`
+        );
       }
     }
-  }, [data, activeKey, handleMouseEnter]);
+  }, [tutoTab, handleMouseEnter]);
 
   // This function handles changes in the open state of a tutorial tab
   const handleOpenChange = (value: boolean) => {
@@ -117,10 +113,8 @@ export const TutoListPopup = ({
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      setOpenTutoNavSide(false);
-    }, 100);
-  }, [activeKey]);
+    setOpenTutoNavSide(false);
+  }, [tutoTab.activeKey]);
 
   return (
     <>
@@ -170,7 +164,7 @@ export const TutoListPopup = ({
                         handleMouseEnter(item.key, item.label)
                       }
                       key={i}
-                      className={`flex relative transition-colors duration-150 select-none rounded-tiny justify-start items-center gap-3 px-3 py-1 ${activeKey === item.key && item.bg_color}`}
+                      className={`flex relative transition-colors duration-150 select-none rounded-tiny justify-start items-center gap-3 px-3 py-1 ${tutoTab.activeKey === item.key && item.bg_color}`}
                     >
                       <div className="flex justify-center items-center">
                         <Image
@@ -209,7 +203,7 @@ export const TutoListPopup = ({
                 </PMButton>
               )}
             </div>
-            {activeKey ? (
+            {tutoTab.activeKey ? (
               <div className="w-full h-full overflow-y-auto tuto_tab_content  pl-[15px] overflow-x-hidden">
                 <div className=" h-full">
                   <div className="sticky z-[1] p-4 top-0 backdrop-blur-lg course_ovw rounded-tr-[7px]">
@@ -220,12 +214,12 @@ export const TutoListPopup = ({
                   <div className="px-4">
                     <div className="mt-1">
                       <h2 className="font-medium text-[25px] text-text-color_1">
-                        {tutorialName} Tutorial
+                        {tutoTab.tutorialName} Tutorial
                       </h2>
                       <div className="mt-5 flex justify-start items-center">
                         <div className="border-r flex flex-col items-center w-fit pr-3 border-border-color_800C">
                           <span className="text-[25px]">
-                            {Object.keys(data).length}
+                            {Object.keys(tutoTab.data).length}
                           </span>
                           <span className="text-[12px] text-text-color_2">
                             Chapters
@@ -233,7 +227,7 @@ export const TutoListPopup = ({
                         </div>
                         <div className=" flex flex-col items-center w-fit pl-3">
                           <span className="text-[25px]">
-                            {Object.values(data).reduce((acc, val) => {
+                            {Object.values(tutoTab.data).reduce((acc, val) => {
                               return acc + (val.items?.length || 0);
                             }, 0)}
                           </span>
@@ -254,7 +248,7 @@ export const TutoListPopup = ({
                       <span>What will you learn?</span>
                     </div>
                     <div className="pb-16">
-                      {Object.entries(data).map(([key, value], i) => {
+                      {Object.entries(tutoTab.data).map(([key, value], i) => {
                         return (
                           <Accordion type="single" collapsible key={i}>
                             <AccordionItem
