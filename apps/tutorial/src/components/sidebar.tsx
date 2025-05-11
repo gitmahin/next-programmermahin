@@ -108,8 +108,6 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
           <ul className="leading-8">
             {MAIN_NAV_LINKS.map((item, i) => {
               const segments = path_name.split("/").filter(Boolean);
-              console.log("segment is", segments.length);
-              
               return (
                 <Link href={`/${item.slug ?? "#"}`} key={i}>
                   <li className="flex justify-start items-center gap-2 group">
