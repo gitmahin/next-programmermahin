@@ -16,6 +16,19 @@ export default function ProcessedContent({ data }: { data: string }) {
     dispatch(setProcessedContent(content));
   }, [content]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const hash = window.location.hash;
+    if (hash) {
+      const id = hash.substring(1);
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [content]);
+
   return (
     <>
       <article
