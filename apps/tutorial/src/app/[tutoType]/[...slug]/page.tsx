@@ -12,6 +12,7 @@ import slugify from "slugify";
 import { remark } from "remark";
 import html from "remark-html";
 import { TutorialEnums } from "@programmer/constants";
+import { Metadata } from "next";
 
 interface ContentPagePropsType {
   params: Promise<{ tutoType: string; slug: string[] }>;
@@ -108,6 +109,30 @@ export async function generateStaticParams() {
   }
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { tutoType: string; slug: string[] };
+}): Promise<Metadata> {
+  const { tutoType, slug } = await params;
+  const filePath = `src/content/${tutoType}/${slug.join("/")}.mdx`;
+
+  try {
+    const getData = fs.readFileSync(filePath, "utf-8");
+    const { data: metaData } = matter(getData);
+
+    return {
+      title: metaData?.title || "Tutorial",
+      description: metaData?.desc || "Description not found",
+    };
+  } catch (error) {
+    return {
+      title: "Not Found",
+      description: "Sorry, the tutorial you're looking for doesn't exist or may have been moved. Explore other tutorials to keep learning!",
+    };
+  }
+}
+
 export default async function ContentPage({ params }: ContentPagePropsType) {
   const { tutoType, slug } = await params;
 
@@ -120,12 +145,10 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
   try {
     const filePath = `src/content/${tutoType}/${slug.join("/")}.mdx`;
     const getData = fs.readFileSync(filePath, "utf-8");
-    const { data: metaData, content: mdxContent } = matter(getData);
+    const { content: mdxContent } = matter(getData);
 
     return (
       <>
-        <title>{metaData.title || "Untitled"}</title>
-        <meta name="description" content={metaData.desc || "No Description"} />
         <div className="flex justify-center items-start gap-5">
           <div className="max-w-[750px] w-full p-5 pt-16">
             <ProcessedContent data={mdxContent} />
