@@ -99,7 +99,7 @@ export const TutoSidebar = ({
         {Object.entries(tutoData || {}).map(([Key, value], i) => {
           const segments = path_name.split("/");
           return (
-            <ul key={i} className="pb-4">
+            <ul key={i} className="pb-8">
               <div className="flex justify-start items-center gap-2">
                 {value.icon && (
                   <Image
@@ -111,12 +111,12 @@ export const TutoSidebar = ({
                   />
                 )}
                 <span
-                  className={`text-read_2 one_line_ellipsis font-semibold font-geist_mono  uppercase ${path_name.split("/").includes(value.slug) ? "text-text-color_1" : "text-text-color_2"} `}
+                  className={`text-read_3 one_line_ellipsis font-semibold font-geist_mono  uppercase ${path_name.split("/").includes(value.slug) ? "text-text-color_1" : "dark:text-text-color_2 text-text-color_3"} `}
                 >
                   {Key}
                 </span>
               </div>
-              <div className="leading-8 border-l border-border-color_800C pl-2 mt-4">
+              <div className="leading-8 border-l border-border-color_800C pl-2 mt-2">
                 {value.items.map((item, j) => {
                   const isActivePath = segments.includes(item.slug);
                   return (
@@ -132,13 +132,13 @@ export const TutoSidebar = ({
                         className={`relative px-3 py-0 rounded-tiny ${isActivePath && "bg-background-color_800C"} `}
                       >
                         <span
-                          className={`one_line_ellipsis text-read_2 font-medium group-hover:text-text-color_1 ${isActivePath ? "text-text-color_1" : "text-text-color_4"}`}
+                          className={`one_line_ellipsis text-read_2 font-medium group-hover:text-text-color_1 ${isActivePath ? "text-text-color_1 font-semibold" : "text-text-color_4"}`}
                         >
                           {item.label}
                         </span>
                         {isActivePath && (
                           <div
-                            className={`w-[3.5px] h-[15px] bg-pm_purple-700 rounded-tablet transition-all duration-300 absolute left-0 top-1/2 -translate-y-1/2`}
+                            className={`w-[3.5px] h-[16px] bg-pm_purple-700 rounded-tablet transition-all duration-300 absolute left-0 top-1/2 -translate-y-1/2`}
                           ></div>
                         )}
                       </li>
