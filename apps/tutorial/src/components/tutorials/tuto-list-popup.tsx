@@ -19,10 +19,8 @@ import {
   AccordionTrigger,
 } from "@programmer/ui";
 import {
-  ArrowRight,
   BookOpenCheck,
   ChevronRight,
-  LockIcon,
   LockKeyholeIcon,
   PanelRightClose,
   PanelRightOpen,
@@ -30,7 +28,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 interface TutoListPopupPropsType {
