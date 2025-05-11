@@ -1,11 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import { TutoListPopup } from "./tuto-list-popup";
-import {
-  TutorialEnums,
-  TutorialNavItemType,
-  TUTORIALS_ICON,
-} from "@/constants";
+import { TutorialNavItemType, TUTORIALS_ICON } from "@programmer/constants";
 import Image from "next/image";
 import { setPagination } from "@/redux/tutorials/tutoPaginateSlice";
 import { FlattenedTutorialChapter } from "@/types/flattened-tutorial-ch";
@@ -15,6 +11,7 @@ import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { setLockMouseEnter } from "@/redux/tutorials/tutoTabSlice";
+import { TutorialEnums } from "@programmer/constants";
 
 const MEM_SLUG_NAME_LOCSTRG = "slug";
 export const TutoSidebar = ({
@@ -87,14 +84,12 @@ export const TutoSidebar = ({
               width={100}
               height={100}
               alt="icon"
-              className={`${tutorialType !== TutorialEnums.NEXTJS ? "w-[18px] h-[18px]" : "w-[65px]"}  filter brightness-0 dark:invert`}
+              className={`w-[18px] h-[18px] filter brightness-0 dark:invert`}
             />
 
-            {tutorialType !== TutorialEnums.NEXTJS && (
-              <span className="text-read_2 text-pm_purple-700 font-medium ">
-                {TUTORIALS_ICON[tutorialType as TutorialEnums]?.name ?? ""}
-              </span>
-            )}
+            <span className="text-read_2 text-pm_purple-700 font-medium ">
+              {TUTORIALS_ICON[tutorialType as TutorialEnums]?.name ?? ""}
+            </span>
           </div>
           <TutoListPopup />
         </div>

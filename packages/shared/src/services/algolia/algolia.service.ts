@@ -21,7 +21,7 @@ class Algolia {
       await writeAlgolia.setSettings({
         indexName: TUTORIAL_INDEX_NAME,
         indexSettings: {
-          searchableAttributes: ["label", "slug"],
+          searchableAttributes: ["label", "slug", "desc"],
           attributesForFaceting: ["type"],
         },
       });

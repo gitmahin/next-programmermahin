@@ -31,7 +31,7 @@ export default function ContentAsideNav() {
         }),
       }));
       setAnchors(parsedAnchors);
-    }else{
+    } else {
       setAnchors([]);
     }
   }, [htmlContent]);
@@ -143,7 +143,6 @@ export default function ContentAsideNav() {
           </ul>
         </div>
       </aside>
-      
     </>
   );
 }

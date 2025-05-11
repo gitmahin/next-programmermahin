@@ -15,8 +15,8 @@ import {
 } from "@shikijs/transformers";
 import { visit } from "unist-util-visit";
 import slugify from "slugify";
-import rehypePrettyCode from 'rehype-pretty-code';
-import { transformerCopyButton } from '@rehype-pretty/transformers';
+import rehypePrettyCode from "rehype-pretty-code";
+import { transformerCopyButton } from "@rehype-pretty/transformers";
 
 function rehypeSlugify() {
   return (tree: any) => {
@@ -65,8 +65,8 @@ export const useProcessMDX = (data: string) => {
           transformerNotationWordHighlight(),
           transformerNotationFocus(),
           transformerCopyButton({
-            visibility: 'always',
-            feedbackDuration: 3_000
+            visibility: "always",
+            feedbackDuration: 3_000,
           }),
         ],
       })

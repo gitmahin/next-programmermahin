@@ -1,5 +1,5 @@
 "use client";
-import {  MAIN_NAV_LINKS } from "@/constants";
+import { MAIN_NAV_LINKS } from "@/constants";
 import { LUCIDE_DEFAULT_ICON_SIZE, PMButton, PMLogo } from "@programmer/ui";
 import { ChevronDown, Contrast, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -16,8 +16,8 @@ import {
 import { setMobSidebarOpen } from "@/redux/tutorials/mobSidebarOpen";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux.hook";
 
-export const Sidebar = ({ children }: {children: React.ReactNode}) => {
-  const path_name = usePathname()
+export const Sidebar = ({ children }: { children: React.ReactNode }) => {
+  const path_name = usePathname();
   const { theme, setTheme, resolvedTheme } = useTheme();
   const dispatch = useAppDispatch();
   const toggleTheme = () => {
@@ -127,7 +127,7 @@ export const Sidebar = ({ children }: {children: React.ReactNode}) => {
             })}
           </ul>
         </div>
-            {children}
+        {children}
       </nav>
     </nav>
   );

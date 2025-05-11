@@ -1,5 +1,5 @@
-import { TutorialEnums } from "@/constants";
-import { TutorialNavItemType } from "@/constants/tutorials/type";
+import { TutorialEnums } from "@programmer/constants";
+import { TutorialNavItemType } from "@programmer/constants";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction, Slice } from "@reduxjs/toolkit";
 
