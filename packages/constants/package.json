@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsup --dts --external react --minify",
+    "build": "tsup --dts --minify",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
     "clean": "rm -rf node_modules dist .turbo && echo 'Cleanup complete!'"
