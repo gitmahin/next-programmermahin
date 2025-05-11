@@ -170,9 +170,9 @@ export const Search = () => {
                                 {searchMetaInfo.title}
                               </h3>
                             </div>
-                            <p className="text-read_2 text-text-color_4 three_line_ellipsis mt-5 px-4 ">
+                            <div className="text-read_2 text-text-color_4 three_line_ellipsis mt-5 px-4 ">
                               {searchMetaInfo.desc}
-                            </p>
+                            </div>
                             <div className="px-4 mt-5">
                               <p className="uppercase font-geist_mono font-medium text-read_3 text-text-color_3">
                                 On This Page

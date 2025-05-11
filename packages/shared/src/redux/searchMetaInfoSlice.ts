@@ -1,10 +1,11 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction, Slice } from "@reduxjs/toolkit";
+import { ReactElement } from "react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 export interface SearchMetaInfoSliceType {
   title: string;
-  desc: string;
+  desc: ReactElement | null;
   slug: string;
   onThisPage: {
     label: string;
@@ -16,7 +17,7 @@ export interface SearchMetaInfoSliceType {
 
 const initialState: SearchMetaInfoSliceType = {
   title: "",
-  desc: "",
+  desc: null,
   slug: "",
   onThisPage: [],
   navigationText: [],

@@ -1,4 +1,5 @@
 export type AlgoliaIndexType = {
+  objectID?: string;
   label: string;
   slug: string;
 };

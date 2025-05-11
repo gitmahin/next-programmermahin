@@ -4,13 +4,14 @@ import ProcessedContent from "./processed-content";
 import matter from "gray-matter";
 import ContentAsideNav from "./content-aside-nav";
 import TutoPagination from "./paginatation";
-import { getTutorialsByKey, TutorialEnums } from "@/constants";
+import { getTutorialsByKey } from "@/constants";
 import { algolia, IndexTutorialsType } from "@programmer/shared";
 import toc from "toc";
 import { AnchorsType } from "@programmer/types";
 import slugify from "slugify";
 import { remark } from "remark";
 import html from "remark-html";
+import { TutorialEnums } from "@programmer/constants";
 
 interface ContentPagePropsType {
   params: Promise<{ tutoType: string; slug: string[] }>;
@@ -81,6 +82,7 @@ export async function generateStaticParams() {
           }));
 
           return {
+            objectID: `${param.tutoType}/${joinedSlug}`, // <-- Unique identifier for Algolia
             label: data?.title,
             desc: data?.desc,
             type: "tutorial",

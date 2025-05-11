@@ -15,6 +15,7 @@ import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
 import { ChevronRight, Text } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { toast } from "sonner";
+import { ReactElement } from "react";
 
 interface HitProps {
   hit: {
@@ -37,7 +38,7 @@ export default function Hit({ hit }: HitProps) {
   );
   const handleMouseHover = (
     title: string,
-    desc: string,
+    desc: ReactElement,
     slug: string,
     onThisPageData: AlgoliaIndexType[],
     navigationText: string[],
@@ -79,7 +80,13 @@ export default function Hit({ hit }: HitProps) {
         if (window.matchMedia("(hover: hover)").matches) {
           handleMouseHover(
             hit.label,
-            hit.desc,
+            <Highlight
+                classNames={{
+                  highlighted: "bg-transparent text-pm_purple-700",
+                }}
+                attribute="desc"
+                hit={hit}
+              />,
             hit.slug,
             hit.onthispage,
             [
@@ -136,7 +143,13 @@ export default function Hit({ hit }: HitProps) {
             handleMobShowSearchMetaInfoClicked();
             handleMouseHover(
               hit.label,
-              hit.desc,
+              <Highlight
+                classNames={{
+                  highlighted: "bg-transparent text-pm_purple-700",
+                }}
+                attribute="desc"
+                hit={hit}
+              />,
               hit.slug,
               hit.onthispage,
               [
