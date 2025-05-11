@@ -111,9 +111,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-}: {
-  params: { tutoType: string; slug: string[] };
-}): Promise<Metadata> {
+}: ContentPagePropsType): Promise<Metadata> {
   const { tutoType, slug } = await params;
   const filePath = `src/content/${tutoType}/${slug.join("/")}.mdx`;
 
