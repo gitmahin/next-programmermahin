@@ -75,9 +75,9 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
                 />
               </div>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent align="end" className="bg-background-color_850C">
               <DropdownMenuItem
-                className="group hover:bg-background-color_800C py-1 rounded-tiny"
+                className="group hover:bg-background-color_750C py-1 rounded-tiny"
                 onClick={() => setTheme("system")}
               >
                 <Contrast
