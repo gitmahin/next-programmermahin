@@ -79,7 +79,7 @@ export default function ContentAsideNav() {
           }
         },
         {
-          rootMargin: "0px 0px -70% 0px", // Triggers earlier when scrolling down
+          rootMargin: "0px 0px -90% 0px", // Triggers earlier when scrolling down
           threshold: 0.2,
         }
       );
