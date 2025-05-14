@@ -1,11 +1,8 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "ui": "tui", 
+  "ui": "tui",
   "globalDependencies": [".env"],
-  "globalEnv": [
-    "TURBO_TOKEN",
-    "TURBO_TEAM"
-  ],
+  "globalEnv": ["TURBO_TOKEN", "TURBO_TEAM"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
@@ -15,20 +12,12 @@
     "lint": {
       "dependsOn": ["^lint"]
     },
-    "@programmer/ui#build": {
-      "outputs": ["dist/**"]
-    },
-    "@programmer/hooks#build": {
-      "outputs": ["dist/**"]
-    },
-    "@programmer/shared#build": {
-      "outputs": ["dist/**"]
-    },
     "check-types": {
       "dependsOn": ["^check-types"]
     },
     "dev": {
       "env": ["NEXT_ALGOLIA_WRITE_API"],
+      "dependsOn": ["^build"],
       "cache": false,
       "persistent": true,
       "inputs": [
@@ -38,7 +27,6 @@
         ".env.development",
         ".env"
       ]
-      
     }
   }
 }

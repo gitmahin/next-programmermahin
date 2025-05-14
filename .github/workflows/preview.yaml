@@ -6,9 +6,7 @@ env:
 
 #   dont run this
 on:
-  push:
-    branches-ignore: 
-      - main 
+  workflow_dispatch:
 
 jobs:
   tutorial_preview:

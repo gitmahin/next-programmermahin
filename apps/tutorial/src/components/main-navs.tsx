@@ -67,7 +67,7 @@ export default function MainNavs() {
                       transition-all duration-100"
                   />
                 </div>
-                <span className="text-read_2 text-text-color_4 font-medium">
+                <span className="text-read_2 text-text-color_4 group-hover:text-text-color_1 font-medium">
                   {item.label}
                 </span>
               </li>

@@ -175,16 +175,18 @@ export const TutoListPopup = ({
                           priority
                           className={`w-[20px] h-[20px] select-none 
                             filter grayscale brightness-125 contrast-[5%] 
-                            dark:invert 
-                            group-hover:grayScaleActiveImage
+                            dark:invert
                             transition-all duration-100
-                            ${tutoTab.activeKey === item.key && 
-                            "grayScaleActiveImage"}
-                            `
-                          }
+                            ${
+                              tutoTab.activeKey === item.key &&
+                              "grayScaleActiveImage group-hover:grayScaleActiveImage"
+                            }
+                            `}
                         />
                       </div>
-                      <span className="text-read_1 text-text-color_4 font-medium">
+                      <span
+                        className={`text-read_1  ${tutoTab.activeKey === item.key ? "group-hover:text-text-color_1" : "text-text-color_4"}  font-medium`}
+                      >
                         {item.label}
                       </span>
                     </li>

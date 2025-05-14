@@ -117,7 +117,7 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
                       {item.icon}
                     </div>
                     <span
-                      className={`text-read_2 font-medium group-hover:text-text-color_1 ${segments.includes(item.slug) || segments.length === 0 ? "text-text-color_1" : "text-text-color_4"}`}
+                      className={`text-read_2 font-medium ${segments.includes(item.slug) || segments.length === 0 ? "text-text-color_1 " : "text-text-color_4 group-hover:text-text-color_1"}`}
                     >
                       {item.label}
                     </span>
