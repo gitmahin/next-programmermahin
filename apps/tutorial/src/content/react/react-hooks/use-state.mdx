@@ -2,3 +2,100 @@
 title: useState
 desc: Learn how to store and update local state in a React component.
 ---
+
+# React `useState` Hook Tutorial
+
+In the previous **[State Management](/react/react-fundamentals/state-management)** tutorial, we learned the basics of managing state in React using the `useState` hook. 
+
+Now, let’s dive deeper into `useState` with more hands-on examples — including how to manage **objects**, **arrays**, and best practices for updating complex state.
+
+In this tutorial, we’ll cover:
+- How to use it with **objects**
+- How to use it with **arrays**
+
+## Using useState with Objects
+You can store an object in state too!
+```jsx
+import { useState } from "react";
+
+function PersonInfo() {
+  const [person, setPerson] = useState({
+    name: "John",
+    age: 30
+  });
+
+  const updateAge = () => {
+    setPerson(prev => ({
+      ...prev,
+      age: prev.age + 1
+    }));
+  };
+
+  return (
+    <>
+      <h2>{person.name} is {person.age} years old.</h2>
+      <button onClick={updateAge}>Increase Age</button>
+    </>
+  );
+}
+```
+
+### Why Use ...prev?
+When updating objects, use the spread operator to copy existing properties. Otherwise, React will overwrite the whole object.
+
+## Using useState with Arrays
+You can also store and update arrays using useState.
+Example: Adding items to a list
+
+```jsx
+import { useState } from "react";
+
+function TodoList() {
+  const [tasks, setTasks] = useState(["Buy milk"]);
+
+  const addTask = () => {
+    setTasks(prev => [...prev, "New Task"]);
+  };
+
+  return (
+    <>
+      <h3>Todo List</h3>
+      <ul>
+        {tasks.map((task, index) => (
+          <li key={index}>{task}</li>
+        ))}
+      </ul>
+      <button onClick={addTask}>Add Task</button>
+    </>
+  );
+}
+```
+
+Key Takeaways for Arrays
+- Use `[...prev, newItem]` to add items.
+- Use `.filter()` to remove items.
+- Use `.map()` to update items.
+
+## Updating Nested State
+React state updates should always be immutable. That means:
+
+- Never modify the object/array directly.
+- Always create a copy, update the copy, and set the new version.
+
+```jsx
+// ❌ Don't do this
+person.age = 31; // [!code error]
+setPerson(person);
+
+// ✅ Do this
+setPerson(prev => ({ ...prev, age: 31 }));
+```
+
+### Summary
+useState adds local state to functional components.
+
+Use it with:
+- Primitives like strings, numbers
+- Objects using the spread operator
+- Arrays using array methods
+- Always update state immutably!
