@@ -2,3 +2,51 @@
 title: State Management
 desc: Explore how to manage component state and share data across your app
 ---
+
+# State Management in React ⚛️
+
+State is one of the most important concepts in React. It allows components to create and manage their own data — like user input, toggles, or counters — and update the UI when that data changes.
+
+In this tutorial, you'll learn what **state** is, how to use it with the `useState` hook, and when to use **lifting state up** and **global state**.
+
+---
+
+## What is State?
+
+State refers to data that changes over time in your application.
+
+For example:
+- The number of items in a shopping cart
+- Whether a modal is open or closed
+- The text inside an input box
+
+React uses the `useState` hook to manage state inside functional components.
+
+---
+
+## Basic useState Example
+
+Let’s build a simple counter using state.
+
+```jsx
+// [!code word:useState]
+import { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <>
+      <h1>Count: {count}</h1>
+      <button onClick={() => setCount(count + 1)}>Increase</button> // [!code highlight]
+    </>
+  );
+}
+
+export default Counter;
+```
+
+## Explanation
+- `useState(0)` declares a state variable named `count` and sets its initial value to `0`.
+- `setCount` is the function used to update `count`.
+- When you click the button, `setCount` increases the value and React re-renders the component.

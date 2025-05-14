@@ -2,3 +2,127 @@
 title: React Router
 desc: Learn how to create multi-page applications using React Router.
 ---
+
+# React Router
+
+React by default doesn't come with routing capabilities — that’s where **React Router** comes in. It’s the standard library for handling navigation in React applications.
+In this tutorial, we’ll set up multiple page routes using **React Router v6**.
+
+---
+
+## 📦 Installing React Router
+
+To get started, install React Router DOM by running:
+
+```bash
+// [!code word:react-router-dom]
+npm i -D react-router-dom
+```
+
+## Folder Structure
+```css
+src/
+  pages/
+    Layout.js
+    Home.js
+    Blogs.js
+    Contact.js
+    NoPage.js
+
+```
+Each file will contain a basic React component representing a page.
+
+## Creating Page Components
+Here are the components for each route:
+
+`Layout.js`
+```jsx
+// [!code word:Outlet]
+import { Outlet, Link } from "react-router-dom";
+
+const Layout = () => {
+  return (
+    <>
+      <nav>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/blogs">Blogs</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+        </ul>
+      </nav>
+      <Outlet />
+    </>
+  );
+};
+
+export default Layout;
+
+```
+
+`Home.js`
+```jsx
+const Home = () => {
+  return <h1>Home</h1>;
+};
+
+export default Home;
+```
+
+`Blogs.js`
+```jsx
+const Blogs = () => {
+  return <h1>Blog Articles</h1>;
+};
+
+export default Blogs;
+```
+
+## Setting Up Routing in index.js
+We define routes using the `<Routes>` and `<Route>` components.
+
+`index.js`
+```jsx
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Blogs from "./pages/Blogs";
+import Contact from "./pages/Contact";
+import NoPage from "./pages/NoPage";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}> // [!code highlight]
+          <Route index element={<Home />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Route> // [!code highlight]
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+```
+
+## Understanding the Routing Logic
+- `<BrowserRouter>` wraps the whole application to enable routing.
+- `<Routes>` is the container for all your routes.
+- `<Route path="/" element={<Layout />}>` sets up the main layout route.
+- `<Route index element={<Home />}>` means this is the default child route (/).
+- `<Route path="blogs" element={<Blogs />}>` maps to /blogs.
+- `<Route path="*" element={<NoPage />}>` is the catch-all for unknown URLs (404 page).
+
+## Using Link and Outlet
+- `<Link>` is used instead of `<a>` to enable client-side navigation without reloading the page.
+- `<Outlet>` is a placeholder for where the nested route components should render.
+
+## Summary
+- React Router is a routing library for React apps.
+- Use it to navigate between pages without refreshing the browser.
+- Organize your app using nested routes and layout components.
+- Replace `<a>` with `<Link>` for internal navigation.

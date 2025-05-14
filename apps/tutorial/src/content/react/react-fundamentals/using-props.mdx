@@ -2,3 +2,86 @@
 title: Using Props
 desc: Understand how props help pass data between React components
 ---
+
+# Using Props in React 🚗
+
+## What are Props?
+
+**Props** (short for "properties") are arguments you pass into React components. Think of them like **function parameters** in JavaScript or **attributes** in HTML.
+
+They allow you to pass data from one component to another.
+
+---
+
+## Why Use Props?
+
+Props help you make components **dynamic** and **reusable**. Instead of hardcoding values, you can pass them in as props!
+
+---
+
+## Basic Example
+
+Let's start with a simple example:
+
+```jsx
+// [!code word:props]
+function Car(props) {
+  return <h2>I am a { props.brand }!</h2>;
+}
+
+const myElement = <Car brand="Ford" />;
+```
+
+Here’s what’s happening:
+- We created a Car component.
+- We passed a prop called brand with the value "Ford".
+- Inside the Car component, we used props.brand to access the value.
+
+## Passing Props from Another Component
+Let’s create a parent component called Garage and pass props from it to Car.
+```jsx
+// [!code word:props]
+function Car(props) {
+  return <h2>I am a { props.brand }!</h2>;
+}
+
+function Garage() {
+  return (
+    <>
+      <h1>Who lives in my garage?</h1>
+      <Car brand="Ford" /> // [!code highlight]
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Garage />);
+
+```
+Now, `Garage` is the parent and `Car` is the child component.
+
+## Passing an Object as a Prop
+You can pass objects as props too:
+```jsx
+function Car(props) {
+  return <h2>I am a { props.brand.model }!</h2>;
+}
+
+function Garage() {
+  const carInfo = { name: "Ford", model: "Mustang" }; // [!code highlight]
+  return (
+    <>
+      <h1>Who lives in my garage?</h1>
+      <Car brand={carInfo} /> // [!code highlight]
+    </>
+  );
+}
+```
+In this example:
+- We passed the entire `carInfo` object.
+- Inside `Car`, we accessed the `model` using `props.brand.model`.
+
+### Summary
+- Props let you pass data from parent to child components.
+- Props are read-only.
+- You can pass strings, numbers, variables, and even objects as props.
