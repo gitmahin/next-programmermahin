@@ -11,9 +11,9 @@
     "clean": "rm -rf node_modules && echo 'Cleanup complete!'"
   },
   "dependencies": {
-    "@programmer/ui": "workspace:*",
     "@programmer/hooks": "workspace:*",
     "@programmer/shared": "workspace:*",
+    "@programmer/ui": "workspace:*",
     "next": "^15.2.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
@@ -24,8 +24,8 @@
     "@types/node": "^22.14.0",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.1",
-    "tailwind-config": "workspace:*",
     "eslint": "^9.24.0",
+    "tailwind-config": "workspace:*",
     "typescript": "^5.8.2"
   }
 }

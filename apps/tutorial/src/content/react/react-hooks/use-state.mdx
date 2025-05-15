@@ -33,7 +33,7 @@ function PersonInfo() {
 
   return (
     <>
-      <h2>{person.name} is {person.age} years old.</h2>
+      <p>{person.name} is {person.age} years old.</p>
       <button onClick={updateAge}>Increase Age</button>
     </>
   );
@@ -59,7 +59,7 @@ function TodoList() {
 
   return (
     <>
-      <h3>Todo List</h3>
+      <p>Todo List</p>
       <ul>
         {tasks.map((task, index) => (
           <li key={index}>{task}</li>

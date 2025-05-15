@@ -26,7 +26,7 @@ Let's start with a simple example:
 ```jsx
 // [!code word:props]
 function Car(props) {
-  return <h2>I am a { props.brand }!</h2>;
+  return <h1>I am a { props.brand }!</h1>;
 }
 
 const myElement = <Car brand="Ford" />;
@@ -42,7 +42,7 @@ Let’s create a parent component called Garage and pass props from it to Car.
 ```jsx
 // [!code word:props]
 function Car(props) {
-  return <h2>I am a { props.brand }!</h2>;
+  return <h1>I am a { props.brand }!</h1>;
 }
 
 function Garage() {
@@ -64,7 +64,7 @@ Now, `Garage` is the parent and `Car` is the child component.
 You can pass objects as props too:
 ```jsx
 function Car(props) {
-  return <h2>I am a { props.brand.model }!</h2>;
+  return <h1>I am a { props.brand.model }!</h1>;
 }
 
 function Garage() {
