@@ -39,6 +39,8 @@ Here’s what’s happening:
 - We passed a prop called brand with the value "Ford".
 - Inside the Car component, we used props.brand to access the value.
 
+---
+
 ## Passing Props from Another Component
 Let’s create a parent component called Garage and pass props from it to Car.
 ```jsx
@@ -62,6 +64,8 @@ root.render(<Garage />);
 ```
 Now, `Garage` is the parent and `Car` is the child component.
 
+---
+
 ## Passing an Object as a Prop
 You can pass objects as props too:
 ```jsx
@@ -83,7 +87,9 @@ In this example:
 - We passed the entire `carInfo` object.
 - Inside `Car`, we accessed the `model` using `props.brand.model`.
 
-### Summary
+---
+
+## Summary
 - Props let you pass data from parent to child components.
 - Props are read-only.
 - You can pass strings, numbers, variables, and even objects as props.

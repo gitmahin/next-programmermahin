@@ -15,6 +15,8 @@ In this tutorial, we’ll cover:
 - How to use it with **objects**
 - How to use it with **arrays**
 
+---
+
 ## Using useState with Objects
 You can store an object in state too!
 ```jsx
@@ -44,6 +46,8 @@ function PersonInfo() {
 
 ### Why Use ...prev?
 When updating objects, use the spread operator to copy existing properties. Otherwise, React will overwrite the whole object.
+
+---
 
 ## Using useState with Arrays
 You can also store and update arrays using useState.
@@ -78,6 +82,8 @@ Key Takeaways for Arrays
 - Use `.filter()` to remove items.
 - Use `.map()` to update items.
 
+---
+
 ## Updating Nested State
 React state updates should always be immutable. That means:
 
@@ -92,8 +98,9 @@ setPerson(person);
 // ✅ Do this
 setPerson(prev => ({ ...prev, age: 31 }));
 ```
+---
 
-### Summary
+## Summary
 useState adds local state to functional components.
 
 Use it with:
