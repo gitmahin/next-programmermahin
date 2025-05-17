@@ -39,6 +39,7 @@ With `useContext`, you can directly access shared data from any component—no m
 
 ### 1. Create the Context
 ```jsx
+// [!code word:createContext]
 import { createContext } from "react";
 const UserContext = createContext();
 ```
@@ -49,9 +50,9 @@ function Component1() {
   const [user, setUser] = useState("Jesse");
 
   return (
-    <UserContext.Provider value={user}>
+    <UserContext.Provider value={user}> // [!code highlight]
       <Component2 />
-    </UserContext.Provider>
+    </UserContext.Provider> // [!code highlight]
   );
 }
 ```
@@ -62,7 +63,7 @@ function Component1() {
 import { useContext } from "react";
 
 function Component5() {
-  const user = useContext(UserContext);
+  const user = useContext(UserContext); // [!code highlight]
   return <h2>Hello {user} again!</h2>;
 }
 ```
