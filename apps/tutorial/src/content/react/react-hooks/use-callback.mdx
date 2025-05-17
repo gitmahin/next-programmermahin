@@ -1,4 +1,176 @@
 ---
-title: useCallback
+title: React useCallback Hook
 desc: Optimize performance by memoizing functions using useCallback.
 ---
+
+# React useCallback Hook
+
+---
+
+React's `useCallback` Hook is a powerful tool to optimize performance and prevent unnecessary re-renders. In this guide, you’ll learn:
+
+- What `useCallback` does
+- When and why to use it
+- Real-world example
+- Common pitfalls and tips
+
+---
+
+## What is useCallback?
+The `useCallback` Hook returns a memoized version of a function.
+
+```jsx
+// [!code word:useCallback]
+const memoizedCallback = useCallback(() => {
+  // your logic here
+}, [dependencies]);
+```
+This means the function reference will not change unless the dependencies change.
+
+---
+
+## Why Use useCallback?
+In React, every time a component re-renders, all its functions get recreated. This causes problems if:
+
+- You're passing functions as props to child components
+- Those child components rely on React.memo to avoid re-renders
+
+Using useCallback ensures that the function keeps the same reference unless its dependencies actually change.
+
+---
+
+## Problem: Unwanted Re-Renders
+Let’s look at an example without `useCallback`.
+
+`index.js`
+```jsx
+import { useState } from "react";
+import ReactDOM from "react-dom/client";
+import Todos from "./Todos";
+
+const App = () => {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
+
+  const increment = () => setCount((c) => c + 1);
+
+  const addTodo = () => {
+    setTodos((t) => [...t, "New Todo"]);
+  };
+
+  return (
+    <>
+      <Todos todos={todos} addTodo={addTodo} /> // [!code highlight]
+      <hr />
+      <div>
+        Count: {count}
+        <button onClick={increment}>+</button>
+      </div>
+    </>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+```
+
+`Todos.js`
+```jsx
+import { memo } from "react";
+
+const Todos = ({ todos, addTodo }) => {
+  console.log("child render");
+  return (
+    <>
+      <h2>My Todos</h2> 
+      {todos.map((todo, index) => (
+        <p key={index}>{todo}</p>
+      ))}
+      <button onClick={addTodo}>Add Todo</button> // [!code highlight]
+    </>
+  );
+};
+
+export default memo(Todos);
+```
+
+🔄 **Try it out**
+Click the **Count** + button. Notice how `Todos` re-renders even though `todos` didn’t change?
+
+### Why Is This Happening?
+
+This is due to referential equality.
+
+Every re-render of `App` creates a new version of the `addTodo` function, even if its logic is identical.
+So `React.memo` sees a new function and re-renders the `Todos` component.
+
+---
+
+## Solution: useCallback
+Wrap the function with `useCallback` to preserve the reference:
+
+`index.js` (fixed)
+```jsx
+// [!code word:useCallback]
+import { useState, useCallback } from "react";
+import ReactDOM from "react-dom/client";
+import Todos from "./Todos";
+
+const App = () => {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
+
+  const increment = () => setCount((c) => c + 1);
+
+  const addTodo = useCallback(() => {
+    setTodos((t) => [...t, "New Todo"]);
+  }, [todos]); // 👈 dependencies [!code highlight]
+
+  return (
+    <>
+      <Todos todos={todos} addTodo={addTodo} />
+      <hr />
+      <div>
+        Count: {count}
+        <button onClick={increment}>+</button>
+      </div>
+    </>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+
+```
+
+### Now what happens?
+Now when you click the Count + button:
+
+✅ The Todos component does not re-render
+✅ addTodo has the same reference
+✅ Performance is improved
+
+
+---
+
+## Gotcha: Dependency Array
+Be careful with what you include in the dependency array.
+```jsx
+const addTodo = useCallback(() => {
+  setTodos((t) => [...t, "New Todo"]);
+}, [todos]); // This will recreate the function when todos change [!code highlight]
+```
+
+💡 If you use the updater function `(setTodos(prev => ...))`, you can often pass an empty array:
+```jsx
+const addTodo = useCallback(() => {
+  setTodos(t => [...t, "New Todo"]);
+}, []); // now truly stable unless setTodos changes [!code highlight]
+```
+---
+
+## Summary
+- `useCallback` helps prevent unnecessary re-renders
+- It memorizes the function so its reference doesn’t change
+- Ideal when passing functions to `React.memo` components
+- Use with care—always manage the dependency array properly

@@ -1,4 +1,97 @@
 ---
-title: useEffect
+title: 📘 React useEffect Hook
 desc: Run side effects like data fetching or timers in React using useEffect.
 ---
+
+# 📘 React `useEffect` Hook
+
+---
+
+The `useEffect` Hook allows you to perform side effects in your React components.
+
+---
+
+## What Are Side Effects?
+Side effects are operations that affect something outside the scope of the function being executed. Examples include:
+- Fetching data from an API
+- Directly updating the DOM
+- Setting up timers (e.g., `setTimeout`, `setInterval`)
+- Subscribing to events
+
+---
+
+## Basic Syntax
+```jsx
+useEffect(<function>, <dependency_array?>)
+```
+- The first argument is the function that runs the side effect.
+- The second argument is optional, and it controls when the effect should run.
+
+---
+
+## Timer Example
+
+```jsx
+// [!code word:useEffect]
+import { useEffect, useState } from "react";
+
+function Timer() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+  }, []); // 👈 Runs only on first render [!code highlight]
+
+  return <h1>I've rendered {count} times!</h1>;
+}
+```
+- To make the effect run only once (on mount), pass an empty dependency array ([]):
+
+### Timer (Wrong Way)
+
+```jsx
+// [!code word:useEffect]
+import { useEffect, useState } from "react";
+
+function Timer() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+  }); // [!code error]
+
+  return <h1>I've rendered {count} times!</h1>;
+}
+```
+#### What's wrong?
+This code keeps running `setTimeout` on every render, causing the counter to update infinitely.
+
+---
+
+## Run useEffect When Dependencies Change
+
+```jsx
+useEffect(() => {
+  // Runs on initial render AND when `count` changes
+}, [count]); // [!code highlight]
+```
+
+---
+
+## Tips
+- Always specify the dependencies clearly to avoid bugs.
+- Clean up side effects when necessary to prevent memory leaks.
+- Avoid using async directly in `useEffect` - use an inner function instead.
+
+```jsx
+useEffect(() => {
+  const fetchData = async () => {
+    // your async code
+  };
+  fetchData();
+}, []);
+```

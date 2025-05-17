@@ -1,4 +1,111 @@
 ---
-title: useRef
+title: React useRef Hook
 desc: Access and interact with DOM elements or persist values with useRef
 ---
+
+
+# React useRef Hook
+
+---
+
+The `useRef` Hook in React is a powerful tool that gives you a way to persist values without causing re-renders and to access DOM elements directly.
+
+```jsx
+const myRef = useRef(initialValue);
+```
+The `useRef` Hook returns a mutable object (`ref`) with a `.current` property that you can update.
+
+```jsx
+myRef.current = newValue;
+```
+The key feature: changing .current does not cause the component to re-render.
+
+---
+
+## When Should You Use useRef?
+
+- ✅ To access a DOM element directly (like an input field)
+- ✅ To persist values between renders without re-rendering
+- ✅ To keep track of previous values
+- ✅ To store timers, IDs, or any mutable object
+
+---
+
+## Example 1: Accessing the DOM
+Let’s use `useRef` to focus an input field when a button is clicked.
+
+```jsx
+// [!code word:useRef]
+import { useRef } from "react";
+
+function InputFocus() {
+  const inputRef = useRef(null);
+
+  const handleClick = () => {
+    inputRef.current.focus(); // 👈 Direct DOM access [!code highlight]
+  };
+
+  return (
+    <>
+      <input ref={inputRef} type="text" />
+      <button onClick={handleClick}>Focus Input</button>
+    </>
+  );
+}
+
+```
+
+### What’s Happening?
+- `inputRef` is a reference to the `<input>` DOM node.
+- Clicking the button triggers `inputRef.current.focus()`, which focuses the input.
+
+---
+
+## Example 2: Persisting Values Without Re-rendering
+Sometimes, you need to store a value that doesn't trigger a render when changed.
+
+```jsx
+// [!code word:useRef]
+import { useState, useRef, useEffect } from "react";
+import ReactDOM from "react-dom/client";
+
+function Timer() {
+  const [count, setCount] = useState(0);
+  const countRef = useRef(0); // [!code highlight]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      countRef.current += 1; // [!code highlight]
+      console.log("Count (ref):", countRef.current);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <>
+      <p>Component state: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Update State</button>
+    </>
+  );
+}
+```
+
+### What’s the Benefit?
+- `countRef` updates every second, but the component does not re-render.
+- You can still interact with the UI using state (`setCount`), but heavy logic uses refs.
+
+---
+
+## Important Notes
+- Refs do not trigger a re-render when updated.
+- Avoid using refs to replace state unnecessarily.
+- Perfect for timeouts, intervals, focus, and caching values.
+
+---
+
+## Summary
+React’s useRef is often underrated but extremely useful in the right scenarios. It's a reliable way to:
+- Work with DOM elements
+- Persist data across renders
+- Handle mutable values efficiently

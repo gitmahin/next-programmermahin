@@ -1,4 +1,76 @@
 ---
-title: useContext
+title: React useContext Hook – The Easy Way to Share State
 desc: Share global data across components without prop drilling using useContext.
 ---
+
+# React useContext Hook – The Easy Way to Share State
+
+---
+
+React’s `useContext` Hook makes it simple to share state between components without the need for “prop drilling.”
+
+---
+
+## The Problem: Prop Drilling
+When many components need access to the same state, we end up passing props down through components that don’t need them.
+
+```jsx
+function Component1() {
+  const [user, setUser] = useState("Jesse"); // [!code highlight]
+
+  return (
+    <>
+      <Component2 user={user} /> // [!code highlight]
+    </>
+  );
+}
+
+function Component5({ user }) { // [!code highlight]
+  return <h2>Hello {user} again!</h2>;
+}
+```
+
+In this case, `user` is passed through all components just to reach `Component5`. That’s a lot of boilerplate!
+
+---
+
+## The Solution
+With `useContext`, you can directly access shared data from any component—no matter how deeply nested.
+
+### 1. Create the Context
+```jsx
+// [!code word:createContext]
+import { createContext } from "react";
+const UserContext = createContext();
+```
+
+### 2. Wrap Your App with the Provider
+```jsx
+function Component1() {
+  const [user, setUser] = useState("Jesse");
+
+  return (
+    <UserContext.Provider value={user}> // [!code highlight]
+      <Component2 />
+    </UserContext.Provider> // [!code highlight]
+  );
+}
+```
+
+### 3. Access Context with useContext
+
+```jsx
+import { useContext } from "react";
+
+function Component5() {
+  const user = useContext(UserContext); // [!code highlight]
+  return <h2>Hello {user} again!</h2>;
+}
+```
+
+---
+
+## Summary
+✅ Avoid prop drilling
+✅ Share state across many components
+✅ Cleaner and more maintainable code
