@@ -76,8 +76,12 @@ This code keeps running `setTimeout` on every render, causing the counter to upd
 
 ```jsx
 useEffect(() => {
+  setTimeout(() => {
+    setCount((count) => count + 1);
+  }, 1000);
   // Runs on initial render AND when `count` changes
-}, [count]); // [!code highlight]
+}); // [!code --]
+}, [count]); // [!code ++]
 ```
 
 ---

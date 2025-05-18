@@ -162,9 +162,8 @@ body {
 }
 
 @layer utilities {
-
   .grayScaleActiveImage {
-    @apply filter grayscale-0 brightness-100 contrast-100 dark:invert
+    @apply filter grayscale-0 brightness-100 contrast-100 dark:invert;
   }
 
   .three_line_ellipsis {
@@ -302,10 +301,25 @@ pre code {
 
   .add {
     background-color: #00800030;
+    position: relative;
+  }
+
+  .add:before {
+    content: "+";
+    color: #00ff99;
+    left: 5px;
+    position: absolute;
   }
 
   .remove {
     background-color: #ff00003e;
+  }
+
+  .remove:before {
+    content: "-";
+    color: #ff0000;
+    left: 5px;
+    position: absolute;
   }
 
   .warning {
@@ -318,7 +332,7 @@ pre code {
     background-color: #dc35463d;
   }
 
-  .highlighted-word{
+  .highlighted-word {
     background-color: #ffffff24;
     border: 1px solid var(--border-color-700C);
     padding: 1px;
@@ -327,26 +341,24 @@ pre code {
 }
 
 /* Apply blur to everything inside <pre> except for .focused elements */
-pre:has(.focused) span  {
+pre:has(.focused) span {
   filter: blur(3px);
   transition: filter 0.2s ease-in-out;
 }
 
 pre code .focused * {
   filter: none !important;
-
 }
 pre code .focused {
   filter: none !important;
 }
-
 
 /* Optional: On hover, remove the blur from everything */
 pre:has(.focused):hover span {
   filter: none;
 }
 
-.prose{
+.prose {
   max-width: 100%;
   min-width: 10px;
 }

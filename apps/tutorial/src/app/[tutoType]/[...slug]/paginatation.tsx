@@ -16,7 +16,7 @@ export default function TutoPagination() {
         <Link href={`${prev?.path}`} className="w-full">
           <PMButton
             variant="silent"
-            className="w-full p-3 px-4 border group border-border-color_800C flex flex-col justify-center items-start"
+            className="w-full p-3 px-4 border group border-border-color_800C transition-colors flex flex-col justify-center items-start"
             radius="primary"
           >
             <div className="flex justify-center w-fit items-center gap-1">
@@ -40,7 +40,7 @@ export default function TutoPagination() {
         <Link href={`${next?.path}`} className="w-full">
           <PMButton
             variant="silent"
-            className="w-full p-3 px-4 border group border-border-color_800C flex flex-col justify-center items-end"
+            className="w-full p-3 px-4 border group border-border-color_800C transition-colors flex flex-col justify-center items-end"
             radius="primary"
           >
             <div className="flex justify-center w-fit items-center gap-1">
