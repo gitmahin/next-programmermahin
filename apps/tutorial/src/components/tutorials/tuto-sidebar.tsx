@@ -153,7 +153,7 @@ export const TutoSidebar = ({
                   {Key}
                 </span>
               </div>
-              <div className={`leading-8 border-l  ${path_name.split("/").includes(value.slug) ? "border-purple-700":"border-border-color_800C"} pl-2 mt-2`}>
+              <div className={`leading-8 border-l ${path_name.split("/").includes(value.slug) ? "border-purple-700":"border-border-color_800C"} pl-2 mt-2`}>
                 {value.items.map((item, j) => {
                   const isActivePath =
                     segments.slice(-1).toString() === item.slug;
@@ -168,7 +168,7 @@ export const TutoSidebar = ({
                         className="group"
                       >
                         <li
-                          className={`relative px-3 py-0 rounded-tiny ${isActivePath && "bg-background-color_800C"} `}
+                          className={`relative px-3 py-0 transition-colors  rounded-tiny ${isActivePath && "bg-background-color_800C"} `}
                         >
                           <span
                             className={`one_line_ellipsis text-read_2 font-medium group-hover:text-text-color_1 ${isActivePath ? "text-text-color_1 font-semibold" : "text-text-color_4"}`}
@@ -198,7 +198,7 @@ export const TutoSidebar = ({
                                   className="group"
                                 >
                                   <li
-                                    className={`one_line_ellipsis text-read_2 font-medium group-hover:text-text-color_1 px-3 rounded-tiny py-0 ${isActivePathDir ? "bg-background-color_800C font-semibold relative text-text-color_1" : `${path_name.split("/").includes(childValue.slug) ? "text-text-color_1 font-semibold" : "text-text-color_4"}`}`}
+                                    className={`one_line_ellipsis text-read_2 transition-colors  font-medium group-hover:text-text-color_1 px-3 rounded-tiny py-0 ${isActivePathDir ? "bg-background-color_800C font-semibold relative text-text-color_1" : `${path_name.split("/").includes(childValue.slug) ? "text-text-color_1 font-semibold" : "text-text-color_4"}`}`}
                                   >
                                     <span>{dirKey}</span>
                                     {isActivePathDir && (
@@ -210,7 +210,7 @@ export const TutoSidebar = ({
                                 </Link>
 
                                 <div
-                                  className={`ml-3 pl-2 border-l ${
+                                  className={`ml-3 pl-2 border-l  ${
                                     path_name
                                       .split("/")
                                       .includes(childValue.slug) && !isActivePathDir
@@ -232,7 +232,7 @@ export const TutoSidebar = ({
                                         }}
                                       >
                                         <li
-                                          className={`px-3 py-0 relative rounded-tiny text-read_2  ${isActivePathSubItem ? "text-text-color_1 font-semibold bg-background-color_800C" : "font-medium text-text-color_4"}`}
+                                          className={`px-3 py-0 relative transition-colors rounded-tiny text-read_2  ${isActivePathSubItem ? "text-text-color_1 font-semibold bg-background-color_800C" : "font-medium text-text-color_4"}`}
                                         >
                                           <span>{subItem.label}</span>
                                           {isActivePathSubItem && (

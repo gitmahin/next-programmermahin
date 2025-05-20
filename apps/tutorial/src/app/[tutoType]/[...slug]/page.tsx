@@ -4,7 +4,7 @@ import ProcessedContent from "./processed-content";
 import matter from "gray-matter";
 import ContentAsideNav from "./content-aside-nav";
 import TutoPagination from "./paginatation";
-import { getTutorialsByKey } from "@programmer/constants";
+import { getTutorialsByKey, TutorialDirChildNavItemType } from "@programmer/constants";
 import { algolia, IndexTutorialsType } from "@programmer/shared";
 import toc from "toc";
 import { AnchorsType } from "@programmer/types";
@@ -31,19 +31,40 @@ export async function generateStaticParams() {
 
     const params: { tutoType: string; slug: string[] }[] = [];
 
-    tutorialTypes.map((type, _) => {
+       tutorialTypes.forEach((type) => {
       const tutorials = getTutorialsByKey[type as TutorialEnums];
-
       if (!tutorials) return;
 
-      Object.values(tutorials).map((section, _) => {
+      Object.values(tutorials).forEach((section) => {
         if (!section?.slug) return;
-        // Push nested items
-        section.items.map((item, _) => {
+
+        section.items.forEach((item) => {
+          // Push direct item
           params.push({
             tutoType: type,
             slug: [section.slug, item.slug],
           });
+
+          // If item has dirItems, handle them
+          if (item.dirItems) {
+            Object.entries(item.dirItems).forEach(([_, dir]) => {
+              const typedDir = dir as TutorialDirChildNavItemType;
+
+              // Push the dir node itself
+              params.push({
+                tutoType: type,
+                slug: [section.slug, item.slug, typedDir.slug],
+              });
+
+              // Push all subitems
+              typedDir.items.forEach((subItem) => {
+                params.push({
+                  tutoType: type,
+                  slug: [section.slug, item.slug, typedDir.slug, subItem.slug],
+                });
+              });
+            });
+          }
         });
       });
     });
