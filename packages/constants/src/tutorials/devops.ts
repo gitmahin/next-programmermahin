@@ -50,4 +50,43 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
       },
     ],
   },
+  "Kubernetes": {
+    slug: "kubernetes",
+    icon: "/icons/kubernetes.svg",
+    items: [
+      {
+        label: "K8s Main Components",
+        slug: "k8s-main-components",
+        dirItems: {
+          "K8s Pods": {
+            icon: "/icons/kubernetes.svg",
+            slug: "k8s-pods",
+            items: [
+              {
+                label: "What is a Pod?",
+                slug: "what-is-a-pod",
+              },
+              {
+                label: "Pod Lifecycle",
+                slug: "pod-lifecycle",
+              },
+              {
+                label: "Pod Networking",
+                slug: "pod-networking",
+              },
+              {
+                label: "Pod Security",
+                slug: "pod-security",
+              },
+            ]
+          }
+        }
+      },
+      {
+        label: "K8s Services",
+        slug: "k8s-services",
+      }
+    ]
+  }
+
 };
