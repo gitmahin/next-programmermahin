@@ -1,6 +1,6 @@
 "use client";
 import { MAIN_NAV_TUTORIALS } from "@/constants";
-import { TutorialNavItemType } from "@programmer/constants";
+import { DEVOPS_TUTORIALS, TutorialNavItemType } from "@programmer/constants";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux.hook";
 import {
   setLockMouseEnter,
@@ -116,6 +116,45 @@ export const TutoListPopup = ({
     setOpenTutoNavSide(false);
   }, [tutoTab.activeKey]);
 
+  const countLessonsInChapter = (chapter: TutorialNavItemType[string]) => {
+    return (
+      chapter.items?.reduce((total, item) => {
+        // If this item has dirItems, it's a subchapter — sum up lessons inside each dir
+        if (item.dirItems) {
+          const dirLessons = Object.values(item.dirItems).reduce(
+            (dirTotal, dirItem) => {
+              return dirTotal + (dirItem.items?.length || 0);
+            },
+            0
+          );
+          return total + dirLessons;
+        }
+        // Otherwise, it's a normal lesson
+        return total + 1;
+      }, 0) || 0
+    );
+  };
+
+  const countChapters = (tutorials: typeof DEVOPS_TUTORIALS) => {
+    let count = 0;
+
+    for (const chapterKey in tutorials) {
+      count++; // count top-level chapter
+
+      const chapter = tutorials[chapterKey];
+
+      if (chapter?.items) {
+        chapter.items.forEach((item) => {
+          if (item.dirItems) {
+            count += Object.keys(item.dirItems).length; // add nested chapters count
+          }
+        });
+      }
+    }
+
+    return count;
+  };
+
   return (
     <>
       {showClickAbleTutoOpenBtn && (
@@ -229,7 +268,7 @@ export const TutoListPopup = ({
                       <div className="mt-5 flex justify-start items-center">
                         <div className="border-r flex flex-col items-center w-fit pr-3 border-border-color_800C">
                           <span className="text-[25px]">
-                            {Object.keys(tutoTab.data).length}
+                            {countChapters(tutoTab.data)}
                           </span>
                           <span className="text-[12px] text-text-color_2">
                             Chapters
@@ -237,9 +276,11 @@ export const TutoListPopup = ({
                         </div>
                         <div className=" flex flex-col items-center w-fit pl-3">
                           <span className="text-[25px]">
-                            {Object.values(tutoTab.data).reduce((acc, val) => {
-                              return acc + (val.items?.length || 0);
-                            }, 0)}
+                            {Object.values(tutoTab.data).reduce(
+                              (acc, chapter) =>
+                                acc + countLessonsInChapter(chapter),
+                              0
+                            )}
                           </span>
                           <span className="text-[12px] text-text-color_2">
                             Lessons
@@ -281,46 +322,44 @@ export const TutoListPopup = ({
                                         {item.label}
                                       </span>
                                       {item.dirItems &&
-                                      Object.entries(item.dirItems).map(
-                                        ([dirKey, childValue], di) => {
-                                          return (
-                                            <div>
-                                              <Accordion
-                                                type="single"
-                                                collapsible
-                                                key={di}
-                                              >
-                                                <AccordionItem
-                                                  value="item-1"
-                                                  className="border-border-color_800C"
+                                        Object.entries(item.dirItems).map(
+                                          ([dirKey, childValue], di) => {
+                                            return (
+                                              <div>
+                                                <Accordion
+                                                  type="single"
+                                                  collapsible
+                                                  key={di}
                                                 >
-                                                  <AccordionTrigger className="text-read_2 ">
-                                                    {dirKey}
-                                                  </AccordionTrigger>
+                                                  <AccordionItem
+                                                    value="item-1"
+                                                    className="border-border-color_800C"
+                                                  >
+                                                    <AccordionTrigger className="text-read_2 ">
+                                                      {dirKey}
+                                                    </AccordionTrigger>
 
-                                                  {childValue.items.map(
-                                                    (childItem, j) => {
-                                                      return (
-                                                        <AccordionContent
-                                                          className="pl-5  one_line_ellipsis  text-read_2"
-                                                          key={j}
-                                                        >
-                                                          <span className="text-text-color_4">
-                                                            {childItem.label}
-                                                          </span>
-                                                        </AccordionContent>
-                                                      );
-                                                    }
-                                                  )}
-                                                </AccordionItem>
-                                              </Accordion>
-                                            </div>
-                                          );
-                                        }
-                                      )}
+                                                    {childValue.items.map(
+                                                      (childItem, j) => {
+                                                        return (
+                                                          <AccordionContent
+                                                            className="pl-5  one_line_ellipsis  text-read_2"
+                                                            key={j}
+                                                          >
+                                                            <span className="text-text-color_4">
+                                                              {childItem.label}
+                                                            </span>
+                                                          </AccordionContent>
+                                                        );
+                                                      }
+                                                    )}
+                                                  </AccordionItem>
+                                                </Accordion>
+                                              </div>
+                                            );
+                                          }
+                                        )}
                                     </AccordionContent>
-
-                                    
                                   </>
                                 );
                               })}

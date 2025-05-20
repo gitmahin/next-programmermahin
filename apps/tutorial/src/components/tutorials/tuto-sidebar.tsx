@@ -185,7 +185,12 @@ export const TutoSidebar = ({
                     width={100}
                     height={100}
                     alt="icon"
-                    className="w-[18px] h-[18px] filter brightness-0 dark:invert"
+                    className={`w-[18px] h-[18px] filter grayscale brightness-125 contrast-[5%] 
+                            dark:invert transition-all duration-100
+                            ${
+                              path_name.split("/").includes(value.slug) &&
+                              "grayScaleActiveImage group-hover:grayScaleActiveImage"
+                            }`}
                   />
                 )}
                 <span
