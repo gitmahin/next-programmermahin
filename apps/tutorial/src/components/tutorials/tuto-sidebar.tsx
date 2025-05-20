@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { TutoListPopup } from "./tuto-list-popup";
 import {
   TutorialChildNavItemType,
@@ -17,7 +17,13 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import { setLockMouseEnter } from "@/redux/tutorials/tutoTabSlice";
 import { TutorialEnums } from "@programmer/constants";
-import { Accordion, AccordionItem } from "@programmer/ui";
+import {
+  Accordion,
+  AccordionItem,
+  LUCIDE_DEFAULT_ICON_SIZE,
+  PMButton,
+} from "@programmer/ui";
+import { ChevronDown } from "lucide-react";
 
 const MEM_SLUG_NAME_LOCSTRG = "slug";
 export const TutoSidebar = ({
@@ -30,6 +36,36 @@ export const TutoSidebar = ({
   const path_name = usePathname();
   const dispatch = useAppDispatch();
   const lessons = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
+  const dirChildRef = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const [isOpen, setIsOpen] = useState<{ [key: string]: boolean }>({});
+
+  const openDirChild = useCallback(
+    (slug: string, onlyOpen: boolean = false) => {
+      const el = dirChildRef.current[slug];
+      if (!el) return;
+
+      const opened = isOpen[slug];
+
+      if (onlyOpen) {
+        // Only open if not already open
+        if (!opened) {
+          el.style.height = "100%";
+          setIsOpen((prev) => ({
+            ...prev,
+            [slug]: true,
+          }));
+        }
+      } else {
+        // Toggle open/close
+        el.style.height = opened ? "0px" : "100%";
+        setIsOpen((prev) => ({
+          ...prev,
+          [slug]: !opened,
+        }));
+      }
+    },
+    [isOpen]
+  );
 
   useEffect(() => {
     if (!setPagination) return;
@@ -153,7 +189,9 @@ export const TutoSidebar = ({
                   {Key}
                 </span>
               </div>
-              <div className={`leading-8 border-l ${path_name.split("/").includes(value.slug) ? "border-purple-700":"border-border-color_800C"} pl-2 mt-2`}>
+              <div
+                className={`leading-8 border-l ${path_name.split("/").includes(value.slug) ? "border-purple-700" : "border-border-color_800C"} pl-2 mt-2`}
+              >
                 {value.items.map((item, j) => {
                   const isActivePath =
                     segments.slice(-1).toString() === item.slug;
@@ -198,9 +236,28 @@ export const TutoSidebar = ({
                                   className="group"
                                 >
                                   <li
-                                    className={`one_line_ellipsis text-read_2 transition-colors  font-medium group-hover:text-text-color_1 px-3 rounded-tiny py-0 ${isActivePathDir ? "bg-background-color_800C font-semibold relative text-text-color_1" : `${path_name.split("/").includes(childValue.slug) ? "text-text-color_1 font-semibold" : "text-text-color_4"}`}`}
+                                    onClick={() =>
+                                      openDirChild(childValue.slug, true)
+                                    }
+                                    className={`flex justify-between items-center text-read_2 transition-colors font-medium group-hover:text-text-color_1 pl-3 rounded-tiny py-0 ${isActivePathDir ? "bg-background-color_800C font-semibold relative text-text-color_1" : `${path_name.split("/").includes(childValue.slug) ? "text-text-color_1 font-semibold" : "text-text-color_4"}`}`}
                                   >
-                                    <span>{dirKey}</span>
+                                    <span className="one_line_ellipsis">
+                                      {dirKey}
+                                    </span>
+
+                                    <button
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        openDirChild(childValue.slug);
+                                      }}
+                                      className={` h-[25px] rounded-[5px] w-[25px] mr-1 transition-colors  ${isActivePathDir ? "hover:bg-background-color_900C": "hover:bg-background-color_800C"} flex justify-center items-center`}
+                                    >
+                                      <ChevronDown
+                                        size={LUCIDE_DEFAULT_ICON_SIZE}
+                                        className={`transition-all duration-300 ${isOpen[childValue.slug] ? "text-text-color_1 " : "text-text-svg_default_color"}`}
+                                      />
+                                    </button>
+
                                     {isActivePathDir && (
                                       <div
                                         className={`w-[3.5px] h-[16px] bg-pm_purple-700 rounded-tablet transition-all duration-300 absolute left-0 top-1/2 -translate-y-1/2`}
@@ -210,10 +267,15 @@ export const TutoSidebar = ({
                                 </Link>
 
                                 <div
-                                  className={`ml-3 pl-2 border-l  ${
+                                  ref={(el) => {
+                                    dirChildRef.current[childValue.slug] = el;
+                                  }}
+                                  style={{ height: "0px" }}
+                                  className={`ml-3 pl-2 border-l overflow-hidden  ${
                                     path_name
                                       .split("/")
-                                      .includes(childValue.slug) && !isActivePathDir
+                                      .includes(childValue.slug) &&
+                                    !isActivePathDir
                                       ? "border-pm_purple-700"
                                       : "border-border-color_800C"
                                   }`}
