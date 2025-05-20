@@ -147,6 +147,11 @@ export const TutoSidebar = ({
     }, 300);
   }, [path_name, lessons, tutoData]);
 
+  useEffect(() => {
+    const lastPath = path_name.split("/").slice(-2, -1).toString();
+    openDirChild(lastPath ?? "", true);
+  }, []);
+
   return (
     <>
       <div className="w-full px-4">
@@ -250,7 +255,7 @@ export const TutoSidebar = ({
                                         e.preventDefault();
                                         openDirChild(childValue.slug);
                                       }}
-                                      className={` h-[25px] rounded-[5px] w-[25px] mr-1 transition-colors  ${isActivePathDir ? "hover:bg-background-color_900C": "hover:bg-background-color_800C"} flex justify-center items-center`}
+                                      className={` h-[25px] rounded-[5px] w-[25px] mr-1 transition-colors  ${isActivePathDir ? "hover:bg-background-color_900C" : "hover:bg-background-color_800C"} flex justify-center items-center`}
                                     >
                                       <ChevronDown
                                         size={LUCIDE_DEFAULT_ICON_SIZE}
