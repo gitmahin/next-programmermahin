@@ -86,8 +86,10 @@ export default function ContentAsideNav() {
             const activeId = sorted?.[0]?.target.id;
             if (activeId) {
               setActiveHash(`#${activeId}`);
-              if(anchorListsRef.current){
-                moveTabToAnchor(anchorListsRef.current[activeId] as HTMLElement);
+              if (anchorListsRef.current) {
+                moveTabToAnchor(
+                  anchorListsRef.current[activeId] as HTMLElement
+                );
               }
             }
           }
@@ -145,13 +147,15 @@ export default function ContentAsideNav() {
               return (
                 <Link href={`#${item.anchor}`} key={i} className="">
                   <li
-                  
                     ref={(el) => {
                       anchorListsRef.current[item.anchor] = el;
                     }}
-                    onClick={() => {handleHashClick(`#${item.anchor}`)
-                      moveTabToAnchor(anchorListsRef.current[item.anchor] as HTMLElement);
-                  }}
+                    onClick={() => {
+                      handleHashClick(`#${item.anchor}`);
+                      moveTabToAnchor(
+                        anchorListsRef.current[item.anchor] as HTMLElement
+                      );
+                    }}
                     className={`one_line_ellipsis px-2 text-read_2 ${activeHash === `#${item.anchor}` ? "text-pm_purple-700 font-medium" : "text-text-color_2"}`}
                     style={{ marginLeft: `${(item.level - 2) * 10}px` }}
                   >
