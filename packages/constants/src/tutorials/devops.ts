@@ -57,25 +57,54 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
       {
         dirItems: {
           "K8s Main Components": {
-            icon: "/icons/kubernetes.svg",
             slug: "k8s-main-components",
             items: [
               {
-                label: "What is a Pod?",
-                slug: "what-is-a-pod",
+                label: "K8s Pod",
+                slug: "k8s-pod",
               },
               {
-                label: "Pod Lifecycle",
-                slug: "pod-lifecycle",
+                label: "K8s-service",
+                slug: "k8s-service",
               },
               {
-                label: "Pod Networking",
-                slug: "pod-networking",
+                label: "K8s Ingress",
+                slug: "k8s-ingress",
               },
               {
-                label: "Pod Security",
-                slug: "pod-security",
+                label: "ConfigMap & Secrets",
+                slug: "k8s-configmap-secrets"
               },
+              {
+                label: "K8s Volumes",
+                slug: "k8s-volumes",
+              },
+              {
+                label: "K8s Deployments",
+                slug: "k8s-deployments",
+              },
+              {
+                label: "K8s StatefulSets & StateLess",
+                slug: "k8s-statefulsets-and-stateless",
+              },
+              
+            ]
+          }
+        }
+      },
+      {
+        dirItems :{
+          "K8s Architecture": {
+            slug: "k8s-architecture",
+            items: [
+              {
+                label: "K8s Cluster",
+                slug: "k8s-cluster",
+              },
+              {
+                label: "Master Node",
+                slug: "k8s-master-node",
+              }
             ]
           }
         }
