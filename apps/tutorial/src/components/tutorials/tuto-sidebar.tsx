@@ -218,7 +218,7 @@ export const TutoSidebar = ({
                         className="group"
                       >
                         <li
-                          className={`relative px-3 py-0 transition-colors  rounded-tiny ${isActivePath && "bg-background-color_800C"} `}
+                          className={`relative px-3 py-0 rounded-tiny ${isActivePath && "bg-background-color_800C"} `}
                         >
                           <span
                             className={`one_line_ellipsis text-read_2 font-medium group-hover:text-text-color_1 ${isActivePath ? "text-text-color_1 font-semibold" : "text-text-color_4"}`}
@@ -251,7 +251,7 @@ export const TutoSidebar = ({
                                     onClick={() =>
                                       openDirChild(childValue.slug, true)
                                     }
-                                    className={`flex justify-between items-center text-read_2 transition-colors font-medium group-hover:text-text-color_1 pl-3 rounded-tiny py-0 ${isActivePathDir ? "bg-background-color_800C font-semibold relative text-text-color_1" : `${path_name.split("/").includes(childValue.slug) ? "text-text-color_1 font-semibold" : "text-text-color_4"}`}`}
+                                    className={`flex justify-between items-center text-read_2 font-medium group-hover:text-text-color_1 pl-3 rounded-tiny py-0 ${isActivePathDir ? "bg-background-color_800C font-semibold relative text-text-color_1" : `${path_name.split("/").includes(childValue.slug) ? "text-text-color_1 font-semibold" : "text-text-color_4"}`}`}
                                   >
                                     <span className="one_line_ellipsis">
                                       {dirKey}
@@ -307,7 +307,7 @@ export const TutoSidebar = ({
                                         }}
                                       >
                                         <li
-                                          className={`px-3 py-0 relative one_line_ellipsis transition-colors rounded-tiny text-read_2  ${isActivePathSubItem ? "text-text-color_1 font-semibold bg-background-color_800C" : "font-medium text-text-color_4"}`}
+                                          className={`px-3 py-0 relative one_line_ellipsis rounded-tiny text-read_2  ${isActivePathSubItem ? "text-text-color_1 font-semibold bg-background-color_800C" : "font-medium text-text-color_4"}`}
                                         >
                                           <span>{subItem.label}</span>
                                           {isActivePathSubItem && (
