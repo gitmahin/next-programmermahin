@@ -307,7 +307,7 @@ export const TutoSidebar = ({
                                         }}
                                       >
                                         <li
-                                          className={`px-3 py-0 relative transition-colors rounded-tiny text-read_2  ${isActivePathSubItem ? "text-text-color_1 font-semibold bg-background-color_800C" : "font-medium text-text-color_4"}`}
+                                          className={`px-3 py-0 relative one_line_ellipsis transition-colors rounded-tiny text-read_2  ${isActivePathSubItem ? "text-text-color_1 font-semibold bg-background-color_800C" : "font-medium text-text-color_4"}`}
                                         >
                                           <span>{subItem.label}</span>
                                           {isActivePathSubItem && (
