@@ -50,17 +50,11 @@ export async function generateStaticParams() {
             Object.entries(item.dirItems).forEach(([_, dir]) => {
               const typedDir = dir as TutorialDirChildNavItemType;
 
-              // Push the dir node itself
-              params.push({
-                tutoType: type,
-                slug: [section.slug, item.slug, typedDir.slug],
-              });
-
               // Push all subitems
               typedDir.items.forEach((subItem) => {
                 params.push({
                   tutoType: type,
-                  slug: [section.slug, item.slug, typedDir.slug, subItem.slug],
+                  slug: [section.slug, typedDir.slug, subItem.slug],
                 });
               });
             });

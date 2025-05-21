@@ -95,7 +95,9 @@ export const TutoSidebar = ({
           if (item.dirItems) {
             for (const [dirKey, dir] of Object.entries(item.dirItems)) {
               const typedDir = dir as TutorialDirChildNavItemType;
-              const dirPath = `${currentPath}/${typedDir.slug}`;
+              const dirPath = `${parentPath}/${typedDir.slug}`;
+              console.log("dirPath", dirPath);
+              
 
               // Push the dir-level node (e.g., "k8s-pods")
               result.push({
@@ -150,7 +152,7 @@ export const TutoSidebar = ({
   useEffect(() => {
     const lastPath = path_name.split("/").slice(-2, -1).toString();
     openDirChild(lastPath ?? "", true);
-  }, []);
+  }, [path_name]);
 
   return (
     <>
@@ -242,7 +244,7 @@ export const TutoSidebar = ({
                                   ref={(el) => {
                                     lessons.current[childValue.slug] = el;
                                   }}
-                                  href={`/${tutorialType}/${value.slug}/${item.slug}/${childValue.slug}`}
+                                  href={`/${tutorialType}/${value.slug}/${childValue.slug}`}
                                   className="group"
                                 >
                                   <li
@@ -296,7 +298,7 @@ export const TutoSidebar = ({
                                       subItem.slug;
                                     return (
                                       <Link
-                                        href={`/${tutorialType}/${value.slug}/${item.slug}/${childValue.slug}/${subItem.slug}`}
+                                        href={`/${tutorialType}/${value.slug}/${childValue.slug}/${subItem.slug}`}
                                         key={k}
                                         className="group"
                                         ref={(el) => {
