@@ -112,12 +112,12 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
                 <Link href={`/${item.slug ?? "#"}`} key={i}>
                   <li className="flex justify-start items-center gap-2 group">
                     <div
-                      className={`border rounded-tiny border-border-color_800C p-[3px] bg-gradient-to-tr from-background-color_900C to-background-color_800C ${segments.includes(item.slug) || segments.length === 0 ? "bg-gradient-to-tr from-pm_purple-950 to-pm_purple-700 text-text-zinc_white group-hover:text-text-zinc_white" : "text-text-svg_default_color group-hover:text-pm_zinc-950 dark:group-hover:text-text-zinc_white"}`}
+                      className={`border rounded-tiny border-border-color_800C p-[3px] bg-gradient-to-tr from-background-color_900C to-background-color_800C ${segments.includes(item.slug ?? "") || segments.length === 0 ? "bg-gradient-to-tr from-pm_purple-950 to-pm_purple-700 text-text-zinc_white group-hover:text-text-zinc_white" : "text-text-svg_default_color group-hover:text-pm_zinc-950 dark:group-hover:text-text-zinc_white"}`}
                     >
                       {item.icon}
                     </div>
                     <span
-                      className={`text-read_2 font-medium ${segments.includes(item.slug) || segments.length === 0 ? "text-text-color_1 " : "text-text-color_4 group-hover:text-text-color_1"}`}
+                      className={`text-read_2 font-medium ${segments.includes(item.slug ?? "") || segments.length === 0 ? "text-text-color_1 " : "text-text-color_4 group-hover:text-text-color_1"}`}
                     >
                       {item.label}
                     </span>
