@@ -55,12 +55,10 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
     icon: "/icons/kubernetes.svg",
     items: [
       {
-        label: "K8s Main Components",
-        slug: "k8s-main-components",
         dirItems: {
-          "K8s Pods": {
+          "K8s Main Components": {
             icon: "/icons/kubernetes.svg",
-            slug: "k8s-pods",
+            slug: "k8s-main-components",
             items: [
               {
                 label: "What is a Pod?",

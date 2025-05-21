@@ -85,19 +85,19 @@ export const TutoSidebar = ({
           const currentPath = `${parentPath}/${item.slug}`;
 
           // Always push the item (even if it only has dirItems)
-          result.push({
-            label: item.label,
-            slug: item.slug,
-            path: currentPath,
-          });
-
+          if (item.slug) {
+            result.push({
+              label: item.label,
+              slug: item.slug,
+              path: currentPath,
+            });
+          }
           // If there are dirItems, push them too before recursing
           if (item.dirItems) {
             for (const [dirKey, dir] of Object.entries(item.dirItems)) {
               const typedDir = dir as TutorialDirChildNavItemType;
               const dirPath = `${parentPath}/${typedDir.slug}`;
               console.log("dirPath", dirPath);
-              
 
               // Push the dir-level node (e.g., "k8s-pods")
               result.push({
@@ -212,7 +212,7 @@ export const TutoSidebar = ({
                       <Link
                         key={j}
                         ref={(el) => {
-                          lessons.current[item.slug] = el;
+                          lessons.current[item.slug ?? ""] = el;
                         }}
                         href={`/${tutorialType}/${value.slug}/${item.slug}`}
                         className="group"
@@ -302,7 +302,8 @@ export const TutoSidebar = ({
                                         key={k}
                                         className="group"
                                         ref={(el) => {
-                                          lessons.current[subItem.slug] = el;
+                                          lessons.current[subItem.slug ?? ""] =
+                                            el;
                                         }}
                                       >
                                         <li

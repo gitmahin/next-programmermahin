@@ -1,5 +1,5 @@
 export interface GeneralNavItemType {
-  label: string;
-  slug: string;
+  label?: string;
+  slug?: string;
   icon?: React.ReactElement;
 }

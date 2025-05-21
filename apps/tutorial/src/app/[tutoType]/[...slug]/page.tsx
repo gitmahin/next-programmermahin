@@ -4,7 +4,10 @@ import ProcessedContent from "./processed-content";
 import matter from "gray-matter";
 import ContentAsideNav from "./content-aside-nav";
 import TutoPagination from "./paginatation";
-import { getTutorialsByKey, TutorialDirChildNavItemType } from "@programmer/constants";
+import {
+  getTutorialsByKey,
+  TutorialDirChildNavItemType,
+} from "@programmer/constants";
 import { algolia, IndexTutorialsType } from "@programmer/shared";
 import toc from "toc";
 import { AnchorsType } from "@programmer/types";
@@ -31,7 +34,7 @@ export async function generateStaticParams() {
 
     const params: { tutoType: string; slug: string[] }[] = [];
 
-       tutorialTypes.forEach((type) => {
+    tutorialTypes.forEach((type) => {
       const tutorials = getTutorialsByKey[type as TutorialEnums];
       if (!tutorials) return;
 
@@ -40,10 +43,12 @@ export async function generateStaticParams() {
 
         section.items.forEach((item) => {
           // Push direct item
-          params.push({
-            tutoType: type,
-            slug: [section.slug, item.slug],
-          });
+          if (item.slug) {
+            params.push({
+              tutoType: type,
+              slug: [section.slug, item.slug],
+            });
+          }
 
           // If item has dirItems, handle them
           if (item.dirItems) {
@@ -52,10 +57,12 @@ export async function generateStaticParams() {
 
               // Push all subitems
               typedDir.items.forEach((subItem) => {
-                params.push({
-                  tutoType: type,
-                  slug: [section.slug, typedDir.slug, subItem.slug],
-                });
+                if (subItem.slug) {
+                  params.push({
+                    tutoType: type,
+                    slug: [section.slug, typedDir.slug, subItem.slug],
+                  });
+                }
               });
             });
           }
