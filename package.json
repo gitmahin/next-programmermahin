@@ -7,7 +7,7 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-    "clean": "rm -rf node_modules .turbo .next && echo 'Cleanup complete!'"
+    "clean": "turbo run clean && rm -rf node_modules .turbo .next && echo 'Cleanup complete!'"
   },
   "devDependencies": {
     "@programmer/types": "workspace:*",
