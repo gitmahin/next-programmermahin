@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { AnchorsType } from "@programmer/types";
 import toc from "toc";
 import slugify from "slugify";
-import { AnchorsType } from "@programmer/types";
 
 export const useAnchorize = (htmlContent: string) => {
   const [anchors, setAnchors] = useState<AnchorsType[]>([]);
