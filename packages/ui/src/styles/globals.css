@@ -370,7 +370,11 @@ pre:has(.focused):hover span {
 
 
 .heading_default {
-  line-height: 1.5rem;
+  line-height: 44px;
   font-size: 40px;
   font-weight: 600;
+}
+
+.prose :where(hr):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    border-color: var(--border-color-800C);
 }

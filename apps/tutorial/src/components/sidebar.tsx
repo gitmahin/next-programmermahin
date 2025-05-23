@@ -75,7 +75,10 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
                 />
               </div>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="bg-background-color_850C">
+            <DropdownMenuContent
+              align="end"
+              className="bg-background-color_850C"
+            >
               <DropdownMenuItem
                 className="group hover:bg-background-color_750C py-1 rounded-tiny"
                 onClick={() => setTheme("system")}
@@ -113,7 +116,7 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
                 <Link href={`/${item.slug ?? "#"}`} key={i}>
                   <li className="flex justify-start items-center gap-2 group">
                     <div
-                      className={`border rounded-tiny border-border-color_800C p-[3px] bg-gradient-to-tr from-background-color_900C to-background-color_800C ${segments.includes(item.slug ?? "") || segments.length === 0 && path_name.includes(item.slug) ? "bg-gradient-to-tr from-pm_purple-950 to-pm_purple-700 text-text-zinc_white group-hover:text-text-zinc_white" : "text-text-svg_default_color group-hover:text-pm_zinc-950 dark:group-hover:text-text-zinc_white"}`}
+                      className={`border rounded-tiny border-border-color_800C p-[3px] bg-gradient-to-tr from-background-color_900C to-background-color_800C ${segments.includes(item.slug ?? "") || (segments.length === 0 && path_name.includes(item.slug)) ? "bg-gradient-to-tr from-pm_purple-950 to-pm_purple-700 text-text-zinc_white group-hover:text-text-zinc_white" : "text-text-svg_default_color group-hover:text-pm_zinc-950 dark:group-hover:text-text-zinc_white"}`}
                     >
                       <Icon size={LUCIDE_DEFAULT_ICON_SIZE} />
                     </div>

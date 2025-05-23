@@ -1,11 +1,5 @@
-import React from 'react'
+import React from "react";
 
-export default function QuickLearnChildrenPage(){
-  return (
-    <div>
-      Quick learn children page
-    </div>
-  )
+export default function QuickLearnChildrenPage() {
+  return <div>Quick learn children page</div>;
 }
-
-
