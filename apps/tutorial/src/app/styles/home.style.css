@@ -28,6 +28,6 @@
   .heading_auto_typed{
     flex-direction: column;
     align-items: start;
-    line-height: 2rem;
+    line-height: 1.5rem;
   }
 }

@@ -28,7 +28,7 @@ const page = () => {
       </Sidebar>
 
       <div className="flex justify-center items-center p-5">
-        <div className=" max-w-[950px] w-full py-16 relative bg-gradient-to-t from-background-color_950C to-transparent">
+        <div className="default_page_width py-16 relative bg-gradient-to-t from-background-color_950C to-transparent">
           <div>
             <h1 className="flex justify-start items-center font-semibold text-[40px] gap-2 heading_auto_typed">
               <span>Learn</span>
@@ -49,7 +49,7 @@ const page = () => {
               />
             </h1>
 
-            <p className="max-w-[550px] text-[20px] font-medium text-text-color_2 mt-5 hero_paragraph">
+            <p className="max-w-[550px] text-[20px] leading-6 font-medium text-text-color_2 mt-5 hero_paragraph">
               Learn faster, build smarter, and level up your skills with
               structured content that actually makes sense.
             </p>
@@ -83,7 +83,7 @@ const page = () => {
                     />
                     <div>
                       <h3 className="text-read_2 font-medium">{item.title}</h3>
-                      <p className="mt-2 text-text-color_2 text-read_3 font-medium">
+                      <p className="mt-2 text-text-color_2  text-read_3 font-medium">
                         {item.desc}
                       </p>
                     </div>

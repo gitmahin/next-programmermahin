@@ -162,6 +162,11 @@ body {
 }
 
 @layer utilities {
+
+  .default_page_width {
+    @apply max-w-[950px] w-full
+  }
+
   .grayScaleActiveImage {
     @apply filter grayscale-0 brightness-100 contrast-100 dark:invert;
   }
@@ -361,4 +366,11 @@ pre:has(.focused):hover span {
 .prose {
   max-width: 100%;
   min-width: 10px;
+}
+
+
+.heading_default {
+  line-height: 1.5rem;
+  font-size: 40px;
+  font-weight: 600;
 }
