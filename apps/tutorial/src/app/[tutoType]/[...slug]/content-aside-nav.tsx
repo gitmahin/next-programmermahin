@@ -1,118 +1,27 @@
 "use client";
 import { RootState } from "@/redux/store";
+import { useActiveAnchor, useAnchorize } from "@programmer/hooks";
 import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
 import { AlignLeft, TableOfContents, X } from "lucide-react";
 import Link from "next/link";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import toc from "toc";
-import slugify from "slugify";
-import { AnchorsType } from "@programmer/types";
+
 
 export default function ContentAsideNav() {
-  const [anchors, setAnchors] = useState<AnchorsType[]>([]);
-  const [activeHash, setActiveHash] = useState<string>("");
-  const [openAside, setOpenAside] = useState<boolean>(false);
-  const anchorListsRef = useRef<{ [key: string]: HTMLElement | null }>({});
-  const tabRef = useRef<HTMLDivElement | null>(null);
 
+  const [openAside, setOpenAside] = useState<boolean>(false);
   const htmlContent = useSelector(
     (state: RootState) => state.processedContent.content
   );
+  const { anchors } = useAnchorize(htmlContent);
+  const { activeHash, handleHashChange, moveTabToAnchor, handleHashClick, anchorListsRef, tabRef } = useActiveAnchor(htmlContent);
 
-  const moveTabToAnchor = useCallback(
-    (btn: HTMLElement) => {
-      if (!tabRef.current) return;
-      tabRef.current.style.height = `${btn.offsetHeight}px`;
-      tabRef.current.style.top = `${btn.offsetTop}px`;
-    },
-    [activeHash]
-  );
+ 
 
-  useEffect(() => {
-    if (htmlContent) {
-      const { headers } = toc.anchorize(htmlContent, []);
-      const parsedAnchors = headers.map((header: AnchorsType) => ({
-        ...header,
-        anchor: slugify(header.text || "", {
-          replacement: "-",
-          lower: true,
-          strict: true,
-          trim: true,
-        }),
-      }));
-      setAnchors(parsedAnchors);
-    } else {
-      setAnchors([]);
-    }
-  }, [htmlContent]);
 
-  const handleHashChange = () => {
-    setActiveHash(window.location.hash);
-  };
 
-  useEffect(() => {
-    // Initialize the active hash when the component mounts
-    handleHashChange();
 
-    // Listen for hash change events
-    window.addEventListener("hashchange", handleHashChange);
-
-    return () => {
-      // Cleanup the event listener on unmount
-      window.removeEventListener("hashchange", handleHashChange);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!htmlContent) return;
-
-    const observerTimeout = setTimeout(() => {
-      const headings = document.querySelectorAll(
-        "h2[id], h3[id], h4[id], h5[id], h6[id]"
-      );
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const visibleHeadings = entries.filter(
-            (entry) => entry.isIntersecting
-          );
-          if (visibleHeadings.length > 0) {
-            const sorted = visibleHeadings.sort(
-              (a, b) =>
-                a.target.getBoundingClientRect().top -
-                b.target.getBoundingClientRect().top
-            );
-            const activeId = sorted?.[0]?.target.id;
-            if (activeId) {
-              setActiveHash(`#${activeId}`);
-              if (anchorListsRef.current) {
-                moveTabToAnchor(
-                  anchorListsRef.current[activeId] as HTMLElement
-                );
-              }
-            }
-          }
-        },
-        {
-          rootMargin: "0px 0px -90% 0px", // Triggers earlier when scrolling down
-          threshold: 0.2,
-        }
-      );
-
-      headings.forEach((heading) => observer.observe(heading));
-
-      return () => {
-        headings.forEach((heading) => observer.unobserve(heading));
-      };
-    }, 100); // slight delay to ensure DOM is painted
-
-    return () => clearTimeout(observerTimeout);
-  }, [htmlContent]); // Re-run when htmlContent changes
-
-  const handleHashClick = (hash: string) => {
-    setActiveHash(hash);
-  };
 
   return (
     <>
