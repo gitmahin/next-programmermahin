@@ -97,7 +97,6 @@ export const TutoSidebar = ({
             for (const [dirKey, dir] of Object.entries(item.dirItems)) {
               const typedDir = dir as TutorialDirChildNavItemType;
               const dirPath = `${parentPath}/${typedDir.slug}`;
-              console.log("dirPath", dirPath);
 
               // Push the dir-level node (e.g., "k8s-pods")
               result.push({
@@ -123,7 +122,6 @@ export const TutoSidebar = ({
     if (!tutoData) return;
 
     const flatDocList = flattenDocs(tutoData);
-    console.log("flatDocList", flatDocList);
     const currentIndex = flatDocList.findIndex(
       (navItem) => decodeURIComponent(path_name) === navItem.path
     );
@@ -208,7 +206,7 @@ export const TutoSidebar = ({
                   const isActivePath =
                     segments.slice(-1).toString() === item.slug;
                   return (
-                    <>
+                    <React.Fragment key={j}>
                       <Link
                         key={j}
                         ref={(el) => {
@@ -324,7 +322,7 @@ export const TutoSidebar = ({
                             );
                           }
                         )}
-                    </>
+                    </React.Fragment>
                   );
                 })}
               </div>
