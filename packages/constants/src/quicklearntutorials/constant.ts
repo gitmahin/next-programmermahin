@@ -2,12 +2,12 @@ import { GeneralNavItemType } from "@programmer/types";
 
 export const QUICKLEARN_TUTORIALS: GeneralNavItemType[] = [
     {
-        label: "HTML",
+        label: "Html",
         slug: "html",
         icon: "/icons/html.svg"
     },
     {
-        label: "CSS",
+        label: "Css",
         slug: "css",
         icon: "/icons/css.svg"
     }

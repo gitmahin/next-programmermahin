@@ -3,9 +3,6 @@ import tutoChaptersReducer, {
   tutoChaptersSliceName,
 } from "./tutorials/tutoChaptersSlice";
 import tutoTabReducer, { tutoTabSliceName } from "./tutorials/tutoTabSlice";
-import processedContentRedcuer, {
-  processedContentSliceName,
-} from "./tutorials/processedContentSlice";
 import tutoPaginateReducer, {
   tutoPaginateSliceName,
 } from "./tutorials/tutoPaginateSlice";
@@ -18,14 +15,16 @@ import {
   searchMetaInfoReducer,
   searchMetaInfoSliceName,
 } from "@programmer/shared";
-// ...
+import quickLearnNavItemReducer, {
+  quickLearnNavItemsSliceName,
+} from "./quicklearn/quickLearnNavItemsSlice";
 
 export const store = configureStore({
   reducer: {
     [tutoChaptersSliceName]: tutoChaptersReducer,
     [tutoTabSliceName]: tutoTabReducer,
-    [processedContentSliceName]: processedContentRedcuer,
     [tutoPaginateSliceName]: tutoPaginateReducer,
+    [quickLearnNavItemsSliceName]: quickLearnNavItemReducer,
     [mobSidebarOpenSliceName]: mobSidebarOpenReducer,
     [searchMetaInfoSliceName]: searchMetaInfoReducer,
     [searchMobInfoOpenSliceName]: searchMobInfoOpenReducer,
