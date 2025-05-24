@@ -27,7 +27,7 @@ export default function QuickLearnHomePage() {
             return (
               <div
                 key={i}
-                className="w-full h-[250px] bg-background-color_925C rounded group relative overflow-hidden"
+                className="w-full h-[250px] bg-background-color_925C rounded group relative overflow-hidden border border-background-color_900C"
               >
                 
                   <div className="absolute inset-0 z-10 h-full w-full bg-transparent bg-[linear-gradient(to_right,var(--border-color-800C),transparent_1px),linear-gradient(to_bottom,var(--border-color-800C),transparent_1px)] bg-[size:24px_24px]"></div>
