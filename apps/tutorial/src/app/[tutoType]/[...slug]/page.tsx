@@ -7,7 +7,12 @@ import {
   getTutorialsByKey,
   TutorialDirChildNavItemType,
 } from "@programmer/constants";
-import { algolia, extractAnchors, IndexTutorialsType, TocItem } from "@programmer/shared";
+import {
+  algolia,
+  extractAnchors,
+  IndexTutorialsType,
+  TocItem,
+} from "@programmer/shared";
 import { TutorialEnums } from "@programmer/constants";
 import { Metadata } from "next";
 import { compileMDX } from "next-mdx-remote/rsc";
@@ -20,7 +25,7 @@ import {
   transformerNotationFocus,
 } from "@shikijs/transformers";
 import { transformerCopyButton } from "@rehype-pretty/transformers";
-import rehypeSlug from 'rehype-slug'
+import rehypeSlug from "rehype-slug";
 
 interface ContentPagePropsType {
   params: Promise<{ tutoType: string; slug: string[] }>;
@@ -88,7 +93,7 @@ export async function generateStaticParams() {
         params.map(async (param): Promise<IndexTutorialsType> => {
           const joinedSlug = param.slug.join("/").toString();
           // getting the absolute path
-          const filePath = `src/content/${param.tutoType}/${joinedSlug}.mdx`;
+          const filePath = `src/content/tutorials/${param.tutoType}/${joinedSlug}.mdx`;
 
           let getData = "";
 
@@ -99,7 +104,7 @@ export async function generateStaticParams() {
           }
 
           const { data, content } = matter(getData);
-          const parsedAnchors = extractAnchors(content)
+          const parsedAnchors = extractAnchors(content);
 
           return {
             objectID: `${param.tutoType}/${joinedSlug}`, // <-- Unique identifier for Algolia
@@ -132,7 +137,7 @@ export async function generateMetadata({
   params,
 }: ContentPagePropsType): Promise<Metadata> {
   const { tutoType, slug } = await params;
-  const filePath = `src/content/${tutoType}/${slug.join("/")}.mdx`;
+  const filePath = `src/content/tutorials/${tutoType}/${slug.join("/")}.mdx`;
 
   try {
     const getData = fs.readFileSync(filePath, "utf-8");
@@ -154,7 +159,7 @@ export async function generateMetadata({
 export default async function ContentPage({ params }: ContentPagePropsType) {
   const { tutoType, slug } = await params;
   try {
-    const filePath = `src/content/${tutoType}/${slug.join("/")}.mdx`;
+    const filePath = `src/content/tutorials/${tutoType}/${slug.join("/")}.mdx`;
     const getData = fs.readFileSync(filePath, "utf-8");
     const { content } = matter(getData);
 
@@ -170,17 +175,16 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
               rehypePrettyCode,
               {
                 theme: "material-theme-ocean",
-                output: "mdx",
                 transformers: [
                   transformerNotationDiff(),
                   transformerNotationHighlight(),
                   transformerNotationErrorLevel(),
                   transformerNotationWordHighlight(),
                   transformerNotationFocus(),
-                  transformerCopyButton({
-                    visibility: "always",
-                    feedbackDuration: 3_000,
-                  }),
+                  // transformerCopyButton({
+                  //   visibility: "always",
+                  //   feedbackDuration: 3_000,
+                  // }),
                 ],
               },
             ],
@@ -199,9 +203,9 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
       <>
         <div className="flex justify-center items-start gap-5">
           <div className="max-w-[750px] w-full p-5 pt-16">
-            <article className="prose prose-gray dark:prose-invert main-article">
-              {MdxComponent}
-            </article>
+              <article className="prose prose-gray dark:prose-invert main-article">
+                {MdxComponent}
+              </article>
             <TutoPagination />
           </div>
 

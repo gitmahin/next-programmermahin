@@ -1,15 +1,32 @@
 "use client";
-import { useAppSelector } from "@/hooks/redux.hook";
-import React from "react";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux.hook";
+import React, { useEffect } from "react";
 
-import { quickLearnNavItems as quickLearnNavItemsSelector } from "@/redux/quicklearn/quickLearnNavItemsSlice";
+import {
+  quickLearnNavItems as quickLearnNavItemsSelector,
+  setQuickLearnNavitems,
+} from "@/redux/quicklearn/quickLearnNavItemsSlice";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { QUICKLEARN_TUTORIALS } from "@programmer/constants";
 
 export const QuickLearnNavList = () => {
   const quickLearnNavItems = useAppSelector(quickLearnNavItemsSelector);
   const path_name = usePathname();
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (!setQuickLearnNavitems) return;
+    if(path_name.endsWith("/quick-learn")) {
+      dispatch(setQuickLearnNavitems([]));
+    }else{
+      dispatch(setQuickLearnNavitems(QUICKLEARN_TUTORIALS));
+
+    }
+  }, [path_name]);
+
   return (
     <>
       {quickLearnNavItems.length > 0 && (
@@ -28,7 +45,7 @@ export const QuickLearnNavList = () => {
                       }`}
                     >
                       <Image
-                        src={`${item.icon ?? ""}`}
+                        src={`/icons/${item.icon ?? ""}`}
                         width={100}
                         height={100}
                         alt="icon"

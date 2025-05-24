@@ -1,24 +1,32 @@
 import { GeneralNavItemType } from "@programmer/types";
 
-export const QUICKLEARN_TUTORIALS: GeneralNavItemType[] = [
-    {
-        label: "Html",
-        slug: "html",
-        icon: "/icons/html.svg"
-    },
-    {
-        label: "Css",
-        slug: "css",
-        icon: "/icons/css.svg"
-    },
-    {
-        label: "Docker",
-        slug: "docker",
-        icon: "/icons/docker.svg"
-    },
-    {
-        label: "Nginx",
-        slug: "nginx",
-        icon: "/icons/nginx.svg"
-    }
-]
+interface QuickLearnNavItemType extends GeneralNavItemType {
+  color?: string;
+}
+
+export const QUICKLEARN_TUTORIALS: QuickLearnNavItemType[] = [
+  {
+    label: "Html",
+    slug: "html",
+    icon: "html.svg",
+    color: "html_grid",
+  },
+  {
+    label: "Css",
+    slug: "css",
+    icon: "css.svg",
+    color: "css_grid",
+  },
+  {
+    label: "Docker",
+    slug: "docker",
+    icon: "docker.svg",
+    color: "docker_grid",
+  },
+  {
+    label: "Nginx",
+    slug: "nginx",
+    icon: "nginx.svg",
+    color: "nginx_grid",
+  },
+];

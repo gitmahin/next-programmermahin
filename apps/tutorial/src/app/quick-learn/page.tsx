@@ -1,18 +1,11 @@
-"use client";
-import { useAppDispatch } from "@/hooks/redux.hook";
-import { setQuickLearnNavitems } from "@/redux/quicklearn/quickLearnNavItemsSlice";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import React, { useEffect } from "react";
+import React from "react";
+import Link from "next/link";
+import { QUICKLEARN_TUTORIALS } from "@programmer/constants";
+import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
+import { ChevronRight } from "lucide-react";
 
-export default function QuickLearnHomePage() {
-  const path_name = usePathname();
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    if (!setQuickLearnNavitems) return;
-    dispatch(setQuickLearnNavitems([]));
-  }, [path_name]);
+export default async function QuickLearnHomePage() {
   return (
     <div className="flex justify-center items-center w-full p-5  ">
       <div className="default_page_width my-16">
@@ -22,34 +15,46 @@ export default function QuickLearnHomePage() {
           grasp complex topics quickly. Perfect for curious minds and ambitious
           learners.
         </p>
-        <div className="mt-24 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))]  gap-3">
-          {Array.from({ length: 10 }).map((_, i) => {
+        <div className="mt-24 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] :grid-cols-[repeat(auto-fill,minmax(200px,1fr))]  gap-3">
+          {QUICKLEARN_TUTORIALS.map((blog, i) => {
             return (
-              <div
-                key={i}
-                className="w-full h-[250px] bg-background-color_925C rounded group relative overflow-hidden border border-background-color_900C"
-              >
-                
-                  <div className="absolute inset-0 z-10 h-full w-full bg-transparent bg-[linear-gradient(to_right,var(--border-color-800C),transparent_1px),linear-gradient(to_bottom,var(--border-color-800C),transparent_1px)] bg-[size:24px_24px]"></div>
-                  <div className="absolute w-full h-full bg-gradient-to-br from-transparent via-background-color_900C to-background-color_925C z-10"></div>
+              <Link key={i} href={`/quick-learn/${blog.slug}`}>
+                <div className="w-full h-[200px] bg-background-color_925C flex flex-col justify-between rounded-[15px] group relative overflow-hidden border border-background-color_850C">
+                  <div
+                    className={`absolute inset-0 z-10 h-full w-full bg-transparent bg-[linear-gradient(to_right,var(--background-color-800C),transparent_1px),linear-gradient(to_bottom,var(--background-color-800C),transparent_1px)] bg-[size:24px_24px]`}
+                  ></div>
+                  <div className="absolute w-full h-full bg-gradient-to-br from-transparent via-background-color_900C to-background-color_925C z-[11]"></div>
+                  <div
+                    className={`${blog.color} w-[60px] h-[60px] rounded-full absolute top-0 left-0 blur-[80px] z-10`}
+                  ></div>
 
-              
-                <div className="px-5 pt-5 relative z-20">
-                  <div className="w-[50px] h-[50px] rounded bg-background-color_900C shadow-md flex justify-center items-center">
-                    <Image
-                      src={"/color/html.svg"}
-                      width={100}
-                      height={100}
-                      alt="icon"
-                      className={`w-[30px] h-[30px] group-hover:quick_learn_icon transition-all duration-100`}
-                    />
+                  <div className="px-5 pt-5 relative  z-20 flex-shrink-0">
+                    <div className="w-[50px] h-[50px] rounded bg-background-color_850C shadow-md flex justify-center items-center">
+                      <Image
+                        src={`/color/${blog.icon}`}
+                        width={100}
+                        height={100}
+                        alt="icon"
+                        className={`w-[30px] h-[30px] group-hover:quick_learn_icon transition-all duration-100`}
+                      />
+                    </div>
+                  </div>
+                  <div className=" px-5  relative z-20 h-fit flex-shrink-0 pb-5">
+                    <h2 className="text-[25px]  font-medium two_line_ellipsis text-text-color_1">
+                      {blog.label}
+                    </h2>
+                    <div className="flex justify-between items-center mt-1">
+                      <p className="text-read_1 text-text-color_2 group-hover:text-text-color_1 transition-colors">
+                        Learn
+                      </p>
+                      <ChevronRight
+                        size={LUCIDE_DEFAULT_ICON_SIZE}
+                        className="text-text-svg_default_color group-hover:text-text-color_1 transition-colors"
+                      />
+                    </div>
                   </div>
                 </div>
-                <div className="mt-8 px-5  relative z-20">
-                  <h2 className="text-[18px]  font-medium two_line_ellipsis text-text-color_1">Learn HTML Basic to Advance</h2>
-                  <p className="three_line_ellipsis text-read_2 mt-2 text-text-color_2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, eligendi. Atque molestiae vel quis fuga, tenetur dicta ipsa tempora maiores vitae minus, voluptates temporibus ex iste facere. Aperiam, id voluptatibus!</p>
-                </div>
-              </div>
+              </Link>
             );
           })}
         </div>
