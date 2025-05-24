@@ -1,6 +1,5 @@
 import React from "react";
 import fs from "fs";
-import ProcessedContent from "./processed-content";
 import matter from "gray-matter";
 import ContentAsideNav from "./content-aside-nav";
 import TutoPagination from "./paginatation";
@@ -8,14 +7,20 @@ import {
   getTutorialsByKey,
   TutorialDirChildNavItemType,
 } from "@programmer/constants";
-import { algolia, IndexTutorialsType } from "@programmer/shared";
-import toc from "toc";
-import { AnchorsType } from "@programmer/types";
-import slugify from "slugify";
-import { remark } from "remark";
-import html from "remark-html";
+import { algolia, extractAnchors, IndexTutorialsType, TocItem } from "@programmer/shared";
 import { TutorialEnums } from "@programmer/constants";
 import { Metadata } from "next";
+import { compileMDX } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
+import {
+  transformerNotationHighlight,
+  transformerNotationDiff,
+  transformerNotationErrorLevel,
+  transformerNotationWordHighlight,
+  transformerNotationFocus,
+} from "@shikijs/transformers";
+import { transformerCopyButton } from "@rehype-pretty/transformers";
+import rehypeSlug from 'rehype-slug'
 
 interface ContentPagePropsType {
   params: Promise<{ tutoType: string; slug: string[] }>;
@@ -94,22 +99,7 @@ export async function generateStaticParams() {
           }
 
           const { data, content } = matter(getData);
-
-          // Convert MDX/Markdown to HTML
-          const processedContent = await remark().use(html).process(content);
-          // convert to string
-          const contentHtml = processedContent.toString();
-          // create anchor for headings with id
-          const { headers } = toc.anchorize(contentHtml, []);
-          const parsedAnchors = headers.map((header: AnchorsType) => ({
-            ...header,
-            anchor: slugify(header.text || "", {
-              replacement: "-",
-              lower: true,
-              strict: true,
-              trim: true,
-            }),
-          }));
+          const parsedAnchors = extractAnchors(content)
 
           return {
             objectID: `${param.tutoType}/${joinedSlug}`, // <-- Unique identifier for Algolia
@@ -117,9 +107,9 @@ export async function generateStaticParams() {
             desc: data?.desc,
             type: "tutorial",
             slug: `${param.tutoType}/${joinedSlug}`,
-            onthispage: parsedAnchors.map((item: AnchorsType) => ({
-              label: item.text,
-              slug: item.anchor,
+            onthispage: parsedAnchors.map((item: TocItem) => ({
+              label: item.content,
+              slug: item.slug,
             })) || [{}],
           };
         })
@@ -163,27 +153,59 @@ export async function generateMetadata({
 
 export default async function ContentPage({ params }: ContentPagePropsType) {
   const { tutoType, slug } = await params;
-
-  if (process.env.NODE_ENV === "development") {
-    generateStaticParams().then((params) => {
-      console.log(params);
-    });
-  }
-
   try {
     const filePath = `src/content/${tutoType}/${slug.join("/")}.mdx`;
     const getData = fs.readFileSync(filePath, "utf-8");
-    const { content: mdxContent } = matter(getData);
+    const { content } = matter(getData);
+
+    // TODO: Modularize this logic and move it to a shared utility folder for reusability across the project.
+
+    const { content: MdxComponent } = await compileMDX({
+      source: content,
+      options: {
+        mdxOptions: {
+          rehypePlugins: [
+            rehypeSlug,
+            [
+              rehypePrettyCode,
+              {
+                theme: "material-theme-ocean",
+                output: "mdx",
+                transformers: [
+                  transformerNotationDiff(),
+                  transformerNotationHighlight(),
+                  transformerNotationErrorLevel(),
+                  transformerNotationWordHighlight(),
+                  transformerNotationFocus(),
+                  transformerCopyButton({
+                    visibility: "always",
+                    feedbackDuration: 3_000,
+                  }),
+                ],
+              },
+            ],
+          ],
+        },
+      },
+    });
+
+    if (process.env.NODE_ENV === "development") {
+      generateStaticParams().then((params) => {
+        console.log(params);
+      });
+    }
 
     return (
       <>
         <div className="flex justify-center items-start gap-5">
           <div className="max-w-[750px] w-full p-5 pt-16">
-            <ProcessedContent data={mdxContent} />
+            <article className="prose prose-gray dark:prose-invert main-article">
+              {MdxComponent}
+            </article>
             <TutoPagination />
           </div>
 
-          <ContentAsideNav />
+          <ContentAsideNav mdxContent={content} />
         </div>
       </>
     );

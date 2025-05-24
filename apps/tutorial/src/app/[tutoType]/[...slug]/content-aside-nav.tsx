@@ -5,12 +5,10 @@ import { AlignLeft, TableOfContents, X } from "lucide-react";
 import Link from "next/link";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import toc from "toc";
-import slugify from "slugify";
-import { AnchorsType } from "@programmer/types";
+import { extractAnchors } from "@programmer/shared";
 
-export default function ContentAsideNav() {
-  const [anchors, setAnchors] = useState<AnchorsType[]>([]);
+export default function ContentAsideNav({mdxContent}: {mdxContent: string}) {
+  const anchors = extractAnchors(mdxContent);
   const [activeHash, setActiveHash] = useState<string>("");
   const [openAside, setOpenAside] = useState<boolean>(false);
   const anchorListsRef = useRef<{ [key: string]: HTMLElement | null }>({});
@@ -28,24 +26,6 @@ export default function ContentAsideNav() {
     },
     [activeHash]
   );
-
-  useEffect(() => {
-    if (htmlContent) {
-      const { headers } = toc.anchorize(htmlContent, []);
-      const parsedAnchors = headers.map((header: AnchorsType) => ({
-        ...header,
-        anchor: slugify(header.text || "", {
-          replacement: "-",
-          lower: true,
-          strict: true,
-          trim: true,
-        }),
-      }));
-      setAnchors(parsedAnchors);
-    } else {
-      setAnchors([]);
-    }
-  }, [htmlContent]);
 
   const handleHashChange = () => {
     setActiveHash(window.location.hash);
@@ -145,21 +125,21 @@ export default function ContentAsideNav() {
           <ul className="w-full leading-7 pr-5 relative">
             {anchors.map((item, i: number) => {
               return (
-                <Link href={`#${item.anchor}`} key={i} className="">
+                <Link href={`#${item.slug}`} key={i} className="">
                   <li
                     ref={(el) => {
-                      anchorListsRef.current[item.anchor] = el;
+                      anchorListsRef.current[item.slug] = el;
                     }}
                     onClick={() => {
-                      handleHashClick(`#${item.anchor}`);
+                      handleHashClick(`#${item.slug}`);
                       moveTabToAnchor(
-                        anchorListsRef.current[item.anchor] as HTMLElement
+                        anchorListsRef.current[item.slug] as HTMLElement
                       );
                     }}
-                    className={`one_line_ellipsis px-2 text-read_2 ${activeHash === `#${item.anchor}` ? "text-pm_purple-700 font-medium" : "text-text-color_2"}`}
+                    className={`one_line_ellipsis px-2 text-read_2 ${activeHash === `#${item.slug}` ? "text-pm_purple-700 font-medium" : "text-text-color_2"}`}
                     style={{ marginLeft: `${(item.level - 2) * 10}px` }}
                   >
-                    {item.text}
+                    {item.content}
                   </li>
                 </Link>
               );
