@@ -97,7 +97,6 @@ export const TutoSidebar = ({
             for (const [dirKey, dir] of Object.entries(item.dirItems)) {
               const typedDir = dir as TutorialDirChildNavItemType;
               const dirPath = `${parentPath}/${typedDir.slug}`;
-              console.log("dirPath", dirPath);
 
               // Push the dir-level node (e.g., "k8s-pods")
               result.push({
@@ -123,7 +122,6 @@ export const TutoSidebar = ({
     if (!tutoData) return;
 
     const flatDocList = flattenDocs(tutoData);
-    console.log("flatDocList", flatDocList);
     const currentIndex = flatDocList.findIndex(
       (navItem) => decodeURIComponent(path_name) === navItem.path
     );
