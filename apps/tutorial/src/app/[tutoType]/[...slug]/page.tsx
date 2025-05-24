@@ -1,6 +1,5 @@
 import React from "react";
 import fs from "fs";
-// import ProcessedContent from "./processed-content";
 import matter from "gray-matter";
 import ContentAsideNav from "./content-aside-nav";
 import TutoPagination from "./paginatation";
@@ -16,6 +15,16 @@ import { remark } from "remark";
 import html from "remark-html";
 import { TutorialEnums } from "@programmer/constants";
 import { Metadata } from "next";
+import { compileMDX } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
+import {
+  transformerNotationHighlight,
+  transformerNotationDiff,
+  transformerNotationErrorLevel,
+  transformerNotationWordHighlight,
+  transformerNotationFocus
+} from "@shikijs/transformers";
+import { transformerCopyButton } from "@rehype-pretty/transformers";
 
 interface ContentPagePropsType {
   params: Promise<{ tutoType: string; slug: string[] }>;
@@ -163,22 +172,51 @@ export async function generateMetadata({
 
 export default async function ContentPage({ params }: ContentPagePropsType) {
   const { tutoType, slug } = await params;
-  const { default: Post } = await import(`@/content/${tutoType}/${slug.join("/")}.mdx`)
+  const filePath = `src/content/${tutoType}/${slug.join("/")}.mdx`;
+  const getData = fs.readFileSync(filePath, "utf-8");
+  const { content } = matter(getData);
 
-  // if (process.env.NODE_ENV === "development") {
-  //   generateStaticParams().then((params) => {
-  //     console.log(params);
-  //   });
-  // }
+  const { content: MdxComponent } = await compileMDX({
+    source: content,
+    options: {
+      mdxOptions: {
+        rehypePlugins: [
+            [
+              rehypePrettyCode,
+              {
+                theme: "material-theme-ocean",
+                output: "mdx",
+                transformers: [
+                  transformerNotationDiff(),
+                  transformerNotationHighlight(),
+                  transformerNotationErrorLevel(),
+                  transformerNotationWordHighlight(),
+                  transformerNotationFocus(),
+                  transformerCopyButton({
+                    visibility: "always",
+                    feedbackDuration: 3_000,
+                  }),
+                ],
+              },
+            ],
+          ],
+      }
+    }
+  });
+
+  if (process.env.NODE_ENV === "development") {
+    generateStaticParams().then((params) => {
+      console.log(params);
+    });
+  }
 
   try {
-
     return (
       <>
         <div className="flex justify-center items-start gap-5">
           <div className="max-w-[750px] w-full p-5 pt-16">
             <article className="prose prose-gray dark:prose-invert main-article">
-            <Post />
+              {MdxComponent}
             </article>
             <TutoPagination />
           </div>
