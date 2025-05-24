@@ -1,6 +1,6 @@
 import React from "react";
 import fs from "fs";
-import ProcessedContent from "./processed-content";
+// import ProcessedContent from "./processed-content";
 import matter from "gray-matter";
 import ContentAsideNav from "./content-aside-nav";
 import TutoPagination from "./paginatation";
@@ -163,23 +163,23 @@ export async function generateMetadata({
 
 export default async function ContentPage({ params }: ContentPagePropsType) {
   const { tutoType, slug } = await params;
+  const { default: Post } = await import(`@/content/${tutoType}/${slug.join("/")}.mdx`)
 
-  if (process.env.NODE_ENV === "development") {
-    generateStaticParams().then((params) => {
-      console.log(params);
-    });
-  }
+  // if (process.env.NODE_ENV === "development") {
+  //   generateStaticParams().then((params) => {
+  //     console.log(params);
+  //   });
+  // }
 
   try {
-    const filePath = `src/content/${tutoType}/${slug.join("/")}.mdx`;
-    const getData = fs.readFileSync(filePath, "utf-8");
-    const { content: mdxContent } = matter(getData);
 
     return (
       <>
         <div className="flex justify-center items-start gap-5">
           <div className="max-w-[750px] w-full p-5 pt-16">
-            <ProcessedContent data={mdxContent} />
+            <article className="prose prose-gray dark:prose-invert main-article">
+            <Post />
+            </article>
             <TutoPagination />
           </div>
 

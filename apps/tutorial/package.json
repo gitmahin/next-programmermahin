@@ -11,16 +11,31 @@
     "clean": "rm -rf node_modules && echo 'Cleanup complete!'"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@next/mdx": "^15.1.8",
     "@programmer/hooks": "workspace:*",
     "@programmer/shared": "workspace:*",
     "@programmer/ui": "workspace:*",
+    "@rehype-pretty/transformers": "^0.13.2",
     "next": "^15.2.4",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "rehype-document": "^7.0.3",
+    "rehype-format": "^5.0.1",
+    "rehype-pretty-code": "^0.14.0",
+    "rehype-raw": "^7.0.0",
+    "rehype-slug": "^6.0.0",
+    "rehype-stringify": "^10.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.1",
+    "unified": "^11.0.5"
   },
   "devDependencies": {
     "@programmer/eslint-config": "workspace:*",
     "@programmer/typescript-config": "workspace:*",
+    "@types/mdx": "^2.0.13",
     "@types/node": "^22.14.0",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.1",
