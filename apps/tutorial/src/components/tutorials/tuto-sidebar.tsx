@@ -88,7 +88,6 @@ export const TutoSidebar = ({
           if (item.slug) {
             result.push({
               label: item.label,
-              slug: item.slug,
               path: currentPath,
             });
           }
@@ -101,7 +100,6 @@ export const TutoSidebar = ({
               // Push the dir-level node (e.g., "k8s-pods")
               result.push({
                 label: dirKey, // or use a separate "label" if it exists
-                slug: typedDir.slug,
                 path: dirPath,
               });
 

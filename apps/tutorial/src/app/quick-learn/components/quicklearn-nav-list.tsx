@@ -10,6 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { QUICKLEARN_TUTORIALS } from "@programmer/constants";
+import { setPagination } from "@/redux/tutorials/tutoPaginateSlice";
 
 export const QuickLearnNavList = () => {
   const quickLearnNavItems = useAppSelector(quickLearnNavItemsSelector);
@@ -18,13 +19,20 @@ export const QuickLearnNavList = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (!setQuickLearnNavitems) return;
-    if(path_name.endsWith("/quick-learn")) {
+    if (!setQuickLearnNavitems || !setPagination) return;
+    if (path_name.endsWith("/quick-learn")) {
       dispatch(setQuickLearnNavitems([]));
-    }else{
+    } else {
       dispatch(setQuickLearnNavitems(QUICKLEARN_TUTORIALS));
-
     }
+
+    const currentIndex = QUICKLEARN_TUTORIALS.findIndex(
+      (navItem) => decodeURIComponent(path_name) === navItem.slug
+    );
+
+    dispatch(
+      setPagination({ currentIndex, flatTutoList: QUICKLEARN_TUTORIALS })
+    );
   }, [path_name]);
 
   return (

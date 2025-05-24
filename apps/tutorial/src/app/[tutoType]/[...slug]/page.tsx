@@ -15,17 +15,8 @@ import {
 } from "@programmer/shared";
 import { TutorialEnums } from "@programmer/constants";
 import { Metadata } from "next";
-import { compileMDX } from "next-mdx-remote/rsc";
-import rehypePrettyCode from "rehype-pretty-code";
-import {
-  transformerNotationHighlight,
-  transformerNotationDiff,
-  transformerNotationErrorLevel,
-  transformerNotationWordHighlight,
-  transformerNotationFocus,
-} from "@shikijs/transformers";
-import { transformerCopyButton } from "@rehype-pretty/transformers";
-import rehypeSlug from "rehype-slug";
+import { mdxToHtml } from "@/lib/mdxToHtml";
+
 
 interface ContentPagePropsType {
   params: Promise<{ tutoType: string; slug: string[] }>;
@@ -162,36 +153,8 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
     const filePath = `src/content/tutorials/${tutoType}/${slug.join("/")}.mdx`;
     const getData = fs.readFileSync(filePath, "utf-8");
     const { content } = matter(getData);
-
-    // TODO: Modularize this logic and move it to a shared utility folder for reusability across the project.
-
-    const { content: MdxComponent } = await compileMDX({
-      source: content,
-      options: {
-        mdxOptions: {
-          rehypePlugins: [
-            rehypeSlug,
-            [
-              rehypePrettyCode,
-              {
-                theme: "material-theme-ocean",
-                transformers: [
-                  transformerNotationDiff(),
-                  transformerNotationHighlight(),
-                  transformerNotationErrorLevel(),
-                  transformerNotationWordHighlight(),
-                  transformerNotationFocus(),
-                  // transformerCopyButton({
-                  //   visibility: "always",
-                  //   feedbackDuration: 3_000,
-                  // }),
-                ],
-              },
-            ],
-          ],
-        },
-      },
-    });
+    
+    const MdxComponent = mdxToHtml(content)
 
     if (process.env.NODE_ENV === "development") {
       generateStaticParams().then((params) => {
