@@ -11,8 +11,10 @@ const layout = ({ children }: QuickLearnLayoutProps) => {
   return (
     <>
       <Sidebar>
-        <QuickLearnNavList />
-        <MainNavs />
+        <div>
+          <QuickLearnNavList />
+          <MainNavs />
+        </div>
       </Sidebar>
       <div>{children}</div>
     </>

@@ -6,6 +6,7 @@ import { JetBrains_Mono } from "next/font/google";
 import ReduxProvider from "@/components/redux-provider";
 import "./styles/tutorial.style.css";
 import "./styles/home.style.css";
+import "./styles/quicklearn.style.css";
 import { Search } from "@programmer/shared";
 import MobileHeader from "@/components/header";
 

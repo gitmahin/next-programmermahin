@@ -51,7 +51,7 @@ export default function MainNavs() {
               <li
                 key={i}
                 onClick={() => handleTutorialListClick(item.key, item.label)}
-                className="flex group justify-start items-center gap-3 px-3 py-2  hover:bg-background-color_800C rounded-tiny transition-colors duration-150"
+                className="flex group justify-start items-center gap-3 px-3 py-1  hover:bg-background-color_800C rounded-tiny transition-colors duration-150"
               >
                 <div>
                   <Image
