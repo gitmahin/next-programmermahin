@@ -208,7 +208,7 @@ export const TutoSidebar = ({
                   const isActivePath =
                     segments.slice(-1).toString() === item.slug;
                   return (
-                    <>
+                    <React.Fragment key={j}>
                       <Link
                         key={j}
                         ref={(el) => {
@@ -324,7 +324,7 @@ export const TutoSidebar = ({
                             );
                           }
                         )}
-                    </>
+                    </React.Fragment>
                   );
                 })}
               </div>
