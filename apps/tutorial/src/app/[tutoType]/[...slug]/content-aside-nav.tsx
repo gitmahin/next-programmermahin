@@ -14,10 +14,6 @@ export default function ContentAsideNav({mdxContent}: {mdxContent: string}) {
   const anchorListsRef = useRef<{ [key: string]: HTMLElement | null }>({});
   const tabRef = useRef<HTMLDivElement | null>(null);
 
-  const htmlContent = useSelector(
-    (state: RootState) => state.processedContent.content
-  );
-
   const moveTabToAnchor = useCallback(
     (btn: HTMLElement) => {
       if (!tabRef.current) return;
@@ -45,7 +41,7 @@ export default function ContentAsideNav({mdxContent}: {mdxContent: string}) {
   }, []);
 
   useEffect(() => {
-    if (!htmlContent) return;
+    if (!mdxContent) return;
 
     const observerTimeout = setTimeout(() => {
       const headings = document.querySelectorAll(
@@ -88,7 +84,7 @@ export default function ContentAsideNav({mdxContent}: {mdxContent: string}) {
     }, 100); // slight delay to ensure DOM is painted
 
     return () => clearTimeout(observerTimeout);
-  }, [htmlContent]); // Re-run when htmlContent changes
+  }, [mdxContent]); // Re-run when htmlContent changes
 
   const handleHashClick = (hash: string) => {
     setActiveHash(hash);
