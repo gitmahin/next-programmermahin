@@ -3,162 +3,238 @@ title: "Html"
 meta_desc: "Explore the fundamentals of HTML in this quick overview. Discover essential concepts and practical tips to kickstart your journey into web development with ease!"
 ---
 
-# Learn HTML
+# HTML Tutorial (Basic to Advanced)
 
 ---
 
-## What is JSX?
+## Introduction to HTML
+HTML (HyperText Markup Language) is the standard language for creating web pages.
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <h1>Hello, World!</h1>
+    <p>This is my first webpage.</p>
+  </body>
+</html>
+```
+---
 
-**JSX** stands for **JavaScript XML**.
+# HTML Basic Tags
+### Headings
+```html
+<h1>Main</h1> to <h6>Smallest</h6>
+```
 
-- ✅ Allows writing HTML-like code in JavaScript.
-- ✅ Makes React code more readable and easier to write.
-- ✅ Translates to standard JavaScript using tools like Babel.
+### Paragraphs
+```html
+<p>This is a paragraph.</p>
+```
+
+### Line Break & Horizontal Rule
+```html
+<br> <!-- Line break -->
+<hr> <!-- Horizontal line -->
+```
+---
+
+## Formatting Tags
+```html
+<b>Bold</b> <strong>Strong</strong>
+<i>Italic</i> <em>Emphasis</em>
+<u>Underline</u> <mark>Highlight</mark>
+<small>Small</small> <del>Deleted</del> <ins>Inserted</ins> <sub>Sub</sub> <sup>Sup</sup>
+```
+---
+
+## Links
+```html
+<a href="https://example.com" target="_blank">Visit</a>
+```
+- `target="_blank"` opens in a new tab.
+---
+
+## Images
+```html
+<img src="image.jpg" alt="Description" width="300">
+```
+---
+
+## Lists
+### Unordered
+```html
+<ul>
+  <li>Item</li>
+</ul>
+```
+
+### Ordered
+```html
+<ol>
+  <li>Item</li>
+</ol>
+```
+---
+
+## Tables
+```html
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>25</td>
+  </tr>
+</table>
+```
+---
+
+## Forms
+```html
+<form action="/submit" method="post">
+  <input type="text" name="name" placeholder="Your Name">
+  <input type="email" name="email" required>
+  <textarea name="message"></textarea>
+  <button type="submit">Send</button>
+</form>
+```
+---
+
+## Input Types
+```html
+<input type="text">
+<input type="password">
+<input type="checkbox">
+<input type="radio">
+<input type="submit">
+<input type="date">
+<input type="file">
+```
+---
+
+## Div & Span
+```html
+<div>This is a block element</div>
+<span>This is inline</span>
+```
+---
+
+## Semantic Elements
+```html
+<header>Top</header>
+<nav>Menu</nav>
+<main>Content</main>
+<article>Post</article>
+<aside>Sidebar</aside>
+<footer>Bottom</footer>
+```
+---
+
+## Meta Tags
+```html
+<meta charset="UTF-8">
+<meta name="description" content="HTML tutorial">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+---
+
+## HTML Entities
+```html
+&lt; = <
+&gt; = >
+&nbsp; = space
+&quot; = "
+&apos; = '
+&copy; = ©
+```
+---
+
+## Media
+### Audio
+```html
+<audio controls>
+  <source src="sound.mp3" type="audio/mpeg">
+</audio>
+```
+
+### Video
+```html
+<video width="320" height="240" controls>
+  <source src="video.mp4" type="video/mp4">
+</video>
+```
+---
+
+## Iframe
+```html
+<iframe src="https://example.com" width="400" height="300"></iframe>
+```
+---
+
+## Advanced Concepts
+### Custom Data Attributes
+```html
+<!-- [!code word:data-user-id] -->
+<div data-user-id="1234">User Info</div>
+```
+
+### HTML5 Input Validation
+```html
+<input type="email" required>
+<input type="text" pattern="[A-Za-z]{3,}">
+```
+
+### Form Autofill & Autocomplete
+```html
+<input name="email" autocomplete="email">
+```
+---
+
+## Accessibility
+```html
+<img src="img.jpg" alt="Descriptive text">
+<label for="email">Email</label>
+<input id="email" type="email">
+```
+Use `alt`, `label`, `role`, and semantic tags to improve accessibility.
 
 ---
 
-## Why Use JSX?
-
-JSX simplifies the process of creating and inserting HTML elements into the DOM.
-
-Instead of doing this:
-```js
-const element = React.createElement('h1', {}, 'Hello, world!');
-```
-
-You can do this with JSX:
-```js 
-const element = <h1>Hello, world!</h1>;
+## Best Practices
+- Use semantic HTML.
+- Keep structure clean.
+- Use comments to explain code.
+```html
+<!-- This is a comment -->
 ```
 
 ---
 
-## Basic JSX Example
-
-```js
-const myElement = <h1>I Love JSX!</h1>;
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(myElement);
-```
-
-Without JSX:
-```js
-const myElement = React.createElement('h1', {}, 'I do not use JSX!');
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(myElement);
+## HTML + CSS + JS Integration
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css"> <!-- [!code highlight] -->
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <script src="script.js"></script> <!-- [!code highlight] -->
+  </body>
+</html>
 ```
 
 ---
 
-## Expressions in JSX
-
-JSX lets you embed expressions using `{}`:
-
-```js
-const myElement = <h1>React is {5 + 5} times better with JSX</h1>;
-```
-
-You can use variables, functions, or any JavaScript expression inside the curly braces.
-
----
-
-## Multiline HTML with JSX
-
-To write multiple lines of HTML, wrap them in parentheses:
-```js 
-const myElement = (
-  <ul>
-    <li>Apples</li>
-    <li>Bananas</li>
-    <li>Cherries</li>
-  </ul> 
-);
-```
-
----
-
-## One Top Level Element
-
-JSX must return **a single parent element**.
-
-✅ Valid:
-```js
-const myElement = (
-  <div> // [!code warning]
-    <p>I am a paragraph.</p>
-    <p>I am a paragraph too.</p>
-  </div> // [!code warning]
-);
-```
-
-❌ Invalid:
-```js
-// This will cause an error
-const myElement = (
-  <p>I am a paragraph.</p> // [!code error]
-  <p>I am a paragraph too.</p> // [!code error]
-);
-```
-
-✅ Alternative: Use a **Fragment** (`<> </>`)
-```js
-const myElement = (
-  <> // [!code highlight]
-    <p>I am a paragraph.</p>
-    <p>I am a paragraph too.</p>
-  </> // [!code highlight]
-);
-```
-
----
-
-## JSX Rules Recap
-
-### All elements must be closed
-```js
-const myElement = <input type="text" />;
-```
-
-### Use className instead of class
-```js
-// [!code word:className]
-const myElement = <h1 className="header">Hello World</h1>;
-```
-
----
-
-## Conditional Rendering in JSX
-
-JSX does not support `if` statements directly inside the return block. Use either:
-
-### Option 1: Declare outside JSX
-```js
-// [!code word:text]
-const x = 5;
-let text = "Goodbye";
-if (x < 10) {
-  text = "Hello";
-}
-const myElement = <h1>{text}</h1>;
-```
-
-### Option 2: Use Ternary Operator
-```js
-// [!code word:?]
-const x = 5;
-const myElement = <h1>{x < 10 ? "Hello" : "Goodbye"}</h1>;
-```
-
----
-
-## Summary
-
-- JSX allows mixing HTML with JavaScript in a seamless way.
-- Helps keep code clean, readable, and efficient.
-- Requires proper syntax like closing tags and wrapping with one parent.
-- Use `{}` for expressions and ternary for conditionals.
-
-Start using JSX to build cleaner, faster, and more dynamic React applications!
+## Final Project Idea
+Build a portfolio site using:
+- `<nav>`, `<main>`, `<section>`, `<footer>`
+- Images, forms, and links
+- CSS for layout and styling
+- JavaScript for interactivity
 

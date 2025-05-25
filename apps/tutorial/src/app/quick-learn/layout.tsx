@@ -2,6 +2,7 @@ import MainNavs from "@/components/main-navs";
 import { Sidebar } from "@/components/sidebar";
 import React from "react";
 import { QuickLearnNavList } from "./components/quicklearn-nav-list";
+import { QuickLearnHeader } from "./components/quickLearnHeader";
 
 interface QuickLearnLayoutProps {
   children: React.ReactNode;
@@ -16,8 +17,11 @@ const layout = ({ children }: QuickLearnLayoutProps) => {
           <MainNavs />
         </div>
       </Sidebar>
-      <div>{children}</div>
-  
+      <div>
+        {/* header quick learn */}
+        {/* <QuickLearnHeader/> */}
+        {children}
+      </div>
     </>
   );
 };

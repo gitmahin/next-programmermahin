@@ -8,9 +8,13 @@ export const useActiveAnchor = (mdxContent: string) => {
 
   const moveTabToAnchor = useCallback(
     (btn: HTMLElement) => {
-      if (!tabRef.current) return;
-      tabRef.current.style.height = `${btn.offsetHeight}px`;
-      tabRef.current.style.top = `${btn.offsetTop}px`;
+      if (!tabRef.current || !btn) return;
+        requestAnimationFrame(() => {
+          tabRef.current!.style.height = `${btn.offsetHeight}px`;
+          tabRef.current!.style.top = `${btn.offsetTop}px`;
+          tabRef.current!.style.width = `${btn.offsetWidth}px`;
+          tabRef.current!.style.left = `${btn.offsetLeft}px`;
+        })
     },
     [activeHash]
   );

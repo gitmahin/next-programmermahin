@@ -63,7 +63,7 @@ export default function ContentAsideNav({
                         anchorListsRef.current[item.slug] as HTMLElement
                       );
                     }}
-                    className={`one_line_ellipsis px-2 text-read_2 ${activeHash === `#${item.slug}` ? "text-pm_purple-700 font-medium" : "text-text-color_2"}`}
+                    className={`one_line_ellipsis w-fit px-2 text-read_2 ${activeHash === `#${item.slug}` ? "text-pm_purple-700 font-medium" : "text-text-color_2"}`}
                     style={{ marginLeft: `${(item.level - 2) * 10}px` }}
                   >
                     {item.content}
@@ -73,7 +73,7 @@ export default function ContentAsideNav({
             })}
             <div
               ref={tabRef}
-              className="absolute w-full transition-all duration-200 h-[28px] bg-background-color_850C left-0 top-0 rounded-tiny -z-10"
+              className="absolute transition-all duration-200 h-[28px] bg-background-color_850C left-0 top-0 rounded-tiny -z-10"
             ></div>
           </ul>
         </div>
