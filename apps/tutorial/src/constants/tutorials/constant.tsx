@@ -39,13 +39,13 @@ export const MAIN_NAV_TUTORIALS: MainNavTutorialsType[] = [
     bg_color: "bg-gradient-to-r from-[#66ddfb52] to-[#0897df4a]",
   },
   {
-    label: "Devops",
-    slug: "devops",
-    key: TutorialEnums.DEVOPS,
-    icon: "/icons/devops.svg",
-    bg_color: "bg-gradient-to-r from-[#ffad2044] to-[#08a6df4a]",
+    label: "Nextjs",
+    slug: "nextjs",
+    key: TutorialEnums.NEXTJS,
+    icon: "/icons/nextjs.svg",
+    bg_color: "bg-background-color_800C",
   },
-  {
+    {
     label: "Git",
     slug: "git",
     key: TutorialEnums.GIT,
@@ -53,18 +53,18 @@ export const MAIN_NAV_TUTORIALS: MainNavTutorialsType[] = [
     bg_color: "bg-gradient-to-r from-[#f5585851] to-[#f17b7b51]",
   },
   {
+    label: "Devops",
+    slug: "devops",
+    key: TutorialEnums.DEVOPS,
+    icon: "/icons/devops.svg",
+    bg_color: "bg-gradient-to-r from-[#ffad2044] to-[#08a6df4a]",
+  },
+  {
     label: "C++",
     slug: "cpp",
     key: TutorialEnums.CPP,
     icon: "/icons/cpp.svg",
     bg_color: "bg-gradient-to-r from-[#1364fc51] to-[#994bf951]",
-  },
-  {
-    label: "Nextjs",
-    slug: "nextjs",
-    key: TutorialEnums.NEXTJS,
-    icon: "/icons/nextjs.svg",
-    bg_color: "bg-background-color_800C",
   },
   {
     label: "Monorepo",

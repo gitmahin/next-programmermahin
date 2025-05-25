@@ -15,7 +15,7 @@ export default async function QuickLearnHomePage() {
           grasp complex topics quickly. Perfect for curious minds and ambitious
           learners.
         </p>
-        <div className="mt-24 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] :grid-cols-[repeat(auto-fill,minmax(200px,1fr))]  gap-3">
+        <div className="mt-24 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] max-[350px]:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-3">
           {QUICKLEARN_TUTORIALS.map((blog, i) => {
             return (
               <Link key={i} href={`/quick-learn/${blog.slug}`}>

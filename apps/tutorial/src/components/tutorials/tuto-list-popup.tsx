@@ -313,54 +313,52 @@ export const TutoListPopup = ({
                               </AccordionTrigger>
                               {value.items.map((item, vi) => {
                                 return (
-                                  <>
-                                    <AccordionContent
-                                      className="pl-5 one_line_ellipsis  text-read_2"
-                                      key={vi}
-                                    >
-                                      <span className="text-text-color_4">
-                                        {item.label}
-                                      </span>
-                                      {item.dirItems &&
-                                        Object.entries(item.dirItems).map(
-                                          ([dirKey, childValue], di) => {
-                                            return (
-                                              <div>
-                                                <Accordion
-                                                  type="single"
-                                                  collapsible
-                                                  key={di}
+                                  <AccordionContent
+                                    className="pl-5 one_line_ellipsis  text-read_2"
+                                    key={vi}
+                                  >
+                                    <span className="text-text-color_4">
+                                      {item.label}
+                                    </span>
+                                    {item.dirItems &&
+                                      Object.entries(item.dirItems).map(
+                                        ([dirKey, childValue], di) => {
+                                          return (
+                                            <div>
+                                              <Accordion
+                                                type="single"
+                                                collapsible
+                                                key={di}
+                                              >
+                                                <AccordionItem
+                                                  value="item-1"
+                                                  className="border-border-color_800C"
                                                 >
-                                                  <AccordionItem
-                                                    value="item-1"
-                                                    className="border-border-color_800C"
-                                                  >
-                                                    <AccordionTrigger className="text-read_2 text-text-color_1 pt-0">
-                                                      {dirKey}
-                                                    </AccordionTrigger>
+                                                  <AccordionTrigger className="text-read_2 text-text-color_1 pt-0">
+                                                    {dirKey}
+                                                  </AccordionTrigger>
 
-                                                    {childValue.items.map(
-                                                      (childItem, j) => {
-                                                        return (
-                                                          <AccordionContent
-                                                            className="pl-5  one_line_ellipsis  text-read_2"
-                                                            key={j}
-                                                          >
-                                                            <span className="text-text-color_4">
-                                                              {childItem.label}
-                                                            </span>
-                                                          </AccordionContent>
-                                                        );
-                                                      }
-                                                    )}
-                                                  </AccordionItem>
-                                                </Accordion>
-                                              </div>
-                                            );
-                                          }
-                                        )}
-                                    </AccordionContent>
-                                  </>
+                                                  {childValue.items.map(
+                                                    (childItem, j) => {
+                                                      return (
+                                                        <AccordionContent
+                                                          className="pl-5  one_line_ellipsis  text-read_2"
+                                                          key={j}
+                                                        >
+                                                          <span className="text-text-color_4">
+                                                            {childItem.label}
+                                                          </span>
+                                                        </AccordionContent>
+                                                      );
+                                                    }
+                                                  )}
+                                                </AccordionItem>
+                                              </Accordion>
+                                            </div>
+                                          );
+                                        }
+                                      )}
+                                  </AccordionContent>
                                 );
                               })}
                             </AccordionItem>

@@ -5,7 +5,7 @@ export const MONOREPO_TUTORIALS: TutorialNavItemType = {
     slug: "monorepo-intro",
     icon: "",
     items: [
-      { label: "What is a Monorepo?", slug: "monorepo-what-is" },
+      { label: "What is a Monorepo?", slug: "what-is-monorepo" },
       { label: "Benefits of Monorepos", slug: "monorepo-benefits" },
       { label: "Popular Tools", slug: "monorepo-tools" },
     ],
