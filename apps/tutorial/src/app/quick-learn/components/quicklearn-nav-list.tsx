@@ -26,13 +26,26 @@ export const QuickLearnNavList = () => {
       dispatch(setQuickLearnNavitems(QUICKLEARN_TUTORIALS));
     }
 
-    const currentIndex = QUICKLEARN_TUTORIALS.findIndex(
-      (navItem) => decodeURIComponent(path_name) === navItem.slug
+    const data = QUICKLEARN_TUTORIALS.map((item, _) => {
+      return {
+        label: item.label,
+        path: item.slug,
+      };
+    });
+
+    const quickLearnPathName = path_name.split("/").pop();
+
+    const currentIndex = data.findIndex(
+      (navItem) => quickLearnPathName !== undefined ? decodeURIComponent(quickLearnPathName) === navItem.path : -1
     );
 
-    dispatch(
-      setPagination({ currentIndex, flatTutoList: QUICKLEARN_TUTORIALS })
-    );
+    console.log("quicklearn paginate data is ", data);
+    console.log({
+      currentIndex,
+      prev: data[currentIndex - 1],
+      next: data[currentIndex + 1],
+    });
+    dispatch(setPagination({ currentIndex, flatTutoList: data }));
   }, [path_name]);
 
   return (

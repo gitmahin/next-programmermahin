@@ -17,6 +17,7 @@ const layout = ({ children }: QuickLearnLayoutProps) => {
         </div>
       </Sidebar>
       <div>{children}</div>
+  
     </>
   );
 };
