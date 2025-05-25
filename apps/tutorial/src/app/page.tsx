@@ -80,7 +80,8 @@ const page = () => {
                       width={100}
                       height={100}
                       alt="icon"
-                      className={`w-[25px] h-[25px] filter brightness-0 dark:invert select-none`}
+                      className={`w-[25px] h-[25px] select-none filter grayscale brightness-125 contrast-[5%] 
+                            dark:invert`}
                     />
                     <div>
                       <h3 className="text-read_2 font-medium">{item.title}</h3>
