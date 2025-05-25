@@ -82,22 +82,49 @@ export default function NoResults() {
                           ([childKey, childValue], j) => {
                             const [eachFirstItem] = childValue.items;
                             return (
-                              <Link
-                                href={`/${key}/${childValue.slug}/${eachFirstItem?.slug}`}
-                                key={j}
-                              >
-                                <div className="py-1 px-2 rounded-tiny hover:bg-background-color_900C group">
-                                  <div className="flex justify-start items-center gap-1 pl-4">
-                                    <ChevronRight
-                                      size={15}
-                                      className="hidden group-hover:block group-hover:text-text-color_1 font-medium"
-                                    />
-                                    <p className="text-text-color_2  text-read_2 font-medium one_line_ellipsis group-hover:text-pm_purple-700">
-                                      {eachFirstItem?.label}
-                                    </p>
-                                  </div>
-                                </div>
-                              </Link>
+                              <>
+                                {!eachFirstItem?.dirItems ? (
+                                  <Link
+                                    href={`/${key}/${childValue.slug}/${eachFirstItem?.slug}`}
+                                    key={j}
+                                  >
+                                    <div className="py-1 px-2 rounded-tiny hover:bg-background-color_900C group transition-all">
+                                      <div className="flex justify-start items-center gap-1 pl-4">
+                                        <ChevronRight
+                                          size={15}
+                                          className="hidden group-hover:block group-hover:text-text-color_1 font-medium"
+                                        />
+                                        <p className="text-text-color_2  text-read_2 font-medium one_line_ellipsis group-hover:text-pm_purple-700">
+                                          {eachFirstItem?.label}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                ) : (
+                                  Object.entries(eachFirstItem?.dirItems).map(
+                                    ([dirkey, dirValue], j) => {
+                                      return (
+                                        <Link
+                                          href={`/${key}/${childValue.slug}/${dirValue.slug}`}
+                                          key={j}
+                                        >
+                                          <div className="py-1 px-2 rounded-tiny hover:bg-background-color_900C group transition-all">
+                                            <div className="flex justify-start items-center gap-1 pl-4">
+                                              <ChevronRight
+                                                size={15}
+                                                className="hidden group-hover:block group-hover:text-text-color_1 font-medium"
+                                              />
+                                              <p className="text-text-color_2  text-read_2 font-medium one_line_ellipsis group-hover:text-pm_purple-700">
+                                                {dirkey}
+                                              </p>
+                                            </div>
+                                          </div>
+                                        </Link>
+                                      );
+                                    }
+                                  )
+                                )}
+                              </>
                             );
                           }
                         )}

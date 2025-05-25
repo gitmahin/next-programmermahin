@@ -335,7 +335,7 @@ export const TutoListPopup = ({
                                                     value="item-1"
                                                     className="border-border-color_800C"
                                                   >
-                                                    <AccordionTrigger className="text-read_2 ">
+                                                    <AccordionTrigger className="text-read_2 text-text-color_1 pt-0">
                                                       {dirKey}
                                                     </AccordionTrigger>
 
