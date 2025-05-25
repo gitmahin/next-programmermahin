@@ -38,13 +38,6 @@ export const QuickLearnNavList = () => {
     const currentIndex = data.findIndex(
       (navItem) => quickLearnPathName !== undefined ? decodeURIComponent(quickLearnPathName) === navItem.path : -1
     );
-
-    console.log("quicklearn paginate data is ", data);
-    console.log({
-      currentIndex,
-      prev: data[currentIndex - 1],
-      next: data[currentIndex + 1],
-    });
     dispatch(setPagination({ currentIndex, flatTutoList: data }));
   }, [path_name]);
 

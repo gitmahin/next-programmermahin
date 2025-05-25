@@ -5,9 +5,24 @@ import { mdxToHtml } from "@/lib/mdxToHtml";
 import { QuickLearnAsideNav } from "../components/quickLearnAsideNav";
 import { QuickLearnPagination } from "../components/quickLearnPagination";
 import { Metadata } from "next";
+import { QUICKLEARN_TUTORIALS } from "@programmer/constants";
 
 interface QuickLearnPagePropsType {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateStaticParams() {
+  try {
+    const data = QUICKLEARN_TUTORIALS.map((item, _) => {
+      return {
+        slug: item.slug,
+      };
+    });
+
+    return data;
+  } catch (error) {
+    throw new Error("Failed to generate static params");
+  }
 }
 
 export async function generateMetadata({
