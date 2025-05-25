@@ -19,6 +19,7 @@ export default function ContentAsideNav({
     tabRef,
     moveTabToAnchor,
     activeHash,
+    asideRef
   } = useActiveAnchor(mdxContent);
 
   return (
@@ -41,8 +42,8 @@ export default function ContentAsideNav({
       <aside
         className={`w-[270px] h-screen flex-shrink-0 sticky pt-[70px] overflow-hidden top-0 tuto_cont_aside transition-all ${openAside && "right-[0_!important]"}`}
       >
-        <div className="w-full h-full overflow-y-auto custom_scrollbar tuto_toc_main">
-          <div className="flex justify-start items-center sticky top-0 pb-4 px-2  bg-background-color_950C gap-2">
+        <div ref={asideRef} className="w-full h-full overflow-y-auto custom_scrollbar tuto_toc_main">
+          <div className="flex justify-start items-center sticky top-0 pb-4 px-2  bg-background-color_950C z-[3] gap-2">
             <AlignLeft
               size={LUCIDE_DEFAULT_ICON_SIZE}
               className="text-text-color_1"

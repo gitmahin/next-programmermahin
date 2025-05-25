@@ -5,16 +5,17 @@ export const useActiveAnchor = (mdxContent: string) => {
   const [activeHash, setActiveHash] = useState<string>("");
   const anchorListsRef = useRef<{ [key: string]: HTMLElement | null }>({});
   const tabRef = useRef<HTMLDivElement | null>(null);
+  const asideRef = useRef<HTMLDivElement | null>(null);
 
   const moveTabToAnchor = useCallback(
     (btn: HTMLElement) => {
       if (!tabRef.current || !btn) return;
-        requestAnimationFrame(() => {
-          tabRef.current!.style.height = `${btn.offsetHeight}px`;
-          tabRef.current!.style.top = `${btn.offsetTop}px`;
-          tabRef.current!.style.width = `${btn.offsetWidth}px`;
-          tabRef.current!.style.left = `${btn.offsetLeft}px`;
-        })
+      requestAnimationFrame(() => {
+        tabRef.current!.style.height = `${btn.offsetHeight}px`;
+        tabRef.current!.style.top = `${btn.offsetTop}px`;
+        tabRef.current!.style.width = `${btn.offsetWidth}px`;
+        tabRef.current!.style.left = `${btn.offsetLeft}px`;
+      });
     },
     [activeHash]
   );
@@ -63,9 +64,22 @@ export const useActiveAnchor = (mdxContent: string) => {
             if (activeId) {
               setActiveHash(`#${activeId}`);
               if (anchorListsRef.current) {
-                moveTabToAnchor(
-                  anchorListsRef.current[activeId] as HTMLElement
-                );
+                const activeListElement = anchorListsRef.current[
+                  activeId
+                ] as HTMLElement;
+
+                if (asideRef.current && activeListElement) {
+                  const aside = asideRef.current;
+                  const offsetTop = activeListElement.offsetTop;
+                  const elementHeight = activeListElement.offsetHeight;
+
+                  aside.scrollTo({
+                    top: offsetTop - aside.clientHeight / 2 + elementHeight / 2,
+                    behavior: "smooth",
+                  });
+                }
+
+                moveTabToAnchor(activeListElement);
               }
             }
           }
@@ -85,11 +99,13 @@ export const useActiveAnchor = (mdxContent: string) => {
 
     return () => clearTimeout(observerTimeout);
   }, [mdxContent]); // Re-run when mdxContent changes
+
   return {
     activeHash,
     handleHashClick,
     anchorListsRef,
     tabRef,
-    moveTabToAnchor
+    moveTabToAnchor,
+    asideRef,
   };
 };
