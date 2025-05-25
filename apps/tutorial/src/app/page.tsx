@@ -63,7 +63,32 @@ const page = () => {
               <span className="text-read_1">Browse Tutorials</span>
             </PMButton>
           </div>
-
+          <div className="relative h-fit translate-y-[-50px]">
+            <div className="absolute w-full h-[400px] z-[9] bg-gradient-to-b from-transparent to-background-color_950C bottom-0 left-0 "></div>
+            <div className="absolute w-full h-[400px] z-[9] bg-gradient-to-b from-transparent to-background-color_950C bottom-0 left-0 "></div>
+            <div className="hero_image_wrapper">
+              <div className="hero_canvas overflow-hidden p-1 bg-background-color_800C">
+                <div className="w-full h-full rounded-tiny hero_canvas_image relative">
+                  <div className="w-full h-full rounded-tiny overflow-hidden">
+                    <Image
+                      src={"/hero_black.png"}
+                      width={2000}
+                      height={2000}
+                      alt="ProgrammerMahin Tutorial Space"
+                      className="w-full h-full object-contain object-left-top dark:block hidden"
+                    />
+                    <Image
+                      src={"/hero_white.png"}
+                      width={2000}
+                      height={2000}
+                      alt="ProgrammerMahin Tutorial Space"
+                      className="w-full h-full object-contain object-left-top dark:hidden block"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="mt-16">
             <h2 className="text-[22px] font-semibold text-text-color_1">
               Why Learn Here?
@@ -125,14 +150,14 @@ const page = () => {
                       />
                     </div>
                     <Link href={`${item.link}`}>
-                    <div className="h-full border-t border-border-color_800C w-full p-5 group-hover:bg-background-color_800C transition-colors">
-                      <h3 className="text-[18px] font-medium text-text-color_1">
-                        {item.title}
-                      </h3>
-                      <p className="two_line_ellipsis text-read_2 text-text-color_2">
-                        {item.desc}
-                      </p>
-                    </div>
+                      <div className="h-full border-t border-border-color_800C w-full p-5 group-hover:bg-background-color_800C transition-colors">
+                        <h3 className="text-[18px] font-medium text-text-color_1">
+                          {item.title}
+                        </h3>
+                        <p className="two_line_ellipsis text-read_2 text-text-color_2">
+                          {item.desc}
+                        </p>
+                      </div>
                     </Link>
                   </div>
                 );
