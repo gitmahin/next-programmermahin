@@ -69,7 +69,7 @@ const page = () => {
             <div className="hero_image_wrapper">
               <div className="hero_canvas overflow-hidden p-1 bg-background-color_800C">
                 <div className="w-full h-full rounded-tiny hero_canvas_image relative">
-                  <div className="w-full h-full rounded-tiny overflow-hidden">
+                  <div className="w-full h-full rounded-tiny overflow-hidden bg-background-color_950C">
                     <Image
                       src={"/hero_black.png"}
                       width={2000}
