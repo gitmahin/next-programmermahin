@@ -306,6 +306,7 @@ pre code {
   display: grid;
   width: 100%;
   text-wrap: wrap;
+  position: relative;
 
   [data-line] {
     padding-inline: 20px;
