@@ -1,0 +1,240 @@
+---
+title: "Html"
+meta_desc: "Explore the fundamentals of HTML in this quick overview. Discover essential concepts and practical tips to kickstart your journey into web development with ease!"
+---
+
+# HTML Tutorial (Basic to Advanced)
+
+---
+
+## Introduction to HTML
+HTML (HyperText Markup Language) is the standard language for creating web pages.
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <h1>Hello, World!</h1>
+    <p>This is my first webpage.</p>
+  </body>
+</html>
+```
+---
+
+# HTML Basic Tags
+### Headings
+```html
+<h1>Main</h1> to <h6>Smallest</h6>
+```
+
+### Paragraphs
+```html
+<p>This is a paragraph.</p>
+```
+
+### Line Break & Horizontal Rule
+```html
+<br> <!-- Line break -->
+<hr> <!-- Horizontal line -->
+```
+---
+
+## Formatting Tags
+```html
+<b>Bold</b> <strong>Strong</strong>
+<i>Italic</i> <em>Emphasis</em>
+<u>Underline</u> <mark>Highlight</mark>
+<small>Small</small> <del>Deleted</del> <ins>Inserted</ins> <sub>Sub</sub> <sup>Sup</sup>
+```
+---
+
+## Links
+```html
+<a href="https://example.com" target="_blank">Visit</a>
+```
+- `target="_blank"` opens in a new tab.
+---
+
+## Images
+```html
+<img src="image.jpg" alt="Description" width="300">
+```
+---
+
+## Lists
+### Unordered
+```html
+<ul>
+  <li>Item</li>
+</ul>
+```
+
+### Ordered
+```html
+<ol>
+  <li>Item</li>
+</ol>
+```
+---
+
+## Tables
+```html
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>25</td>
+  </tr>
+</table>
+```
+---
+
+## Forms
+```html
+<form action="/submit" method="post">
+  <input type="text" name="name" placeholder="Your Name">
+  <input type="email" name="email" required>
+  <textarea name="message"></textarea>
+  <button type="submit">Send</button>
+</form>
+```
+---
+
+## Input Types
+```html
+<input type="text">
+<input type="password">
+<input type="checkbox">
+<input type="radio">
+<input type="submit">
+<input type="date">
+<input type="file">
+```
+---
+
+## Div & Span
+```html
+<div>This is a block element</div>
+<span>This is inline</span>
+```
+---
+
+## Semantic Elements
+```html
+<header>Top</header>
+<nav>Menu</nav>
+<main>Content</main>
+<article>Post</article>
+<aside>Sidebar</aside>
+<footer>Bottom</footer>
+```
+---
+
+## Meta Tags
+```html
+<meta charset="UTF-8">
+<meta name="description" content="HTML tutorial">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+---
+
+## HTML Entities
+```html
+&lt; = <
+&gt; = >
+&nbsp; = space
+&quot; = "
+&apos; = '
+&copy; = ©
+```
+---
+
+## Media
+### Audio
+```html
+<audio controls>
+  <source src="sound.mp3" type="audio/mpeg">
+</audio>
+```
+
+### Video
+```html
+<video width="320" height="240" controls>
+  <source src="video.mp4" type="video/mp4">
+</video>
+```
+---
+
+## Iframe
+```html
+<iframe src="https://example.com" width="400" height="300"></iframe>
+```
+---
+
+## Advanced Concepts
+### Custom Data Attributes
+```html
+<!-- [!code word:data-user-id] -->
+<div data-user-id="1234">User Info</div>
+```
+
+### HTML5 Input Validation
+```html
+<input type="email" required>
+<input type="text" pattern="[A-Za-z]{3,}">
+```
+
+### Form Autofill & Autocomplete
+```html
+<input name="email" autocomplete="email">
+```
+---
+
+## Accessibility
+```html
+<img src="img.jpg" alt="Descriptive text">
+<label for="email">Email</label>
+<input id="email" type="email">
+```
+Use `alt`, `label`, `role`, and semantic tags to improve accessibility.
+
+---
+
+## Best Practices
+- Use semantic HTML.
+- Keep structure clean.
+- Use comments to explain code.
+```html
+<!-- This is a comment -->
+```
+
+---
+
+## HTML + CSS + JS Integration
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css"> <!-- [!code highlight] -->
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <script src="script.js"></script> <!-- [!code highlight] -->
+  </body>
+</html>
+```
+
+---
+
+## Final Project Idea
+Build a portfolio site using:
+- `<nav>`, `<main>`, `<section>`, `<footer>`
+- Images, forms, and links
+- CSS for layout and styling
+- JavaScript for interactivity
+

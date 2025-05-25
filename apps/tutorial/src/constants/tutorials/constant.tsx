@@ -1,13 +1,24 @@
 import { GeneralNavItemType } from "@programmer/types";
 import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
-import { HomeIcon } from "lucide-react";
+import { BrainCircuit, HomeIcon, LucideIcon } from "lucide-react";
 import { TutorialEnums } from "@programmer/constants";
 
-export const MAIN_NAV_LINKS: GeneralNavItemType[] = [
+interface MainNavLinkType {
+  label: string;
+  slug: string;
+  icon: LucideIcon;
+}
+
+export const MAIN_NAV_LINKS: MainNavLinkType[] = [
   {
     label: "Home",
     slug: "/",
-    icon: <HomeIcon size={LUCIDE_DEFAULT_ICON_SIZE} />,
+    icon: HomeIcon,
+  },
+  {
+    label: "Quick Learn",
+    slug: "quick-learn",
+    icon: BrainCircuit,
   },
 ];
 

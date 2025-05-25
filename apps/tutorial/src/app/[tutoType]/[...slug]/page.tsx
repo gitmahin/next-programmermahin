@@ -7,20 +7,16 @@ import {
   getTutorialsByKey,
   TutorialDirChildNavItemType,
 } from "@programmer/constants";
-import { algolia, extractAnchors, IndexTutorialsType, TocItem } from "@programmer/shared";
+import {
+  algolia,
+  extractAnchors,
+  IndexTutorialsType,
+  TocItem,
+} from "@programmer/shared";
 import { TutorialEnums } from "@programmer/constants";
 import { Metadata } from "next";
-import { compileMDX } from "next-mdx-remote/rsc";
-import rehypePrettyCode from "rehype-pretty-code";
-import {
-  transformerNotationHighlight,
-  transformerNotationDiff,
-  transformerNotationErrorLevel,
-  transformerNotationWordHighlight,
-  transformerNotationFocus,
-} from "@shikijs/transformers";
-import { transformerCopyButton } from "@rehype-pretty/transformers";
-import rehypeSlug from 'rehype-slug'
+import { mdxToHtml } from "@/lib/mdxToHtml";
+
 
 interface ContentPagePropsType {
   params: Promise<{ tutoType: string; slug: string[] }>;
@@ -88,7 +84,7 @@ export async function generateStaticParams() {
         params.map(async (param): Promise<IndexTutorialsType> => {
           const joinedSlug = param.slug.join("/").toString();
           // getting the absolute path
-          const filePath = `src/content/${param.tutoType}/${joinedSlug}.mdx`;
+          const filePath = `src/content/tutorials/${param.tutoType}/${joinedSlug}.mdx`;
 
           let getData = "";
 
@@ -99,7 +95,7 @@ export async function generateStaticParams() {
           }
 
           const { data, content } = matter(getData);
-          const parsedAnchors = extractAnchors(content)
+          const parsedAnchors = extractAnchors(content);
 
           return {
             objectID: `${param.tutoType}/${joinedSlug}`, // <-- Unique identifier for Algolia
@@ -132,7 +128,7 @@ export async function generateMetadata({
   params,
 }: ContentPagePropsType): Promise<Metadata> {
   const { tutoType, slug } = await params;
-  const filePath = `src/content/${tutoType}/${slug.join("/")}.mdx`;
+  const filePath = `src/content/tutorials/${tutoType}/${slug.join("/")}.mdx`;
 
   try {
     const getData = fs.readFileSync(filePath, "utf-8");
@@ -154,40 +150,11 @@ export async function generateMetadata({
 export default async function ContentPage({ params }: ContentPagePropsType) {
   const { tutoType, slug } = await params;
   try {
-    const filePath = `src/content/${tutoType}/${slug.join("/")}.mdx`;
+    const filePath = `src/content/tutorials/${tutoType}/${slug.join("/")}.mdx`;
     const getData = fs.readFileSync(filePath, "utf-8");
     const { content } = matter(getData);
-
-    // TODO: Modularize this logic and move it to a shared utility folder for reusability across the project.
-
-    const { content: MdxComponent } = await compileMDX({
-      source: content,
-      options: {
-        mdxOptions: {
-          rehypePlugins: [
-            rehypeSlug,
-            [
-              rehypePrettyCode,
-              {
-                theme: "material-theme-ocean",
-                output: "mdx",
-                transformers: [
-                  transformerNotationDiff(),
-                  transformerNotationHighlight(),
-                  transformerNotationErrorLevel(),
-                  transformerNotationWordHighlight(),
-                  transformerNotationFocus(),
-                  transformerCopyButton({
-                    visibility: "always",
-                    feedbackDuration: 3_000,
-                  }),
-                ],
-              },
-            ],
-          ],
-        },
-      },
-    });
+    
+    const MdxComponent = mdxToHtml(content)
 
     if (process.env.NODE_ENV === "development") {
       generateStaticParams().then((params) => {
@@ -199,9 +166,9 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
       <>
         <div className="flex justify-center items-start gap-5">
           <div className="max-w-[750px] w-full p-5 pt-16">
-            <article className="prose prose-gray dark:prose-invert main-article">
-              {MdxComponent}
-            </article>
+              <article className="prose prose-gray dark:prose-invert main-article">
+                {MdxComponent}
+              </article>
             <TutoPagination />
           </div>
 

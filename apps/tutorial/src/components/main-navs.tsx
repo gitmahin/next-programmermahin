@@ -32,7 +32,7 @@ export default function MainNavs() {
     dispatch(setLockMouseEnter(true));
   };
   return (
-    <nav className="px-4 w-full ">
+    <div className="px-4 w-full ">
       <div className=" w-full border-t border-border-color_800C pt-4">
         <div className="flex justify-start items-center gap-2">
           <div className="flex justify-center items-center border rounded-tiny border-border-color_800C p-[3px] bg-gradient-to-tr from-background-color_900C to-background-color_800C">
@@ -76,6 +76,6 @@ export default function MainNavs() {
         </ul>
         <TutoListPopup showClickAbleTutoOpenBtn={false} />
       </div>
-    </nav>
+    </div>
   );
 }

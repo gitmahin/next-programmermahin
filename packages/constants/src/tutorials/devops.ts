@@ -50,7 +50,7 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
       },
     ],
   },
-  "Kubernetes": {
+  Kubernetes: {
     slug: "kubernetes",
     icon: "/icons/kubernetes.svg",
     items: [
@@ -73,7 +73,7 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
               },
               {
                 label: "ConfigMap & Secrets",
-                slug: "k8s-configmap-secrets"
+                slug: "k8s-configmap-secrets",
               },
               {
                 label: "K8s Volumes",
@@ -87,13 +87,12 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
                 label: "K8s StatefulSets & StateLess",
                 slug: "k8s-statefulsets-and-stateless",
               },
-              
-            ]
-          }
-        }
+            ],
+          },
+        },
       },
       {
-        dirItems :{
+        dirItems: {
           "K8s Architecture": {
             slug: "k8s-architecture",
             items: [
@@ -104,16 +103,15 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
               {
                 label: "Master Node",
                 slug: "k8s-master-node",
-              }
-            ]
-          }
-        }
+              },
+            ],
+          },
+        },
       },
       {
         label: "K8s Services",
         slug: "k8s-services",
-      }
-    ]
-  }
-
+      },
+    ],
+  },
 };
