@@ -76,6 +76,7 @@ const page = () => {
                       height={2000}
                       alt="ProgrammerMahin Tutorial Space"
                       className="w-full h-full object-contain object-left-top dark:block hidden"
+                      priority
                     />
                     <Image
                       src={"/hero_white.png"}
@@ -83,6 +84,7 @@ const page = () => {
                       height={2000}
                       alt="ProgrammerMahin Tutorial Space"
                       className="w-full h-full object-contain object-left-top dark:hidden block"
+                      priority
                     />
                   </div>
                 </div>
