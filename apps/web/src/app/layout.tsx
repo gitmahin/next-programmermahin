@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@programmer/ui/globalcss";
 import { GlobalThemeProvider } from "@programmer/ui";
+import { Header } from "@/components";
+import { JetBrains_Mono } from "next/font/google";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -10,6 +12,13 @@ const geistSans = localFont({
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
+});
+
+const jetbrains_mono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -24,8 +33,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <GlobalThemeProvider>{children}</GlobalThemeProvider>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${jetbrains_mono.variable}`}>
+        <GlobalThemeProvider>
+          <Header/>
+          {children}
+          </GlobalThemeProvider>
       </body>
     </html>
   );

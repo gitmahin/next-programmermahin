@@ -184,6 +184,10 @@ body {
     @apply max-w-[950px] w-full;
   }
 
+  .layout_max_1200{
+    @apply max-w-[1200px] w-full;
+  }
+
   .grayScaleActiveImage {
     @apply filter grayscale-0 brightness-100 contrast-100 dark:invert;
   }
