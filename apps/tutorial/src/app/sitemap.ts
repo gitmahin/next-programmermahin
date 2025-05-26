@@ -5,15 +5,15 @@ import { MetadataRoute } from "next";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const tutorialPaths = getTutorialsAbsolutePaths();
 
-  const tutorials = tutorialPaths.map((path) => {
+  const tutorials = tutorialPaths.map(({ tutoType, slug }) => {
     return {
-      url: `${process.env.NEXT_PUBLIC_BASE_PATH}/${path.tutoType}/${path.slug.join("/")}`,
+      url: `${process.env.NEXT_PUBLIC_BASE_PATH}/${tutoType}/${slug.join("/")}`,
     };
   });
 
   const quickLearnSlugs = getQuickLearnSlugs();
 
-  const quickLearns = (await quickLearnSlugs).map((slug) => ({
+  const quickLearns = (await quickLearnSlugs).map(({ slug }) => ({
     url: `${process.env.NEXT_PUBLIC_BASE_PATH}/quick-learn/${slug}`,
   }));
 
