@@ -1,8 +1,9 @@
 "use client"
-import { PMButton, PMLogo } from "@programmer/ui";
+import { LUCIDE_DEFAULT_ICON_SIZE, PMButton, PMLogo } from "@programmer/ui";
 import React from "react";
 import { Search, setSearchBoxOpen } from "@programmer/shared";
 import { useAppDispatch } from "@/hooks/redux.hook";
+import { SearchIcon } from "lucide-react";
 
 export const Header = () => {
   // for dispatch type safety
@@ -21,11 +22,14 @@ export const Header = () => {
         <div className="flex justify-end items-center gap-2">
           <Search showSearchButton={false} />
           <PMButton
-            variant="secondary"
-            className="px-3 py-1 rounded text-read_1 font-medium"
+            variant="silent"
+            className="py-1 px-2 rounded-tablet group flex justify-between items-center gap-1"
             onClick={handleSearchBoxOpen}
           >
-            Search
+            <SearchIcon size={LUCIDE_DEFAULT_ICON_SIZE} className="text-text-svg_default_color group-hover:text-text-color_1" />
+            <span className="text-text-color_2 font-medium text-read_3">
+              Ctrl k
+            </span>
           </PMButton>
           <PMButton
             variant="secondary"

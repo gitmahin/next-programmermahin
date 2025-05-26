@@ -72,7 +72,7 @@ export const Search = ({ showSearchButton = true }: SearchPropsTypes) => {
 
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, [isSearchBoxOpen, searchboxOpenDispatch]);
+  }, [isSearchBoxOpen]);
 
   useEffect(() => {
     if (!setSearchBoxOpen) return;
