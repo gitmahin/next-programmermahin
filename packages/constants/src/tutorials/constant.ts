@@ -17,6 +17,15 @@ export enum TutorialEnums {
   MONOREPO = "monorepo",
 }
 
+export const TUTORIAL_TYPES: TutorialEnums[] = [
+  TutorialEnums.CPP,
+  TutorialEnums.DEVOPS,
+  TutorialEnums.NEXTJS,
+  TutorialEnums.MONOREPO,
+  TutorialEnums.GIT,
+  TutorialEnums.REACT,
+];
+
 export const getTutorialsByKey: Record<TutorialEnums, TutorialNavItemType> = {
   [TutorialEnums.DEVOPS]: DEVOPS_TUTORIALS,
   [TutorialEnums.REACT]: REACT_TUTORIALS,
@@ -36,27 +45,27 @@ export type TutorialIconsType = {
 };
 
 export const TUTORIALS_ICON: TutorialIconsType = {
-  cpp: {
+  [TutorialEnums.CPP]: {
     svgPath: "/icons/cpp.svg",
     name: "C++",
   },
-  git: {
+  [TutorialEnums.GIT]: {
     svgPath: "/icons/git.svg",
     name: "Git",
   },
-  react: {
+  [TutorialEnums.REACT]: {
     svgPath: "/icons/react.svg",
     name: "React",
   },
-  devops: {
+  [TutorialEnums.DEVOPS]: {
     svgPath: "/icons/devops.svg",
     name: "Devops",
   },
-  nextjs: {
+  [TutorialEnums.NEXTJS]: {
     svgPath: "/icons/nextjs.svg",
     name: "Nextjs",
   },
-  monorepo: {
+  [TutorialEnums.MONOREPO]: {
     svgPath: "/icons/monorepo.svg",
     name: "Monorepo",
   },
