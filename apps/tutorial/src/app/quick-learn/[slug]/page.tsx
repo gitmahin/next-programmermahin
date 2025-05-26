@@ -6,6 +6,7 @@ import { QuickLearnAsideNav } from "../components/quickLearnAsideNav";
 import { QuickLearnPagination } from "../components/quickLearnPagination";
 import { Metadata } from "next";
 import { QUICKLEARN_TUTORIALS } from "@programmer/constants";
+import { getQuickLearnSlugs } from "@/lib/quicklearn/getQuickLearnSlugs";
 
 interface QuickLearnPagePropsType {
   params: Promise<{ slug: string }>;
@@ -13,11 +14,7 @@ interface QuickLearnPagePropsType {
 
 export async function generateStaticParams() {
   try {
-    const data = QUICKLEARN_TUTORIALS.map((item, _) => {
-      return {
-        slug: item.slug,
-      };
-    });
+    const data = getQuickLearnSlugs();
 
     return data;
   } catch (error) {
@@ -54,6 +51,13 @@ export default async function QuickLearnChildrenPage({
   params,
 }: QuickLearnPagePropsType) {
   const { slug } = await params;
+
+  if (process.env.NODE_ENV === "development") {
+    generateStaticParams().then((params) => {
+      console.log(params);
+    });
+  }
+  
   try {
     const fileContent = fs.readFileSync(
       `src/content/quicklearn/${slug}.mdx`,
