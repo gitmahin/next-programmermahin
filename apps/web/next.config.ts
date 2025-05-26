@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
         pathname: "/**", // Use `/` followed by `**` to allow all subpaths
       },
     ],
-  },
+  }, 
 };
-
+ 
 export default nextConfig;

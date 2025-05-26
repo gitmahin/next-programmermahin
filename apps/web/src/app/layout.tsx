@@ -4,6 +4,7 @@ import "@programmer/ui/globalcss";
 import { GlobalThemeProvider } from "@programmer/ui";
 import { Header } from "@/components";
 import { JetBrains_Mono } from "next/font/google";
+import ReduxProvider from "@/components/redux-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,11 +34,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${jetbrains_mono.variable}`}>
-        <GlobalThemeProvider>
-          <Header/>
-          {children}
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${jetbrains_mono.variable}`}
+      >
+        <ReduxProvider>
+          <GlobalThemeProvider>
+            <Header />
+            {children}
           </GlobalThemeProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
