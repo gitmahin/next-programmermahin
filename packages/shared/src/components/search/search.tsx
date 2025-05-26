@@ -201,8 +201,8 @@ export const Search = ({ showSearchButton = true }: SearchPropsTypes) => {
                             {searchMetaInfo.title}
                           </h3>
                         </div>
-                        <div className="text-read_2 text-text-color_4 three_line_ellipsis mt-5 px-4 ">
-                          {searchMetaInfo.desc}
+                        <div className="text-read_2 text-text-color_4 three_line_ellipsis mt-5 px-4 " dangerouslySetInnerHTML={{__html: searchMetaInfo.desc || ""}}>
+                          
                         </div>
                         <div className="px-4 mt-5">
                           <p className="uppercase font-geist_mono font-medium text-read_3 text-text-color_3">

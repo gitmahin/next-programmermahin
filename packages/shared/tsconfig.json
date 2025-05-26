@@ -2,11 +2,14 @@
   "extends": "@programmer/typescript-config/nextjs.json",
   "compilerOptions": {
     "outDir": "dist",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "lib": ["ES2024"],
-    "target": "ES2024",
+    "target": "ES2024"
   },
-  "include": [
-   "src"
-  ],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }

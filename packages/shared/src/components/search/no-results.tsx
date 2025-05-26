@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useInstantSearch } from "react-instantsearch";
 import { useDebounceCallback } from "usehooks-ts";
 import {
@@ -82,11 +82,10 @@ export default function NoResults() {
                           ([childKey, childValue], j) => {
                             const [eachFirstItem] = childValue.items;
                             return (
-                              <>
+                              <React.Fragment key={j}>
                                 {!eachFirstItem?.dirItems ? (
                                   <Link
                                     href={`/${key}/${childValue.slug}/${eachFirstItem?.slug}`}
-                                    key={j}
                                   >
                                     <div className="py-1 px-2 rounded-tiny hover:bg-background-color_900C group transition-all">
                                       <div className="flex justify-start items-center gap-1 pl-4">
@@ -102,11 +101,11 @@ export default function NoResults() {
                                   </Link>
                                 ) : (
                                   Object.entries(eachFirstItem?.dirItems).map(
-                                    ([dirkey, dirValue], j) => {
+                                    ([dirkey, dirValue], di) => {
                                       return (
                                         <Link
+                                        key={di}
                                           href={`/${key}/${childValue.slug}/${dirValue.slug}`}
-                                          key={j}
                                         >
                                           <div className="py-1 px-2 rounded-tiny hover:bg-background-color_900C group transition-all">
                                             <div className="flex justify-start items-center gap-1 pl-4">
@@ -124,7 +123,7 @@ export default function NoResults() {
                                     }
                                   )
                                 )}
-                              </>
+                              </React.Fragment>
                             );
                           }
                         )}

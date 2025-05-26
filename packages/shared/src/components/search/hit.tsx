@@ -15,7 +15,6 @@ import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
 import { ChevronRight, Text } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { toast } from "sonner";
-import { ReactElement } from "react";
 
 interface HitProps {
   hit: {
@@ -26,7 +25,7 @@ interface HitProps {
     objectID: string;
     __position: number;
     __queryID: string;
-  };
+  }
 }
 
 export default function Hit({ hit }: HitProps) {
@@ -38,7 +37,7 @@ export default function Hit({ hit }: HitProps) {
   );
   const handleMouseHover = (
     title: string,
-    desc: ReactElement,
+    desc: string,
     slug: string,
     onThisPageData: AlgoliaIndexType[],
     navigationText: string[],
@@ -77,13 +76,7 @@ export default function Hit({ hit }: HitProps) {
         if (window.matchMedia("(hover: hover)").matches) {
           handleMouseHover(
             hit.label,
-            <Highlight
-              classNames={{
-                highlighted: "bg-transparent text-pm_purple-700",
-              }}
-              attribute="desc"
-              hit={hit}
-            />,
+            hit.desc,
             hit.slug,
             hit.onthispage,
             [
@@ -100,7 +93,7 @@ export default function Hit({ hit }: HitProps) {
       }}
     >
       <li
-        className={`w-full flex justify-between items-center list-none group p-3 ${searchMetaInfoActiveKey === hit.objectID.toString() && "bg-background-color_800C"} hover:bg-background-color_800C rounded-tiny`}
+        className={`w-full flex justify-between items-center list-none group p-3 ${searchMetaInfoActiveKey === hit.objectID.toString() && "bg-background-color_800C"} hover:bg-background-color_800C transition-colors rounded-tiny`}
       >
         <div className="flex justify-start items-center gap-3">
           <div className="flex-shrink-0 bg-background-color_925C w-[30px] h-[30px] rounded-tiny flex justify-center items-center">
@@ -140,13 +133,7 @@ export default function Hit({ hit }: HitProps) {
             handleMobShowSearchMetaInfoClicked();
             handleMouseHover(
               hit.label,
-              <Highlight
-                classNames={{
-                  highlighted: "bg-transparent text-pm_purple-700",
-                }}
-                attribute="desc"
-                hit={hit}
-              />,
+              hit.desc,
               hit.slug,
               hit.onthispage,
               [

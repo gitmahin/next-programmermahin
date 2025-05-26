@@ -1,9 +1,12 @@
-import React, { useEffect } from "react";
+"use client";
+import React, { useEffect, useRef } from "react";
 import { useRefinementList, UseRefinementListProps } from "react-instantsearch";
 
 export default function DocCustomRefinementList(props: UseRefinementListProps) {
   const { items, refine } = useRefinementList(props);
+  const defaultRefined = useRef(false); // prevent infinite loop
 
+  // worked in tutorial project
   useEffect(() => {
     if (items.length > 0 && !items.some((item) => item.isRefined)) {
       refine(items[0]!.value); // Set the first item as the default refinement

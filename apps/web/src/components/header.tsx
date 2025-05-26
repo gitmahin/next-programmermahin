@@ -20,7 +20,7 @@ export const Header = () => {
         <PMLogo size="sm" />
         <nav></nav>
         <div className="flex justify-end items-center gap-2">
-          <Search showSearchButton={false} />
+     
           <PMButton
             variant="silent"
             className="py-1 px-2 rounded-tablet group flex justify-between items-center gap-1"
@@ -31,6 +31,7 @@ export const Header = () => {
               Ctrl k
             </span>
           </PMButton>
+              <Search showSearchButton={false} />
           <PMButton
             variant="secondary"
             className="px-3 py-1 rounded text-read_1 font-medium"
