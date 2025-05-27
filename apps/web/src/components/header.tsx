@@ -15,7 +15,7 @@ export const Header = () => {
   }
 
   return (
-    <header className="w-full bg-background-color_925C border-b border-border-color_800C h-[64px] fixed top-0 left-0 px-5">
+    <header className="w-full bg-background-color_925C border-b border-border-color_800C h-[64px] fixed top-0 left-0 px-5 z-50">
       <div className="layout_max_1200 mx-auto flex justify-between items-center h-full">
         <PMLogo size="sm" />
         <nav></nav>
