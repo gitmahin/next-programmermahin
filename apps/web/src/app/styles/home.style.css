@@ -1,0 +1,19 @@
+.hero_image_wrapper {
+  position: relative;
+  contain: strict;
+  width: 100%;
+  height: 880px;
+  perspective: 800px;
+  /* perspective-origin: 100% 0; */
+  transform-style: preserve-3d;
+}
+
+.hero_canvas {
+    transform-origin: 0 0;
+    width: 100%;
+    height: 700px;
+    margin: 63px auto auto;
+    position: absolute;
+    inset: 0;
+    transform: rotateX(293deg) rotateY(360deg) rotateZ(0deg);
+}

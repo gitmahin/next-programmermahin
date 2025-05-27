@@ -1,3 +1,4 @@
+"use client"
 import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
 import { Folder } from "lucide-react";
 import React, { useEffect, useRef } from "react";

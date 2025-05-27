@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { configureStore, createSelector, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction, Slice } from "@reduxjs/toolkit";
 import { ReactElement } from "react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
@@ -57,16 +57,18 @@ const configureLocalStore = () =>
 export const searchMetaInfoActiveKeyValue = (state: searchMetaInfoInterface) =>
   state.searchMetaInfo.activeKey;
 
-export const searchMetaInfoValues = (state: searchMetaInfoInterface) => {
-  return {
-    title: state.searchMetaInfo.title,
-    desc: state.searchMetaInfo.desc,
-    slug: state.searchMetaInfo.slug,
-    onThisPage: state.searchMetaInfo.onThisPage,
-    navigationText: state.searchMetaInfo.navigationText,
-    activeKey: state.searchMetaInfo.activeKey,
-  };
-};
+
+export const searchMetaInfoValues = createSelector(
+  (state: searchMetaInfoInterface) => state.searchMetaInfo,
+  (searchMetaInfo) => ({
+    title: searchMetaInfo.title,
+    desc: searchMetaInfo.desc,
+    slug: searchMetaInfo.slug,
+    onThisPage: searchMetaInfo.onThisPage,
+    navigationText: searchMetaInfo.navigationText,
+    activeKey: searchMetaInfo.activeKey,
+  })
+);
 
 // Infers dispatch type for a store using only this slice.
 type SliceDispatch = ReturnType<typeof configureLocalStore>["dispatch"];

@@ -14,6 +14,8 @@ import {
   searchMobInfoOpenSliceName,
   searchMetaInfoReducer,
   searchMetaInfoSliceName,
+  searchBoxOpenSliceName,
+  searchBoxOpenReducer,
 } from "@programmer/shared";
 import quickLearnNavItemReducer, {
   quickLearnNavItemsSliceName,
@@ -28,6 +30,7 @@ export const store = configureStore({
     [mobSidebarOpenSliceName]: mobSidebarOpenReducer,
     [searchMetaInfoSliceName]: searchMetaInfoReducer,
     [searchMobInfoOpenSliceName]: searchMobInfoOpenReducer,
+    [searchBoxOpenSliceName]: searchBoxOpenReducer,
   },
 });
 

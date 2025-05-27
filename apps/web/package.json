@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@programmer/ui": "workspace:*",
+    "@programmer/shared": "workspace:*",
     "next": "^15.2.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
