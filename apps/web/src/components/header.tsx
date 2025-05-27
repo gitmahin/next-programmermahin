@@ -34,13 +34,13 @@ export const Header = () => {
               <Search showSearchButton={false} />
           <PMButton
             variant="secondary"
-            className="px-3 py-1 rounded text-read_1 font-medium"
+            className="px-3 py-1 rounded text-read_1 font-medium transition-colors"
           >
             Log in
           </PMButton>
           <PMButton
             variant="primary"
-            className="px-3 py-1 rounded text-read_1 font-medium"
+            className="px-3 py-1 rounded text-read_1 font-medium transition-colors"
           >
             Sign up
           </PMButton>
