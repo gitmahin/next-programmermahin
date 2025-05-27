@@ -5,6 +5,7 @@ import { GlobalThemeProvider } from "@programmer/ui";
 import { Header } from "@/components";
 import { JetBrains_Mono } from "next/font/google";
 import ReduxProvider from "@/components/redux-provider";
+import "./styles/home.style.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
