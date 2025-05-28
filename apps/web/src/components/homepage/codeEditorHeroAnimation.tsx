@@ -259,7 +259,7 @@ export const CodeEditorHeroAnimationDisplay = ({
                                           key={`original-${j}`}
                                           className="w-full h-[300px] rounded mb-6 bg-background-color_900C overflow-hidden"
                                         >
-<Image src={`/heroimages/${item.img}`} width={900} height={700} alt="features" className="w-full h-full object-cover object-left-top border-none" />
+<Image src={`/heroimages/${item.img || "backup.png"}`} width={900} height={700} alt="features" className="w-full h-full object-cover object-left-top border-none" />
 
                                         </div>
                                       ))}

@@ -1,4 +1,4 @@
-import { CodeBlock } from "@/components/codeBlock";
+import { CodeBlock } from "@/components/shiki";
 import React from "react";
 
 const code = `"use client";

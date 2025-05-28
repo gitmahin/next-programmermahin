@@ -1,5 +1,5 @@
 import React from "react"
-import { CodeBlock } from "@/components/codeBlock";
+import { CodeBlock } from "@/components/shiki";
 
 const code  = `{
   "name": "web",
