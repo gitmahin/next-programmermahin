@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperTypes } from "swiper/types";
@@ -45,19 +46,19 @@ const MARQUEE_IMAGES: { [key: string]: { img: string }[] } = {
       img: "",
     },
     {
-      img: "",
+      img: "image2.png",
     },
     {
       img: "",
     },
     {
-      img: "",
+      img: "image3.png",
     },
     {
       img: "",
     },
     {
-      img: "",
+      img: "image4.png",
     },
   ],
   MARQUEE_IMAGES_3: [
@@ -65,7 +66,7 @@ const MARQUEE_IMAGES: { [key: string]: { img: string }[] } = {
       img: "",
     },
     {
-      img: "",
+      img: "image1.png",
     },
     {
       img: "",
@@ -170,7 +171,7 @@ export const CodeEditorHeroAnimationDisplay = ({
               className="h-full rounded overflow-hidden border border-border-color_800C "
             >
               <SwiperSlide className="w-full relative z-10">
-                <div className="h-[calc(100%-200px)] w-full overflow-y-auto custom_scrollbar overflow-x-auto">
+                <div className="h-[calc(100%-200px)] w-full overflow-y-auto custom_scrollbar">
                   {pageTsxComponent}
                 </div>
                 <div className="h-[200px] w-full border-t border-border-color_800C bg-background-color_900C">
@@ -256,8 +257,11 @@ export const CodeEditorHeroAnimationDisplay = ({
                                       {value.map((item, j) => (
                                         <div
                                           key={`original-${j}`}
-                                          className="w-full h-[300px] rounded mb-6 bg-background-color_900C"
-                                        ></div>
+                                          className="w-full h-[300px] rounded mb-6 bg-background-color_900C overflow-hidden"
+                                        >
+<Image src={`/heroimages/${item.img}`} width={900} height={700} alt="features" className="w-full h-full object-cover object-left-top border-none" />
+
+                                        </div>
                                       ))}
                                     </React.Fragment>
                                   );

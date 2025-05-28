@@ -11,3 +11,4 @@ export * from "./pmbutton";
 export * from "./dialog";
 export * from "./accordion";
 export * from "./themeModeToggler";
+export * from "./navigation-menu";
