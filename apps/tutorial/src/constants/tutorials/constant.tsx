@@ -45,7 +45,7 @@ export const MAIN_NAV_TUTORIALS: MainNavTutorialsType[] = [
     icon: "/icons/nextjs.svg",
     bg_color: "bg-background-color_800C",
   },
-    {
+  {
     label: "Git",
     slug: "git",
     key: TutorialEnums.GIT,

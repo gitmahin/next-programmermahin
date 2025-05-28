@@ -25,7 +25,7 @@ interface HitProps {
     objectID: string;
     __position: number;
     __queryID: string;
-  }
+  };
 }
 
 export default function Hit({ hit }: HitProps) {

@@ -1,4 +1,7 @@
-"use client";
+import { CodeBlock } from "@/components/codeBlock";
+import React from "react";
+
+const code = `"use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -101,16 +104,16 @@ export const CodeEditorHeroAnimationDisplay = ({
   const moveTerminalTabRefTo = useCallback(
     (btn: HTMLElement) => {
       if (!terminalTabRef.current) return;
-      terminalTabRef.current.style.width = `${btn.offsetWidth}px`;
-      terminalTabRef.current.style.left = `${btn.offsetLeft}px`;
+    terminalTabRef.current.style.width = \`\${btn.offsetWidth}px\`;
+      terminalTabRef.current.style.left = \`\${btn.offsetLeft}px\`;
     },
     [slideIndex]
   );
 
-//   useEffect(() => {
-//     if (!swiperRef.current) return;
-//     swiperRef.current?.slideTo(3);
-//   }, []);
+  useEffect(() => {
+    if (!swiperRef.current) return;
+    swiperRef.current?.slideTo(3);
+  }, []);
   return (
     <div className="relative z-10 w-full h-[650px] bg-gradient-to-l from-background-color_950C via-background-color_900C to-background-color_950C">
       <div className="mt-28 layout_max_1200 mx-auto w-full h-full  p-2  ">
@@ -135,7 +138,7 @@ export const CodeEditorHeroAnimationDisplay = ({
                         tabRefs.current[i] = btn;
                       }}
                       onClick={() => swiperRef.current?.slideTo(i)}
-                      className={`font-medium  px-2 py-1 text-read_2 z-10 relative transition-colors rounded-tiny  ${slideIndex === i ? " text-text-color_1" : "hover:bg-background-color_800C text-text-color_2"}`}
+                      className={\`font-medium  px-2 py-1 text-read_2 z-10 relative transition-colors rounded-tiny  \${slideIndex === i ? " text-text-color_1" : "hover:bg-background-color_800C text-text-color_2"}\`}
                     >
                       {button.label}
                     </button>
@@ -167,7 +170,7 @@ export const CodeEditorHeroAnimationDisplay = ({
               className="h-full rounded overflow-hidden border border-border-color_800C"
             >
               <SwiperSlide className="w-full">
-                <div className="h-[calc(100%-200px)] w-full overflow-y-auto custom_scrollbar overflow-x-auto">
+                <div className="h-[calc(100%-200px)] w-full">
                   {pageTsxComponent}
                 </div>
                 <div className="h-[200px] w-full border-t border-border-color_800C bg-background-color_900C">
@@ -244,7 +247,7 @@ export const CodeEditorHeroAnimationDisplay = ({
                             className="w-full h-full overflow-hidden p-3"
                           >
                             <div
-                              className={`w-full ${key === "MARQUEE_IMAGES_2" ? "animate-marquee-vertical-topToBottom" : "animate-marquee-vertical-bottomToTop"} `}
+                              className={\`w-full \${key === "MARQUEE_IMAGES_2" ? "animate-marquee-vertical-topToBottom" : "animate-marquee-vertical-bottomToTop"} \`}
                             >
                               <div>
                                 {Array.from({ length: 2 }).map((_, i) => {
@@ -252,7 +255,7 @@ export const CodeEditorHeroAnimationDisplay = ({
                                     <React.Fragment key={i}>
                                       {value.map((item, j) => (
                                         <div
-                                          key={`original-${j}`}
+                                          key={\`original-\${j}\`}
                                           className="w-full h-[300px] rounded mb-6 bg-background-color_900C"
                                         ></div>
                                       ))}
@@ -273,5 +276,14 @@ export const CodeEditorHeroAnimationDisplay = ({
         </div>
       </div>
     </div>
+  );
+};
+`
+
+export const TrmPage = () => {
+  return (
+    <CodeBlock lang="tsx" className="text-[14px]">
+      {code}
+    </CodeBlock>
   );
 };

@@ -43,7 +43,7 @@ interface GettingStartedType {
   title: string;
   desc: string;
   img: string;
-  link: string
+  link: string;
 }
 
 export const GETTING_STARTED: GettingStartedType[] = [
@@ -51,36 +51,36 @@ export const GETTING_STARTED: GettingStartedType[] = [
     title: "React",
     desc: "Get started with React by learning the fundamentals of components, props, and state to build interactive user interfaces.",
     img: "/color/react.svg",
-    link: "/react/react-fundamentals/getting-started"
+    link: "/react/react-fundamentals/getting-started",
   },
   {
     title: "Devops",
     desc: "Learn the basics of DevOps, including CI/CD, automation, and collaboration between development and operations teams.",
     img: "/color/devops.svg",
-    link: "/devops/introduction-to-devops/what-is-devops"
+    link: "/devops/introduction-to-devops/what-is-devops",
   },
   {
     title: "Git",
     desc: "Start using Git for version control by understanding commits, branches, and workflows in your development projects.",
     img: "/color/git.svg",
-    link: "/git/git-basics/git-what-is-git"
+    link: "/git/git-basics/git-what-is-git",
   },
   {
     title: "C++",
     desc: "Begin your journey with C++ by understanding variables, data types, functions, and the basics of object-oriented programming.",
     img: "/color/cpp.svg",
-    link: "/cpp/cpp-getting-started/introduction-to-cpp"
+    link: "/cpp/cpp-getting-started/introduction-to-cpp",
   },
   {
     title: "Nextjs",
     desc: "Learn how to build fast, modern web apps with Next.js using file-based routing, server-side rendering, and API routes.",
     img: "/color/nextjs.svg",
-    link: "/nextjs/nextjs-intro/nextjs-what-is"
+    link: "/nextjs/nextjs-intro/nextjs-what-is",
   },
   {
     title: "Monorepo",
     desc: "Discover how to manage multiple projects in a single codebase using monorepos, with tools like TurboRepo and Nx.",
     img: "/color/monorepo.svg",
-    link: "/monorepo/monorepo-intro/what-is-monorepo"
+    link: "/monorepo/monorepo-intro/what-is-monorepo",
   },
-]
+];

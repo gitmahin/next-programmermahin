@@ -57,7 +57,7 @@ export default async function QuickLearnChildrenPage({
       console.log(params);
     });
   }
-  
+
   try {
     const fileContent = fs.readFileSync(
       `src/content/quicklearn/${slug}.mdx`,

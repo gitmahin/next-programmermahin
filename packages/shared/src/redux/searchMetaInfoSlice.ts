@@ -57,7 +57,6 @@ const configureLocalStore = () =>
 export const searchMetaInfoActiveKeyValue = (state: searchMetaInfoInterface) =>
   state.searchMetaInfo.activeKey;
 
-
 export const searchMetaInfoValues = createSelector(
   (state: searchMetaInfoInterface) => state.searchMetaInfo,
   (searchMetaInfo) => ({

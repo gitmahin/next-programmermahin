@@ -3,4 +3,3 @@ export interface AnchorsType {
   text: string;
   anchor: string;
 }
-

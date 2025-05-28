@@ -9,6 +9,5 @@ const nextConfig: NextConfig = {
   // TODO: for docker image. otherwise comment this
   // output: "standalone",
 };
-  
+
 export default nextConfig;
- 

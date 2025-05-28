@@ -230,6 +230,9 @@ importers:
       eslint:
         specifier: ^9.24.0
         version: 9.24.0(jiti@1.21.7)
+      shiki:
+        specifier: ^3.4.2
+        version: 3.4.2
       tailwind-config:
         specifier: workspace:*
         version: link:../../packages/tailwind-config

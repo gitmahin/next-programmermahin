@@ -1,4 +1,5 @@
 import { CodeEditorHeroAnimationDisplay } from "@/components/homepage/codeEditorHeroAnimation";
+import { TrmPage } from "@/components/homepage/terminal";
 import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
@@ -74,9 +75,8 @@ export default function Home() {
               </div>
             </div>
           </div> */}
-
       </div>
-          <CodeEditorHeroAnimationDisplay/>
+      <CodeEditorHeroAnimationDisplay pageTsxComponent={<TrmPage />} />
     </div>
   );
 }

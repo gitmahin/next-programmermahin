@@ -41,7 +41,7 @@ export const QuickLearnAsideNav = ({
     tabRef,
     moveTabToAnchor,
     activeHash,
-    asideRef
+    asideRef,
   } = useActiveAnchor(matterContent);
 
   return (
@@ -64,7 +64,10 @@ export const QuickLearnAsideNav = ({
       <aside
         className={`w-[270px] h-screen flex-shrink-0 sticky pt-[70px] overflow-hidden top-0 tuto_cont_aside transition-all ${openAside && "right-[0_!important]"}`}
       >
-        <div ref={asideRef} className="w-full h-full overflow-y-auto custom_scrollbar tuto_toc_main">
+        <div
+          ref={asideRef}
+          className="w-full h-full overflow-y-auto custom_scrollbar tuto_toc_main"
+        >
           <div></div>
           <ul className=" leading-7 relative pb-16">
             {anchors.map((anchor, i) => {

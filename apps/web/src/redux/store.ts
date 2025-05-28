@@ -12,7 +12,7 @@ export const store = configureStore({
   reducer: {
     [searchMetaInfoSliceName]: searchMetaInfoReducer,
     [searchMobInfoOpenSliceName]: searchMobInfoOpenReducer,
-    [searchBoxOpenSliceName]: searchBoxOpenReducer
+    [searchBoxOpenSliceName]: searchBoxOpenReducer,
   },
 });
 

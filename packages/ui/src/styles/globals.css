@@ -168,23 +168,23 @@ body {
 
 @layer utilities {
   .html_grid {
-    @apply bg-[var(--html-color)]
+    @apply bg-[var(--html-color)];
   }
   .css_grid {
-    @apply bg-[var(--css-color)]
+    @apply bg-[var(--css-color)];
   }
   .nginx_grid {
-    @apply bg-[var(--nginx-color)]
+    @apply bg-[var(--nginx-color)];
   }
   .docker_grid {
-    @apply bg-[var(--docker-color)]
+    @apply bg-[var(--docker-color)];
   }
 
   .default_page_width {
     @apply max-w-[950px] w-full;
   }
 
-  .layout_max_1200{
+  .layout_max_1200 {
     @apply max-w-[1200px] w-full;
   }
 
@@ -301,6 +301,7 @@ body {
 
 pre {
   padding: 15px 0px !important;
+  font-family: var(--font-jetbrains-mono);
 }
 
 pre code {
@@ -311,6 +312,7 @@ pre code {
   width: 100%;
   text-wrap: wrap;
   position: relative;
+  font-family: var(--font-jetbrains-mono);
 
   [data-line] {
     padding-inline: 20px;
@@ -385,6 +387,28 @@ pre:has(.focused):hover span {
   filter: none;
 }
 
+.codeblock .line {
+  padding: 0px 15px;
+}
+
+.codeblock code {
+  counter-reset: step;
+  counter-increment: step 0;
+   display: grid;
+   width: 100%;
+     text-wrap: wrap;
+}
+
+.codeblock code .line::before {
+  content: counter(step);
+  counter-increment: step;
+  width: 1rem;
+  margin-right: 1.5rem;
+  display: inline-block;
+  text-align: right;
+  color: rgba(115,138,148,.4)
+}
+
 .prose {
   max-width: 100%;
   min-width: 10px;
@@ -399,3 +423,5 @@ pre:has(.focused):hover span {
 .prose :where(hr):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   border-color: var(--border-color-800C);
 }
+
+

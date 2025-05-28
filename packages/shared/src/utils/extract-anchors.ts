@@ -21,9 +21,9 @@ function extractTocItems(tree: any): TocItem[] {
         const textNode = item.children?.[0]?.children?.[0]?.children?.[0];
         const text = textNode?.value || "";
         if (text && level > 1) {
-            const slug = slugger.slug(text);
-            tocItems.push({ content: text, slug, level });
-          }
+          const slug = slugger.slug(text);
+          tocItems.push({ content: text, slug, level });
+        }
         const nestedList = item.children?.find((n: any) => n.type === "list");
         if (nestedList) {
           walk(nestedList, level + 1);
@@ -40,6 +40,6 @@ function extractTocItems(tree: any): TocItem[] {
 }
 
 export const extractAnchors = (mdxContent: string) => {
-    const tree = unified().use(remarkParse).parse(mdxContent);
-    return extractTocItems(tree)
-}
+  const tree = unified().use(remarkParse).parse(mdxContent);
+  return extractTocItems(tree);
+};

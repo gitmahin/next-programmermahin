@@ -50,5 +50,5 @@ export const getTutorialsAbsolutePaths = () => {
     });
   });
 
-  return params
+  return params;
 };
