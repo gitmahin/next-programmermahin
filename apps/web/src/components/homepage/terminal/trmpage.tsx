@@ -278,6 +278,7 @@ export const CodeEditorHeroAnimationDisplay = ({
     </div>
   );
 };
+
 `
 
 export const TrmPage = () => {

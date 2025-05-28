@@ -1,32 +1,17 @@
 "use client";
 import { MAIN_NAV_LINKS } from "@/constants";
-import { LUCIDE_DEFAULT_ICON_SIZE, PMButton, PMLogo } from "@programmer/ui";
-import { ChevronDown, Contrast, Moon, Sun, X } from "lucide-react";
-import { useTheme } from "next-themes";
+import { LUCIDE_DEFAULT_ICON_SIZE, PMButton, PMLogo, ThemeModeToggoler } from "@programmer/ui";
+import { X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@programmer/ui";
 
 import { setMobSidebarOpen } from "@/redux/tutorials/mobSidebarOpen";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux.hook";
 
 export const Sidebar = ({ children }: { children: React.ReactNode }) => {
   const path_name = usePathname();
-  const { theme, setTheme, resolvedTheme } = useTheme();
   const dispatch = useAppDispatch();
-  const toggleTheme = () => {
-    if (theme === "dark" || resolvedTheme === "dark") {
-      setTheme("light");
-    } else {
-      setTheme("dark");
-    }
-  };
 
   const mobSidebarOpen = useAppSelector((state) => state.mobSidebarOpen.open);
 
@@ -43,57 +28,7 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
 
       <div className="w-full relative top-0 border-b z-20 bg-background-color_900C border-border-color_800C px-4 py-3 flex justify-between items-center">
         <PMLogo size="sm" />
-        <div className="w-fit h-[30px] overflow-hidden rounded-tablet flex justify-between items-center border border-border-color_800C cursor-pointer">
-          <div
-            onClick={toggleTheme}
-            className="flex-shrink-0 h-full px-[6px] hover:bg-background-color_800C flex justify-center items-center"
-          >
-            {theme !== "system" ? (
-              <>
-                <Moon
-                  size={LUCIDE_DEFAULT_ICON_SIZE}
-                  className="text-text-svg_default_color dark:block hidden"
-                />
-                <Sun
-                  size={LUCIDE_DEFAULT_ICON_SIZE}
-                  className="text-text-svg_default_color dark:hidden"
-                />
-              </>
-            ) : (
-              <Contrast
-                size={LUCIDE_DEFAULT_ICON_SIZE}
-                className="text-text-svg_default_color"
-              />
-            )}
-          </div>
-          <DropdownMenu>
-            <DropdownMenuTrigger className="h-full outline-none">
-              <div className="px-1 h-full flex justify-center items-center hover:bg-background-color_800C">
-                <ChevronDown
-                  size={LUCIDE_DEFAULT_ICON_SIZE}
-                  className="text-text-svg_default_color"
-                />
-              </div>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="end"
-              className="bg-background-color_850C"
-            >
-              <DropdownMenuItem
-                className="group hover:bg-background-color_750C py-1 rounded-tiny"
-                onClick={() => setTheme("system")}
-              >
-                <Contrast
-                  size={LUCIDE_DEFAULT_ICON_SIZE}
-                  className="text-text-svg_default_color group-hover:text-text-color_1"
-                />
-                <span className="text-text-color_4 text-read_2 group-hover:text-text-color_1">
-                  System
-                </span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+        <ThemeModeToggoler/>
         <PMButton
           onClick={handleSidebarOff}
           variant="secondary"

@@ -10,3 +10,4 @@ export * from "./dropdown-menu";
 export * from "./pmbutton";
 export * from "./dialog";
 export * from "./accordion";
+export * from "./themeModeToggler";

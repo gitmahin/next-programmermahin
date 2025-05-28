@@ -1,5 +1,5 @@
 import { CodeEditorHeroAnimationDisplay } from "@/components/homepage/codeEditorHeroAnimation";
-import { TrmPage } from "@/components/homepage/terminal";
+import { TrmPage, TrmStyle, TrmPackageJson } from "@/components/homepage/terminal";
 import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
@@ -13,10 +13,10 @@ export default function Home() {
   return (
     <div className="w-full ">
       <div className="hero_image_wrapper">
-        <div className="max-w-[700px] w-full h-[50px] bg-zinc-50 blur-[80px] opacity-50 rounded-full -top-[20px] left-[50%] -translate-x-1/2 absolute max-[1168px]:opacity-35 max-[1168px]:max-w-[300px]"></div>
+        <div className="max-w-[700px] w-full h-[50px] dark:bg-zinc-50 bg-zinc-400 blur-[80px] opacity-50 rounded-full -top-[20px] left-[50%] -translate-x-1/2 absolute max-[1168px]:opacity-35 max-[1168px]:max-w-[300px]"></div>
 
         <div className="hero_canvas overflow-hidden p-1 border-l-0 border-r border-t-0 border-b-0 border-border-color_700C">
-          <div className="absolute inset-0 h-full w-full bg-transparent dark:bg-[linear-gradient(to_right,var(--color-zinc-700),transparent_1px),linear-gradient(to_bottom,var(--color-zinc-700),transparent_1px)] bg-[size:4rem_4rem]"></div>
+          <div className="absolute inset-0 h-full w-full bg-transparent dark:bg-[linear-gradient(to_right,var(--color-zinc-700),transparent_1px),linear-gradient(to_bottom,var(--color-zinc-700),transparent_1px)] bg-[linear-gradient(to_right,var(--color-zinc-300),transparent_1px),linear-gradient(to_bottom,var(--color-zinc-300),transparent_1px)] bg-[size:4rem_4rem]"></div>
           <div className="absolute w-full h-full bg-gradient-to-b from-transparent to-background-color_950C"></div>
         </div>
         <div className="absolute w-full bg-gradient-to-b from-transparent to-background-color_950C h-[700px] left-[-10px]"></div>
@@ -50,9 +50,12 @@ export default function Home() {
         <div className="flex justify-center items-center gap-2 mt-6 ">
           <PMButton
             variant="primary"
-            className="px-4 py-2 font-medium text-read_1 rounded transition-colors"
+            className="px-4 py-2 font-medium text-read_1 rounded transition-colors "
           >
+            <span className="text-text-zinc_white">
             Get Started
+
+            </span>
           </PMButton>
           <PMButton
             variant="silent"
@@ -76,7 +79,7 @@ export default function Home() {
             </div>
           </div> */}
       </div>
-      <CodeEditorHeroAnimationDisplay pageTsxComponent={<TrmPage />} />
+      <CodeEditorHeroAnimationDisplay pageTsxComponent={<TrmPage />} styleCssComponent={<TrmStyle/>} packageJsonComponent={<TrmPackageJson/>} />
     </div>
   );
 }

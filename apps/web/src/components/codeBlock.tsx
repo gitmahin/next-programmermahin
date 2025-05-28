@@ -10,12 +10,15 @@ interface Props {
 export async function CodeBlock(props: Props) {
   const out = await codeToHtml(props.children, {
     lang: props.lang,
-    theme: "andromeeda",
+    themes: {
+      light: "github-light-high-contrast",
+      dark: "github-dark-high-contrast"
+    },
   });
 
   return (
     <div
-      className={`${props.className} codeblock`}
+      className={`${props.className} codeblock h-full`}
       dangerouslySetInnerHTML={{ __html: out }}
     />
   );

@@ -107,10 +107,10 @@ export const CodeEditorHeroAnimationDisplay = ({
     [slideIndex]
   );
 
-//   useEffect(() => {
-//     if (!swiperRef.current) return;
-//     swiperRef.current?.slideTo(3);
-//   }, []);
+  useEffect(() => {
+    if (!swiperRef.current) return;
+    swiperRef.current?.slideTo(3);
+  }, []);
   return (
     <div className="relative z-10 w-full h-[650px] bg-gradient-to-l from-background-color_950C via-background-color_900C to-background-color_950C">
       <div className="mt-28 layout_max_1200 mx-auto w-full h-full  p-2  ">
@@ -122,7 +122,7 @@ export const CodeEditorHeroAnimationDisplay = ({
               <div className="w-[15px] h-[15px] rounded-full bg-background-color_750C border border-border-color_700C"></div>
             </div>
 
-            <div className="flex justify-start items-center gap-2 pl-5 relative">
+            <div className="flex justify-start items-center gap-2 pl-5 relative overflow-x-auto hide-scrollbar">
               <div
                 ref={terminalTabRef}
                 className="w-[73px] left-5 h-full transition-all duration-500 absolute bg-background-color_750C rounded-tiny"
@@ -230,7 +230,7 @@ export const CodeEditorHeroAnimationDisplay = ({
               <SwiperSlide className="w-full h-full ">
                 {styleCssComponent}
               </SwiperSlide>
-              <SwiperSlide className="w-full h-full ">
+              <SwiperSlide className="w-full h-full overflow-y-auto custom_scrollbar">
                 {packageJsonComponent}
               </SwiperSlide>
               <SwiperSlide className="w-full">

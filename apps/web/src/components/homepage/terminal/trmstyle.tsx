@@ -1,25 +1,7 @@
-.hero_image_wrapper {
-  position: absolute;
-  contain: strict;
-  width: 100%;
-  height: 880px;
-  perspective: 800px;
-  transform-style: preserve-3d;
-  top: 0;
-  left: 0;
-}
+import { CodeBlock } from '@/components/codeBlock';
+import React from 'react'
 
-.hero_canvas {
-  transform-origin: 0 0;
-  width: 100%;
-  height: 700px;
-  margin: 63px auto auto;
-  position: absolute;
-  inset: 0;
-  transform: rotateX(264deg) rotateY(360deg) rotateZ(0deg);
-}
-
-.terminal_wrapper {
+const code = `.terminal_wrapper {
   position: relative;
   contain: strict;
   width: 100%;
@@ -41,3 +23,12 @@
   transform-origin: top left;
   backface-visibility: hidden;
 }
+`
+
+export const TrmStyle = () => {
+  return (
+    <CodeBlock lang="css" className="text-[14px]">
+      {code}
+    </CodeBlock>
+  );
+};

@@ -391,6 +391,10 @@ pre:has(.focused):hover span {
   padding: 0px 15px;
 }
 
+.codeblock pre{
+  height: 100%;
+}
+
 .codeblock code {
   counter-reset: step;
   counter-increment: step 0;
@@ -409,6 +413,15 @@ pre:has(.focused):hover span {
   color: rgba(115,138,148,.4)
 }
 
+.dark {
+  .codeblock .shiki,
+  .codeblock .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+}
+
 .prose {
   max-width: 100%;
   min-width: 10px;
@@ -425,3 +438,11 @@ pre:has(.focused):hover span {
 }
 
 
+.hide-scrollbar {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
