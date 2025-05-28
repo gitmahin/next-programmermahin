@@ -38,6 +38,7 @@ export const Header = () => {
             </span>
           </PMButton>
           <Search showSearchButton={false} />
+          <ThemeModeToggoler/>
           <PMButton
             variant="secondary"
             className="px-3 py-1 rounded text-read_1 font-medium transition-colors"
