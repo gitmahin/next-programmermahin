@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
 
+   serverExternalPackages: ['@shikijs/twoslash'],
   // TODO: for docker image. otherwise comment this
   // output: "standalone",
 }; 

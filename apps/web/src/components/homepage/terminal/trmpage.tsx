@@ -102,6 +102,7 @@ export const CodeEditorHeroAnimationDisplay = ({
   const [slideIndex, setSlideIndex] = useState(0);
 
   const moveTerminalTabRefTo = useCallback(
+  //    ^^^
     (btn: HTMLElement) => {
       if (!terminalTabRef.current) return;
     terminalTabRef.current.style.width = \`\${btn.offsetWidth}px\`;
