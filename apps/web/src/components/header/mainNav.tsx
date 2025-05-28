@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import {
   cn,
+  DiscordIcon,
   LUCIDE_DEFAULT_ICON_SIZE,
   NavigationMenu,
   NavigationMenuContent,
@@ -10,10 +11,11 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
+  PMButton,
 } from "@programmer/ui";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronRight, CodeXml, UsersRound } from "lucide-react";
 
 const NAV_FEATURED_BLOGS: { label: string; desc: string; link: string }[] = [
   {
@@ -37,9 +39,82 @@ export const MainNav = () => {
           <NavigationMenuItem>
             <NavigationMenuTrigger>Developers</NavigationMenuTrigger>
             <NavigationMenuContent>
+              <div className="w-[700px] h-[280px] p-2">
+                <div className="w-full h-full grid grid-cols-[200px_200px_1fr] gap-2">
+                  <div className="w-full h-full border border-border-color_800C rounded overflow-hidden bg-background-color_900C group">
+                    <div className="w-full h-[calc(100%-90px)] px-3 py-3 relative">
+                      <CodeXml size={30} className="text-text-color_1" />
+                      <div className="absolute bottom-0 left-0 px-3 py-3 flex justify-start items-center gap-1">
+                        <span className="text-read_2 text-text-color_2 group-hover:text-text-color_1 transition-colors">
+                          Explore
+                        </span>
+                        <ChevronRight
+                          size={16}
+                          className="text-text-svg_default_color group-hover:text-text-color_1 transition-colors"
+                        />
+                      </div>
+                    </div>
+                    <div className="h-[90px] border-t border-border-color_800C p-3 flex-shrink-0 bg-background-color_850C">
+                      <h3 className="text-text-color_1 text-read_1 font-medium">
+                        Developer Docs
+                      </h3>
+                      <p className="mt-1 text-read_3 text-text-color_2 two_line_ellipsis">
+                        Build, contribute, and explore the core of
+                        ProgrammerMahin.
+                      </p>
+                    </div>
+                  </div>
 
-                    
+                  <div className="w-full h-full border border-border-color_800C rounded overflow-hidden bg-background-color_900C group">
+                    <div className="w-full h-[calc(100%-90px)] px-3 py-3 relative">
+                      <UsersRound size={30} className="text-text-color_1" />
+                      <div className="absolute bottom-0 left-0 px-3 py-3 w-full flex justify-between items-center">
+                        <div className="flex justify-start items-center gap-1">
+                          <span className="text-read_2 text-text-color_2 group-hover:text-text-color_1 transition-colors">
+                            Explore
+                          </span>
+                          <ChevronRight
+                            size={16}
+                            className="text-text-svg_default_color group-hover:text-text-color_1 transition-colors"
+                          />
+                        </div>
 
+                        <PMButton className="px-2 py-0 rounded-tiny transition-colors">
+                          <span className="font-medium text-read_2 ">Join</span>
+                        </PMButton>
+                      </div>
+                    </div>
+                    <div className="h-[90px] border-t border-border-color_800C p-3 flex-shrink-0 bg-background-color_850C">
+                      <h3 className="text-text-color_1 text-read_1 font-medium">
+                        Community
+                      </h3>
+                      <p className="mt-1 text-read_3 text-text-color_2 two_line_ellipsis">
+                        Connect with like-minded developers to exchange
+                        knowledge, collaborate, and grow together.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="w-full h-full">
+                    <PMButton className="w-full py-2 rounded transition-colors flex justify-between items-center gap-2 px-4">
+                      <DiscordIcon color={"#ffffff"} width={28} height={28} className={"flex-shrink-0"}/>
+                      <div className="text-right flex-shrink-0 max-w-[150px] w-full">
+                      <span className="text-text-color_1 font-medium text-read_1">Join On Discord</span>
+                      <p className="text-right text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis">Be part of our developer circle - collaborate, learn, and grow on Discord.</p>
+                      </div>
+
+                    </PMButton>
+
+                    <button className="w-full py-2 rounded transition-colors flex justify-between items-center gap-2 px-4 bg-[#1772E8] hover:bg-[#1772e8e0]">
+                      <DiscordIcon color={"#ffffff"} width={28} height={28} className={"flex-shrink-0"}/>
+                      <div className="text-right flex-shrink-0 max-w-[150px] w-full">
+                      <span className="text-text-color_1 font-medium text-read_1">Join On Discord</span>
+                      <p className="text-right text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis">Be part of our developer circle - collaborate, learn, and grow on Discord.</p>
+                      </div>
+
+                    </button>
+                  </div>
+                </div>
+              </div>
             </NavigationMenuContent>
           </NavigationMenuItem>
 
@@ -49,11 +124,18 @@ export const MainNav = () => {
               <div className="w-[800px] h-[330px] grid grid-cols-[250px_280px_1fr]">
                 <div className="w-[250px] border-r h-full border-border-color_800C relative">
                   <Image
-                    src={"/images/tutorial_menu.png"}
+                    src={"/images/dark/tutorial_menu.png"}
                     width={500}
                     height={600}
                     alt="Tutorial"
-                    className="w-full h-full object-cover object-left-top"
+                    className="w-full h-full object-cover object-left-top hidden dark:block"
+                  />
+                  <Image
+                    src={"/images/light/tutorial_menu.png"}
+                    width={500}
+                    height={600}
+                    alt="Tutorial"
+                    className="w-full h-full object-cover object-left-top dark:hidden block"
                   />
                   <div className="absolute bottom-0 h-[200px] w-full bg-gradient-to-b from-transparent to-background-color_925C flex justify-start items-end">
                     <div className="absolute w-full h-full bg-gradient-to-b from-transparent to-background-color_925C"></div>
@@ -77,11 +159,18 @@ export const MainNav = () => {
                     <div className="w-full h-[200px] border-t border-l bg-background-color_800C absolute bottom-0 left-5 border-border-color_800C rounded-tl-[8px] pt-2 pl-2">
                       <div className="w-full h-full rounded-tl-[6px] overflow-hidden">
                         <Image
-                          src={"/images/quick_learn.png"}
+                          src={"/images/dark/quick_learn.png"}
                           width={500}
                           height={500}
                           alt="quick-learn"
-                          className="w-full h-full object-left-top object-cover"
+                          className="w-full h-full object-left-top object-cover hidden dark:block"
+                        />
+                        <Image
+                          src={"/images/light/quick_learn.png"}
+                          width={500}
+                          height={500}
+                          alt="quick-learn"
+                          className="w-full h-full object-left-top object-cover dark:hidden block"
                         />
                       </div>
                     </div>
@@ -120,16 +209,18 @@ export const MainNav = () => {
                           );
                         })}
                       </div>
-                        <div className=" w-full px-2 pb-2 absolute bottom-0 left-0">
+                      <div className=" w-full px-2 pb-2 absolute bottom-0 left-0">
+                        <button className="w-full bg-background-color_900C py-[5px] hover:bg-background-color_850C   transition-colors font-medium text-read_3 rounded group flex justify-center items-center gap-1">
+                          <span className="text-text-color_2 group-hover:text-text-color_1 transition-colors">
+                            Explore more blogs
+                          </span>
 
-                      <button className="w-full bg-background-color_900C py-[5px] hover:bg-background-color_850C   transition-colors font-medium text-read_3 rounded group flex justify-center items-center gap-1">
-                        <span className="text-text-color_2 group-hover:text-text-color_1 transition-colors">
-                        Explore more blogs
-                        </span>
-
-                        <ArrowUpRight size={16} className="text-text-svg_default_color transition-colors group-hover:text-text-color_1" />
+                          <ArrowUpRight
+                            size={16}
+                            className="text-text-svg_default_color transition-colors group-hover:text-text-color_1"
+                          />
                         </button>
-                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
