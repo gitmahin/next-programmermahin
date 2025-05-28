@@ -28,7 +28,7 @@ export default function Home() {
           <span className="bg-gradient-to-br dark:from-green-700 to-green-900 font-medium text-read_2 border border-green-500 px-2 rounded-tablet">
             Free
           </span>
-          <p className="font-medium text-read_2 text-text-color_4">
+          <p className="font-medium text-read_2 text-text-color_1">
             Practical. Powerful Learning Platform for Developers
           </p>
         </div>
@@ -78,6 +78,10 @@ export default function Home() {
               </div>
             </div>
           </div> */}
+      </div>
+      <div className="w-full flex justify-center items-center flex-col mt-24 relative z-[20]">
+        <h3 className="text-read_1 font-medium w-fit text-center text-text-color_1 font-geist_mono">Learn by Doing, Not by Guessing.</h3>
+        <p className="text-read_3 text-text-color_2 text-center">Hands-on examples. <span className="text-text-color_4">Zero fluff</span>. Pure skill.</p>
       </div>
       <CodeEditorHeroAnimationDisplay pageTsxComponent={<TrmPage />} styleCssComponent={<TrmStyle/>} packageJsonComponent={<TrmPackageJson/>} />
 
