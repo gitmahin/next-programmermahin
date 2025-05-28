@@ -20,7 +20,7 @@ interface HitProps {
   hit: {
     label: string;
     slug: string;
-    basepath: string
+    basepath: string;
     desc: string;
     onthispage: AlgoliaIndexType[];
     objectID: string;
@@ -39,6 +39,7 @@ export default function Hit({ hit }: HitProps) {
   const handleMouseHover = (
     title: string,
     desc: string,
+    basepath: string,
     slug: string,
     onThisPageData: AlgoliaIndexType[],
     navigationText: string[],
@@ -49,6 +50,7 @@ export default function Hit({ hit }: HitProps) {
       setSearchMetaInfo({
         title,
         desc,
+        basepath,
         slug,
         onThisPage: onThisPageData,
         navigationText,
@@ -78,6 +80,7 @@ export default function Hit({ hit }: HitProps) {
           handleMouseHover(
             hit.label,
             hit.desc,
+            hit.basepath,
             hit.slug,
             hit.onthispage,
             [
@@ -135,6 +138,7 @@ export default function Hit({ hit }: HitProps) {
             handleMouseHover(
               hit.label,
               hit.desc,
+              hit.basepath,
               hit.slug,
               hit.onthispage,
               [
