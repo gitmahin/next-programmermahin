@@ -112,20 +112,23 @@ export const CodeEditorHeroAnimationDisplay = ({
     swiperRef.current?.slideTo(3);
   }, []);
   return (
-    <div className="relative z-10 w-full h-[650px] bg-gradient-to-l from-background-color_950C via-background-color_900C to-background-color_950C">
-      <div className="mt-28 layout_max_1200 mx-auto w-full h-full  p-2  ">
-        <div className="rounded border border-border-color_800C bg-background-color_925C w-full h-full overflow-hidden">
+    <div className="relative z-10 w-full h-[650px]">
+      <div className="absolute max-w-[500px] w-full h-full dark:bg-pm_zinc-600 bg-pm_zinc-300 blur-[100px] rounded-full left-1/2 -translate-x-1/2 -z-[1]"></div>
+      <div className="mt-28 layout_max_1200 mx-auto w-full h-full  p-2 ">
+        <div className="rounded border border-border-color_800C backdrop-blur-[150px] dark:bg-[#11111371] bg-[#f7f7f888] w-full h-full overflow-hidden relative">
+          <div className="absolute w-[300px] h-[300px] rounded-[50%] blur-[200px] dark:bg-pm_purple-500 dark:opacity-[70%] bg-pm_purple-400 top-0 left-0 -z-[11]"></div>
+          <div className="absolute w-[300px] h-[300px] rounded-[50%] blur-[200px] dark:bg-pm_purple-500 dark:opacity-[70%] bg-pm_purple-400 bottom-0 right-0 -z-[11]"></div>
           <div className="w-full h-[40px] px-3 pt-2 flex justify-start items-center">
             <div className="flex justify-center items-center w-fit gap-2">
-              <div className="w-[15px] h-[15px] rounded-full bg-background-color_750C border border-border-color_700C"></div>
-              <div className="w-[15px] h-[15px] rounded-full bg-background-color_750C border border-border-color_700C"></div>
-              <div className="w-[15px] h-[15px] rounded-full bg-background-color_750C border border-border-color_700C"></div>
+              <div className="w-[14px] h-[14px] rounded-full dark:bg-[#7e22ce5e] bg-[#7e22ce42] border dark:border-pm_purple-800 border-pm_purple-400"></div>
+              <div className="w-[14px] h-[14px] rounded-full dark:bg-[#7e22ce5e] bg-[#7e22ce42] border dark:border-pm_purple-800 border-pm_purple-400"></div>
+              <div className="w-[14px] h-[14px] rounded-full dark:bg-[#7e22ce5e] bg-[#7e22ce42] border dark:border-pm_purple-800 border-pm_purple-400"></div>
             </div>
 
             <div className="flex justify-start items-center gap-2 pl-5 relative overflow-x-auto hide-scrollbar">
               <div
                 ref={terminalTabRef}
-                className="w-[73px] left-5 h-full transition-all duration-500 absolute bg-background-color_750C rounded-tiny"
+                className="w-[73px] left-5 h-full transition-all duration-500 absolute dark:border-pm_purple-600 border-pm_purple-200 border bg-gradient-to-br dark:from-pm_purple-600 dark:to-pm_purple-950 rounded-tiny from-pm_purple-200 to-pm_purple-500"
               ></div>
               {TERMINAL_BUTTONS.map((button, i) => {
                 return (
@@ -135,7 +138,7 @@ export const CodeEditorHeroAnimationDisplay = ({
                         tabRefs.current[i] = btn;
                       }}
                       onClick={() => swiperRef.current?.slideTo(i)}
-                      className={`font-medium  px-2 py-1 text-read_2 z-10 relative transition-colors rounded-tiny  ${slideIndex === i ? " text-text-color_1" : "hover:bg-background-color_800C text-text-color_2"}`}
+                      className={`font-medium  px-2 py-1 text-read_2 z-10 relative transition-colors rounded-tiny  ${slideIndex === i ? "text-text-color_1" : "dark:hover:bg-[#7e22ce2e] hover:bg-[#7e22ce14] hover:backdrop-blur-lg text-text-color_2"}`}
                     >
                       {button.label}
                     </button>
@@ -164,9 +167,9 @@ export const CodeEditorHeroAnimationDisplay = ({
               slidesPerView={1}
               navigation={false}
               allowTouchMove={false}
-              className="h-full rounded overflow-hidden border border-border-color_800C"
+              className="h-full rounded overflow-hidden border border-border-color_800C "
             >
-              <SwiperSlide className="w-full">
+              <SwiperSlide className="w-full relative z-10">
                 <div className="h-[calc(100%-200px)] w-full overflow-y-auto custom_scrollbar overflow-x-auto">
                   {pageTsxComponent}
                 </div>
@@ -233,7 +236,7 @@ export const CodeEditorHeroAnimationDisplay = ({
               <SwiperSlide className="w-full h-full overflow-y-auto custom_scrollbar">
                 {packageJsonComponent}
               </SwiperSlide>
-              <SwiperSlide className="w-full">
+              <SwiperSlide className="w-full dark:bg-[#111113a3] bg-[#f7f7f888]">
                 <div className="terminal_wrapper ">
                   <div className="terminal_canvas grid grid-cols-3">
                     {Object.entries(MARQUEE_IMAGES).map(

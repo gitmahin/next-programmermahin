@@ -18,7 +18,7 @@ export async function CodeBlock(props: Props) {
 
   return (
     <div
-      className={`${props.className} codeblock h-full`}
+      className={`${props.className} codeblock `}
       dangerouslySetInnerHTML={{ __html: out }}
     />
   );

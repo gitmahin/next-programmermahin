@@ -23,6 +23,13 @@ const code = `.terminal_wrapper {
   transform-origin: top left;
   backface-visibility: hidden;
 }
+
+
+
+
+
+
+
 `
 
 export const TrmStyle = () => {

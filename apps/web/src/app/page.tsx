@@ -80,6 +80,10 @@ export default function Home() {
           </div> */}
       </div>
       <CodeEditorHeroAnimationDisplay pageTsxComponent={<TrmPage />} styleCssComponent={<TrmStyle/>} packageJsonComponent={<TrmPackageJson/>} />
+
+      <div className="w-full mt-[500px]">
+
+      </div>
     </div>
   );
 }
