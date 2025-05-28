@@ -50,6 +50,7 @@ export async function generateStaticParams() {
             label: data?.title,
             desc: data?.desc,
             type: "tutorial",
+            basepath: `${process.env.NEXT_PUBLIC_BASE_PATH}`,
             slug: `${param.tutoType}/${joinedSlug}`,
             onthispage: parsedAnchors.map((item: TocItem) => ({
               label: item.content,

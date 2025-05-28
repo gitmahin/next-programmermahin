@@ -20,6 +20,7 @@ interface HitProps {
   hit: {
     label: string;
     slug: string;
+    basepath: string
     desc: string;
     onthispage: AlgoliaIndexType[];
     objectID: string;
@@ -69,7 +70,7 @@ export default function Hit({ hit }: HitProps) {
 
   return (
     <Link
-      href={`/${hit.slug}`}
+      href={`${hit.basepath}/${hit.slug}`}
       onClick={() => checkoutCurrentRoute(`/${hit.slug}`)}
       className="w-full"
       onMouseEnter={() => {

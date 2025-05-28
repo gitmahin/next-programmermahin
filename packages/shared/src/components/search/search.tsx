@@ -215,7 +215,7 @@ export const Search = ({ showSearchButton = true }: SearchPropsTypes) => {
                             {searchMetaInfo.onThisPage.map((item, i) => {
                               return (
                                 <Link
-                                  href={`/${searchMetaInfo.slug}#${item.slug}`}
+                                  href={`${searchMetaInfo.basepath}/${searchMetaInfo.slug}#${item.slug}`}
                                   key={i}
                                 >
                                   <li className="grid grid-cols-[25px_1fr]  text-read_2 group">
