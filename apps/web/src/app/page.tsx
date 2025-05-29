@@ -98,10 +98,9 @@ export default function Home() {
 
       
       <FeaturesSlider/>
+          <div className="mt-32">
 
-      <div className="w-full mt-[500px]">
-
-      </div>
+          </div>
     </div>
   );
 }

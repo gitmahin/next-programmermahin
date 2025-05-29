@@ -14,7 +14,7 @@ import { useSwiperManager } from "@programmer/hooks";
 import { Autoplay } from "swiper/modules";
 import { Pause, Play } from "lucide-react";
 import { AirFlowText } from "@/components/framer-motions";
-
+import Image from "next/image";
 
 interface FeaturesTypes {
   label: string;
@@ -56,6 +56,7 @@ const FEATURES_TYPES: FeaturesTypes[] = [
   },
 ];
 
+const IMAGE_FOLDER_NAME = "snippets-features";
 export const FeaturesSlider = () => {
   const { swiperRef, setSlideIndex, btnRefs, slideIndex, slidingTabRef } =
     useSwiperManager();
@@ -76,17 +77,14 @@ export const FeaturesSlider = () => {
   return (
     <div className="w-full mt-24 px-5">
       <div className="layout_max_1200 mx-auto flex justify-center items-start gap-8">
-        <div className="w-full mt-16">
-          
-            {slideInfo && (
-              <AirFlowText
-                keyIndex={slideIndex}
-                duration={0.5}
-              >
-                <h2 className="text-read_25 text-text-color_1 font-semibold">{slideInfo.title}</h2>
-              </AirFlowText>
-            )}
-      
+        <div className="w-full mt-8">
+          {slideInfo && (
+            <AirFlowText keyIndex={slideIndex} duration={0.5}>
+              <h2 className="text-read_25 text-text-color_1 font-semibold">
+                {slideInfo.title}
+              </h2>
+            </AirFlowText>
+          )}
 
           {slideInfo && (
             <AirFlowText keyIndex={slideIndex} duration={0.5}>
@@ -143,7 +141,7 @@ export const FeaturesSlider = () => {
           </div>
         </div>
 
-        <div className="max-w-[500px] flex-shrink-0 relative z-10 h-[550px] border w-full border-background-color_900C backdrop-blur-[100px] rounded-[15px] ">
+        <div className="max-w-[530px] flex-shrink-0 relative z-10 h-[380px] border w-full border-background-color_900C backdrop-blur-[100px] rounded-[15px] ">
           <div className="w-full h-[40px] flex justify-between items-center px-3">
             <div className="flex justify-center w-fit items-center gap-2 ">
               {Array.from({ length: 3 }).map((item, i) => {
@@ -163,7 +161,7 @@ export const FeaturesSlider = () => {
             </div>
           </div>
           <div className="p-2 pt-0 w-full h-[calc(100%-40px)]">
-            <div className="w-full h-full border border-border-color_800C rounded-[12px] bg-background-color_900C">
+            <div className="w-full h-full  bg-background-color_900C p-1 rounded-[14px]">
               <Swiper
                 onSwiper={(swiper) => {
                   swiperRef.current = swiper;
@@ -183,7 +181,7 @@ export const FeaturesSlider = () => {
                 navigation={false}
                 loop={true}
                 modules={[Autoplay]}
-                className="h-full w-full"
+                className="h-full w-full border border-border-color_800C rounded-[12px]"
                 allowTouchMove={false}
                 autoplay={{
                   delay: 3000,
@@ -192,11 +190,86 @@ export const FeaturesSlider = () => {
                 onAutoplayStop={() => setIsAutoPlayStopped(true)}
                 onAutoplayStart={() => setIsAutoPlayStopped(false)}
               >
-                <SwiperSlide>slider 1</SwiperSlide>
-                <SwiperSlide>slider 2</SwiperSlide>
-                <SwiperSlide>slider 3</SwiperSlide>
-                <SwiperSlide>slider 4</SwiperSlide>
-                <SwiperSlide>slider 5</SwiperSlide>
+                <SwiperSlide>
+                  <Image
+                    src={`/${IMAGE_FOLDER_NAME}/dark/error.png`}
+                    width={600}
+                    height={500}
+                    className="w-full h-full object-cover object-left-top dark:block hidden"
+                    alt="error-example"
+                  />
+                  <Image
+                    src={`/${IMAGE_FOLDER_NAME}/light/error.png`}
+                    width={600}
+                    height={500}
+                    className="w-full h-full object-cover object-left-top dark:hidden block"
+                    alt="error-example"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Image
+                    src={`/${IMAGE_FOLDER_NAME}/dark/warning.png`}
+                    width={600}
+                    height={500}
+                    className="w-full h-full object-cover object-left-top dark:block hidden"
+                    alt="warning-example"
+                  />
+                  <Image
+                    src={`/${IMAGE_FOLDER_NAME}/light/warning.png`}
+                    width={600}
+                    height={500}
+                    className="w-full h-full object-cover object-left-top dark:hidden block"
+                    alt="warning-example"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Image
+                    src={`/${IMAGE_FOLDER_NAME}/dark/addremove.png`}
+                    width={600}
+                    height={500}
+                    className="w-full h-full object-cover object-left-top dark:block hidden"
+                    alt="addremove-example"
+                  />
+                  <Image
+                    src={`/${IMAGE_FOLDER_NAME}/light/addremove.png`}
+                    width={600}
+                    height={500}
+                    className="w-full h-full object-cover object-left-top dark:hidden block"
+                    alt="addremove-example"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Image
+                    src={`/${IMAGE_FOLDER_NAME}/dark/highlight.png`}
+                    width={600}
+                    height={500}
+                    className="w-full h-full object-cover object-left-top dark:block hidden"
+                    alt="highlight-example"
+                  />
+                  <Image
+                    src={`/${IMAGE_FOLDER_NAME}/light/highlight.png`}
+                    width={600}
+                    height={500}
+                    className="w-full h-full object-cover object-left-top dark:hidden block"
+                    alt="highlight-example"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Image
+                    src={`/${IMAGE_FOLDER_NAME}/dark/focus.png`}
+                    width={600}
+                    height={500}
+                    className="w-full h-full object-cover object-left-top dark:block hidden"
+                    alt="focus-example"
+                  />
+                  <Image
+                    src={`/${IMAGE_FOLDER_NAME}/light/focus.png`}
+                    width={600}
+                    height={500}
+                    className="w-full h-full object-cover object-left-top dark:hidden block"
+                    alt="focus-example"
+                  />
+                </SwiperSlide>
               </Swiper>
             </div>
           </div>
