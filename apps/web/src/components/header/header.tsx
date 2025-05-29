@@ -19,10 +19,10 @@ export const Header = () => {
     <header className="w-full bg-background-color_925C border-b border-border-color_800C h-[64px] fixed top-0 left-0 px-5 z-50">
       <div className="layout_max_1200 mx-auto flex justify-center items-center h-full">
         <div className="w-full flex-1">
-        <PMLogo size="sm" />
+          <PMLogo size="sm" />
         </div>
-       <MainNav/>
-  
+        <MainNav />
+
         <div className="flex justify-end items-center gap-2 w-full flex-1">
           <PMButton
             variant="silent"
@@ -48,10 +48,7 @@ export const Header = () => {
             variant="primary"
             className="px-3 py-1 rounded text-read_1 font-medium transition-colors"
           >
-            <span className="text-text-zinc_white">
-            Sign up
-
-            </span>
+            <span className="text-text-zinc_white">Sign up</span>
           </PMButton>
         </div>
       </div>

@@ -79,7 +79,7 @@ export default function Home() {
             </div>
           </div> */}
       </div>
-      <div className="w-full flex justify-center items-center flex-col mt-24 relative z-[20]">
+      <div className="w-full flex justify-center items-center flex-col mt-24 relative z-[20] mb-2">
         <h3 className="text-read_1 font-medium w-fit text-center text-text-color_1 font-geist_mono">Learn by Doing, Not by Guessing.</h3>
         <p className="text-read_3 text-text-color_2 text-center">Hands-on examples. <span className="text-text-color_4">Zero fluff</span>. Pure skill.</p>
       </div>

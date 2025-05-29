@@ -115,7 +115,7 @@ export const CodeEditorHeroAnimationDisplay = ({
   return (
     <div className="relative z-10 w-full h-[650px]">
       <div className="absolute max-w-[500px] w-full h-full dark:bg-pm_zinc-600 bg-pm_zinc-300 blur-[100px] rounded-full left-1/2 -translate-x-1/2 -z-[1]"></div>
-      <div className=" layout_max_1200 mx-auto w-full h-full  p-2 ">
+      <div className=" layout_max_1200 mx-auto w-full h-full ">
         <div className="rounded border border-border-color_800C backdrop-blur-[150px] dark:bg-[#11111371] bg-[#f7f7f888] w-full h-full overflow-hidden relative">
           <div className="absolute w-[300px] h-[300px] rounded-[50%] blur-[200px] dark:bg-pm_purple-500 dark:opacity-[70%] bg-pm_purple-400 top-0 left-0 -z-[11]"></div>
           <div className="absolute w-[300px] h-[300px] rounded-[50%] blur-[200px] dark:bg-pm_purple-500 dark:opacity-[70%] bg-pm_purple-400 bottom-0 right-0 -z-[11]"></div>
@@ -126,7 +126,7 @@ export const CodeEditorHeroAnimationDisplay = ({
               <div className="w-[14px] h-[14px] rounded-full dark:bg-[#7e22ce5e] bg-[#7e22ce42] border dark:border-pm_purple-800 border-pm_purple-400"></div>
             </div>
 
-            <div className="flex justify-start items-center gap-2 pl-5 relative overflow-x-auto hide-scrollbar">
+            <div className="flex justify-start items-center gap-2 pl-5 relative overflow-x-scroll w-full hide-scrollbar">
               <div
                 ref={terminalTabRef}
                 className="w-[73px] left-5 h-full transition-all duration-500 absolute dark:border-pm_purple-600 border-pm_purple-200 border bg-gradient-to-br dark:from-pm_purple-600 dark:to-pm_purple-950 rounded-tiny from-pm_purple-200 to-pm_purple-500"
