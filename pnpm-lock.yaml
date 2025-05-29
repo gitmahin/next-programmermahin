@@ -71,6 +71,9 @@ importers:
       sonner:
         specifier: ^2.0.3
         version: 2.0.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      swiper:
+        specifier: ^11.2.8
+        version: 11.2.8
       tailwind-merge:
         specifier: ^3.3.0
         version: 3.3.0
@@ -193,6 +196,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@programmer/hooks':
+        specifier: workspace:*
+        version: link:../../packages/hooks
       '@programmer/shared':
         specifier: workspace:*
         version: link:../../packages/shared
@@ -208,9 +214,6 @@ importers:
       react-dom:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
-      swiper:
-        specifier: ^11.2.8
-        version: 11.2.8
     devDependencies:
       '@programmer/eslint-config':
         specifier: workspace:*

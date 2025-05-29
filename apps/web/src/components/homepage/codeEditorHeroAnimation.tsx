@@ -105,13 +105,14 @@ export const CodeEditorHeroAnimationDisplay = ({
       terminalTabRef.current.style.width = `${btn.offsetWidth}px`;
       terminalTabRef.current.style.left = `${btn.offsetLeft}px`;
     },
-    [slideIndex]
+    []
   );
 
   useEffect(() => {
     if (!swiperRef.current) return;
     swiperRef.current?.slideTo(3);
   }, []);
+
   return (
     <div className="relative z-10 w-full h-[650px]">
       <div className="absolute max-w-[500px] w-full h-full dark:bg-pm_zinc-600 bg-pm_zinc-300 blur-[100px] rounded-full left-1/2 -translate-x-1/2 -z-[1]"></div>

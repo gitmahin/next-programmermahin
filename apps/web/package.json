@@ -13,10 +13,11 @@
   "dependencies": {
     "@programmer/shared": "workspace:*",
     "@programmer/ui": "workspace:*",
+    "@programmer/hooks": "workspace:*",
     "next": "^15.2.4",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "swiper": "^11.2.8"
+    "react-dom": "^19.1.0"
+   
   },
   "devDependencies": {
     "@programmer/eslint-config": "workspace:*",

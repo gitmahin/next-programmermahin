@@ -1,4 +1,5 @@
 import { CodeEditorHeroAnimationDisplay } from "@/components/homepage/codeEditorHeroAnimation";
+import { FeaturesSlider } from "@/components/homepage/features-slider";
 import { TrmPage, TrmStyle, TrmPackageJson } from "@/components/homepage/terminal";
 import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
 import { ChevronRight } from "lucide-react";
@@ -84,6 +85,9 @@ export default function Home() {
         <p className="text-read_3 text-text-color_2 text-center">Hands-on examples. <span className="text-text-color_4">Zero fluff</span>. Pure skill.</p>
       </div>
       <CodeEditorHeroAnimationDisplay pageTsxComponent={<TrmPage />} styleCssComponent={<TrmStyle/>} packageJsonComponent={<TrmPackageJson/>} />
+
+      
+      <FeaturesSlider/>
 
       <div className="w-full mt-[500px]">
 

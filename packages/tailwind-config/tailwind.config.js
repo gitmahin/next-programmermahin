@@ -112,8 +112,12 @@ module.exports = {
       },
       fontSize: {
         read_1: "15px",
+        read_16: "16px",
         read_2: "14px",
         read_3: "13px",
+        read_18: "18px",
+        read_20: "20px",
+        read_25: "25px"
       },
     },
   },
