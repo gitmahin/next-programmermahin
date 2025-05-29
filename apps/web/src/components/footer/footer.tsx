@@ -63,7 +63,7 @@ export const Footer = () => {
                 THE DEVELOPER NEWSLETTER
               </h5>
               <PMButton className="px-5 py-1 rounded transition-colors">
-                <span className="text-read_1 text-text-color_1 font-medium">
+                <span className="text-read_1 text-text-zinc_white font-medium">
                   Subscribe
                 </span>
               </PMButton>
@@ -165,13 +165,18 @@ export const Footer = () => {
                 {FOOTER_LABELS.map((item, i) => {
                   return (
                     <li key={i} className="text-read_2">
-                      <Link href={`/${item.slug}`} className="text-text-color_3 font-medium hover:text-purple-700">{item.label}</Link>
+                      <Link
+                        href={`/${item.slug}`}
+                        className="text-text-color_3 font-medium hover:text-purple-700"
+                      >
+                        {item.label}
+                      </Link>
                     </li>
                   );
                 })}
               </ul>
               <div>
-                <ThemeModeToggoler/>
+                <ThemeModeToggoler />
               </div>
             </div>
           </div>
