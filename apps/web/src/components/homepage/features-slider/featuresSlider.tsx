@@ -15,6 +15,7 @@ import { Autoplay, EffectFade } from "swiper/modules";
 import { Pause, Play } from "lucide-react";
 import { AirFlowText } from "@/components/framer-motions";
 import Image from "next/image";
+import { ErrorCodeExample } from "./codes/error";
 
 interface FeaturesTypes {
   label: string;
@@ -57,7 +58,19 @@ const FEATURES_TYPES: FeaturesTypes[] = [
 ];
 
 const IMAGE_FOLDER_NAME = "snippets-features";
-export const FeaturesSlider = () => {
+export const FeaturesSlider = ({
+  errorCodeExample,
+  warningCodeExample,
+  addRemoveCodeExample,
+  highlightCodeExample,
+  focusCodeExample,
+}: {
+  errorCodeExample?: React.ReactNode;
+  warningCodeExample?: React.ReactNode;
+  addRemoveCodeExample?: React.ReactNode;
+  highlightCodeExample?: React.ReactNode;
+  focusCodeExample?: React.ReactNode;
+}) => {
   const { swiperRef, setSlideIndex, btnRefs, slideIndex, slidingTabRef } =
     useSwiperManager();
 
@@ -192,84 +205,21 @@ export const FeaturesSlider = () => {
                 onAutoplayStart={() => setIsAutoPlayStopped(false)}
               >
                 <SwiperSlide>
-                  <Image
-                    src={`/${IMAGE_FOLDER_NAME}/dark/error.png`}
-                    width={600}
-                    height={500}
-                    className="w-full h-full object-cover object-left-top dark:block hidden"
-                    alt="error-example"
-                  />
-                  <Image
-                    src={`/${IMAGE_FOLDER_NAME}/light/error.png`}
-                    width={600}
-                    height={500}
-                    className="w-full h-full object-cover object-left-top dark:hidden block"
-                    alt="error-example"
-                  />
+                 {
+                  errorCodeExample
+                 }
                 </SwiperSlide>
                 <SwiperSlide>
-                  <Image
-                    src={`/${IMAGE_FOLDER_NAME}/dark/warning.png`}
-                    width={600}
-                    height={500}
-                    className="w-full h-full object-cover object-left-top dark:block hidden"
-                    alt="warning-example"
-                  />
-                  <Image
-                    src={`/${IMAGE_FOLDER_NAME}/light/warning.png`}
-                    width={600}
-                    height={500}
-                    className="w-full h-full object-cover object-left-top dark:hidden block"
-                    alt="warning-example"
-                  />
+                 {warningCodeExample}
                 </SwiperSlide>
                 <SwiperSlide>
-                  <Image
-                    src={`/${IMAGE_FOLDER_NAME}/dark/addremove.png`}
-                    width={600}
-                    height={500}
-                    className="w-full h-full object-cover object-left-top dark:block hidden"
-                    alt="addremove-example"
-                  />
-                  <Image
-                    src={`/${IMAGE_FOLDER_NAME}/light/addremove.png`}
-                    width={600}
-                    height={500}
-                    className="w-full h-full object-cover object-left-top dark:hidden block"
-                    alt="addremove-example"
-                  />
+                  {addRemoveCodeExample}
                 </SwiperSlide>
                 <SwiperSlide>
-                  <Image
-                    src={`/${IMAGE_FOLDER_NAME}/dark/highlight.png`}
-                    width={600}
-                    height={500}
-                    className="w-full h-full object-cover object-left-top dark:block hidden"
-                    alt="highlight-example"
-                  />
-                  <Image
-                    src={`/${IMAGE_FOLDER_NAME}/light/highlight.png`}
-                    width={600}
-                    height={500}
-                    className="w-full h-full object-cover object-left-top dark:hidden block"
-                    alt="highlight-example"
-                  />
+                 {highlightCodeExample}
                 </SwiperSlide>
                 <SwiperSlide>
-                  <Image
-                    src={`/${IMAGE_FOLDER_NAME}/dark/focus.png`}
-                    width={600}
-                    height={500}
-                    className="w-full h-full object-cover object-left-top dark:block hidden"
-                    alt="focus-example"
-                  />
-                  <Image
-                    src={`/${IMAGE_FOLDER_NAME}/light/focus.png`}
-                    width={600}
-                    height={500}
-                    className="w-full h-full object-cover object-left-top dark:hidden block"
-                    alt="focus-example"
-                  />
+                  {focusCodeExample}
                 </SwiperSlide>
               </Swiper>
             </div>

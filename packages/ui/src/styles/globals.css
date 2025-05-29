@@ -324,6 +324,11 @@ body {
   background-color: var(--background-color-800C);
 }
 
+.light  .codeblockwithouttypes .highlighted {
+    background-color: #2d2d2d24;
+    border-left: 2px solid var(--color-purple-700);
+  }
+
 pre {
   padding: 15px 0px !important;
   font-family: var(--font-jetbrains-mono);
@@ -382,8 +387,8 @@ pre code {
   }
 
   .error {
-    border: 2px solid #dc3546;
-    background-color: #dc35463d;
+    border: 2px solid #dc3546 !important;
+    background-color: #dc35463d !important;
   }
 
   .highlighted-word {
@@ -416,16 +421,20 @@ pre:has(.focused):hover span {
   padding: 0px 15px;
 }
 
-.codeblock pre{
+.codeblock pre {
   height: 100%;
+}
+
+.codeblockwithouttypes .line {
+  padding: 0px 25px;
 }
 
 .codeblock code {
   counter-reset: step;
   counter-increment: step 0;
-   display: grid;
-   width: 100%;
-     text-wrap: wrap;
+  display: grid;
+  width: 100%;
+  text-wrap: wrap;
 }
 
 .codeblock code .line::before {
@@ -435,7 +444,7 @@ pre:has(.focused):hover span {
   margin-right: 1.5rem;
   display: inline-block;
   text-align: right;
-  color: rgba(115,138,148,.4)
+  color: rgba(115, 138, 148, 0.4);
 }
 
 .dark {
@@ -445,6 +454,32 @@ pre:has(.focused):hover span {
     background-color: var(--shiki-dark-bg) !important;
     text-decoration: var(--shiki-dark-text-decoration) !important;
   }
+
+  .codeblockwithouttypes .shiki,
+  .codeblockwithouttypes .shiki span {
+    color: var(--shiki-dark) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+
+  .codeblockwithouttypes pre {
+    background-color: var(--shiki-dark-bg) !important;
+  }
+}
+
+.codeblockwithouttypes pre {
+  height: 100%;
+  padding: 20px 0px !important;
+}
+
+.light {
+  .codeblockwithouttypes .add:before {
+    content: "+";
+    color: #2ac27e;
+    left: 5px;
+    position: absolute;
+  }
+
+ 
 }
 
 .prose {
@@ -461,7 +496,6 @@ pre:has(.focused):hover span {
 .prose :where(hr):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   border-color: var(--border-color-800C);
 }
-
 
 .hide-scrollbar {
   scrollbar-width: none; /* For Firefox */
@@ -654,7 +688,7 @@ pre:has(.focused):hover span {
   top: -1.6em;
   height: 1.4em;
   left: -1px;
-  content: ' ';
+  content: " ";
 }
 
 .twoslash-completion-list li {
