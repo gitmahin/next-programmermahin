@@ -1,5 +1,5 @@
 "use client";
-import { LUCIDE_DEFAULT_ICON_SIZE, PMButton, PMLogo, ThemeModeToggoler } from "@programmer/ui";
+import { LUCIDE_DEFAULT_ICON_SIZE, PMButton, PMLogo } from "@programmer/ui";
 import React from "react";
 import { Search, setSearchBoxOpen } from "@programmer/shared";
 import { useAppDispatch } from "@/hooks/redux.hook";
@@ -38,7 +38,6 @@ export const Header = () => {
             </span>
           </PMButton>
           <Search showSearchButton={false} />
-          <ThemeModeToggoler/>
           <PMButton
             variant="secondary"
             className="px-3 py-1 rounded text-read_1 font-medium transition-colors"
