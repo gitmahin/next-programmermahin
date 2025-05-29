@@ -171,7 +171,7 @@ export const CodeEditorHeroAnimationDisplay = ({
               className="h-full rounded overflow-hidden border border-border-color_800C "
             >
               <SwiperSlide className="w-full relative z-10">
-                <div className="h-[calc(100%-200px)] w-full overflow-y-auto custom_scrollbar">
+                <div className="h-[calc(100%-200px)] w-full overflow-y-auto overflow-x-hidden custom_scrollbar">
                   {pageTsxComponent}
                 </div>
                 <div className="h-[200px] w-full border-t border-border-color_800C bg-background-color_900C">

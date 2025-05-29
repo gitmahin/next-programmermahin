@@ -4,6 +4,7 @@ import {
   cn,
   DiscordIcon,
   FacebookIcon,
+  GithubSVG,
   LUCIDE_DEFAULT_ICON_SIZE,
   NavigationMenu,
   NavigationMenuContent,
@@ -40,8 +41,8 @@ export const MainNav = () => {
           <NavigationMenuItem>
             <NavigationMenuTrigger>Developers</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <div className="w-[700px] h-[280px] p-2">
-                <div className="w-full h-full grid grid-cols-[200px_200px_1fr] gap-2">
+              <div className="w-[720px] h-[300px] p-2">
+                <div className="w-full h-full grid grid-cols-[220px_220px_1fr] gap-2">
                   <div className="w-full h-full border border-border-color_800C rounded overflow-hidden bg-background-color_900C group">
                     <div className="w-full h-[calc(100%-90px)] px-3 py-3 relative">
                       <CodeXml size={30} className="text-text-color_1" />
@@ -95,23 +96,73 @@ export const MainNav = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="w-full h-full">
-                    <button className="w-full py-2 rounded transition-colors flex justify-between items-center gap-2 px-4 bg-indigo-600 hover:bg-indigo-700">
-                      <DiscordIcon color={"#ffffff"} width={28} height={28} className={"flex-shrink-0"}/>
-                      <div className="text-right flex-shrink-0 max-w-[150px] w-full">
-                      <h4 className="text-text-color_1 font-medium text-read_1">Join On Discord</h4>
-                      <p className="text-right text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis">Be part of our developer circle - collaborate, learn, and grow on Discord.</p>
+                  <div className="w-full h-full grid grid-rows-3 gap-2">
+                    <Link
+                      href={"https://github.com/gitmahin/next-programmermahin"}
+                      target="_blank"
+                    >
+                      <button className="w-full h-full py-2 rounded transition-colors  bg-[#24292E] hover:bg-[#1b1f23]">
+                        <div className="flex justify-between items-center px-4">
+                          <GithubSVG
+                            color={"#ffffff"}
+                            width={28}
+                            height={28}
+                            className={"flex-shrink-0"}
+                          />
+                          <h4 className="text-text-color_1 font-medium text-read_2">
+                            Github
+                          </h4>
+                        </div>
+                        <div className="w-full px-4 p-1">
+                          <p className="text-left text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis text-text-color_4">
+                            Learn by coding. Contribute to programmermahin.com
+                          </p>
+                        </div>
+                      </button>
+                    </Link>
+
+                    <Link
+                      href={"https://discord.com/invite/yDjXa9hu2P"}
+                      target="_blank"
+                    >
+                      <button className="w-full h-full py-2 rounded transition-colors  bg-indigo-600 hover:bg-indigo-700">
+                        <div className="flex justify-between items-center px-4">
+                          <DiscordIcon
+                            color={"#ffffff"}
+                            width={28}
+                            height={28}
+                            className={"flex-shrink-0"}
+                          />
+                          <h4 className="text-text-color_1 font-medium text-read_2">
+                            Join On Discord
+                          </h4>
+                        </div>
+                        <div className="w-full px-4 p-1">
+                          <p className="text-left text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis text-text-color_4">
+                            Be part of our developer circle - collaborate,
+                            learn, and grow on Discord.
+                          </p>
+                        </div>
+                      </button>
+                    </Link>
+
+                    <button className="w-full h-full py-2 rounded transition-colors  bg-[#1772E8] hover:bg-[#1772e8e0]">
+                      <div className="flex justify-between items-center px-4">
+                        <FacebookIcon
+                          color={"#ffffff"}
+                          width={28}
+                          height={28}
+                          className={"flex-shrink-0"}
+                        />
+                        <h4 className="text-text-color_1 font-medium text-read_2">
+                          Connect With Facebook
+                        </h4>
                       </div>
-
-                    </button>
-
-                    <button className="w-full py-2 rounded transition-colors flex justify-between items-center gap-2 px-4 mt-2 bg-[#1772E8] hover:bg-[#1772e8e0]">
-                      <FacebookIcon color={"#ffffff"} width={28} height={28} className={"flex-shrink-0"}/>
-                      <div className="text-right flex-shrink-0 max-w-[150px] w-full">
-                      <h4 className="text-text-color_1 font-medium text-read_1 leading-[1.2rem]">Connect With Facebook</h4>
-                      <p className="text-right text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis">Learn, Build, and Stay Updated</p>
+                      <div className="w-full px-4 p-1">
+                        <p className="text-left text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis text-text-color_4">
+                          Learn, Build, and Stay Updated
+                        </p>
                       </div>
-
                     </button>
                   </div>
                 </div>
@@ -123,59 +174,69 @@ export const MainNav = () => {
             <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
             <NavigationMenuContent>
               <div className="w-[800px] h-[330px] grid grid-cols-[250px_280px_1fr]">
-                <div className="w-[250px] border-r h-full border-border-color_800C relative">
-                  <Image
-                    src={"/images/dark/tutorial_menu.png"}
-                    width={500}
-                    height={600}
-                    alt="Tutorial"
-                    className="w-full h-full object-cover object-left-top hidden dark:block"
-                  />
-                  <Image
-                    src={"/images/light/tutorial_menu.png"}
-                    width={500}
-                    height={600}
-                    alt="Tutorial"
-                    className="w-full h-full object-cover object-left-top dark:hidden block"
-                  />
-                  <div className="absolute bottom-0 h-[200px] w-full bg-gradient-to-b from-transparent to-background-color_925C flex justify-start items-end">
-                    <div className="absolute w-full h-full bg-gradient-to-b from-transparent to-background-color_925C"></div>
-                    <div className="relative z-10 p-5">
-                      <h3 className="text-[18px] font-medium">Tutorials</h3>
-                      <p className="text-read_3 text-text-color_2 mt-2">
-                        Free, In-Depth Tutorials That Actually Teach You
-                        Something
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full border-r border-border-color_800C h-full p-2">
-                  <div className="w-full h-full bg-background-color_900C rounded relative overflow-hidden">
-                    <div className="p-5">
-                      <h3 className="text-read_1 font-medium">Quick Learn</h3>
-                      <p className="text-read_3 text-text-color_2 mt-1">
-                        Learn the essentials in minutes - not hours.
-                      </p>
-                    </div>
-                    <div className="w-full h-[200px] border-t border-l bg-background-color_800C absolute bottom-0 left-5 border-border-color_800C rounded-tl-[8px] pt-2 pl-2">
-                      <div className="w-full h-full rounded-tl-[6px] overflow-hidden">
-                        <Image
-                          src={"/images/dark/quick_learn.png"}
-                          width={500}
-                          height={500}
-                          alt="quick-learn"
-                          className="w-full h-full object-left-top object-cover hidden dark:block"
-                        />
-                        <Image
-                          src={"/images/light/quick_learn.png"}
-                          width={500}
-                          height={500}
-                          alt="quick-learn"
-                          className="w-full h-full object-left-top object-cover dark:hidden block"
-                        />
+                <Link
+                  href={"https://tutorial.programmermahin.com"}
+                  target="_blank"
+                >
+                  <div className="w-[250px] border-r h-full border-border-color_800C relative">
+                    <Image
+                      src={"/images/dark/tutorial_menu.png"}
+                      width={500}
+                      height={600}
+                      alt="Tutorial"
+                      className="w-full h-full object-cover object-left-top hidden dark:block"
+                    />
+                    <Image
+                      src={"/images/light/tutorial_menu.png"}
+                      width={500}
+                      height={600}
+                      alt="Tutorial"
+                      className="w-full h-full object-cover object-left-top dark:hidden block"
+                    />
+                    <div className="absolute bottom-0 h-[200px] w-full bg-gradient-to-b from-transparent to-background-color_925C flex justify-start items-end">
+                      <div className="absolute w-full h-full bg-gradient-to-b from-transparent to-background-color_925C"></div>
+                      <div className="relative z-10 p-5">
+                        <h3 className="text-[18px] font-medium">Tutorials</h3>
+                        <p className="text-read_3 text-text-color_2 mt-2">
+                          Free, In-Depth Tutorials That Actually Teach You
+                          Something
+                        </p>
                       </div>
                     </div>
                   </div>
+                </Link>
+                <div className="w-full border-r border-border-color_800C h-full p-2">
+                  <Link
+                    href={"https://tutorial.programmermahin.com/quick-learn"}
+                    target="_blank"
+                  >
+                    <div className="w-full h-full bg-background-color_900C rounded relative overflow-hidden">
+                      <div className="p-5">
+                        <h3 className="text-read_1 font-medium">Quick Learn</h3>
+                        <p className="text-read_3 text-text-color_2 mt-1">
+                          Learn the essentials in minutes - not hours.
+                        </p>
+                      </div>
+                      <div className="w-full h-[200px] border-t border-l bg-background-color_800C absolute bottom-0 left-5 border-border-color_800C rounded-tl-[8px] pt-2 pl-2">
+                        <div className="w-full h-full rounded-tl-[6px] overflow-hidden">
+                          <Image
+                            src={"/images/dark/quick_learn.png"}
+                            width={500}
+                            height={500}
+                            alt="quick-learn"
+                            className="w-full h-full object-left-top object-cover hidden dark:block"
+                          />
+                          <Image
+                            src={"/images/light/quick_learn.png"}
+                            width={500}
+                            height={500}
+                            alt="quick-learn"
+                            className="w-full h-full object-left-top object-cover dark:hidden block"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
                 <div className="w-full relative h-full ">
                   <div className="w-full h-full absolute left-0 top-0  box-border border-x border-x-border-color_800C bg-[image:repeating-linear-gradient(315deg,_var(--border-color-800C)_0,_var(--border-color-800C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-800C)]/5 md:block dark:[--pattern-fg:var(--border-color-800C)]/10"></div>

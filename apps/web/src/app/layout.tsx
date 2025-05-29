@@ -8,6 +8,7 @@ import ReduxProvider from "@/components/redux-provider";
 import "./styles/home.style.css";
 // Import Swiper styles
 import "swiper/css";
+import { Footer } from "@/components/footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -44,6 +45,7 @@ export default function RootLayout({
           <GlobalThemeProvider>
             <Header />
             {children}
+            <Footer/>
           </GlobalThemeProvider>
         </ReduxProvider>
       </body>
