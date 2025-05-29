@@ -13,6 +13,8 @@ import { Swiper as SwiperTypes } from "swiper/types";
 import { useSwiperManager } from "@programmer/hooks";
 import { Autoplay } from "swiper/modules";
 import { Pause, Play } from "lucide-react";
+import { AirFlowText } from "@/components/framer-motions";
+
 
 interface FeaturesTypes {
   label: string;
@@ -62,7 +64,7 @@ export const FeaturesSlider = () => {
     undefined
   );
 
-  const [isAutoPlayStopped, setIsAutoPlayStopped] = useState<boolean>(false)
+  const [isAutoPlayStopped, setIsAutoPlayStopped] = useState<boolean>(false);
 
   const moveSlidingTabTo = useCallback((btn: HTMLElement) => {
     if (!slidingTabRef.current) return;
@@ -73,12 +75,26 @@ export const FeaturesSlider = () => {
 
   return (
     <div className="w-full mt-24 px-5">
-      <div className="layout_max_1200 mx-auto flex justify-center items-start">
+      <div className="layout_max_1200 mx-auto flex justify-center items-start gap-8">
         <div className="w-full mt-16">
-          <h2 className="text-read_25 font-semibold">{slideInfo?.title}</h2>
-          <p className="text-read_16 text-text-color_2 max-w-[400px] w-full mt-1">
-            {slideInfo?.desc}
-          </p>
+          
+            {slideInfo && (
+              <AirFlowText
+                keyIndex={slideIndex}
+                duration={0.5}
+              >
+                <h2 className="text-read_25 text-text-color_1 font-semibold">{slideInfo.title}</h2>
+              </AirFlowText>
+            )}
+      
+
+          {slideInfo && (
+            <AirFlowText keyIndex={slideIndex} duration={0.5}>
+              <p className="text-read_16 text-text-color_2 max-w-[400px] w-full mt-1">
+                {slideInfo.desc}
+              </p>
+            </AirFlowText>
+          )}
 
           <div className="flex flex-col justify-start items-start mt-8 max-w-[200px] w-full relative">
             <div
@@ -108,18 +124,21 @@ export const FeaturesSlider = () => {
             })}
           </div>
           <div className="mt-5">
-            <button onClick={() => {
-              if(isAutoPlayStopped) {
-                swiperRef.current?.autoplay.start();
-              } else {
-                swiperRef.current?.autoplay.stop();
-              }
-            }} className="w-[30px] h-[30px] rounded-full border border-background-color_900C flex-shrink-0 bg-background-color_925C flex justify-center items-center">
-              
-              {
-                isAutoPlayStopped ? <Play className="text-text-svg_default_color" size={16}/> : <Pause className="text-text-svg_default_color" size={16}/>
-              }
-              
+            <button
+              onClick={() => {
+                if (isAutoPlayStopped) {
+                  swiperRef.current?.autoplay.start();
+                } else {
+                  swiperRef.current?.autoplay.stop();
+                }
+              }}
+              className="w-[30px] h-[30px] rounded-full border border-background-color_900C flex-shrink-0 bg-background-color_925C flex justify-center items-center"
+            >
+              {isAutoPlayStopped ? (
+                <Play className="text-text-svg_default_color" size={16} />
+              ) : (
+                <Pause className="text-text-svg_default_color" size={16} />
+              )}
             </button>
           </div>
         </div>
@@ -167,7 +186,7 @@ export const FeaturesSlider = () => {
                 className="h-full w-full"
                 allowTouchMove={false}
                 autoplay={{
-                  delay: 2700,
+                  delay: 3000,
                   disableOnInteraction: false,
                 }}
                 onAutoplayStop={() => setIsAutoPlayStopped(true)}

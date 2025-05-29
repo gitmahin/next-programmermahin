@@ -11,13 +11,13 @@
     "clean": "rm -rf node_modules && echo 'Cleanup complete!'"
   },
   "dependencies": {
+    "@programmer/hooks": "workspace:*",
     "@programmer/shared": "workspace:*",
     "@programmer/ui": "workspace:*",
-    "@programmer/hooks": "workspace:*",
+    "framer-motion": "^12.15.0",
     "next": "^15.2.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
-   
   },
   "devDependencies": {
     "@programmer/eslint-config": "workspace:*",

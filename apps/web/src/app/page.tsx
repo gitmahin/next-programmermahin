@@ -1,6 +1,7 @@
 import { CodeEditorHeroAnimationDisplay } from "@/components/homepage/codeEditorHeroAnimation";
 import { FeaturesSlider } from "@/components/homepage/features-slider";
 import { TrmPage, TrmStyle, TrmPackageJson } from "@/components/homepage/terminal";
+import {  AirFlowText } from "@/components/framer-motions";
 import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
@@ -35,18 +36,27 @@ export default function Home() {
         </div>
 
         <div className="mt-10">
+          <AirFlowText initialY={20} duration={0.5}>
+          
           <h1 className="text-[40px] font-semibold text-center text-text-color_1 w-full leading-[3rem]">
             Where Future{" "}
             <span className="font-geist_mono text-pm_purple-700">[</span>
             <span className="font-geist_mono">Programmers</span>
             <span className="font-geist_mono text-pm_purple-700">]</span> Begin.
           </h1>
+          </AirFlowText>
+                 <AirFlowText initialY={25} duration={0.5}>
+
           <p className="text-[18px] font-medium mt-4 text-text-color_2 text-center mx-auto max-w-[650px] w-full leading-6">
             Get unlimited access to tutorials, hands-on problem solving, and
             industry-level development knowledge - all in one powerful platform.
             Start your journey to level up your career.
           </p>
+                 </AirFlowText>
         </div>
+
+  <AirFlowText initialY={30} duration={0.5}>
+
 
         <div className="flex justify-center items-center gap-2 mt-6 ">
           <PMButton
@@ -69,7 +79,7 @@ export default function Home() {
             />
           </PMButton>
         </div>
-
+  </AirFlowText>
         {/* <div className="mt-28 flex justify-center items-center relative">
             <Image src={"/hero_dev.svg"} width={1000} height={800} alt="Cpp" className="w-[900px] absolute -z-[1]" />
 
