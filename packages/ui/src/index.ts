@@ -15,3 +15,5 @@ export * from "./navigation-menu";
 export * from "./icons/discord-icon";
 export * from "./icons/facebook";
 export * from "./icons/github";
+export * from "./icons/status-icons";
+export * from "./icons/type";

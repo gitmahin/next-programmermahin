@@ -1,5 +1,5 @@
 import { getTutorialsByKey, QUICKLEARN_TUTORIALS } from "@programmer/constants";
-import { PMButton } from "@programmer/ui";
+import { PMButton, ThemeModeToggoler } from "@programmer/ui";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -45,9 +45,9 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="w-full h-fit">
-      <div className="w-full h-[300px] bg-background-color_950C ">
+      <div className="w-full h-[300px] bg-background-color_950C border-t border-border-color_800C pt-8 px-5">
         <div className="layout_max_1200 mx-auto">
-          <div className="w-full flex justify-between items-center px-5 pt-3 pb-5">
+          <div className="w-full flex justify-between items-center pt-3 pb-5">
             <div className="w-[40px] h-[40px] rounded-full overflow-hidden">
               <Image
                 src={"/my_pic_cartoon.jpg"}
@@ -63,14 +63,14 @@ export const Footer = () => {
                 THE DEVELOPER NEWSLETTER
               </h5>
               <PMButton className="px-5 py-1 rounded transition-colors">
-                <span className="text-read_1 text-text-color_1 font-medium">
+                <span className="text-read_1 text-text-zinc_white font-medium">
                   Subscribe
                 </span>
               </PMButton>
             </div>
           </div>
-          <div className=" pt-5 pb-5 px-5">
-            <div className="grid grid-cols-4">
+          <div className=" pt-5 pb-5">
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))]">
               <div>
                 <h6 className="text-read_2 text-text-color_3 font-medium">
                   TUTORIALS
@@ -156,20 +156,28 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="border-t border-border-color_800C py-8 flex justify-between items-center">
+          <div className=" pb-8 pt-5 flex justify-between items-center">
             <p className="text-read_2 font-medium text-text-color_3">
               programmermahin.com © <span>{currentYear}</span>
             </p>
-            <div>
+            <div className="flex justify-center items-center w-fit gap-5">
               <ul className="flex justify-center w-fit items-center gap-5 flex-shrink-0">
                 {FOOTER_LABELS.map((item, i) => {
                   return (
                     <li key={i} className="text-read_2">
-                      <Link href={`/${item.slug}`} className="text-text-color_3 font-medium hover:text-purple-700">{item.label}</Link>
+                      <Link
+                        href={`/${item.slug}`}
+                        className="text-text-color_3 font-medium hover:text-purple-700"
+                      >
+                        {item.label}
+                      </Link>
                     </li>
                   );
                 })}
               </ul>
+              <div>
+                <ThemeModeToggoler />
+              </div>
             </div>
           </div>
         </div>

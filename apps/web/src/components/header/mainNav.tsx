@@ -82,7 +82,7 @@ export const MainNav = () => {
                         </div>
 
                         <PMButton className="px-2 py-0 rounded-tiny transition-colors">
-                          <span className="font-medium text-read_2 ">Join</span>
+                          <span className="font-medium text-read_2 text-text-zinc_white ">Join</span>
                         </PMButton>
                       </div>
                     </div>
@@ -109,12 +109,12 @@ export const MainNav = () => {
                             height={28}
                             className={"flex-shrink-0"}
                           />
-                          <h4 className="text-text-color_1 font-medium text-read_2">
+                          <h4 className="text-text-zinc_white font-medium text-read_2">
                             Github
                           </h4>
                         </div>
                         <div className="w-full px-4 p-1">
-                          <p className="text-left text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis text-text-color_4">
+                          <p className="text-left text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis text-pm_zinc-200">
                             Learn by coding. Contribute to programmermahin.com
                           </p>
                         </div>
@@ -133,12 +133,12 @@ export const MainNav = () => {
                             height={28}
                             className={"flex-shrink-0"}
                           />
-                          <h4 className="text-text-color_1 font-medium text-read_2">
+                          <h4 className="text-text-zinc_white font-medium text-read_2">
                             Join On Discord
                           </h4>
                         </div>
                         <div className="w-full px-4 p-1">
-                          <p className="text-left text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis text-text-color_4">
+                          <p className="text-left text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis text-pm_zinc-200">
                             Be part of our developer circle - collaborate,
                             learn, and grow on Discord.
                           </p>
@@ -154,12 +154,12 @@ export const MainNav = () => {
                           height={28}
                           className={"flex-shrink-0"}
                         />
-                        <h4 className="text-text-color_1 font-medium text-read_2">
+                        <h4 className="text-text-zinc_white font-medium text-read_2">
                           Connect With Facebook
                         </h4>
                       </div>
                       <div className="w-full px-4 p-1">
-                        <p className="text-left text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis text-text-color_4">
+                        <p className="text-left text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis text-pm_zinc-200">
                           Learn, Build, and Stay Updated
                         </p>
                       </div>
