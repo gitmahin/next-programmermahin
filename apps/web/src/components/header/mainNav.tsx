@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import {
   cn,
   DiscordIcon,
+  FacebookIcon,
   LUCIDE_DEFAULT_ICON_SIZE,
   NavigationMenu,
   NavigationMenuContent,
@@ -95,20 +96,20 @@ export const MainNav = () => {
                     </div>
                   </div>
                   <div className="w-full h-full">
-                    <PMButton className="w-full py-2 rounded transition-colors flex justify-between items-center gap-2 px-4">
+                    <button className="w-full py-2 rounded transition-colors flex justify-between items-center gap-2 px-4 bg-indigo-600 hover:bg-indigo-700">
                       <DiscordIcon color={"#ffffff"} width={28} height={28} className={"flex-shrink-0"}/>
                       <div className="text-right flex-shrink-0 max-w-[150px] w-full">
-                      <span className="text-text-color_1 font-medium text-read_1">Join On Discord</span>
+                      <h4 className="text-text-color_1 font-medium text-read_1">Join On Discord</h4>
                       <p className="text-right text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis">Be part of our developer circle - collaborate, learn, and grow on Discord.</p>
                       </div>
 
-                    </PMButton>
+                    </button>
 
-                    <button className="w-full py-2 rounded transition-colors flex justify-between items-center gap-2 px-4 bg-[#1772E8] hover:bg-[#1772e8e0]">
-                      <DiscordIcon color={"#ffffff"} width={28} height={28} className={"flex-shrink-0"}/>
+                    <button className="w-full py-2 rounded transition-colors flex justify-between items-center gap-2 px-4 mt-2 bg-[#1772E8] hover:bg-[#1772e8e0]">
+                      <FacebookIcon color={"#ffffff"} width={28} height={28} className={"flex-shrink-0"}/>
                       <div className="text-right flex-shrink-0 max-w-[150px] w-full">
-                      <span className="text-text-color_1 font-medium text-read_1">Join On Discord</span>
-                      <p className="text-right text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis">Be part of our developer circle - collaborate, learn, and grow on Discord.</p>
+                      <h4 className="text-text-color_1 font-medium text-read_1 leading-[1.2rem]">Connect With Facebook</h4>
+                      <p className="text-right text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis">Learn, Build, and Stay Updated</p>
                       </div>
 
                     </button>

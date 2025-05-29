@@ -13,3 +13,4 @@ export * from "./accordion";
 export * from "./themeModeToggler";
 export * from "./navigation-menu";
 export * from "./icons/discord-icon";
+export * from "./icons/facebook";
