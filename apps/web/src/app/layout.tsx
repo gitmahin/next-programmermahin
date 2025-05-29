@@ -6,7 +6,7 @@ import { Header } from "@/components";
 import { JetBrains_Mono } from "next/font/google";
 import ReduxProvider from "@/components/redux-provider";
 import "./styles/home.style.css";
-import 'swiper/css/effect-fade';
+import "swiper/css/effect-fade";
 // Import Swiper styles
 import "swiper/css";
 import { Footer } from "@/components/footer";
@@ -46,7 +46,7 @@ export default function RootLayout({
           <GlobalThemeProvider>
             <Header />
             {children}
-            <Footer/>
+            <Footer />
           </GlobalThemeProvider>
         </ReduxProvider>
       </body>

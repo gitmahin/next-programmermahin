@@ -1,3 +1,3 @@
-export * from "./airflow"
-export * from "./radioWaveText"
-export * from "./wavyText"
+export * from "./airflow";
+export * from "./radioWaveText";
+export * from "./wavyText";

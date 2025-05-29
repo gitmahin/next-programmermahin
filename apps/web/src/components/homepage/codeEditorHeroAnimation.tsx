@@ -99,14 +99,11 @@ export const CodeEditorHeroAnimationDisplay = ({
   const terminalTabRef = useRef<HTMLDivElement>(null);
   const [slideIndex, setSlideIndex] = useState(0);
 
-  const moveTerminalTabRefTo = useCallback(
-    (btn: HTMLElement) => {
-      if (!terminalTabRef.current) return;
-      terminalTabRef.current.style.width = `${btn.offsetWidth}px`;
-      terminalTabRef.current.style.left = `${btn.offsetLeft}px`;
-    },
-    []
-  );
+  const moveTerminalTabRefTo = useCallback((btn: HTMLElement) => {
+    if (!terminalTabRef.current) return;
+    terminalTabRef.current.style.width = `${btn.offsetWidth}px`;
+    terminalTabRef.current.style.left = `${btn.offsetLeft}px`;
+  }, []);
 
   useEffect(() => {
     if (!swiperRef.current) return;
@@ -260,9 +257,20 @@ export const CodeEditorHeroAnimationDisplay = ({
                                           key={`original-${j}`}
                                           className="w-full h-[300px] rounded mb-6 bg-background-color_900C overflow-hidden"
                                         >
-<Image src={`/heroimages/dark/${item.img || "backup.png"}`} width={900} height={700} alt="features" className="w-full h-full object-cover object-left-top border-none hidden dark:block" />
-<Image src={`/heroimages/light/${item.img || "backup.png"}`} width={900} height={700} alt="features" className="w-full h-full object-cover object-left-top border-none dark:hidden block" />
-
+                                          <Image
+                                            src={`/heroimages/dark/${item.img || "backup.png"}`}
+                                            width={900}
+                                            height={700}
+                                            alt="features"
+                                            className="w-full h-full object-cover object-left-top border-none hidden dark:block"
+                                          />
+                                          <Image
+                                            src={`/heroimages/light/${item.img || "backup.png"}`}
+                                            width={900}
+                                            height={700}
+                                            alt="features"
+                                            className="w-full h-full object-cover object-left-top border-none dark:hidden block"
+                                          />
                                         </div>
                                       ))}
                                     </React.Fragment>

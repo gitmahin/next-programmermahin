@@ -82,7 +82,9 @@ export const MainNav = () => {
                         </div>
 
                         <PMButton className="px-2 py-0 rounded-tiny transition-colors">
-                          <span className="font-medium text-read_2 text-text-zinc_white ">Join</span>
+                          <span className="font-medium text-read_2 text-text-zinc_white ">
+                            Join
+                          </span>
                         </PMButton>
                       </div>
                     </div>

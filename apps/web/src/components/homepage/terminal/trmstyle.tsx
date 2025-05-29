@@ -1,5 +1,5 @@
-import { CodeBlock } from '@/components/shiki';
-import React from 'react'
+import { CodeBlock } from "@/components/shiki";
+import React from "react";
 
 const code = `.terminal_wrapper {
   position: relative;
@@ -30,7 +30,7 @@ const code = `.terminal_wrapper {
 
 
 
-`
+`;
 
 export const TrmStyle = () => {
   return (

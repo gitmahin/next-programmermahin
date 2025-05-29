@@ -17,6 +17,15 @@ export const NeutralIcon: React.FC<SvgType> = ({
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-<g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="8" cy="8" r="8" fill="#404040"></circle> </g>
+    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+    <g
+      id="SVGRepo_tracerCarrier"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></g>
+    <g id="SVGRepo_iconCarrier">
+      {" "}
+      <circle cx="8" cy="8" r="8" fill="#404040"></circle>{" "}
+    </g>
   </svg>
 );

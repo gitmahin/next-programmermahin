@@ -23,7 +23,7 @@ const initialState: SearchMetaInfoSliceType = {
   onThisPage: [],
   navigationText: [],
   activeKey: "",
-  basepath: ""
+  basepath: "",
 };
 export const searchMetaInfoSliceName = "searchMetaInfo";
 export const searchMetaInfoSlice: Slice<SearchMetaInfoSliceType> = createSlice({
@@ -40,7 +40,7 @@ export const searchMetaInfoSlice: Slice<SearchMetaInfoSliceType> = createSlice({
       state.onThisPage = action.payload.onThisPage;
       state.navigationText = action.payload.navigationText;
       state.activeKey = action.payload.activeKey;
-      state.basepath = action.payload.basepath
+      state.basepath = action.payload.basepath;
     },
   },
 });
@@ -69,7 +69,7 @@ export const searchMetaInfoValues = createSelector(
     onThisPage: searchMetaInfo.onThisPage,
     navigationText: searchMetaInfo.navigationText,
     activeKey: searchMetaInfo.activeKey,
-    basepath: searchMetaInfo.basepath
+    basepath: searchMetaInfo.basepath,
   })
 );
 

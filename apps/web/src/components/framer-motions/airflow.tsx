@@ -5,13 +5,21 @@ interface AirFlowTextProps {
   children: string | React.ReactNode;
   keyIndex?: number;
   className?: string;
-  initialY?: number
+  initialY?: number;
   animateY?: number;
   exitY?: number;
-  duration?: number
+  duration?: number;
 }
 
-export const AirFlowText = ({ children, keyIndex, className, initialY, animateY, exitY, duration }: AirFlowTextProps) => {
+export const AirFlowText = ({
+  children,
+  keyIndex,
+  className,
+  initialY,
+  animateY,
+  exitY,
+  duration,
+}: AirFlowTextProps) => {
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -22,9 +30,7 @@ export const AirFlowText = ({ children, keyIndex, className, initialY, animateY,
         transition={{ duration: duration ?? 0.8, ease: "easeOut" }}
         className="text-read_16 text-text-color_2 mt-1"
       >
-        <span className={`${className}`}>
-        {children}
-        </span>
+        <span className={`${className}`}>{children}</span>
       </motion.div>
     </AnimatePresence>
   );

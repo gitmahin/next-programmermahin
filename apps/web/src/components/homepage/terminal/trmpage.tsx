@@ -280,7 +280,7 @@ export const CodeEditorHeroAnimationDisplay = ({
   );
 };
 
-`
+`;
 
 export const TrmPage = () => {
   return (

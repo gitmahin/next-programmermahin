@@ -1,6 +1,11 @@
 "use client";
 import { MAIN_NAV_LINKS } from "@/constants";
-import { LUCIDE_DEFAULT_ICON_SIZE, PMButton, PMLogo, ThemeModeToggoler } from "@programmer/ui";
+import {
+  LUCIDE_DEFAULT_ICON_SIZE,
+  PMButton,
+  PMLogo,
+  ThemeModeToggoler,
+} from "@programmer/ui";
 import { X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -28,7 +33,7 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
 
       <div className="w-full relative top-0 border-b z-20 bg-background-color_900C border-border-color_800C px-4 py-3 flex justify-between items-center">
         <PMLogo size="sm" />
-        <ThemeModeToggoler/>
+        <ThemeModeToggoler />
         <PMButton
           onClick={handleSidebarOff}
           variant="secondary"

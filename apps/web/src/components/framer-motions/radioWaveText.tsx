@@ -12,7 +12,7 @@ export const RadioWaveText = ({
   text,
   keyIndex,
   className,
-  duration
+  duration,
 }: RadioWaveTextProps) => {
   return (
     <div className="overflow-hidden ">
@@ -25,7 +25,6 @@ export const RadioWaveText = ({
         >
           {text.split("").map((char, i) => (
             <motion.span
-          
               key={i}
               custom={i}
               variants={{

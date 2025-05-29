@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 import { CodeBlock } from "@/components/shiki";
 
-const code  = `{
+const code = `{
   "name": "web",
   "version": "0.1.0",
   "private": true,
@@ -33,8 +33,7 @@ const code  = `{
     "typescript": "^5.8.2"
   }
 }
-`
-
+`;
 
 export const TrmPackageJson = () => {
   return (

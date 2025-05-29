@@ -14,7 +14,6 @@ export const FacebookIcon: React.FC<SvgType> = ({
     fill={color}
     viewBox="0 0 24 24"
     xmlnsXlink="http://www.w3.org/2000/svg"
- 
     {...props}
   >
     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>

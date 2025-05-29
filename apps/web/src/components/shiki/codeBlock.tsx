@@ -15,9 +15,7 @@ export async function CodeBlock(props: Props) {
       light: "github-light-high-contrast",
       dark: "github-dark-high-contrast",
     },
-    transformers: [
-      transformerTwoslash()
-    ],
+    transformers: [transformerTwoslash()],
   });
 
   return (
