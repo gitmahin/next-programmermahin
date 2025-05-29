@@ -5,4 +5,3 @@ export interface GeneralNavItemType {
   slug?: string;
   icon?: React.ReactElement | string | LucideIcon;
 }
-

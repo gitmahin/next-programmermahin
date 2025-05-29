@@ -18,15 +18,13 @@ import { Metadata } from "next";
 import { mdxToHtml } from "@/lib/mdxToHtml";
 import { getTutorialsAbsolutePaths } from "@/lib/tutorials/getTutorialsAbsolutePaths";
 
-
 interface ContentPagePropsType {
   params: Promise<{ tutoType: string; slug: string[] }>;
 }
 
 export async function generateStaticParams() {
   try {
-
-    const params = getTutorialsAbsolutePaths()
+    const params = getTutorialsAbsolutePaths();
 
     // Preparing data for indexing in Algolia
     if (process.env.NODE_ENV === "production") {
@@ -52,6 +50,7 @@ export async function generateStaticParams() {
             label: data?.title,
             desc: data?.desc,
             type: "tutorial",
+            basepath: `${process.env.NEXT_PUBLIC_TUTORIAL_BASE_PATH}`,
             slug: `${param.tutoType}/${joinedSlug}`,
             onthispage: parsedAnchors.map((item: TocItem) => ({
               label: item.content,
@@ -103,8 +102,8 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
     const filePath = `src/content/tutorials/${tutoType}/${slug.join("/")}.mdx`;
     const getData = fs.readFileSync(filePath, "utf-8");
     const { content } = matter(getData);
-    
-    const MdxComponent = mdxToHtml(content)
+
+    const MdxComponent = mdxToHtml(content);
 
     if (process.env.NODE_ENV === "development") {
       generateStaticParams().then((params) => {
@@ -116,9 +115,9 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
       <>
         <div className="flex justify-center items-start gap-5">
           <div className="max-w-[750px] w-full p-5 pt-16">
-              <article className="prose prose-gray dark:prose-invert main-article">
-                {MdxComponent}
-              </article>
+            <article className="prose prose-gray dark:prose-invert main-article">
+              {MdxComponent}
+            </article>
             <TutoPagination />
           </div>
 

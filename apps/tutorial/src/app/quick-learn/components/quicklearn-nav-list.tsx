@@ -35,8 +35,10 @@ export const QuickLearnNavList = () => {
 
     const quickLearnPathName = path_name.split("/").pop();
 
-    const currentIndex = data.findIndex(
-      (navItem) => quickLearnPathName !== undefined ? decodeURIComponent(quickLearnPathName) === navItem.path : -1
+    const currentIndex = data.findIndex((navItem) =>
+      quickLearnPathName !== undefined
+        ? decodeURIComponent(quickLearnPathName) === navItem.path
+        : -1
     );
     dispatch(setPagination({ currentIndex, flatTutoList: data }));
   }, [path_name]);

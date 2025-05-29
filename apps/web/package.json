@@ -11,20 +11,23 @@
     "clean": "rm -rf node_modules && echo 'Cleanup complete!'"
   },
   "dependencies": {
-    "@programmer/ui": "workspace:*",
     "@programmer/shared": "workspace:*",
+    "@programmer/ui": "workspace:*",
     "next": "^15.2.4",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "swiper": "^11.2.8"
   },
   "devDependencies": {
     "@programmer/eslint-config": "workspace:*",
     "@programmer/typescript-config": "workspace:*",
+    "@shikijs/twoslash": "^3.4.2",
     "@types/node": "^22.14.0",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.1",
-    "tailwind-config": "workspace:*",
     "eslint": "^9.24.0",
+    "shiki": "^3.4.2",
+    "tailwind-config": "workspace:*",
     "typescript": "^5.8.2"
   }
 }

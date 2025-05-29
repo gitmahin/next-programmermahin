@@ -39,5 +39,5 @@ export const mdxToHtml = async (content: string) => {
     },
   });
 
-  return MdxComponent
+  return MdxComponent;
 };

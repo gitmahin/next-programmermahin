@@ -104,7 +104,7 @@ export default function NoResults() {
                                     ([dirkey, dirValue], di) => {
                                       return (
                                         <Link
-                                        key={di}
+                                          key={di}
                                           href={`/${key}/${childValue.slug}/${dirValue.slug}`}
                                         >
                                           <div className="py-1 px-2 rounded-tiny hover:bg-background-color_900C group transition-all">

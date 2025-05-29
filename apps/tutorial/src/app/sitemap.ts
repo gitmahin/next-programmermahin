@@ -7,14 +7,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const tutorials = tutorialPaths.map(({ tutoType, slug }) => {
     return {
-      url: `${process.env.NEXT_PUBLIC_BASE_PATH}/${tutoType}/${slug.join("/")}`,
+      url: `${process.env.NEXT_PUBLIC_TUTORIAL_BASE_PATH}/${tutoType}/${slug.join("/")}`,
     };
   });
 
   const quickLearnSlugs = getQuickLearnSlugs();
 
   const quickLearns = (await quickLearnSlugs).map(({ slug }) => ({
-    url: `${process.env.NEXT_PUBLIC_BASE_PATH}/quick-learn/${slug}`,
+    url: `${process.env.NEXT_PUBLIC_TUTORIAL_BASE_PATH}/quick-learn/${slug}`,
   }));
 
   return [...tutorials, ...quickLearns];

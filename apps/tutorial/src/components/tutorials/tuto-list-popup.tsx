@@ -260,7 +260,7 @@ export const TutoListPopup = ({
                       Course Overview
                     </span>
                   </div>
-                  <div >
+                  <div>
                     <div className="mt-1 px-5">
                       <h2 className="font-medium text-[25px] text-text-color_1">
                         {tutoTab.tutorialName} Tutorial
