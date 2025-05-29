@@ -7,7 +7,6 @@ import {
 import { AirFlowText } from "@/components/framer-motions";
 import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
 import { ChevronRight } from "lucide-react";
-import Image from "next/image";
 import React from "react";
 import { SnippetsFeatures } from "@/components/homepage/features-slider";
 
