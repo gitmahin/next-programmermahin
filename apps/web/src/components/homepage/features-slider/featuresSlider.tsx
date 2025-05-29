@@ -11,7 +11,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperTypes } from "swiper/types";
 import { useSwiperManager } from "@programmer/hooks";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, EffectFade } from "swiper/modules";
 import { Pause, Play } from "lucide-react";
 import { AirFlowText } from "@/components/framer-motions";
 import Image from "next/image";
@@ -180,7 +180,8 @@ export const FeaturesSlider = () => {
                 slidesPerView={1}
                 navigation={false}
                 loop={true}
-                modules={[Autoplay]}
+                effect={"fade"}
+                modules={[Autoplay, EffectFade]}
                 className="h-full w-full border border-border-color_800C rounded-[12px]"
                 allowTouchMove={false}
                 autoplay={{
