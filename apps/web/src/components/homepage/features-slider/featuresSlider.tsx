@@ -92,7 +92,7 @@ export const FeaturesSlider = ({
       <div className="layout_max_1200 mx-auto flex justify-center items-start gap-8">
         <div className="w-full mt-8">
           {slideInfo && (
-            <AirFlowText keyIndex={slideIndex} duration={0.5}>
+            <AirFlowText keyIndex={slideIndex} duration={0.3}>
               <h2 className="text-read_25 text-text-color_1 font-semibold">
                 {slideInfo.title}
               </h2>
@@ -100,7 +100,7 @@ export const FeaturesSlider = ({
           )}
 
           {slideInfo && (
-            <AirFlowText keyIndex={slideIndex} duration={0.5}>
+            <AirFlowText keyIndex={slideIndex} duration={0.3}>
               <p className="text-read_16 text-text-color_2 max-w-[400px] w-full mt-1">
                 {slideInfo.desc}
               </p>
