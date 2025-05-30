@@ -58,6 +58,11 @@ export default function RootLayout({
 
           gtag('config', 'G-X485X0KWVC');`}
         </Script>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6764446700241070"
+          crossOrigin="anonymous"
+        ></Script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${jetbrains_mono.variable}`}
