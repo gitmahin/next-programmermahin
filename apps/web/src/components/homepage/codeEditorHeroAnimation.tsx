@@ -106,9 +106,11 @@ export const CodeEditorHeroAnimationDisplay = ({
   }, []);
 
   useEffect(() => {
-    if (!swiperRef.current) return;
-    swiperRef.current?.slideTo(3);
-  }, [swiperRef.current]);
+    setTimeout(() => {
+      if (!swiperRef.current) return;
+      swiperRef.current?.slideTo(3);
+    }, 1000);
+  }, []);
 
   return (
     <div className="relative z-10 w-full h-[650px]">
