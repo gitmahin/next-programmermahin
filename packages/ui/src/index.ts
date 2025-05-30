@@ -17,3 +17,4 @@ export * from "./icons/facebook";
 export * from "./icons/github";
 export * from "./icons/status-icons";
 export * from "./icons/type";
+export * from "./statusBox";
