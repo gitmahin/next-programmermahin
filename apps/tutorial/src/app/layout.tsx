@@ -45,8 +45,7 @@ export default async function RootLayout({
     <html lang="en">
       <head>
         <meta name="msvalidate.01" content="783AB5FD702DFAFF0F84CB3DCC3C677F" />
-      </head>
-      {/* Google tag (gtag.js)  */}
+        {/* Google tag (gtag.js)  */}
       <Script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-X8K4ZQVXR0"
@@ -58,6 +57,8 @@ export default async function RootLayout({
 
           gtag('config', 'G-X8K4ZQVXR0');`}
       </Script>
+      </head>
+      
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${jetbrains_mono.variable} `}
       >
