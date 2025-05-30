@@ -9,6 +9,7 @@ import "./styles/home.style.css";
 import "./styles/quicklearn.style.css";
 import { Search } from "@programmer/shared";
 import MobileHeader from "@/components/header";
+import Script from "next/script";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -43,8 +44,20 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-         <meta name="msvalidate.01" content="783AB5FD702DFAFF0F84CB3DCC3C677F" />
+        <meta name="msvalidate.01" content="783AB5FD702DFAFF0F84CB3DCC3C677F" />
       </head>
+      {/* Google tag (gtag.js)  */}
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-X8K4ZQVXR0"
+      ></Script>
+      <Script id="google-analytics">
+        {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-X8K4ZQVXR0');`}
+      </Script>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${jetbrains_mono.variable} `}
       >
