@@ -42,10 +42,19 @@ export const TutoListPopup = ({
   const [learningButtonURL, setLearningButtomURL] = useState("");
   const [openTutoNavSize, setOpenTutoNavSide] = useState(false);
   const queryParams = useSearchParams();
+  const isOpenTutoTab = queryParams.get("tutoTab");
   const tutoTab = useAppSelector((state) => state.tutoTab);
   const lockMouseEnter = tutoTab.lock;
   const open = tutoTab.open;
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (isOpenTutoTab === "1") {
+        handleOpenTutoTab();
+      }
+    }, 300);
+  }, []);
 
   const handleMouseEnter = (tutorialtype: string, tutoName: string) => {
     if (!lockMouseEnter) {
@@ -115,13 +124,6 @@ export const TutoListPopup = ({
   useEffect(() => {
     setOpenTutoNavSide(false);
   }, [tutoTab.activeKey]);
-
-  useEffect(() => {
-    const isOpenTutoTab = queryParams.get("tutoTab");
-    if (isOpenTutoTab === "1") {
-      handleOpenTutoTab();
-    }
-  }, [queryParams]);
 
   const countLessonsInChapter = (chapter: TutorialNavItemType[string]) => {
     return (

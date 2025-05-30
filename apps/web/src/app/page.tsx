@@ -10,6 +10,7 @@ import { ChevronRight } from "lucide-react";
 import React from "react";
 import { SnippetsFeatures } from "@/components/homepage/features-slider";
 import Link from "next/link";
+import { TrmTailwind } from "@/components/homepage/terminal/trmTailwind";
 
 //  <div className="w-full h-[30px] border-b border-border-color_800C relative">
 //           <div className="w-full h-full absolute left-0 top-0 border-none box-border border-border-color_800C border-x border-x-border-color_800C bg-[image:repeating-linear-gradient(225deg,_var(--border-color-800C)_0,_var(--border-color-800C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-800C)]/5 md:block dark:[--pattern-fg:var(--border-color-800C)]/10 "></div>
@@ -108,6 +109,7 @@ export default function Home() {
         pageTsxComponent={<TrmPage />}
         styleCssComponent={<TrmStyle />}
         packageJsonComponent={<TrmPackageJson />}
+        tailwindComponent={<TrmTailwind/>}
       />
 
       <SnippetsFeatures />

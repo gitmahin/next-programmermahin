@@ -22,6 +22,7 @@ const code = `{
     "swiper": "^11.2.8"
   },
   "devDependencies": {
+    "@shikijs/twoslash": "^3.4.2",
     "@programmer/eslint-config": "workspace:*",
     "@programmer/typescript-config": "workspace:*",
     "@types/node": "^22.14.0",

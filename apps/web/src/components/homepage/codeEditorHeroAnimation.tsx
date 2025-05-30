@@ -6,80 +6,37 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperTypes } from "swiper/types";
 
 const TERMINAL_BUTTONS: { label: string }[] = [
-  {
-    label: "page.tsx",
-  },
-  {
-    label: "style.css",
-  },
-  {
-    label: "package.json",
-  },
-  {
-    label: "Preview",
-  },
+  { label: "page.tsx" },
+  { label: "style.css" },
+  { label: "tailwind.config.js" },
+  { label: "package.json" },
+  { label: "Preview" },
 ];
 
 const MARQUEE_IMAGES: { [key: string]: { img: string }[] } = {
   MARQUEE_IMAGES_1: [
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "hello_user.png",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "addremove.png",
-    },
-    {
-      img: "",
-    },
+    { img: "long_code.png" },
+    { img: "code_editor.png" },
+    { img: "hello_user.png" },
+    { img: "bash.png" },
+    { img: "addremove.png" },
+    { img: "local.jpg" },
   ],
   MARQUEE_IMAGES_2: [
-    {
-      img: "",
-    },
-    {
-      img: "tutorials_popup.png",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "search.png",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "hero_terminal.png",
-    },
+    { img: "local.jpg" },
+    { img: "tutorials_popup.png" },
+    { img: "code_editor.png" },
+    { img: "search.png" },
+    { img: "bash.png" },
+    { img: "hero_terminal.png" },
   ],
   MARQUEE_IMAGES_3: [
-    {
-      img: "",
-    },
-    {
-      img: "quick_learn.png",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "focus_mode.png",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
+    { img: "laptop_coding.png" },
+    { img: "quick_learn.png" },
+    { img: "code_editor.png" },
+    { img: "focus_mode.png" },
+    { img: "error_img.png" },
+    { img: "bash.png" },
   ],
 };
 
@@ -87,12 +44,14 @@ interface CodeEditorHeroAnimationDisplayPropsTypes {
   pageTsxComponent?: React.ReactNode;
   styleCssComponent?: React.ReactNode;
   packageJsonComponent?: React.ReactNode;
+  tailwindComponent? : React.ReactNode;
 }
 
 export const CodeEditorHeroAnimationDisplay = ({
   pageTsxComponent,
   styleCssComponent,
   packageJsonComponent,
+  tailwindComponent
 }: CodeEditorHeroAnimationDisplayPropsTypes) => {
   const swiperRef = useRef<SwiperTypes>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -108,7 +67,7 @@ export const CodeEditorHeroAnimationDisplay = ({
   useEffect(() => {
     setTimeout(() => {
       if (!swiperRef.current) return;
-      swiperRef.current?.slideTo(3);
+      swiperRef.current?.slideTo(4);
     }, 1000);
   }, []);
 
@@ -197,7 +156,7 @@ export const CodeEditorHeroAnimationDisplay = ({
                         {" "}
                         - Local:{" "}
                         <span
-                          onClick={() => swiperRef.current?.slideTo(3)}
+                          onClick={() => swiperRef.current?.slideTo(4)}
                           className="hover:underline cursor-pointer"
                           title="Follow link (click)"
                         >
@@ -234,7 +193,10 @@ export const CodeEditorHeroAnimationDisplay = ({
               <SwiperSlide className="w-full h-full ">
                 {styleCssComponent}
               </SwiperSlide>
-              <SwiperSlide className="w-full h-full overflow-y-auto custom_scrollbar">
+              <SwiperSlide className="w-full h-full overflow-y-auto custom_scrollbar overflow-x-hidden">
+                {tailwindComponent}
+              </SwiperSlide>
+              <SwiperSlide className="w-full h-full overflow-y-auto custom_scrollbar overflow-x-hidden">
                 {packageJsonComponent}
               </SwiperSlide>
               <SwiperSlide className="w-full dark:bg-[#111113a3] bg-[#f7f7f888]">

@@ -159,7 +159,7 @@ export const MainNav = () => {
             </NavigationMenuContent>
           </NavigationMenuItem>
 
-          <NavigationMenuItem>
+          <NavigationMenuItem >
             <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
             <NavigationMenuContent>
               <div className="w-[800px] h-[330px] grid grid-cols-[250px_280px_1fr]">
@@ -173,6 +173,7 @@ export const MainNav = () => {
                       width={500}
                       height={600}
                       alt="Tutorial"
+                      priority
                       className="w-full h-full object-cover object-left-top hidden dark:block"
                     />
                     <Image
@@ -180,6 +181,7 @@ export const MainNav = () => {
                       width={500}
                       height={600}
                       alt="Tutorial"
+                      priority
                       className="w-full h-full object-cover object-left-top dark:hidden block"
                     />
                     <div className="absolute bottom-0 h-[200px] w-full bg-gradient-to-b from-transparent to-background-color_925C group-hover:to-background-color_850C flex justify-start items-end">
@@ -213,6 +215,7 @@ export const MainNav = () => {
                             width={500}
                             height={500}
                             alt="quick-learn"
+                            priority
                             className="w-full h-full object-left-top object-cover hidden dark:block"
                           />
                           <Image
@@ -220,6 +223,7 @@ export const MainNav = () => {
                             width={500}
                             height={500}
                             alt="quick-learn"
+                            priority
                             className="w-full h-full object-left-top object-cover dark:hidden block"
                           />
                         </div>

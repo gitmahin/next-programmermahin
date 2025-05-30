@@ -8,80 +8,36 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperTypes } from "swiper/types";
 
 const TERMINAL_BUTTONS: { label: string }[] = [
-  {
-    label: "page.tsx",
-  },
-  {
-    label: "style.css",
-  },
-  {
-    label: "package.json",
-  },
-  {
-    label: "Preview",
-  },
+  { label: "page.tsx" },
+  { label: "style.css" },
+  { label: "package.json" },
+  { label: "Preview" },
 ];
 
 const MARQUEE_IMAGES: { [key: string]: { img: string }[] } = {
   MARQUEE_IMAGES_1: [
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
+    { img: "long_code.png" },
+    { img: "code_editor.png" },
+    { img: "hello_user.png" },
+    { img: "bash.png" },
+    { img: "addremove.png" },
+    { img: "local.jpg" },
   ],
   MARQUEE_IMAGES_2: [
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
+    { img: "local.jpg" },
+    { img: "tutorials_popup.png" },
+    { img: "code_editor.png" },
+    { img: "search.png" },
+    { img: "bash.png" },
+    { img: "hero_terminal.png" },
   ],
   MARQUEE_IMAGES_3: [
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
-    {
-      img: "",
-    },
+    { img: "laptop_coding.png" },
+    { img: "quick_learn.png" },
+    { img: "code_editor.png" },
+    { img: "focus_mode.png" },
+    { img: "error_img.png" },
+    { img: "bash.png" },
   ],
 };
 
