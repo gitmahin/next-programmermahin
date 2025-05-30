@@ -46,19 +46,19 @@ export default async function RootLayout({
       <head>
         <meta name="msvalidate.01" content="783AB5FD702DFAFF0F84CB3DCC3C677F" />
         {/* Google tag (gtag.js)  */}
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-X8K4ZQVXR0"
-      ></Script>
-      <Script id="google-analytics">
-        {`window.dataLayer = window.dataLayer || [];
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-X8K4ZQVXR0"
+        ></Script>
+        <Script id="google-analytics">
+          {`window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
           gtag('config', 'G-X8K4ZQVXR0');`}
-      </Script>
+        </Script>
       </head>
-      
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${jetbrains_mono.variable} `}
       >
