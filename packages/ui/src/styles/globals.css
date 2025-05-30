@@ -213,6 +213,11 @@ body {
     @apply max-w-[1200px] w-full;
   }
 
+   .layout_max_750 {
+    @apply max-w-[750px] w-full;
+  }
+
+
   .grayScaleActiveImage {
     @apply filter grayscale-0 brightness-100 contrast-100 dark:invert;
   }
@@ -774,4 +779,10 @@ pre:has(.focused):hover span {
 .twoslash-popup-container code {
   display: block;
   text-wrap: nowrap;
+}
+
+
+.pm_page_title{
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.2;
 }

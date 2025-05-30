@@ -1,3 +1,4 @@
+"use client"
 import { getTutorialsByKey, QUICKLEARN_TUTORIALS } from "@programmer/constants";
 import { PMButton, ThemeModeToggoler } from "@programmer/ui";
 import Image from "next/image";
@@ -29,11 +30,15 @@ const SUPPORTS: FooterLinkType[] = [
 const FOOTER_LABELS: FooterLinkType[] = [
   {
     label: "Privacy Policy",
-    slug: "privacy-policy",
+    slug: "legals/privacy-policy",
   },
   {
     label: "Terms",
-    slug: "terms",
+    slug: "legals/terms",
+  },
+  {
+    label: "DMCA",
+    slug: "legals/dmca",
   },
   {
     label: "Contact",
@@ -167,7 +172,7 @@ export const Footer = () => {
                     <li key={i} className="text-read_2">
                       <Link
                         href={`/${item.slug}`}
-                        className="text-text-color_3 font-medium hover:text-purple-700"
+                        className="text-text-color_3 font-medium text-read_3 hover:text-text-color_1 transition-colors"
                       >
                         {item.label}
                       </Link>
