@@ -46,7 +46,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Google tag (gtag.js)  */}
-        <meta name="msvalidate.01" content="783AB5FD702DFAFF0F84CB3DCC3C677F" />
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-X485X0KWVC"

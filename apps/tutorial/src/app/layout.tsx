@@ -42,6 +42,9 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+         <meta name="msvalidate.01" content="783AB5FD702DFAFF0F84CB3DCC3C677F" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${jetbrains_mono.variable} `}
       >
