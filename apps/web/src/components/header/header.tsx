@@ -5,6 +5,7 @@ import { Search, setSearchBoxOpen } from "@programmer/shared";
 import { useAppDispatch } from "@/hooks/redux.hook";
 import { SearchIcon } from "lucide-react";
 import { MainNav } from "./mainNav";
+import Link from "next/link";
 
 export const Header = () => {
   // for dispatch type safety
@@ -19,7 +20,9 @@ export const Header = () => {
     <header className="w-full bg-background-color_925C border-b border-border-color_800C h-[64px] fixed top-0 left-0 px-5 z-50">
       <div className="layout_max_1200 mx-auto flex justify-center items-center h-full">
         <div className="w-full flex-1">
+          <Link href={"/"}>
           <PMLogo size="sm" />
+          </Link>
         </div>
         <MainNav />
 

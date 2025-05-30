@@ -144,27 +144,15 @@ importers:
       '@programmer/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@rehype-pretty/transformers':
-        specifier: ^0.13.2
-        version: 0.13.2
       next:
         specifier: ^15.2.4
         version: 15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      next-mdx-remote:
-        specifier: ^5.0.0
-        version: 5.0.0(@types/react@19.1.0)(acorn@8.14.1)(react@19.1.0)
       react:
         specifier: ^19.1.0
         version: 19.1.0
       react-dom:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
-      rehype-pretty-code:
-        specifier: ^0.14.0
-        version: 0.14.1(shiki@3.4.2)
-      rehype-slug:
-        specifier: ^6.0.0
-        version: 6.0.0
     devDependencies:
       '@programmer/eslint-config':
         specifier: workspace:*
@@ -348,15 +336,27 @@ importers:
       '@programmer/ui':
         specifier: workspace:*
         version: link:../ui
+      '@rehype-pretty/transformers':
+        specifier: ^0.13.2
+        version: 0.13.2
       next:
         specifier: ^15.2.4
         version: 15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      next-mdx-remote:
+        specifier: ^5.0.0
+        version: 5.0.0(@types/react@19.1.0)(acorn@8.14.1)(react@19.1.0)
       react:
         specifier: ^19.1.0
         version: 19.1.0
       react-dom:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
+      rehype-pretty-code:
+        specifier: ^0.14.0
+        version: 0.14.1(shiki@3.4.2)
+      rehype-slug:
+        specifier: ^6.0.0
+        version: 6.0.0
     devDependencies:
       '@programmer/eslint-config':
         specifier: workspace:*
