@@ -29,13 +29,13 @@ const MARQUEE_IMAGES: { [key: string]: { img: string }[] } = {
       img: "",
     },
     {
-      img: "",
+      img: "hello_user.png",
     },
     {
       img: "",
     },
     {
-      img: "",
+      img: "addremove.png",
     },
     {
       img: "",
@@ -72,7 +72,7 @@ const MARQUEE_IMAGES: { [key: string]: { img: string }[] } = {
       img: "",
     },
     {
-      img: "",
+      img: "focus_mode.png",
     },
     {
       img: "",

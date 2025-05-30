@@ -43,64 +43,46 @@ export const MainNav = () => {
             <NavigationMenuContent>
               <div className="w-[720px] h-[300px] p-2">
                 <div className="w-full h-full grid grid-cols-[220px_220px_1fr] gap-2">
-                  <div className="w-full h-full border border-border-color_800C rounded overflow-hidden bg-background-color_900C group">
-                    <div className="w-full h-[calc(100%-90px)] px-3 py-3 relative">
-                      <CodeXml size={30} className="text-text-color_1" />
-                      <div className="absolute bottom-0 left-0 px-3 py-3 flex justify-start items-center gap-1">
-                        <span className="text-read_2 text-text-color_2 group-hover:text-text-color_1 transition-colors">
-                          Explore
-                        </span>
-                        <ChevronRight
-                          size={16}
-                          className="text-text-svg_default_color group-hover:text-text-color_1 transition-colors"
-                        />
+                  <div className="w-full h-full border px-3 py-3 border-border-color_800C rounded overflow-hidden bg-background-color_900C group relative ">
+                    <div className="flex justify-start items-center gap-2">
+                      <div className="w-[40px] h-[40px] flex-shrink-0 border rounded flex justify-center shadow-md items-center border-background-color_750C bg-gradient-to-tl from-background-color_800C to-background-color_750C">
+                        <CodeXml size={20} className="text-text-color_4" />
                       </div>
-                    </div>
-                    <Link href={"/doc"}>
-                      <div className="h-[90px] border-t border-border-color_800C p-3 flex-shrink-0 bg-background-color_850C hover:bg-background-color_800C transition-colors">
-                        <h3 className="text-text-color_1 text-read_1 font-medium">
+                      <div>
+                        <h3 className="text-text-color_1 text-read_2 font-medium">
                           Developer Docs
                         </h3>
-                        <p className="mt-1 text-read_3 text-text-color_2 two_line_ellipsis">
+                        <p className=" text-read_3 text-text-color_2 one_line_ellipsis">
                           Build, contribute, and explore the core of
                           ProgrammerMahin.
                         </p>
                       </div>
-                    </Link>
+                    </div>
+
+                    <div className="absolute bottom-0 right-0 border-t border-l rounded-tl-[10px] border-border-color_800C group-hover:border-pm_purple-700 transition-colors w-[207px] h-[200px] overflow-hidden p-1 bg-background-color_850C">
+                      <div className="w-full h-full rounded-tl-[6px] overflow-hidden "></div>
+                    </div>
                   </div>
 
-                  <div className="w-full h-full border border-border-color_800C rounded overflow-hidden bg-background-color_900C group">
-                    <div className="w-full h-[calc(100%-90px)] px-3 py-3 relative">
-                      <UsersRound size={30} className="text-text-color_1" />
-                      <div className="absolute bottom-0 left-0 px-3 py-3 w-full flex justify-between items-center">
-                        <div className="flex justify-start items-center gap-1">
-                          <span className="text-read_2 text-text-color_2 group-hover:text-text-color_1 transition-colors">
-                            Explore
-                          </span>
-                          <ChevronRight
-                            size={16}
-                            className="text-text-svg_default_color group-hover:text-text-color_1 transition-colors"
-                          />
-                        </div>
-
-                        <PMButton className="px-2 py-0 rounded-tiny transition-colors">
-                          <span className="font-medium text-read_2 text-text-zinc_white ">
-                            Join
-                          </span>
-                        </PMButton>
+                  <div className="w-full h-full border border-border-color_800C px-3 py-3  rounded overflow-hidden bg-background-color_900C group relative">
+                    <div className="flex justify-start items-center gap-2">
+                      <div className="w-[40px] h-[40px] flex-shrink-0 border rounded flex justify-center shadow-md items-center border-background-color_750C bg-gradient-to-tl from-background-color_800C to-background-color_750C">
+                        <UsersRound size={18} className="text-text-color_4" />
                       </div>
-                    </div>
-                    <Link href={"/community"}>
-                      <div className="h-[90px] border-t border-border-color_800C p-3 flex-shrink-0 bg-background-color_850C hover:bg-background-color_800C transition-colors">
-                        <h3 className="text-text-color_1 text-read_1 font-medium">
+                      <div>
+                        <h3 className="text-text-color_1 text-read_2 font-medium">
                           Community
                         </h3>
-                        <p className="mt-1 text-read_3 text-text-color_2 two_line_ellipsis">
+                        <p className=" text-read_3 text-text-color_2 one_line_ellipsis">
                           Connect with like-minded developers to exchange
                           knowledge, collaborate, and grow together.
                         </p>
                       </div>
-                    </Link>
+                    </div>
+
+                    <div className="absolute bottom-0 right-0 border-t border-l rounded-tl-[10px] border-border-color_800C w-[207px] h-[200px] group-hover:border-pm_purple-700 transition-colors overflow-hidden p-1 bg-background-color_850C">
+                      <div className="w-full h-full rounded-tl-[6px] overflow-hidden "></div>
+                    </div>
                   </div>
                   <div className="w-full h-full grid grid-rows-3 gap-2">
                     <Link
@@ -166,7 +148,8 @@ export const MainNav = () => {
                       </div>
                       <div className="w-full px-4 p-1">
                         <p className="text-left text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis text-pm_zinc-200">
-                          Learn, Build, and Stay Updated
+                          Learn, Build, and Stay Updated. Join group chats and
+                          share your projects on social.
                         </p>
                       </div>
                     </button>
@@ -211,12 +194,12 @@ export const MainNav = () => {
                     </div>
                   </div>
                 </Link>
-                <div className="w-full border-r border-border-color_800C h-full p-2">
+                <div className="w-full h-full p-2 pr-0">
                   <Link
                     href={"https://tutorial.programmermahin.com/quick-learn"}
                     target="_blank"
                   >
-                    <div className="w-full h-full bg-background-color_900C hover:bg-background-color_850C transition-colors rounded relative overflow-hidden">
+                    <div className="w-full h-full bg-background-color_900C border border-background-color_850C dark:hover:bg-background-color_850C hover:bg-background-color_800C transition-colors rounded relative overflow-hidden">
                       <div className="p-5">
                         <h3 className="text-read_1 font-medium">Quick Learn</h3>
                         <p className="text-read_3 text-text-color_2 mt-1">
@@ -245,8 +228,7 @@ export const MainNav = () => {
                   </Link>
                 </div>
                 <div className="w-full relative h-full ">
-                  <div className="w-full h-full absolute left-0 top-0  box-border border-x border-x-border-color_800C bg-[image:repeating-linear-gradient(315deg,_var(--border-color-800C)_0,_var(--border-color-800C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-800C)]/5 md:block dark:[--pattern-fg:var(--border-color-800C)]/10"></div>
-                  <div className="w-full h-full p-2  relative z-10 backdrop-blur-[2px]">
+                  <div className="w-full h-full p-2  relative z-10 ">
                     <div
                       onMouseEnter={() => {
                         setIsBlogNavHover(true);
@@ -254,9 +236,9 @@ export const MainNav = () => {
                       onMouseLeave={() => {
                         setIsBlogNavHover(false);
                       }}
-                      className="w-full h-full bg-background-color_925C rounded border border-border-color_800C relative"
+                      className="w-full h-full relative"
                     >
-                      <h3 className="text-read_1 font-medium px-5 pt-4 pb-2">
+                      <h3 className="text-read_1 font-medium px-5 pt-5 pb-2">
                         Blogs
                       </h3>
                       <div>
@@ -264,12 +246,12 @@ export const MainNav = () => {
                           return (
                             <Link key={i} href={`${item.link}`}>
                               <button
-                                className={`px-5 py-2 hover:bg-background-color_800C transition-colors ${!isBlogNavHover && i === 0 ? "bg-background-color_800C" : ""} flex flex-col justify-start items-start group`}
+                                className={`px-5 py-2 hover:bg-background-color_800C rounded transition-colors ${!isBlogNavHover && i === 0 ? "bg-background-color_800C" : ""} flex flex-col justify-start items-start group`}
                               >
                                 <h4 className="text-text-color_4 two_line_ellipsis w-full group-hover:text-text-color_1 text-read_3 font-medium text-left">
                                   {item.label}
                                 </h4>
-                                <p className="text-[11px] two_line_ellipsis text-text-color_2 w-full mt-1 text-left">
+                                <p className="text-[11px] two_line_ellipsis text-text-color_3 w-full mt-1 text-left">
                                   {item.desc}
                                 </p>
                               </button>
@@ -277,8 +259,8 @@ export const MainNav = () => {
                           );
                         })}
                       </div>
-                      <div className=" w-full px-2 pb-2 absolute bottom-0 left-0">
-                        <button className="w-full bg-background-color_900C py-[5px] hover:bg-background-color_850C   transition-colors font-medium text-read_3 rounded group flex justify-center items-center gap-1">
+                      <div className=" w-full absolute bottom-0 left-0">
+                        <button className="w-full py-2.5 border border-background-color_850C bg-background-color_900C hover:bg-background-color_850C   transition-colors font-medium text-read_3 rounded group flex justify-center items-center gap-1">
                           <span className="text-text-color_2 group-hover:text-text-color_1 transition-colors">
                             Explore more blogs
                           </span>

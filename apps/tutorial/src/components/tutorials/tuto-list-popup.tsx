@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -41,7 +41,7 @@ export const TutoListPopup = ({
   const path_name = usePathname();
   const [learningButtonURL, setLearningButtomURL] = useState("");
   const [openTutoNavSize, setOpenTutoNavSide] = useState(false);
-
+  const queryParams = useSearchParams();
   const tutoTab = useAppSelector((state) => state.tutoTab);
   const lockMouseEnter = tutoTab.lock;
   const open = tutoTab.open;
@@ -78,7 +78,7 @@ export const TutoListPopup = ({
     }
   }, [tutoTab, handleMouseEnter]);
 
-  // This function handles changes in the open state of a tutorial tab
+  // This function handles changes in the open state of a tutorial tab for dialog onOpenChange
   const handleOpenChange = (value: boolean) => {
     if (!setOpenTutoTab) return;
     // Dispatch an action to update the open state in Redux
@@ -115,6 +115,13 @@ export const TutoListPopup = ({
   useEffect(() => {
     setOpenTutoNavSide(false);
   }, [tutoTab.activeKey]);
+
+  useEffect(() => {
+    const isOpenTutoTab = queryParams.get("tutoTab");
+    if (isOpenTutoTab === "1") {
+      handleOpenTutoTab();
+    }
+  }, [queryParams]);
 
   const countLessonsInChapter = (chapter: TutorialNavItemType[string]) => {
     return (

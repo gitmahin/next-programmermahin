@@ -9,6 +9,7 @@ import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
 import { ChevronRight } from "lucide-react";
 import React from "react";
 import { SnippetsFeatures } from "@/components/homepage/features-slider";
+import Link from "next/link";
 
 //  <div className="w-full h-[30px] border-b border-border-color_800C relative">
 //           <div className="w-full h-full absolute left-0 top-0 border-none box-border border-border-color_800C border-x border-x-border-color_800C bg-[image:repeating-linear-gradient(225deg,_var(--border-color-800C)_0,_var(--border-color-800C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-800C)]/5 md:block dark:[--pattern-fg:var(--border-color-800C)]/10 "></div>
@@ -59,22 +60,29 @@ export default function Home() {
 
         <AirFlowText initialY={30} duration={0.5}>
           <div className="flex justify-center items-center gap-2 mt-6 ">
-            <PMButton
-              variant="primary"
-              className="px-4 py-2 font-medium text-read_1 rounded transition-colors "
-            >
-              <span className="text-text-zinc_white ">Get Started</span>
-            </PMButton>
-            <PMButton
-              variant="silent"
-              className="px-4 py-2  rounded group flex justify-center items-center gap-2 transition-colors"
-            >
-              <span className="font-medium text-read_1 group-hover:text-text-zinc_white transition-colors">Browse Courses</span>
-              <ChevronRight
-                size={LUCIDE_DEFAULT_ICON_SIZE}
-                className="text-text-svg_default_color transition-colors group-hover:text-text-color_1"
-              />
-            </PMButton>
+            <Link href={"/login"}>
+              <PMButton
+                variant="primary"
+                className="px-4 py-2 font-medium text-read_1 rounded transition-colors "
+              >
+                <span className="text-text-zinc_white ">Get Started</span>
+              </PMButton>
+            </Link>
+
+            <Link href={"https://tutorial.programmermahin.com/?tutoTab=1"}>
+              <PMButton
+                variant="silent"
+                className="px-4 py-2  rounded group flex justify-center items-center gap-2 transition-colors"
+              >
+                <span className="font-medium text-read_1 group-hover:text-text-zinc_white transition-colors">
+                  Browse Courses
+                </span>
+                <ChevronRight
+                  size={LUCIDE_DEFAULT_ICON_SIZE}
+                  className="text-text-svg_default_color transition-colors group-hover:text-text-color_1"
+                />
+              </PMButton>
+            </Link>
           </div>
         </AirFlowText>
         {/* <div className="mt-28 flex justify-center items-center relative">
@@ -102,7 +110,7 @@ export default function Home() {
         packageJsonComponent={<TrmPackageJson />}
       />
 
-      <SnippetsFeatures/>
+      <SnippetsFeatures />
       <div className="mt-32"></div>
     </div>
   );
