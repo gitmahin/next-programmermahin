@@ -91,11 +91,11 @@ export const FeaturesSlider = ({
 
   return (
     <div className="w-full mt-24 px-5">
-      <div className="layout_max_1200 mx-auto flex justify-center items-start gap-8 max-[1137px]:flex-col max-[1137px]:items-center">
+      <div className="layout_max_1200 mx-auto flex justify-center items-start gap-8 max-[1137px]:gap-3 max-[1137px]:flex-col max-[1137px]:items-center">
         <div className="w-full mt-8">
           {slideInfo && (
             <AirFlowText keyIndex={slideIndex} duration={0.3}>
-              <h2 className="text-read_25 text-text-color_1 font-semibold">
+              <h2 className="text-read_25 text-text-color_1 font-semibold max-[1137px]:text-center">
                 {slideInfo.title}
               </h2>
             </AirFlowText>
@@ -103,13 +103,13 @@ export const FeaturesSlider = ({
 
           {slideInfo && (
             <AirFlowText keyIndex={slideIndex} duration={0.3}>
-              <p className="text-read_16 text-text-color_2 max-w-[400px] w-full mt-1">
+              <p className="text-read_16 text-text-color_2 max-w-[400px] w-full mt-1 max-[1137px]:text-center max-[1137px]:max-w-[100%]">
                 {slideInfo.desc}
               </p>
             </AirFlowText>
           )}
 
-          <div className="flex w-full flex-col justify-start items-start mt-8 max-w-[200px] max-[1137px]:max-w-[100%] max-[1137px]:flex-row max-[1137px]:flex-wrap  relative">
+          <div className="flex w-full flex-col justify-start items-start mt-8 max-w-[200px] max-[1137px]:max-w-[100%] max-[1137px]:flex-row max-[1137px]:flex-wrap max-[1137px]:justify-center  relative">
             <div
               ref={slidingTabRef}
               className="bg-gradient-to-tr w-full transition-all duration-500 absolute -z-[1] from-background-color_900C to-background-color_800C rounded"
@@ -136,7 +136,7 @@ export const FeaturesSlider = ({
               );
             })}
           </div>
-          <div className="mt-5">
+          <div className="mt-5 max-[1137px]:mt-0">
             <button
               onClick={() => {
                 if (isAutoPlayStopped) {

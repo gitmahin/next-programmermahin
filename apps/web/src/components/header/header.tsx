@@ -21,7 +21,7 @@ export const Header = () => {
       <div className="layout_max_1200 mx-auto flex justify-center items-center h-full">
         <div className="w-full flex-1">
           <Link href={"/"}>
-          <PMLogo size="sm" />
+            <PMLogo size="sm" />
           </Link>
         </div>
         <MainNav />

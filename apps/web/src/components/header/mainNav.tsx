@@ -35,7 +35,7 @@ const NAV_FEATURED_BLOGS: { label: string; desc: string; link: string }[] = [
 export const MainNav = () => {
   const [isBlogNavHover, setIsBlogNavHover] = useState(false);
   return (
-    <nav>
+    <nav className="max-[1060px]:hidden">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
