@@ -9,13 +9,13 @@ export default async function QuickLearnHomePage() {
   return (
     <div className="flex justify-center items-center w-full p-5  ">
       <div className="default_page_width my-16">
-        <h1 className="heading_default">Quick Learn</h1>
+        <h1 className="secondary_heading_sync font-semibold">Quick Learn</h1>
         <p className="text-read_1 font-medium text-text-color_2 mt-5">
           Level up your learning with bite-sized lessons designed to help you
           grasp complex topics quickly. Perfect for curious minds and ambitious
           learners.
         </p>
-        <div className="mt-24 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] max-[350px]:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-3">
+        <div className="mt-24 max-[960px]:mt-9 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] max-[350px]:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-3">
           {QUICKLEARN_TUTORIALS.map((blog, i) => {
             return (
               <Link key={i} href={`/quick-learn/${blog.slug}`}>

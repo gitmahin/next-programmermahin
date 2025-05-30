@@ -790,3 +790,8 @@ pre:has(.focused):hover span {
   font-size: clamp(30px, 5vw, 48px);
   line-height: 1.2;
 }
+
+.secondary_heading_sync{
+  font-size: clamp(30px, 5vw, 44px);
+  line-height: 1.2;
+}

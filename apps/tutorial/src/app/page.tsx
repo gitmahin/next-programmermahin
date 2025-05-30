@@ -91,7 +91,7 @@ const page = () => {
               </div>
             </div>
           </div>
-          <div className="mt-16">
+          <div className="mt-16 max-[550px]:mt-0">
             <h2 className="text-[22px] font-semibold text-text-color_1">
               Why Learn Here?
             </h2>
