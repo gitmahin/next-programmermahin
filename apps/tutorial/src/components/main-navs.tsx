@@ -4,7 +4,7 @@ import { TutorialNavItemType } from "@programmer/constants";
 import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
 import { GraduationCap } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { Suspense } from "react";
 import { TutoListPopup } from "./tutorials";
 import {
   setLockMouseEnter,
@@ -74,7 +74,9 @@ export default function MainNavs() {
             );
           })}
         </ul>
+        <Suspense>
         <TutoListPopup showClickAbleTutoOpenBtn={false} />
+        </Suspense>
       </div>
     </div>
   );

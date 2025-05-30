@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { TutoListPopup } from "./tuto-list-popup";
 import {
   TutorialChildNavItemType,
@@ -167,7 +167,9 @@ export const TutoSidebar = ({
               {TUTORIALS_ICON[tutorialType as TutorialEnums]?.name ?? ""}
             </span>
           </div>
+          <Suspense>
           <TutoListPopup />
+          </Suspense>
         </div>
       </div>
 
