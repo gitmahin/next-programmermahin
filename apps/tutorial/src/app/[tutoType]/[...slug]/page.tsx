@@ -15,7 +15,7 @@ import {
 } from "@programmer/shared";
 import { TutorialEnums } from "@programmer/constants";
 import { Metadata } from "next";
-import { mdxToHtml } from "@/lib/mdxToHtml";
+import { mdxToHtml } from "@programmer/shared";
 import { getTutorialsAbsolutePaths } from "@/lib/tutorials/getTutorialsAbsolutePaths";
 
 interface ContentPagePropsType {

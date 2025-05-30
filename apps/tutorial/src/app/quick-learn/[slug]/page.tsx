@@ -1,11 +1,10 @@
 import React from "react";
 import fs from "fs";
 import matter from "gray-matter";
-import { mdxToHtml } from "@/lib/mdxToHtml";
+import { mdxToHtml } from "@programmer/shared";
 import { QuickLearnAsideNav } from "../components/quickLearnAsideNav";
 import { QuickLearnPagination } from "../components/quickLearnPagination";
 import { Metadata } from "next";
-import { QUICKLEARN_TUTORIALS } from "@programmer/constants";
 import { getQuickLearnSlugs } from "@/lib/quicklearn/getQuickLearnSlugs";
 
 interface QuickLearnPagePropsType {

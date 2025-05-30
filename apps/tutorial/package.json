@@ -15,13 +15,9 @@
     "@programmer/hooks": "workspace:*",
     "@programmer/shared": "workspace:*",
     "@programmer/ui": "workspace:*",
-    "@rehype-pretty/transformers": "^0.13.2",
     "next": "^15.2.4",
-    "next-mdx-remote": "^5.0.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "rehype-pretty-code": "^0.14.0",
-    "rehype-slug": "^6.0.0"
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@programmer/eslint-config": "workspace:*",
