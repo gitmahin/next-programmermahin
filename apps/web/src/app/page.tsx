@@ -63,13 +63,13 @@ export default function Home() {
               variant="primary"
               className="px-4 py-2 font-medium text-read_1 rounded transition-colors "
             >
-              <span className="text-text-zinc_white">Get Started</span>
+              <span className="text-text-zinc_white ">Get Started</span>
             </PMButton>
             <PMButton
               variant="silent"
-              className="px-4 py-2  rounded group transition-colors flex justify-center items-center gap-2"
+              className="px-4 py-2  rounded group flex justify-center items-center gap-2 transition-colors"
             >
-              <span className="font-medium text-read_1">Browse Courses</span>
+              <span className="font-medium text-read_1 group-hover:text-text-zinc_white transition-colors">Browse Courses</span>
               <ChevronRight
                 size={LUCIDE_DEFAULT_ICON_SIZE}
                 className="text-text-svg_default_color transition-colors group-hover:text-text-color_1"
