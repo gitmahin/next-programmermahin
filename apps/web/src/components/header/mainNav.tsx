@@ -56,15 +56,17 @@ export const MainNav = () => {
                         />
                       </div>
                     </div>
-                    <div className="h-[90px] border-t border-border-color_800C p-3 flex-shrink-0 bg-background-color_850C">
-                      <h3 className="text-text-color_1 text-read_1 font-medium">
-                        Developer Docs
-                      </h3>
-                      <p className="mt-1 text-read_3 text-text-color_2 two_line_ellipsis">
-                        Build, contribute, and explore the core of
-                        ProgrammerMahin.
-                      </p>
-                    </div>
+                    <Link href={"/doc"}>
+                      <div className="h-[90px] border-t border-border-color_800C p-3 flex-shrink-0 bg-background-color_850C hover:bg-background-color_800C transition-colors">
+                        <h3 className="text-text-color_1 text-read_1 font-medium">
+                          Developer Docs
+                        </h3>
+                        <p className="mt-1 text-read_3 text-text-color_2 two_line_ellipsis">
+                          Build, contribute, and explore the core of
+                          ProgrammerMahin.
+                        </p>
+                      </div>
+                    </Link>
                   </div>
 
                   <div className="w-full h-full border border-border-color_800C rounded overflow-hidden bg-background-color_900C group">
@@ -88,15 +90,17 @@ export const MainNav = () => {
                         </PMButton>
                       </div>
                     </div>
-                    <div className="h-[90px] border-t border-border-color_800C p-3 flex-shrink-0 bg-background-color_850C">
-                      <h3 className="text-text-color_1 text-read_1 font-medium">
-                        Community
-                      </h3>
-                      <p className="mt-1 text-read_3 text-text-color_2 two_line_ellipsis">
-                        Connect with like-minded developers to exchange
-                        knowledge, collaborate, and grow together.
-                      </p>
-                    </div>
+                    <Link href={"/community"}>
+                      <div className="h-[90px] border-t border-border-color_800C p-3 flex-shrink-0 bg-background-color_850C hover:bg-background-color_800C transition-colors">
+                        <h3 className="text-text-color_1 text-read_1 font-medium">
+                          Community
+                        </h3>
+                        <p className="mt-1 text-read_3 text-text-color_2 two_line_ellipsis">
+                          Connect with like-minded developers to exchange
+                          knowledge, collaborate, and grow together.
+                        </p>
+                      </div>
+                    </Link>
                   </div>
                   <div className="w-full h-full grid grid-rows-3 gap-2">
                     <Link
@@ -180,7 +184,7 @@ export const MainNav = () => {
                   href={"https://tutorial.programmermahin.com"}
                   target="_blank"
                 >
-                  <div className="w-[250px] border-r h-full border-border-color_800C relative">
+                  <div className="w-[250px] border-r h-full border-border-color_800C relative group">
                     <Image
                       src={"/images/dark/tutorial_menu.png"}
                       width={500}
@@ -195,7 +199,7 @@ export const MainNav = () => {
                       alt="Tutorial"
                       className="w-full h-full object-cover object-left-top dark:hidden block"
                     />
-                    <div className="absolute bottom-0 h-[200px] w-full bg-gradient-to-b from-transparent to-background-color_925C flex justify-start items-end">
+                    <div className="absolute bottom-0 h-[200px] w-full bg-gradient-to-b from-transparent to-background-color_925C group-hover:to-background-color_850C flex justify-start items-end">
                       <div className="absolute w-full h-full bg-gradient-to-b from-transparent to-background-color_925C"></div>
                       <div className="relative z-10 p-5">
                         <h3 className="text-[18px] font-medium">Tutorials</h3>
@@ -212,7 +216,7 @@ export const MainNav = () => {
                     href={"https://tutorial.programmermahin.com/quick-learn"}
                     target="_blank"
                   >
-                    <div className="w-full h-full bg-background-color_900C rounded relative overflow-hidden">
+                    <div className="w-full h-full bg-background-color_900C hover:bg-background-color_850C transition-colors rounded relative overflow-hidden">
                       <div className="p-5">
                         <h3 className="text-read_1 font-medium">Quick Learn</h3>
                         <p className="text-read_3 text-text-color_2 mt-1">
