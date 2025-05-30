@@ -45,6 +45,7 @@ export default async function RootLayout({
     <html lang="en">
       <head>
         <meta name="msvalidate.01" content="783AB5FD702DFAFF0F84CB3DCC3C677F" />
+        <meta name="yandex-verification" content="d2a26a6d7007084f" />
         {/* Google tag (gtag.js)  */}
         <Script
           async
