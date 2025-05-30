@@ -17,5 +17,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${process.env.NEXT_PUBLIC_TUTORIAL_BASE_PATH}/quick-learn/${slug}`,
   }));
 
-  return [...tutorials, ...quickLearns];
+  return [
+    {
+      url: `${process.env.NEXT_PUBLIC_TUTORIAL_BASE_PATH}`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 1,
+    },
+    ...tutorials,
+    ...quickLearns,
+  ];
 }
