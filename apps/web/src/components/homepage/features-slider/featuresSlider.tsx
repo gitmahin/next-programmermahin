@@ -84,12 +84,14 @@ export const FeaturesSlider = ({
     if (!slidingTabRef.current) return;
     slidingTabRef.current.style.width = `${btn.offsetWidth}px`;
     slidingTabRef.current.style.height = `${btn.offsetHeight}px`;
+    slidingTabRef.current.style.left = `${btn.offsetLeft}px`;
     slidingTabRef.current.style.top = `${btn.offsetTop}px`;
+
   }, []);
 
   return (
     <div className="w-full mt-24 px-5">
-      <div className="layout_max_1200 mx-auto flex justify-center items-start gap-8">
+      <div className="layout_max_1200 mx-auto flex justify-center items-start gap-8 max-[1137px]:flex-col max-[1137px]:items-center">
         <div className="w-full mt-8">
           {slideInfo && (
             <AirFlowText keyIndex={slideIndex} duration={0.3}>
@@ -107,7 +109,7 @@ export const FeaturesSlider = ({
             </AirFlowText>
           )}
 
-          <div className="flex flex-col justify-start items-start mt-8 max-w-[200px] w-full relative">
+          <div className="flex w-full flex-col justify-start items-start mt-8 max-w-[200px] max-[1137px]:max-w-[100%] max-[1137px]:flex-row max-[1137px]:flex-wrap  relative">
             <div
               ref={slidingTabRef}
               className="bg-gradient-to-tr w-full transition-all duration-500 absolute -z-[1] from-background-color_900C to-background-color_800C rounded"
@@ -124,7 +126,7 @@ export const FeaturesSlider = ({
                     swiperRef.current?.slideTo(i);
                     swiperRef.current?.autoplay.stop();
                   }}
-                  className={`py-2 px-3 gap-2 flex justify-start items-center  ${i === slideIndex ? "text-text-color_1 " : "text-text-color_3"}`}
+                  className={`py-2 px-3 gap-2 flex justify-start items-center flex-shrink-0  ${i === slideIndex ? "text-text-color_1 " : "text-text-color_3"}`}
                 >
                   {Icon && <Icon width={12} height={12} />}
                   <span className="text-read_1 font-medium transition-colors duration-300">

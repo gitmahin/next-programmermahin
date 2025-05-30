@@ -72,7 +72,7 @@ export const CodeEditorHeroAnimationDisplay = ({
   }, []);
 
   return (
-    <div className="relative z-10 w-full h-[650px]">
+    <div className="relative z-10 w-full h-[650px] px-5">
       <div className="absolute max-w-[500px] w-full h-full dark:bg-pm_zinc-600 bg-pm_zinc-300 blur-[100px] rounded-full left-1/2 -translate-x-1/2 -z-[1]"></div>
       <div className=" layout_max_1200 mx-auto w-full h-full ">
         <div className="rounded border border-border-color_800C backdrop-blur-[150px] dark:bg-[#11111371] bg-[#f7f7f888] w-full h-full overflow-hidden relative">
