@@ -1,3 +1,4 @@
+import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@programmer/ui/globalcss";
@@ -11,6 +12,7 @@ import "swiper/css/effect-fade";
 import "swiper/css";
 import { Footer } from "@/components/footer";
 import Script from "next/script";
+import { Theme } from "@radix-ui/themes";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -65,11 +67,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${jetbrains_mono.variable}`}
       >
+
         <ReduxProvider>
           <GlobalThemeProvider>
             <Header />
+      		<Theme>
             {children}
             {modal}
+            </Theme>
             <Footer />
           </GlobalThemeProvider>
         </ReduxProvider>

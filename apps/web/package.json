@@ -14,6 +14,7 @@
     "@programmer/hooks": "workspace:*",
     "@programmer/shared": "workspace:*",
     "@programmer/ui": "workspace:*",
+    "@radix-ui/themes": "^3.2.1",
     "framer-motion": "^12.15.0",
     "next": "^15.2.4",
     "next-mdx-remote": "^5.0.0",
