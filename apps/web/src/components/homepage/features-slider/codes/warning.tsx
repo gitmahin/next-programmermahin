@@ -9,7 +9,7 @@ function renderList(items: string[]) {
 
   console.log("Rendering complete");
 }
-`
+`;
 
 export const WarningCodeExample = () => {
   return (

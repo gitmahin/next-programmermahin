@@ -7,12 +7,7 @@ import {
   WarningIcon,
 } from "./icons/status-icons";
 
-export type StatusTypes =
-  | "warning"
-  | "error"
-  | "success"
-  | "info"
-  | "neutral";
+export type StatusTypes = "warning" | "error" | "success" | "info" | "neutral";
 
 export const statusIcons: Record<StatusTypes, React.ElementType> = {
   warning: WarningIcon,

@@ -1,12 +1,12 @@
-import { UnderDevelopment } from '@/components/underDevelopment'
-import React from 'react'
+import { UnderDevelopment } from "@/components/underDevelopment";
+import React from "react";
 
 const page = () => {
   return (
     <div>
-      <UnderDevelopment/>
+      <UnderDevelopment />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

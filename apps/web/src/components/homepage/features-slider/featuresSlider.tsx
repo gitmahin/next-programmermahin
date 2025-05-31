@@ -86,7 +86,6 @@ export const FeaturesSlider = ({
     slidingTabRef.current.style.height = `${btn.offsetHeight}px`;
     slidingTabRef.current.style.left = `${btn.offsetLeft}px`;
     slidingTabRef.current.style.top = `${btn.offsetTop}px`;
-
   }, []);
 
   return (
@@ -206,23 +205,11 @@ export const FeaturesSlider = ({
                 onAutoplayStop={() => setIsAutoPlayStopped(true)}
                 onAutoplayStart={() => setIsAutoPlayStopped(false)}
               >
-                <SwiperSlide>
-                 {
-                  errorCodeExample
-                 }
-                </SwiperSlide>
-                <SwiperSlide>
-                 {warningCodeExample}
-                </SwiperSlide>
-                <SwiperSlide>
-                  {addRemoveCodeExample}
-                </SwiperSlide>
-                <SwiperSlide>
-                 {highlightCodeExample}
-                </SwiperSlide>
-                <SwiperSlide>
-                  {focusCodeExample}
-                </SwiperSlide>
+                <SwiperSlide>{errorCodeExample}</SwiperSlide>
+                <SwiperSlide>{warningCodeExample}</SwiperSlide>
+                <SwiperSlide>{addRemoveCodeExample}</SwiperSlide>
+                <SwiperSlide>{highlightCodeExample}</SwiperSlide>
+                <SwiperSlide>{focusCodeExample}</SwiperSlide>
               </Swiper>
             </div>
           </div>

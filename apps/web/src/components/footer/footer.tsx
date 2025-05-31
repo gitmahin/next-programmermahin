@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { getTutorialsByKey, QUICKLEARN_TUTORIALS } from "@programmer/constants";
 import { PMButton, ThemeModeToggoler } from "@programmer/ui";
 import Image from "next/image";

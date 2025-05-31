@@ -15,15 +15,19 @@ export const LoginModalPopup = ({
 }) => {
   const router = useRouter();
   const [open, setOpen] = useState<boolean>(true);
-  const handleOpenChange = () => {
-    setOpen(!open);
+  const handleOpenChange = (state: boolean) => {
+    setOpen(state);
     router.back();
   };
   return (
-    <Dialog defaultOpen={open} open={open} onOpenChange={handleOpenChange}>
+    <Dialog
+      defaultOpen={open}
+      open={open}
+      onOpenChange={(state) => handleOpenChange(state)}
+    >
       <DialogContent className="border border-border-color_800C max-w-[400px] w-full bg-background-color_925C  ">
         <button
-          onClick={handleOpenChange}
+          onClick={() => handleOpenChange(false)}
           className="absolute top-3 right-3 outline-none bg-background-color_850C transition-all shadow rounded-full group hover:bg-background-color_800C p-2"
         >
           <X

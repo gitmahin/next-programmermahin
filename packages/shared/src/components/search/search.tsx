@@ -97,6 +97,11 @@ export const Search = ({ showSearchButton = true }: SearchPropsTypes) => {
     searchboxOpenDispatch(setSearchBoxOpen(true));
   };
 
+  const handleOpenChangeSearchBox = (state: boolean) => {
+    if (!setSearchBoxOpen) return;
+    searchboxOpenDispatch(setSearchBoxOpen(state));
+  };
+
   return (
     <>
       {showSearchButton && (
@@ -121,8 +126,7 @@ export const Search = ({ showSearchButton = true }: SearchPropsTypes) => {
       <Dialog
         open={isSearchBoxOpen}
         onOpenChange={(state) => {
-          if (!setSearchBoxOpen) return;
-          searchboxOpenDispatch(setSearchBoxOpen(state));
+          handleOpenChangeSearchBox(state);
         }}
       >
         <DialogContent className="max-w-[950px] max-h-[650px] h-full w-full p-2 outline-none">
@@ -131,21 +135,32 @@ export const Search = ({ showSearchButton = true }: SearchPropsTypes) => {
               searchClient={searchAlgolia}
               indexName={TUTORIAL_INDEX_NAME}
             >
-              <SearchBox
-                placeholder="Search documentation..."
-                autoFocus={true}
-                className="w-full border-b border-border-color_800C"
-                classNames={{
-                  form: "bg-transparent flex flex-row-reverse gap-2 w-full h-full pl-2 pr-2 border-none",
-                  input:
-                    "bg-transparent w-full h-[45px] border-none outline-none fx-flex-cl pr-[35px]",
-                  loadingIndicator: "hidden",
-                  loadingIcon: "hidden",
-                  reset: "hidden",
-                  resetIcon: "hidden",
-                }}
-                submitIconComponent={() => <SearchIcon />}
-              />
+              <div className="relative w-full">
+                <SearchBox
+                  placeholder="Search documentation..."
+                  autoFocus={true}
+                  className="w-full border-b border-border-color_800C"
+                  classNames={{
+                    form: "bg-transparent flex flex-row-reverse gap-2 w-full h-full pl-2 pr-2 border-none",
+                    input:
+                      "bg-transparent w-full h-[45px] border-none outline-none fx-flex-cl pr-[35px]",
+                    loadingIndicator: "hidden",
+                    loadingIcon: "hidden",
+                    reset: "hidden",
+                    resetIcon: "hidden",
+                  }}
+                  submitIconComponent={() => <SearchIcon />}
+                />
+                <button
+                  onClick={() => handleOpenChangeSearchBox(false)}
+                  className="rounded-full p-1 transition-all group absolute top-1/2 -translate-y-1/2 right-3 bg-background-color_900C hover:bg-background-color_800C"
+                >
+                  <X
+                    size={LUCIDE_DEFAULT_ICON_SIZE}
+                    className="text-text-svg_default_color group-hover:text-text-color_1 "
+                  />
+                </button>
+              </div>
               <NoResultsBoundary fallback={<NoResults />}>
                 <div className="w-full border-b border-border-color_800C sticky top-[0px] left-0 h-[40px] flex justify-center items-center flex-shrink-0 z-10">
                   <DocCustomRefinementList sortBy={["name"]} attribute="type" />

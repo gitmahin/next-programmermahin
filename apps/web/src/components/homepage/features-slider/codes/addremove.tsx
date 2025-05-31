@@ -10,7 +10,7 @@ function checkAccess(age: number): string { // [!code ++]
 } // [!code ++]
  // [!code ++]
 const message = checkAccess(20); // [!code ++]
-`
+`;
 
 export const AddRemoveCodeExample = () => {
   return (

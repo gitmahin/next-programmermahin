@@ -109,7 +109,7 @@ export default function Home() {
         pageTsxComponent={<TrmPage />}
         styleCssComponent={<TrmStyle />}
         packageJsonComponent={<TrmPackageJson />}
-        tailwindComponent={<TrmTailwind/>}
+        tailwindComponent={<TrmTailwind />}
       />
 
       <SnippetsFeatures />

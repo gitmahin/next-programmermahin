@@ -159,7 +159,7 @@ export const MainNav = () => {
             </NavigationMenuContent>
           </NavigationMenuItem>
 
-          <NavigationMenuItem >
+          <NavigationMenuItem>
             <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
             <NavigationMenuContent>
               <div className="w-[800px] h-[330px] grid grid-cols-[250px_280px_1fr]">

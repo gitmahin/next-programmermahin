@@ -54,7 +54,10 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
                 <div
                   className={`border rounded-tiny border-border-color_800C p-[3px] bg-gradient-to-tr from-background-color_900C to-background-color_800C text-text-svg_default_color group-hover:text-pm_zinc-950 dark:group-hover:text-text-zinc_white"}`}
                 >
-                  <Braces size={LUCIDE_DEFAULT_ICON_SIZE} className="group-hover:text-text-color_1" />
+                  <Braces
+                    size={LUCIDE_DEFAULT_ICON_SIZE}
+                    className="group-hover:text-text-color_1"
+                  />
                 </div>
                 <div className="leading-none">
                   <span

@@ -39,7 +39,7 @@ export default function FocusInput() {
     </div>
   );
 }
-`
+`;
 
 export const FocusCodeExample = () => {
   return (

@@ -44,7 +44,7 @@ module.exports = {
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };
 
-`
+`;
 
 export const TrmTailwind = () => {
   return (

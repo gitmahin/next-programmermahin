@@ -1,5 +1,11 @@
 "use client";
-import React, { Suspense, useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  Suspense,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { TutoListPopup } from "./tuto-list-popup";
 import {
   TutorialChildNavItemType,
@@ -168,7 +174,7 @@ export const TutoSidebar = ({
             </span>
           </div>
           <Suspense>
-          <TutoListPopup />
+            <TutoListPopup />
           </Suspense>
         </div>
       </div>

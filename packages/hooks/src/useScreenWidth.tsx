@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+"use client"
+import { useEffect, useState } from "react";
 
 export function useScreenWidth() {
   const [width, setWidth] = useState(0); // Default to 0 or null

@@ -75,7 +75,7 @@ export default function MainNavs() {
           })}
         </ul>
         <Suspense>
-        <TutoListPopup showClickAbleTutoOpenBtn={false} />
+          <TutoListPopup showClickAbleTutoOpenBtn={false} />
         </Suspense>
       </div>
     </div>

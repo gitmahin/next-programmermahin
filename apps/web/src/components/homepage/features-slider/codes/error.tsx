@@ -10,7 +10,7 @@ function sendEmail(user: User) {
 
 const newUser: User = { name: "Alice" };
 sendEmail(newUser); // ❌ TypeError: Cannot read properties of undefined // [!code error]
-`
+`;
 
 export const ErrorCodeExample = () => {
   return (

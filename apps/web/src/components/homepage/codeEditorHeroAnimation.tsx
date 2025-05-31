@@ -44,14 +44,14 @@ interface CodeEditorHeroAnimationDisplayPropsTypes {
   pageTsxComponent?: React.ReactNode;
   styleCssComponent?: React.ReactNode;
   packageJsonComponent?: React.ReactNode;
-  tailwindComponent? : React.ReactNode;
+  tailwindComponent?: React.ReactNode;
 }
 
 export const CodeEditorHeroAnimationDisplay = ({
   pageTsxComponent,
   styleCssComponent,
   packageJsonComponent,
-  tailwindComponent
+  tailwindComponent,
 }: CodeEditorHeroAnimationDisplayPropsTypes) => {
   const swiperRef = useRef<SwiperTypes>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);

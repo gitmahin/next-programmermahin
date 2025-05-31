@@ -10,7 +10,7 @@ function getDiscount(price: number): number {
 }
 
 const finalPrice = getDiscount(150);
-`
+`;
 
 export const HighlightCodeExample = () => {
   return (
