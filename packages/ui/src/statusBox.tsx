@@ -12,14 +12,14 @@ export type StatusTypes =
   | "error"
   | "success"
   | "info"
-  | "undefined";
+  | "neutral";
 
-const statusIcons: Record<StatusTypes, React.ElementType> = {
+export const statusIcons: Record<StatusTypes, React.ElementType> = {
   warning: WarningIcon,
   error: ErrorIcon,
   success: SuccessIcon,
   info: InfoIcon,
-  undefined: NeutralIcon,
+  neutral: NeutralIcon,
 };
 
 interface StatusBoxType {
@@ -30,7 +30,7 @@ interface StatusBoxType {
 }
 
 export const StatusBox = ({
-  status = "undefined",
+  status = "neutral",
   tag = "Undefined Tag",
   statusCode = 0,
   message = "No message provided",

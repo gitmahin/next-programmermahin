@@ -7,6 +7,8 @@ import {
   GithubSVG,
   GoogleSVG,
   StatusBox,
+  StatusAlert,
+  StatusTypes,
 } from "@programmer/ui";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -22,19 +24,19 @@ export const LoginComp = ({
   textLeft = false,
 }: LoginCompPropsTypes) => {
   const turnstile = useTurnstile();
-  const [turnstileStatus, setTurnstileStatus] = useState<
-    "success" | "error" | "expired" | "loading"
-  >("loading");
+  const [turnstileStatus, setTurnstileStatus] =
+    useState<StatusTypes>("neutral");
   const [error, setError] = useState<string | null>(null);
   return (
     <>
-      <div className=" h-fit ">
+      <div className="h-fit">
         <p
           className={`text-read_3 font-medium text-text-color_3 ${textLeft ? "text-left" : "text-center"} mb-2`}
         >
           Continue with
         </p>
         <PMButton
+          disabled={turnstileStatus !== "success"}
           variant="secondary"
           className="px-3 py-2 rounded flex justify-center items-center w-full gap-2 transition-colors"
         >
@@ -42,19 +44,28 @@ export const LoginComp = ({
           <span className="text-read_1 font-medium">Google</span>
         </PMButton>
         <div className="flex justify-center items-center gap-3 mt-3">
-          <PMButton className="px-3 py-2 rounded flex transition-colors justify-center items-center text-text-zinc_white w-full gap-2 bg-[#24292E] hover:bg-[#1b1f23]">
+          <PMButton
+            disabled={turnstileStatus !== "success"}
+            className="px-3 py-2 rounded flex transition-colors disabled:!bg-[#101315] dark:disabled:!bg-[#101315] justify-center items-center text-text-zinc_white w-full gap-2 bg-[#24292E] hover:bg-[#1b1f23]"
+          >
             <GithubSVG width={20} height={20} color="#ffffff" />
             <span className="text-read_1 font-medium">Github</span>
           </PMButton>
-          <PMButton className="px-3 py-2 rounded flex transition-colors justify-center items-center text-text-zinc_white w-full gap-2 bg-indigo-600 hover:bg-indigo-700">
+          <PMButton
+            disabled={turnstileStatus !== "success"}
+            className="px-3 py-2 rounded flex transition-colors justify-center items-center text-text-zinc_white w-full gap-2 bg-indigo-600 hover:bg-indigo-700 disabled:!bg-indigo-400 dark:disabled:!bg-indigo-900"
+          >
             <DiscordIcon width={20} height={20} color="#ffffff" />
             <span className="text-read_1 font-medium">Discord</span>
           </PMButton>
         </div>
-        <div>
-          	
-        </div>
+
         <div className="mt-5">
+          <div className="mb-2">
+            {error && (
+              <StatusAlert status={`${turnstileStatus}`} text={`${error}`} />
+            )}
+          </div>
           <Turnstile
             className=" overflow-hidden w-full p-0 "
             size="flexible"
@@ -64,7 +75,7 @@ export const LoginComp = ({
             retry="auto"
             refreshExpired="auto"
             onLoad={() => {
-              setTurnstileStatus("loading");
+              setTurnstileStatus("neutral");
               setError(null);
             }}
             onVerify={(token) => {
@@ -77,7 +88,7 @@ export const LoginComp = ({
               setError("Security check failed. Please try again.");
             }}
             onExpire={() => {
-              setTurnstileStatus("expired");
+              setTurnstileStatus("error");
               setError("Token expired. Please verify again.");
             }}
             onTimeout={() => {
@@ -135,7 +146,7 @@ export const LoginComp = ({
           </div>
           <PMButton
             disabled={turnstileStatus !== "success"}
-            className="px-3 py-2 rounded w-full gap-2 mt-3 text-text-color_1 transition-colors "
+            className="px-3 py-2 rounded w-full gap-2 mt-3 text-text-zinc_white transition-colors "
           >
             <span className="text-read_1 font-medium">Continue</span>
           </PMButton>
