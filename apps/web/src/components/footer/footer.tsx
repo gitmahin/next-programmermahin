@@ -63,7 +63,7 @@ export const Footer = () => {
               />
             </div>
 
-            <div className="flex justify-center w-fit items-center gap-3">
+            <div className="flex justify-center w-fit items-center gap-3 max-[460px]:flex-col max-[460px]:items-start ">
               <h5 className="text-read_2 font-medium text-text-color_2">
                 THE DEVELOPER NEWSLETTER
               </h5>
@@ -75,7 +75,7 @@ export const Footer = () => {
             </div>
           </div>
           <div className=" pt-5 pb-5">
-            <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))]">
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-8">
               <div>
                 <h6 className="text-read_2 text-text-color_3 font-medium">
                   TUTORIALS
@@ -161,12 +161,12 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className=" pb-8 pt-5 flex justify-between items-center">
+          <div className=" pb-8 pt-5 flex justify-between items-center max-[720px]:items-center max-[720px]:gap-5 max-[720px]:flex-col-reverse max-[520px]:gap-3">
             <p className="text-read_2 font-medium text-text-color_3">
               programmermahin.com © <span>{currentYear}</span>
             </p>
-            <div className="flex justify-center items-center w-fit gap-5">
-              <ul className="flex justify-center w-fit items-center gap-5 flex-shrink-0">
+            <div className="flex justify-center items-center w-fit gap-5 ">
+              <ul className="flex justify-center w-fit items-center gap-5 flex-shrink-0 max-[530px]:flex-wrap ">
                 {FOOTER_LABELS.map((item, i) => {
                   return (
                     <li key={i} className="text-read_2">
@@ -180,7 +180,7 @@ export const Footer = () => {
                   );
                 })}
               </ul>
-              <div>
+              <div className="max-[520px]:hidden">
                 <ThemeModeToggoler />
               </div>
             </div>

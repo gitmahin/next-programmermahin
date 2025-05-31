@@ -19,16 +19,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, ChevronRight, CodeXml, UsersRound } from "lucide-react";
 
-const NAV_FEATURED_BLOGS: { label: string; desc: string; link: string }[] = [
+const NAV_OTHER_RESOURCES: { label: string; desc: string; link: string }[] = [
   {
-    label: "Where to Start?",
+    label: "Blog",
     desc: "Begin your journey with the right foundation - step-by-step paths built for absolute beginners",
-    link: "",
+    link: "blog",
   },
   {
-    label: "A Roadmap to Software Engineering",
+    label: "Errors Resolving",
     desc: "This roadmap breaks down the essential steps, skills, and tools you need to become a successful software engineer - from the basics of coding to real-world projects and career paths.",
-    link: "",
+    link: "error-resolving",
   },
 ];
 
@@ -232,50 +232,17 @@ export const MainNav = () => {
                   </Link>
                 </div>
                 <div className="w-full relative h-full ">
-                  <div className="w-full h-full p-2  relative z-10 ">
-                    <div
-                      onMouseEnter={() => {
-                        setIsBlogNavHover(true);
-                      }}
-                      onMouseLeave={() => {
-                        setIsBlogNavHover(false);
-                      }}
-                      className="w-full h-full relative"
-                    >
-                      <h3 className="text-read_1 font-medium px-5 pt-5 pb-2">
-                        Blogs
-                      </h3>
-                      <div>
-                        {NAV_FEATURED_BLOGS.map((item, i) => {
-                          return (
-                            <Link key={i} href={`${item.link}`}>
-                              <button
-                                className={`px-5 py-2 hover:bg-background-color_800C rounded transition-colors ${!isBlogNavHover && i === 0 ? "bg-background-color_800C" : ""} flex flex-col justify-start items-start group`}
-                              >
-                                <h4 className="text-text-color_4 two_line_ellipsis w-full group-hover:text-text-color_1 text-read_3 font-medium text-left">
-                                  {item.label}
-                                </h4>
-                                <p className="text-[11px] two_line_ellipsis text-text-color_3 w-full mt-1 text-left">
-                                  {item.desc}
-                                </p>
-                              </button>
-                            </Link>
-                          );
-                        })}
-                      </div>
-                      <div className=" w-full absolute bottom-0 left-0">
-                        <button className="w-full py-2.5 border border-background-color_850C bg-background-color_900C hover:bg-background-color_850C   transition-colors font-medium text-read_3 rounded group flex justify-center items-center gap-1">
-                          <span className="text-text-color_2 group-hover:text-text-color_1 transition-colors">
-                            Explore more blogs
-                          </span>
-
-                          <ArrowUpRight
-                            size={16}
-                            className="text-text-svg_default_color transition-colors group-hover:text-text-color_1"
-                          />
-                        </button>
-                      </div>
-                    </div>
+                  <div className="w-full h-full p-2 pt-5  relative z-10">
+                    {
+                      NAV_OTHER_RESOURCES.map((item, i) => {
+                        return <Link href={`/${item.link}`} key={i}>
+                          <div className="w-full h-fit px-6 py-2 rounded hover:bg-background-color_800C transition-colors ">
+                            <h4 className="text-read_2 font-medium text-text-color_1">{item.label}</h4>
+                            <p className="text-read_3 text-text-color_3 mt-1 two_line_ellipsis">{item.desc}</p>
+                          </div>
+                        </Link>
+                      })
+                    }
                   </div>
                 </div>
               </div>

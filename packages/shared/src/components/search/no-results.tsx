@@ -85,7 +85,7 @@ export default function NoResults() {
                               <React.Fragment key={j}>
                                 {!eachFirstItem?.dirItems ? (
                                   <Link
-                                    href={`/${key}/${childValue.slug}/${eachFirstItem?.slug}`}
+                                    href={`${process.env.NEXT_PUBLIC_TUTORIAL_BASE_PATH}/${key}/${childValue.slug}/${eachFirstItem?.slug}`}
                                   >
                                     <div className="py-1 px-2 rounded-tiny hover:bg-background-color_900C group transition-all">
                                       <div className="flex justify-start items-center gap-1 pl-4">
@@ -105,7 +105,7 @@ export default function NoResults() {
                                       return (
                                         <Link
                                           key={di}
-                                          href={`/${key}/${childValue.slug}/${dirValue.slug}`}
+                                          href={`${process.env.NEXT_PUBLIC_TUTORIAL_BASE_PATH}/${key}/${childValue.slug}/${dirValue.slug}`}
                                         >
                                           <div className="py-1 px-2 rounded-tiny hover:bg-background-color_900C group transition-all">
                                             <div className="flex justify-start items-center gap-1 pl-4">

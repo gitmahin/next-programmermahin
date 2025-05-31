@@ -19,6 +19,18 @@
   transform: rotateX(264deg) rotateY(360deg) rotateZ(0deg);
 }
 
+@media screen and (max-width: 780px) {
+  .hero_canvas{
+    transform: rotateX(256deg) rotateY(360deg) rotateZ(0deg);
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .hero_canvas{
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg);
+  }
+}
+
 .terminal_wrapper {
   position: relative;
   contain: strict;

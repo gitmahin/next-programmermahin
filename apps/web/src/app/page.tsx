@@ -31,12 +31,16 @@ export default function Home() {
 
       {/* hero */}
       <div className="layout_max_1200 w-full mx-auto relative z-10 pt-[64px] px-5">
-        <div className="flex justify-center items-center w-full gap-2 mt-16">
+        <div className="flex justify-center items-center w-full mt-16">
+          
+          <p className="font-medium text-read_2 text-text-color_1 text-center">
           <span className="bg-gradient-to-br dark:from-green-700 dark:to-green-900 from-green-100 to-green-300 font-medium text-read_2 border border-green-500 px-2 rounded-tablet">
             Free
           </span>
-          <p className="font-medium text-read_2 text-text-color_1">
+          <span className="pl-2">
             Practical. Powerful Learning Platform for Developers
+
+          </span>
           </p>
         </div>
 
@@ -96,7 +100,7 @@ export default function Home() {
             </div>
           </div> */}
       </div>
-      <div className="w-full flex justify-center items-center flex-col mt-24 relative z-[20] mb-2">
+      <div className="w-full flex justify-center items-center flex-col mt-24 max-[430px]:mt-24 relative z-[20] mb-2">
         <h3 className="text-read_1 font-medium w-fit text-center text-text-color_1 font-geist_mono">
           Learn by Doing, Not by Guessing.
         </h3>

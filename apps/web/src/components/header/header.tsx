@@ -1,9 +1,9 @@
 "use client";
-import { LUCIDE_DEFAULT_ICON_SIZE, PMButton, PMLogo } from "@programmer/ui";
+import { LUCIDE_DEFAULT_ICON_SIZE, PMButton, PMLogo, ThemeModeToggoler } from "@programmer/ui";
 import React from "react";
 import { Search, setSearchBoxOpen } from "@programmer/shared";
 import { useAppDispatch } from "@/hooks/redux.hook";
-import { SearchIcon } from "lucide-react";
+import { Equal, SearchIcon } from "lucide-react";
 import { MainNav } from "./mainNav";
 import Link from "next/link";
 
@@ -26,7 +26,15 @@ export const Header = () => {
         </div>
         <MainNav />
 
-        <div className="flex justify-end items-center gap-2 w-full flex-1">
+        <div className="hidden max-[520px]:flex justify-end items-center gap-2 flex-shrink-0">
+
+ <ThemeModeToggoler />
+        <PMButton variant="silent" radius="tablet" className="p-1 flex-shrink-0 flex justify-center items-center">
+        <Equal size={24} className="text-text-svg_default_color group-hover:text-text-color_1" />
+        </PMButton>
+        </div>
+        
+        <div className="flex justify-end items-center gap-2 w-full flex-1 max-[520px]:hidden">
           <PMButton
             variant="silent"
             className="py-1 px-2 rounded-tablet group flex justify-between items-center gap-1"

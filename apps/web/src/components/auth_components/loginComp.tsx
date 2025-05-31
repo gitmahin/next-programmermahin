@@ -103,8 +103,8 @@ export const LoginComp = ({
             tag="Under Development"
             message={
               <p>
-                Login is currently under development. You can still access the
-                login page at{" "}
+                Login is currently under development. You can still access your
+                account at{" "}
                 <Link
                   href={"https://v2.programmermahin.com"}
                   target="_blank"
@@ -112,6 +112,8 @@ export const LoginComp = ({
                 >
                   v2.programmermahin.com
                 </Link>
+                . Feel free to log in or create a new account there while we’re
+                merging everything into the latest version of the platform.
               </p>
             }
             statusCode={503}
@@ -152,11 +154,11 @@ export const LoginComp = ({
           </PMButton>
           <p className="text-read_3 mt-5 text-text-color_2">
             By signing in, you agree to our{" "}
-            <Link href={""} className="text-blue-500">
+            <Link href={"/legals/terms"} className="text-blue-500">
               Terms
             </Link>{" "}
             and{" "}
-            <Link href={""} className="text-blue-500">
+            <Link href={"/legals/privacy-policy"} className="text-blue-500">
               Privacy Policy
             </Link>
           </p>
