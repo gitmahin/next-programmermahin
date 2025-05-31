@@ -26,7 +26,7 @@ interface StatusBoxType {
   status: StatusTypes;
   tag: string;
   statusCode: number;
-  message: string;
+  message: string | React.ReactElement<HTMLParagraphElement>;
 }
 
 export const StatusBox = ({
@@ -52,7 +52,7 @@ export const StatusBox = ({
         </div>
 
         <div className="p-2 bg-background-color_925C">
-          <p className="text-text-color_3 text-read_3">{message}</p>
+          <div className="text-text-color_3 text-read_3">{message}</div>
         </div>
       </div>
     </div>

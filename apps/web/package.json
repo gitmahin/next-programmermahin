@@ -16,9 +16,10 @@
     "@programmer/ui": "workspace:*",
     "framer-motion": "^12.15.0",
     "next": "^15.2.4",
-    "react": "^19.1.0",
     "next-mdx-remote": "^5.0.0",
-    "react-dom": "^19.1.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-turnstile": "^1.1.4"
   },
   "devDependencies": {
     "@programmer/eslint-config": "workspace:*",

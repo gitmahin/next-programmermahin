@@ -41,18 +41,23 @@ export const Header = () => {
             </span>
           </PMButton>
           <Search showSearchButton={false} />
-          <PMButton
-            variant="secondary"
-            className="px-3 py-1 rounded text-read_1 font-medium transition-colors"
-          >
-            Log in
-          </PMButton>
-          <PMButton
-            variant="primary"
-            className="px-3 py-1 rounded text-read_1 font-medium transition-colors"
-          >
-            <span className="text-text-zinc_white">Sign up</span>
-          </PMButton>
+          <Link href={"/login"}>
+            <PMButton
+              variant="secondary"
+              className="px-3 py-1 rounded text-read_1 font-medium transition-colors"
+            >
+              Log in
+            </PMButton>
+          </Link>
+
+          <Link href={"/signup"}>
+            <PMButton
+              variant="primary"
+              className="px-3 py-1 rounded text-read_1 font-medium transition-colors"
+            >
+              <span className="text-text-zinc_white">Sign up</span>
+            </PMButton>
+          </Link>
         </div>
       </div>
     </header>

@@ -47,6 +47,7 @@ module.exports = {
           color_800C: "var(--background-color-800C)",
           color_850C: "var(--background-color-850C)",
           color_750C: "var(--background-color-750C)",
+          color_700C: "var(--background-color-700C)",
           tsp: {
             purple_700C: "var(--purple-transparent-700C)",
             purple_650C: "var(--purple-transparent-650C)",

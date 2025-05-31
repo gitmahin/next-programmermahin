@@ -22,7 +22,7 @@ export const buttonStyling: ButtonStylingType = {
     default: "bg-pm_purple-700 cursor-pointer border-none",
     hover: "hover:bg-pm_purple-800",
     disabled:
-      "text-text-color_3 cursor-not-allowed !bg-[var(--button-primary-disabled)] border border-border-color_1",
+      "!text-text-color_2 cursor-not-allowed !bg-pm_purple-950 border border-border-color_1",
   },
   secondary: {
     default:
