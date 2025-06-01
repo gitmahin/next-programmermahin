@@ -826,6 +826,7 @@ pre:has(.focused):hover span {
   text-wrap: nowrap;
 }
 
+/* uses in page titles */
 .pm_page_title {
   font-size: clamp(30px, 5vw, 48px);
   line-height: 1.2;
@@ -836,13 +837,11 @@ pre:has(.focused):hover span {
   line-height: 1.2;
 }
 
-
-.main_hero_headinga_sync {
-  font-size: clamp(35px, 5vw, 55px);
+/* uses in design */
+.main_hero_heading_sync {
+  font-size: clamp(35px, 5vw, 56px);
   line-height: 1.2;
 }
-
-
 
 .hero_paragraph{
   font-weight: 450;

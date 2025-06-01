@@ -31,7 +31,7 @@ const page = () => {
       <div className="flex justify-center items-center p-5">
         <div className="default_page_width py-16 relative bg-gradient-to-t from-background-color_950C to-transparent">
           <div className="relative z-[1]">
-            <h1 className="flex justify-start items-center font-semibold text-[40px] gap-2 heading_auto_typed leading-[44px]">
+            <h1 className="flex justify-start items-center font-semibold main_hero_heading_sync gap-2 heading_auto_typed">
               <span>Learn</span>
               <ReactTyped
                 className="text-pm_purple-600"
