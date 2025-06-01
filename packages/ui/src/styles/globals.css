@@ -147,6 +147,13 @@
   --accent-surface-neutral-bg: #fffc;
   --accent-surface-neutral-border: #00062e32;
   --accent-surface-neutral-fg: #0007149f;
+
+
+
+      /* other colors */
+  --surface-purple-bg: #faf5fecc;
+  --surface-purple-border:#6d00c350 ;
+  --surface-purple-fg: #52009aba;
 }
 
 .dark {
@@ -223,6 +230,13 @@
   --accent-surface-neutral-bg: #1f212380;
   --accent-surface-neutral-border: #d9edff40;
   --accent-surface-neutral-fg: #f1f7feb5;
+
+
+    /* other colors */
+  --surface-purple-bg: #2b173580;
+  --surface-purple-border:#c378fd7a ;
+  --surface-purple-fg: #d19dff;
+
 }
 
 html {

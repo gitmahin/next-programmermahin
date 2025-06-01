@@ -15,11 +15,15 @@ export * from "./navigation-menu";
 export * from "./separator";
 export * from "./input";
 export * from "./statusAlert";
+export * from "./textarea";
+export * from "./select";
 
 export * from "./icons/discord-icon";
 export * from "./icons/facebook";
 export * from "./icons/github";
 export * from "./icons/google";
 export * from "./icons/status-icons";
+export * from "./icons/twitter-icon";
+export * from "./icons/whatsapp-icon";
 export * from "./icons/type";
 export * from "./statusBox";

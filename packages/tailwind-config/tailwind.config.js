@@ -38,7 +38,7 @@ module.exports = {
           300: "var(--color-purple-300)",
           200: "var(--color-purple-200)",
           100: "var(--color-purple-100)",
-          50: "var(--color-purple-50)",
+          50: "var(--color-purple-50)"
         },
         background: {
           color_950C: "var(--background)",
