@@ -50,7 +50,7 @@ const page = () => {
               />
             </h1>
 
-            <p className="max-w-[550px] text-[18px] leading-6 font-medium text-text-color_2 mt-5 hero_paragraph">
+            <p className="max-w-[550px] text-[18px] leading-6 weight_450 text-text-color_2 mt-5">
               Learn faster, build smarter, and level up your skills with
               structured content that actually makes sense.
             </p>
