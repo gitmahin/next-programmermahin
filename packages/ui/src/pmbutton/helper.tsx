@@ -19,8 +19,8 @@ export const buttonSizes: { [key in SizeType]: string } = {
 
 export const buttonStyling: ButtonStylingType = {
   primary: {
-    default: "bg-pm_purple-700 cursor-pointer border-none",
-    hover: "hover:bg-pm_purple-800",
+    default: "bg-pm_purple-600 cursor-pointer border-none",
+    hover: "hover:bg-pm_purple-700",
     disabled:
       "!text-text-color_2 cursor-not-allowed dark:!bg-pm_purple-950 !bg-pm_purple-400 border border-border-color_1",
   },

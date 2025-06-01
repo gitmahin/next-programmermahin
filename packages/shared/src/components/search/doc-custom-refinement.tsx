@@ -30,7 +30,7 @@ export default function DocCustomRefinementList(props: UseRefinementListProps) {
         {items.map((item) => (
           <li
             key={item.label}
-            className={`${item.isRefined ? "bg-pm_purple-700 text-text-zinc_white" : "bg-background-color_800C text-text-color_4"}  px-2 rounded-tiny font-medium flex-shrink-0`}
+            className={`${item.isRefined ? "bg-pm_purple-600 text-text-zinc_white" : "bg-background-color_800C text-text-color_4"}  px-2 rounded-tiny font-medium flex-shrink-0`}
           >
             <label>
               <input

@@ -81,7 +81,7 @@ export const QuickLearnNavList = () => {
                       </span>
 
                       {isActivePath && (
-                        <div className="absolute top-1/2 -translate-y-1/2 w-[3.5px] h-[16px] bg-pm_purple-700 left-0 rounded-tablet"></div>
+                        <div className="absolute top-1/2 -translate-y-1/2 w-[3.5px] h-[16px] bg-pm_purple-600 left-0 rounded-tablet"></div>
                       )}
                     </li>
                   </Link>

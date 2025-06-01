@@ -83,7 +83,7 @@ export const QuickLearnAsideNav = ({
                         anchorListsRef.current[anchor.slug] as HTMLElement
                       );
                     }}
-                    className={`one_line_ellipsis px-3 w-fit text-read_2 ${activeHash === `#${anchor.slug}` ? "text-pm_purple-700 font-medium" : "text-text-color_2"}`}
+                    className={`one_line_ellipsis px-3 w-fit text-read_2 ${activeHash === `#${anchor.slug}` ? "text-pm_purple-600 font-medium" : "text-text-color_2"}`}
                     style={{ marginLeft: `${(anchor.level - 2) * 10}px` }}
                   >
                     {anchor.content}

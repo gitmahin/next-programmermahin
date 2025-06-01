@@ -169,7 +169,7 @@ export const TutoSidebar = ({
               className={`w-[18px] h-[18px] filter brightness-0 dark:invert`}
             />
 
-            <span className="text-read_2 text-pm_purple-700 font-medium ">
+            <span className="text-read_2 text-pm_purple-600 font-medium ">
               {TUTORIALS_ICON[tutorialType as TutorialEnums]?.name ?? ""}
             </span>
           </div>
@@ -231,7 +231,7 @@ export const TutoSidebar = ({
                           </span>
                           {isActivePath && (
                             <div
-                              className={`w-[3.5px] h-[16px] bg-pm_purple-700 rounded-tablet transition-all duration-300 absolute left-0 top-1/2 -translate-y-1/2`}
+                              className={`w-[3.5px] h-[16px] bg-pm_purple-600 rounded-tablet transition-all duration-300 absolute left-0 top-1/2 -translate-y-1/2`}
                             ></div>
                           )}
                         </li>
@@ -276,7 +276,7 @@ export const TutoSidebar = ({
 
                                     {isActivePathDir && (
                                       <div
-                                        className={`w-[3.5px] h-[16px] bg-pm_purple-700 rounded-tablet transition-all duration-300 absolute left-0 top-1/2 -translate-y-1/2`}
+                                        className={`w-[3.5px] h-[16px] bg-pm_purple-600 rounded-tablet transition-all duration-300 absolute left-0 top-1/2 -translate-y-1/2`}
                                       ></div>
                                     )}
                                   </li>
@@ -292,7 +292,7 @@ export const TutoSidebar = ({
                                       .split("/")
                                       .includes(childValue.slug) &&
                                     !isActivePathDir
-                                      ? "border-pm_purple-700"
+                                      ? "border-pm_purple-600"
                                       : "border-border-color_800C"
                                   }`}
                                 >
@@ -316,7 +316,7 @@ export const TutoSidebar = ({
                                           <span>{subItem.label}</span>
                                           {isActivePathSubItem && (
                                             <div
-                                              className={`w-[3.5px] h-[16px] bg-pm_purple-700 rounded-tablet transition-all duration-300 absolute left-0 top-1/2 -translate-y-1/2`}
+                                              className={`w-[3.5px] h-[16px] bg-pm_purple-600 rounded-tablet transition-all duration-300 absolute left-0 top-1/2 -translate-y-1/2`}
                                             ></div>
                                           )}
                                         </li>

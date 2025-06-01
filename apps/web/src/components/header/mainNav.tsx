@@ -59,7 +59,7 @@ export const MainNav = () => {
                       </div>
                     </div>
 
-                    <div className="absolute bottom-0 right-0 border-t border-l rounded-tl-[10px] border-border-color_800C group-hover:border-pm_purple-700 transition-colors w-[207px] h-[200px] overflow-hidden p-1 bg-background-color_850C">
+                    <div className="absolute bottom-0 right-0 border-t border-l rounded-tl-[10px] border-border-color_800C group-hover:border-pm_purple-600 transition-colors w-[207px] h-[200px] overflow-hidden p-1 bg-background-color_850C">
                       <div className="w-full h-full rounded-tl-[6px] overflow-hidden "></div>
                     </div>
                   </div>
@@ -80,7 +80,7 @@ export const MainNav = () => {
                       </div>
                     </div>
 
-                    <div className="absolute bottom-0 right-0 border-t border-l rounded-tl-[10px] border-border-color_800C w-[207px] h-[200px] group-hover:border-pm_purple-700 transition-colors overflow-hidden p-1 bg-background-color_850C">
+                    <div className="absolute bottom-0 right-0 border-t border-l rounded-tl-[10px] border-border-color_800C w-[207px] h-[200px] group-hover:border-pm_purple-600 transition-colors overflow-hidden p-1 bg-background-color_850C">
                       <div className="w-full h-full rounded-tl-[6px] overflow-hidden "></div>
                     </div>
                   </div>

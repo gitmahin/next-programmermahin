@@ -34,7 +34,7 @@ const page = () => {
             <h1 className="flex justify-start items-center font-semibold text-[40px] gap-2 heading_auto_typed leading-[44px]">
               <span>Learn</span>
               <ReactTyped
-                className="text-pm_purple-700"
+                className="text-pm_purple-600"
                 strings={[
                   "C++",
                   "Devops",
@@ -58,7 +58,7 @@ const page = () => {
               onClick={handleBrowseTutoClicked}
               variant="primary"
               radius="primary"
-              className="px-5 py-2 mt-5 font-medium text-text-zinc_white hero_button_brw"
+              className="px-5 py-2 mt-5 font-medium text-text-zinc_white hero_button_brw transition-colors"
             >
               <span className="text-read_1">Browse Tutorials</span>
             </PMButton>

@@ -44,18 +44,21 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-5">
           <AirFlowText initialY={20} duration={0.5}>
-            <h1 className="text-[40px] font-semibold text-center text-text-color_1 w-full leading-[3rem]">
+            <h1 className="main_hero_headinga_sync font-semibold text-center text-text-color_1 w-full tracking-tight">
               Where Future{" "}
-              <span className="font-geist_mono text-pm_purple-700">[</span>
+              <span className="font-geist_mono text-pm_purple-600">[</span>
               <span className="font-geist_mono">Programmers</span>
-              <span className="font-geist_mono text-pm_purple-700">]</span>{" "}
+              <span className="font-geist_mono text-pm_purple-600">]</span>{" "}
               Begin.
+              <br/>
+              & Code Becomes Confidence.
             </h1>
+           
           </AirFlowText>
           <AirFlowText initialY={25} duration={0.5}>
-            <p className="text-[18px] font-medium mt-4 text-text-color_2 text-center mx-auto max-w-[650px] w-full leading-6">
+            <p className="text-[18px] hero_paragraph mt-4 text-text-color_4 text-center mx-auto max-w-[650px] max-[850px]:text-[16px] w-full leading-6">
               Get unlimited access to tutorials, hands-on problem solving, and
               industry-level development knowledge - all in one powerful
               platform. Start your journey to level up your career.
@@ -79,7 +82,7 @@ export default function Home() {
                 variant="silent"
                 className="px-4 py-2  rounded group flex justify-center items-center gap-2 transition-colors"
               >
-                <span className="font-medium text-read_1 group-hover:text-text-zinc_white transition-colors">
+                <span className="font-medium text-read_1 text-text-color_1 transition-colors">
                   Browse Courses
                 </span>
                 <ChevronRight
@@ -100,7 +103,7 @@ export default function Home() {
             </div>
           </div> */}
       </div>
-      <div className="w-full flex justify-center items-center flex-col mt-24 max-[430px]:mt-24 relative z-[20] mb-2">
+      <div className="w-full flex justify-center items-center flex-col mt-16 relative z-[20] mb-2">
         <h3 className="text-read_1 font-medium w-fit text-center text-text-color_1 font-geist_mono">
           Learn by Doing, Not by Guessing.
         </h3>

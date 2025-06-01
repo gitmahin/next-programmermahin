@@ -19,7 +19,7 @@ export const PMLogo = ({ size = "md", className }: PMLogoType) => {
     <>
       <span
         className={cn(
-          "text-pm_purple-700 font-jetbrains_mono font-semibold",
+          "text-pm_purple-600 font-jetbrains_mono font-semibold",
           className,
           tempLogoSize
         )}

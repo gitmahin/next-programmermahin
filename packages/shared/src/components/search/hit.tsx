@@ -110,7 +110,7 @@ export default function Hit({ hit }: HitProps) {
             <p className="text-read_2 one_line_ellipsis font-medium text-text-color_4">
               <Highlight
                 classNames={{
-                  highlighted: "bg-transparent text-pm_purple-700",
+                  highlighted: "bg-transparent text-pm_purple-600",
                 }}
                 attribute="label"
                 hit={hit}

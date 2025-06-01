@@ -379,7 +379,7 @@ export const TutoListPopup = ({
                       <PMButton
                         onClick={handleStartLrnButtonClicked}
                         radius="tiny"
-                        className="px-3 py-1  outline-none text-text-zinc_white font-medium absolute bottom-3 right-3"
+                        className="px-3 py-1  outline-none text-text-zinc_white font-medium absolute bottom-3 right-3 transition-colors"
                       >
                         <span className="text-read_2">Start Learning</span>
                       </PMButton>

@@ -88,7 +88,7 @@ export const CodeEditorHeroAnimationDisplay = ({
             <div className="flex justify-start items-center gap-2 pl-5 relative overflow-x-scroll w-full hide-scrollbar">
               <div
                 ref={terminalTabRef}
-                className="w-[73px] left-5 h-full transition-all duration-500 absolute dark:border-pm_purple-600 border-pm_purple-200 border bg-gradient-to-br dark:from-pm_purple-600 dark:to-pm_purple-950 rounded-tiny from-pm_purple-200 to-pm_purple-500"
+                className="w-[73px] left-5 h-full transition-all duration-500 absolute dark:border-pm_purple-600 border-pm_purple-200 border bg-gradient-to-br from-pm_purple-500 to-pm_purple-800 rounded-tiny "
               ></div>
               {TERMINAL_BUTTONS.map((button, i) => {
                 return (
@@ -98,7 +98,7 @@ export const CodeEditorHeroAnimationDisplay = ({
                         tabRefs.current[i] = btn;
                       }}
                       onClick={() => swiperRef.current?.slideTo(i)}
-                      className={`font-medium  px-2 py-1 text-read_2 z-10 relative transition-colors rounded-tiny  ${slideIndex === i ? "text-text-color_1" : "dark:hover:bg-[#7e22ce2e] hover:bg-[#7e22ce14] hover:backdrop-blur-lg text-text-color_2"}`}
+                      className={`font-medium  px-2 py-1 text-read_2 z-10 relative transition-colors rounded-tiny  ${slideIndex === i ? "text-text-zinc_white" : "dark:hover:bg-[#7e22ce2e] hover:bg-[#7e22ce14] hover:backdrop-blur-lg text-text-color_2"}`}
                     >
                       {button.label}
                     </button>
