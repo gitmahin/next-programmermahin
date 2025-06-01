@@ -838,7 +838,7 @@ pre:has(.focused):hover span {
 
 
 .main_hero_headinga_sync {
-  font-size: clamp(38px, 5vw, 55px);
+  font-size: clamp(35px, 5vw, 55px);
   line-height: 1.2;
 }
 
