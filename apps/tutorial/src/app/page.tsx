@@ -31,10 +31,10 @@ const page = () => {
       <div className="flex justify-center items-center p-5">
         <div className="default_page_width py-16 relative bg-gradient-to-t from-background-color_950C to-transparent">
           <div className="relative z-[1]">
-            <h1 className="flex justify-start items-center font-semibold main_hero_heading_sync gap-2 ">
+            <h1 className="flex justify-start items-center font-semibold main_hero_heading_sync gap-2 max-[470px]:flex-col max-[470px]:items-start max-[470px]:!leading-8">
               <span>Learn</span>
               <ReactTyped
-                className="text-pm_purple-600"
+                className="text-pm_purple-600 max-[470px]:!leading-8"
                 strings={[
                   "C++",
                   "Devops",
@@ -50,7 +50,7 @@ const page = () => {
               />
             </h1>
 
-            <p className="max-w-[550px] text-[18px] leading-6 weight_450 text-text-color_2 mt-3">
+            <p className="max-w-[550px] text-read_18 leading-6 weight_450 text-text-color_2 mt-3 max-[900px]:text-read_16 max-[470px]:mt-4">
               Learn faster, build smarter, and level up your skills with
               structured content that actually makes sense.
             </p>
