@@ -201,14 +201,16 @@ export default function ContactPage() {
                 >
                   <PopoverTrigger asChild>
                     <PMButton
+                  disabled={isNoneOfAbove}
+                  
                       variant="secondary"
-                      className="w-full rounded transition-colors mt-3 flex justify-center items-center px-3 group py-1.5 gap-2"
+                      className="w-full rounded transition-colors mt-3 flex justify-center items-center px-3 group py-1.5 gap-2 text-text-color_2  hover:text-text-color_1 disabled:text-text-color_3"
                     >
                       <PlusIcon
                         size={LUCIDE_DEFAULT_ICON_SIZE}
-                        className="text-text-svg_default_color transition-colors  group-hover:text-text-color_1"
+                        className=" transition-colors  "
                       />
-                      <span className="text-text-color_2 group-hover:text-text-color_1 font-medium text-read_2 transition-colors">
+                      <span className=" font-medium text-read_2 transition-colors">
                         Add Questions
                       </span>
                     </PMButton>

@@ -51,7 +51,7 @@ export default function Home() {
               <span className="font-geist_mono text-pm_purple-600">[</span>
               <span className="font-geist_mono">Programmers</span>
               <span className="font-geist_mono text-pm_purple-600">]</span>{" "}
-              Begin.
+              Begin
               <br/>
               & Code Becomes Confidence.
             </h1>
