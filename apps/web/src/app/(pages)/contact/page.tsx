@@ -16,6 +16,7 @@ import {
   StatusBox,
 } from "@programmer/ui";
 import { ArrowLeft, MessageCircleQuestion, PlusIcon, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -342,7 +343,11 @@ export default function ContactPage() {
           <div className="w-[200px] -z-[1] h-screen absolute left-5 top-1/2 -translate-y-1/2 border-solid box-border border-l border-r border-background-color_900C bg-[image:repeating-linear-gradient(315deg,_var(--background-color-900C)_0,_var(--background-color-900C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--background-color-900C)]/5 md:block dark:[--pattern-fg:var(--background-color-900C)]/10"></div>
 
           <div className="w-full h-[calc(100%-70px)] backdrop-blur-md rounded-l-[20px] border border-r-0 border-background-color_900C p-2 pr-0">
-            <div className="w-full h-full bg-background-color_900C rounded-l-[15px]"></div>
+            <div className="w-full h-full bg-background-color_900C rounded-l-[15px] overflow-hidden">
+                <Image src={"/contact_page/dark/tuto.png"} width={1000} height={800} alt="Tutorial home page" className="w-full h-full object-cover object-left-top hidden dark:block" />
+                <Image src={"/contact_page/light/tuto.png"} width={1000} height={800} alt="Tutorial home page" className="w-full h-full object-cover object-left-top dark:hidden block" />
+
+            </div>
           </div>
           <div className=" w-full h-[50px] mt-5 flex justify-between items-center ">
             <div className="flex justify-start items-center gap-3 w-full ">
