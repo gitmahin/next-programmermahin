@@ -16,6 +16,8 @@ export * from "./separator";
 export * from "./input";
 export * from "./statusAlert";
 export * from "./textarea";
+export * from "./checkbox";
+export * from "./select";
 
 export * from "./icons/discord-icon";
 export * from "./icons/facebook";
