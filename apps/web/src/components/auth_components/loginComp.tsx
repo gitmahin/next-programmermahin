@@ -130,11 +130,11 @@ export const LoginComp = ({
 
         <div>
           <Input
-            className="bg-background-color_900C h-10 text-read_1 text-text-color_2"
+            className="bg-background-color_900C h-10 !text-read_1 font-medium text-text-color_2"
             placeholder="Email"
           />
           <Input
-            className="bg-background-color_900C mt-3 h-10 text-read_1 text-text-color_2"
+            className="bg-background-color_900C mt-3 h-10 !text-read_1 font-medium text-text-color_2"
             type="password"
             placeholder="Password"
           />
