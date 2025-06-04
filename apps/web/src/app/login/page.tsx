@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function LoginPage() {
   return (
     <div className="w-full h-screen overflow-y-auto fixed top-0 left-0 bg-background-color_950C z-[9999999999] flex justify-center items-start">
-      <div className="max-w-[400px]  w-full p-5 my-24  h-fit ">
+      <div className="max-w-[400px]  w-full p-5 py-24 my-auto  h-fit ">
         <div>
           <Link href={"/"}>
             <PMLogo size="sm" />
