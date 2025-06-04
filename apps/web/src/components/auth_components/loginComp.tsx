@@ -160,7 +160,7 @@ export const LoginComp = ({
             and{" "}
             <Link href={"/legals/privacy-policy"} className="text-blue-500 hover:underline">
               Privacy Policy
-            </Link>
+            </Link>.
           </p>
         </div>
       </div>
