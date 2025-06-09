@@ -148,11 +148,9 @@
   --accent-surface-neutral-border: #00062e32;
   --accent-surface-neutral-fg: #0007149f;
 
-
-
-      /* other colors */
+  /* other colors */
   --surface-purple-bg: #faf5fecc;
-  --surface-purple-border:#6d00c350 ;
+  --surface-purple-border: #6d00c350;
   --surface-purple-fg: #52009aba;
 }
 
@@ -231,12 +229,10 @@
   --accent-surface-neutral-border: #d9edff40;
   --accent-surface-neutral-fg: #f1f7feb5;
 
-
-    /* other colors */
+  /* other colors */
   --surface-purple-bg: #2b173580;
-  --surface-purple-border:#c378fd7a ;
+  --surface-purple-border: #c378fd7a;
   --surface-purple-fg: #d19dff;
-
 }
 
 html {
@@ -302,6 +298,12 @@ body {
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+}
+
+@layer components {
+  .classic_button, .classic_link, .classic_input {
+    all: revert;
   }
 }
 
@@ -857,6 +859,6 @@ pre:has(.focused):hover span {
   line-height: 1.2;
 }
 
-.weight_450{
+.weight_450 {
   font-weight: 450;
 }
