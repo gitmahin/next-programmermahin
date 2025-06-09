@@ -94,7 +94,7 @@ export const FeaturesSlider = ({
         <div className="w-full mt-8">
           {slideInfo && (
             <AirFlowText keyIndex={slideIndex} duration={0.3}>
-              <h2 className="text-read_25 text-text-color_1 font-semibold max-[1137px]:text-center">
+              <h2 className="text-read_24 text-text-color_1 font-semibold max-[1137px]:text-center">
                 {slideInfo.title}
               </h2>
             </AirFlowText>

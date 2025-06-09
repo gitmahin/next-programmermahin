@@ -119,6 +119,7 @@ module.exports = {
         read_18: "18px",
         read_20: "20px",
         read_25: "25px",
+        read_24: "24px",
         read_48: "48px"
       },
     },
