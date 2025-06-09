@@ -31,7 +31,7 @@ const page = () => {
       <div className="flex justify-center items-center p-5">
         <div className="default_page_width py-16 relative bg-gradient-to-t from-background-color_950C to-transparent">
           <div className="relative z-[1]">
-            <h1 className="flex justify-start items-center font-semibold main_hero_heading_sync gap-2 max-[470px]:flex-col max-[470px]:items-start max-[470px]:!leading-8">
+            <h1 className="flex justify-start items-center font-weight_550 main_hero_heading_sync gap-2 max-[470px]:flex-col max-[470px]:items-start max-[470px]:!leading-8">
               <span>Learn</span>
               <ReactTyped
                 className="text-pm_purple-600 max-[470px]:!leading-8"
@@ -50,7 +50,7 @@ const page = () => {
               />
             </h1>
 
-            <p className="max-w-[550px] text-read_18 leading-6 weight_450 text-text-color_2 mt-3 max-[900px]:text-read_16 max-[470px]:mt-4">
+            <p className="max-w-[550px] text-read_18 leading-6 font-weight_450 text-text-color_2 mt-3 max-[900px]:text-read_16 max-[470px]:mt-4">
               Learn faster, build smarter, and level up your skills with
               structured content that actually makes sense.
             </p>
@@ -92,7 +92,7 @@ const page = () => {
             </div>
           </div>
           <div className="mt-16 max-[550px]:mt-0">
-            <h2 className="text-[22px] font-semibold text-text-color_1">
+            <h2 className="text-read_24 font-medium text-text-color_1">
               Why Learn Here?
             </h2>
             <div className="w-full grid grid-cols-3 gap-4 mt-5 grid-rows-[150px_150px] max-[1250px]:grid-rows-[165px_165px] why_learn_grid">
@@ -123,7 +123,7 @@ const page = () => {
           </div>
 
           <div className="mt-16">
-            <h2 className="text-[22px] font-semibold text-text-color_1">
+            <h2 className="text-read_24 font-medium text-text-color_1">
               Getting Started
             </h2>
             <div className="grid mt-5  grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-3 max-[350px]:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">

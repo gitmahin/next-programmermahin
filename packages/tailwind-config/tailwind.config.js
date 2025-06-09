@@ -118,10 +118,14 @@ module.exports = {
         read_3: "13px",
         read_18: "18px",
         read_20: "20px",
-        read_25: "25px",
         read_24: "24px",
         read_48: "48px"
       },
+      fontWeight: {
+        weight_450: "450",
+        weight_530: "530",
+        weight_550: "550",
+      }
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
