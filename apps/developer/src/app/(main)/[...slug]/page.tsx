@@ -2,10 +2,10 @@ import React from "react";
 import fs from "fs";
 import matter from "gray-matter";
 import { mdxToHtml } from "@programmer/shared";
-import Link from "next/link";
 import { ContentAside } from "./content-aside";
 import { Pagination } from "./pagination";
 import { getDeveloperDocsFlatData } from "@/lib";
+import { Metadata } from "next";
 
 type MainDocContentPropsType = {
   params: Promise<{ slug: string[] }>;
@@ -17,6 +17,29 @@ export async function generateStaticParams() {
     slug: item.path.split("/").slice(1)
   }))
   return slug
+}
+
+export async function generateMetadata({
+  params,
+}: MainDocContentPropsType): Promise<Metadata> {
+  const { slug } = await params;
+  const filePath = `src/content/${slug.join("/")}.mdx`;
+
+  try {
+    const getData = fs.readFileSync(filePath, "utf-8");
+    const { data: metaData } = matter(getData);
+
+    return {
+      title: metaData?.title || "Undefined",
+      description: metaData?.desc || "Description not provided",
+    };
+  } catch (error) {
+    return {
+      title: "Not Found",
+      description:
+        "The resource you're looking for either doesn't exist or may have been moved. Please contact the administrator or open an issue on the repository.",
+    };
+  }
 }
 
 export default async function MainDocContent({
