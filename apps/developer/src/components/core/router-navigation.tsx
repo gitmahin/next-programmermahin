@@ -1,7 +1,7 @@
 "use client";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React from "react";
 
 export const RouterNavigation = () => {
   const router = useRouter();

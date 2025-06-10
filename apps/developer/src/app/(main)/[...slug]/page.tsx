@@ -1,7 +1,7 @@
 import React from "react";
 import fs from "fs";
 import matter from "gray-matter";
-import { extractAnchors, mdxToHtml } from "@programmer/shared";
+import { mdxToHtml } from "@programmer/shared";
 import Link from "next/link";
 import { ContentAside } from "./content-aside";
 import { Pagination } from "./pagination";
