@@ -1,11 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import {
-  cn,
   DiscordIcon,
   FacebookIcon,
   GithubSVG,
-  LUCIDE_DEFAULT_ICON_SIZE,
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
@@ -13,11 +11,10 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-  PMButton,
 } from "@programmer/ui";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, ChevronRight, CodeXml, UsersRound } from "lucide-react";
+import { CodeXml, UsersRound } from "lucide-react";
 
 const NAV_OTHER_RESOURCES: { label: string; desc: string; link: string }[] = [
   {
@@ -43,29 +40,32 @@ export const MainNav = () => {
             <NavigationMenuContent>
               <div className="w-[720px] h-[300px] p-2">
                 <div className="w-full h-full grid grid-cols-[220px_220px_1fr] gap-2">
-                  <Link href={"https://developer.programmermahin.com"} className="w-full h-full">
-                 
-                  <div className="w-full h-full border px-3 py-3 border-border-color_800C rounded overflow-hidden bg-background-color_900C group relative ">
-                    <div className="flex justify-start items-center gap-2">
-                      <div className="w-[40px] h-[40px] flex-shrink-0 border rounded flex justify-center shadow-md items-center border-background-color_750C bg-gradient-to-tl from-background-color_800C to-background-color_750C">
-                        <CodeXml size={20} className="text-text-color_4" />
+                  <Link
+                    href={"https://developer.programmermahin.com"}
+                    target="_blank"
+                    className="w-full h-full"
+                  >
+                    <div className="w-full h-full border px-3 py-3 border-border-color_800C rounded overflow-hidden bg-background-color_900C group relative ">
+                      <div className="flex justify-start items-center gap-2">
+                        <div className="w-[40px] h-[40px] flex-shrink-0 border rounded flex justify-center shadow-md items-center border-background-color_750C bg-gradient-to-tl from-background-color_800C to-background-color_750C">
+                          <CodeXml size={20} className="text-text-color_4" />
+                        </div>
+                        <div>
+                          <h3 className="text-text-color_1 text-read_2 font-medium">
+                            Developer Docs
+                          </h3>
+                          <p className=" text-read_3 text-text-color_2 one_line_ellipsis">
+                            Build, contribute, and explore the core of
+                            ProgrammerMahin.
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="text-text-color_1 text-read_2 font-medium">
-                          Developer Docs
-                        </h3>
-                        <p className=" text-read_3 text-text-color_2 one_line_ellipsis">
-                          Build, contribute, and explore the core of
-                          ProgrammerMahin.
-                        </p>
-                      </div>
-                    </div>
 
-                    <div className="absolute bottom-0 right-0 border-t border-l rounded-tl-[10px] border-border-color_800C group-hover:border-pm_purple-600 transition-colors w-[207px] h-[200px] overflow-hidden p-1 bg-background-color_850C">
-                      <div className="w-full h-full rounded-tl-[6px] overflow-hidden "></div>
+                      <div className="absolute bottom-0 right-0 border-t border-l rounded-tl-[10px] border-border-color_800C group-hover:border-pm_purple-600 transition-colors w-[207px] h-[200px] overflow-hidden p-1 bg-background-color_850C">
+                        <div className="w-full h-full rounded-tl-[6px] overflow-hidden "></div>
+                      </div>
                     </div>
-                  </div>
- </Link>
+                  </Link>
                   <div className="w-full h-full border border-border-color_800C px-3 py-3  rounded overflow-hidden bg-background-color_900C group relative">
                     <div className="flex justify-start items-center gap-2">
                       <div className="w-[40px] h-[40px] flex-shrink-0 border rounded flex justify-center shadow-md items-center border-background-color_750C bg-gradient-to-tl from-background-color_800C to-background-color_750C">
@@ -235,16 +235,20 @@ export const MainNav = () => {
                 </div>
                 <div className="w-full relative h-full ">
                   <div className="w-full h-full p-2 pt-5  relative z-10">
-                    {
-                      NAV_OTHER_RESOURCES.map((item, i) => {
-                        return <Link href={`/${item.link}`} key={i}>
+                    {NAV_OTHER_RESOURCES.map((item, i) => {
+                      return (
+                        <Link href={`/${item.link}`} key={i}>
                           <div className="w-full h-fit px-6 py-2 rounded hover:bg-background-color_800C transition-colors ">
-                            <h4 className="text-read_2 font-medium text-text-color_1">{item.label}</h4>
-                            <p className="text-read_3 text-text-color_3 mt-1 two_line_ellipsis">{item.desc}</p>
+                            <h4 className="text-read_2 font-medium text-text-color_1">
+                              {item.label}
+                            </h4>
+                            <p className="text-read_3 text-text-color_3 mt-1 two_line_ellipsis">
+                              {item.desc}
+                            </p>
                           </div>
                         </Link>
-                      })
-                    }
+                      );
+                    })}
                   </div>
                 </div>
               </div>
