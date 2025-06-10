@@ -14,14 +14,14 @@ export const Sidebar = () => {
                 {value.items.map((item, j) => {
                   return (
                     <div key={j}>
-                      <Link href={""} className="classic_link">
+                      <Link href={`/${value.slug}/${item.slug}`} className="classic_link">
                         {item.label}
                       </Link>
                       <div className="pl-5">
                         {item.siblingOneItems?.map((siblingOneItem, k) => {
                           return (
                             <div key={k}>
-                              <Link href={""} className="classic_link">
+                              <Link href={`/${value.slug}/${item.slug}/${siblingOneItem.siblingOneSlug}`} className="classic_link">
                                 {siblingOneItem.siblingOneLabel}
                               </Link>
                             </div>

@@ -141,7 +141,7 @@ export const LoginComp = ({
           <div className={`text-left  w-full mt-1`}>
             <Link
               href=""
-              className="text-read_3 font-medium text-blue-500 hover:underline"
+              className="text-read_3 text-blue-500 hover:underline"
             >
               Forgot your password?
             </Link>

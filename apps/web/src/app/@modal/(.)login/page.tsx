@@ -7,7 +7,7 @@ export default function LoginPage() {
   return (
     <LoginModalPopup>
       <>
-        <h1 className="w-full text-read_25 font-semibold text-center">Login</h1>
+        <h1 className="w-full text-read_24 font-semibold text-center">Login</h1>
         <p className="w-full text-center text-read_2 text-text-color_2 mt-2 mb-10">
           Welcome back!
         </p>
