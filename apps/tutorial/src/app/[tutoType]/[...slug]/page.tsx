@@ -4,16 +4,11 @@ import matter from "gray-matter";
 import ContentAsideNav from "./content-aside-nav";
 import TutoPagination from "./paginatation";
 import {
-  getTutorialsByKey,
-  TutorialDirChildNavItemType,
-} from "@programmer/constants";
-import {
   algolia,
   extractAnchors,
   IndexTutorialsType,
   TocItem,
 } from "@programmer/shared";
-import { TutorialEnums } from "@programmer/constants";
 import { Metadata } from "next";
 import { mdxToHtml } from "@programmer/shared";
 import { getTutorialsAbsolutePaths } from "@/lib/tutorials/getTutorialsAbsolutePaths";
@@ -103,7 +98,7 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
     const getData = fs.readFileSync(filePath, "utf-8");
     const { content } = matter(getData);
 
-    const MdxComponent = mdxToHtml(content);
+    const MdxComponent = await mdxToHtml(content);
 
     if (process.env.NODE_ENV === "development") {
       generateStaticParams().then((params) => {

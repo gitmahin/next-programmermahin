@@ -178,38 +178,11 @@ export const DEVELOPER_DOCS_DATA: DeveloperDocsData = {
       {
         label: "Create Your First PR",
         slug: "create-your-first-pr",
-        siblingOneItems: [
-          {
-            siblingOneLabel: "Forking and Branching",
-            siblingOneSlug: "forking-and-branching"
-          },
-          {
-            siblingOneLabel: "Making Code Changes",
-            siblingOneSlug: "making-code-changes"
-          },
-          {
-            siblingOneLabel: "Creating a Pull Request",
-            siblingOneSlug: "creating-a-pull-request"
-          }
-        ]
+       
       },
       {
         label: "Building a Feature Module",
         slug: "building-a-feature-module",
-        siblingOneItems: [
-          {
-            siblingOneLabel: "Planning & Setup",
-            siblingOneSlug: "planning-and-setup"
-          },
-          {
-            siblingOneLabel: "Integrating with Redux/API",
-            siblingOneSlug: "integrating-with-redux-api"
-          },
-          {
-            siblingOneLabel: "UI + Type Safety",
-            siblingOneSlug: "ui-plus-type-safety"
-          }
-        ]
       }
     ]
   }

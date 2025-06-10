@@ -1,0 +1,50 @@
+---
+title: Understanding Classic Mode
+description: Learn about the reasons and benefits behind our Classic Mode.
+---
+
+# Why Classic Mode?
+
+In our continuous effort to innovate and enhance user experience, we also recognize the value of familiarity, simplicity, and specific use cases that a more traditional or "classic" approach can offer. This section outlines the key reasons why we've chosen to include and maintain a Classic Mode.
+
+## 1. User Familiarity and Comfort
+
+Many users become accustomed to a particular way of interacting with software. Classic Mode provides a familiar environment for long-time users, ensuring a smoother transition when new features or UI paradigms are introduced. It respects established workflows and reduces the learning curve associated with significant updates.
+
+```typescript
+// [!code word:matter]
+const filePath = `src/content/${slug.join("/")}.mdx`;
+const getFileData = fs.readFileSync(filePath, "utf-8"); //[!code ++]
+const { content } = matter(getFileData);
+console.log( "content is", getFileData);
+```
+
+## 2. Performance on Older Systems or Slower Connections
+
+Modern interfaces, while often richer in features and visual appeal, can sometimes be more resource-intensive. Classic Mode is typically designed to be lighter and faster, making it an excellent option for:
+*   Users with older hardware that may struggle with more demanding UIs.
+*   Users on slower or less reliable internet connections where a streamlined experience is paramount.
+
+## 3. Focus on Core Functionality
+
+Sometimes, users need to perform tasks quickly and efficiently without the distraction of advanced features or a complex interface. Classic Mode often strips back the experience to its core essentials, allowing users to focus on fundamental tasks with minimal clutter.
+
+## 4. Accessibility Considerations
+
+Simpler interfaces can often be more accessible. While we strive to make all versions of our application accessible, Classic Mode can sometimes offer an inherently more straightforward interaction model for users relying on assistive technologies or those who find complex UIs challenging.
+
+## 5. Specific Workflow Needs
+
+Certain established workflows might be better served by the layout or feature set present in a classic interface. By maintaining Classic Mode, we cater to users and organizations whose processes are deeply integrated with this particular way of working.
+
+## 6. Gradual Adoption of New Features
+
+Classic Mode can serve as a bridge, allowing users to gradually explore and adopt new features at their own pace. They can switch to the modern interface when they feel ready, knowing they can always revert to a familiar environment if needed.
+
+## Our Commitment
+
+Providing a Classic Mode is part of our commitment to inclusivity and user choice. We believe in offering options that cater to a diverse range of user needs, preferences, and technical constraints. While we encourage users to explore the benefits of our latest interface, Classic Mode will remain a supported option for those who prefer or require it.
+
+---
+
+We hope this clarifies the rationale behind Classic Mode. We value your feedback on all aspects of our application, including its different modes of operation.

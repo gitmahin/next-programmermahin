@@ -17,7 +17,7 @@ export default function Home() {
         </div>
 
         <div className="w-full flex justify-center items-center gap-5 mt-5">
-          <Link href={""}>
+          <Link href={"/getting-started/introduction-to-developer-docs"}>
             <button className="px-10 py-2 text-read_1 font-medium classic_button">
               Get Started
             </button>
