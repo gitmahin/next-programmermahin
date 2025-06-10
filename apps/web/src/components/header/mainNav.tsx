@@ -43,6 +43,8 @@ export const MainNav = () => {
             <NavigationMenuContent>
               <div className="w-[720px] h-[300px] p-2">
                 <div className="w-full h-full grid grid-cols-[220px_220px_1fr] gap-2">
+                  <Link href={"https://developer.programmermahin.com"} className="w-full h-full">
+                 
                   <div className="w-full h-full border px-3 py-3 border-border-color_800C rounded overflow-hidden bg-background-color_900C group relative ">
                     <div className="flex justify-start items-center gap-2">
                       <div className="w-[40px] h-[40px] flex-shrink-0 border rounded flex justify-center shadow-md items-center border-background-color_750C bg-gradient-to-tl from-background-color_800C to-background-color_750C">
@@ -63,7 +65,7 @@ export const MainNav = () => {
                       <div className="w-full h-full rounded-tl-[6px] overflow-hidden "></div>
                     </div>
                   </div>
-
+ </Link>
                   <div className="w-full h-full border border-border-color_800C px-3 py-3  rounded overflow-hidden bg-background-color_900C group relative">
                     <div className="flex justify-start items-center gap-2">
                       <div className="w-[40px] h-[40px] flex-shrink-0 border rounded flex justify-center shadow-md items-center border-background-color_750C bg-gradient-to-tl from-background-color_800C to-background-color_750C">
