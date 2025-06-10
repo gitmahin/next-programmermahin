@@ -13,7 +13,10 @@ type MainDocContentPropsType = {
 
 export async function generateStaticParams() {
   const data = getDeveloperDocsFlatData
-  return data
+  const slug = data.map((item, _) => ({
+    slug: item.path.split("/").slice(1)
+  }))
+  return slug
 }
 
 export default async function MainDocContent({
