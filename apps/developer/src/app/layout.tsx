@@ -4,6 +4,7 @@ import { JetBrains_Mono } from "next/font/google";
 import "@programmer/ui/globalcss";
 import "./styles/globals.css"
 import { LayoutProvider } from "@/components/provider";
+import { GlobalThemeProvider } from "@programmer/ui";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,10 +39,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${jetbrains_mono.variable} bg-white`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${jetbrains_mono.variable}`}>
+          <GlobalThemeProvider >
+
         <LayoutProvider>
         {children}
         </LayoutProvider>
+          </GlobalThemeProvider>
       </body>
     </html>
   );

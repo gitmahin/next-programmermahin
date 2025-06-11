@@ -1,10 +1,10 @@
-import { PMLogo, StatusBox } from "@programmer/ui";
+import { PMButton, PMLogo, StatusBox } from "@programmer/ui";
 import Link from "next/link";
 import { HEADER_NAV_LINKS } from "@/constants";
 
 export default function Home() {
   return (
-    <div className="w-full h-screen flex items-center justify-center bg-white">
+    <div className="w-full h-screen flex items-center justify-center">
       <div className="layout_max_1200 mx-auto h-fit">
         <div className="w-full flex justify-center items-center">
           <PMLogo size="sm" />
@@ -18,9 +18,9 @@ export default function Home() {
 
         <div className="w-full flex justify-center items-center gap-5 mt-5">
           <Link href={"/getting-started/introduction-to-developer-docs"}>
-            <button className="px-10 py-2 text-read_1 font-medium classic_button">
-              Get Started
-            </button>
+            <PMButton className="px-10 py-2" variant="secondary" radius="primary">
+              Get started
+            </PMButton>
           </Link>
         </div>
 
@@ -32,7 +32,7 @@ export default function Home() {
       <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-20 flex justify-center items-center gap-5 text-read_1">
         {
           HEADER_NAV_LINKS.slice(2).map((navLink, i) => {
-            return <Link href={`${navLink.slug}`} key={i} className="classic_link">
+            return <Link href={`${navLink.slug}`} key={i} className="text-text-color_3 hover:text-text-color_1 transition-colors">
           {navLink.label}
         </Link>
           })
