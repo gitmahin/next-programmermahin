@@ -34,9 +34,12 @@ type CodeLanguages =
   | "bash"
   | "nginx"
   | "docker"
-  | "git-commit"
+  | "git"
   | "cpp"
-  | "c";
+  | "c"
+  | "md"
+  | "mdx"
+  | "text"
 
 const iconMap: Record<CodeLanguages, string> = {
   js: "/code/js.svg",
@@ -49,9 +52,12 @@ const iconMap: Record<CodeLanguages, string> = {
   bash: "/code/powershell.svg",
   nginx: "/code/nginx.svg",
   docker: "/code/docker.svg",
-  "git-commit": "/code/git-commit.svg",
+  git: "/code/git.svg",
   cpp: "/code/cpp.svg",
   c: "/code/c.svg",
+  md: "/code/md.svg",
+  mdx: "/code/mdx.svg",
+  text: "/code/text.svg"
 };
 
 export const mdxToHtml = async (content: string) => {
@@ -108,9 +114,11 @@ export const mdxToHtml = async (content: string) => {
         );
       },
       pre: ({ children, ...props }: PreTagProps) => {
-        const codeElement = React.Children.only(children) as React.ReactElement<CodeElementProps>;;
-        const language = codeElement?.props?.["data-language"]  ?? "bash";
-        const icon = iconMap[language as CodeLanguages];
+        const codeElement = React.Children.only(
+          children
+        ) as React.ReactElement<CodeElementProps>;
+        const language = codeElement?.props?.["data-language"] ?? "bash";
+        const icon = iconMap[language as CodeLanguages] ?? iconMap["text"];
         return (
           <div className="border h-full w-full p-1.5 my-[1.71429em] rounded-[15px] bg-background-color_925C border-border-color_800C">
             <div className="h-[35px] w-full flex justify-center items-center px-2 pb-1.5">
