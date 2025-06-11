@@ -138,7 +138,7 @@ export const mdxToHtml = async (content: string) => {
             </div>
             <pre
               {...props}
-              className="my-0 rounded-[10px] !bg-background-color_900C custom_scrollbar overflow-y-auto shadow-md next-mdx-remote-codeblock"
+              className="my-0 rounded-[10px] !bg-background-color_900C shadow-md next-mdx-remote-codeblock"
             >
               {children}
             </pre>
