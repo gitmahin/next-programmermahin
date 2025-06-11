@@ -152,6 +152,14 @@
   --surface-purple-bg: #faf5fecc;
   --surface-purple-border: #6d00c350;
   --surface-purple-fg: #52009aba;
+
+    --code-error-border: #f87171 ;
+    --code-error-background: #ef44443a ;
+
+ --code-add-color:#059669 ;
+  --code-remove-color: #dc2626;
+  --code-add-bg-color: #10b9812a;
+  --code-remove-bg-color: #dc26262f;
 }
 
 .dark {
@@ -233,6 +241,15 @@
   --surface-purple-bg: #2b173580;
   --surface-purple-border: #c378fd7a;
   --surface-purple-fg: #d19dff;
+
+  --code-error-border: #dc2626 ;
+  --code-error-background: #dc26262f  ;
+
+  --code-add-color:#10b981 ;
+  --code-remove-color: #ef4444;
+  --code-add-bg-color: #10b9812a;
+  --code-remove-bg-color: #dc26262f;
+  
 }
 
 html {
@@ -302,7 +319,9 @@ body {
 }
 
 @layer components {
-  .classic_button, .classic_link, .classic_input {
+  .classic_button,
+  .classic_link,
+  .classic_input {
     all: revert;
   }
 }
@@ -363,12 +382,6 @@ body {
   scrollbar-gutter: stable;
 }
 
-.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-  color: blue;
-  text-decoration: none;
-  font-weight: inherit;
-}
-
 .prose code::before,
 .prose code::after {
   content: none; /* Remove the backtick or any unwanted content before the code */
@@ -417,36 +430,58 @@ pre code {
   }
 
   [data-highlighted-line] {
-    background-color: #ffffff24;
+    background-color: var(--background-color-800C);
     border-left: 2px solid var(--color-purple-700);
   }
 
   .highlighted {
-    background-color: #ffffff24;
+    background-color: var(--background-color-800C);
     border-left: 2px solid var(--color-purple-700);
   }
 
   .add {
-    background-color: #00800030;
+    background-color: var(--code-add-bg-color);
     position: relative;
+    padding-inline-start: 40px;
   }
 
   .add:before {
     content: "+";
-    color: #00ff99;
-    left: 5px;
+    color: var(--code-add-color);
+       background-color: var(--code-add-bg-color);
+    left: 0px;
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+
+    width: 24px;
+    height: 100%;
   }
 
   .remove {
-    background-color: #ff00003e;
+    background-color: var(--code-remove-bg-color);
+    position: relative;
+    padding-inline-start: 40px;
   }
 
   .remove:before {
     content: "-";
-    color: #ff0000;
-    left: 5px;
+    color: var(--code-remove-color);
+       background-color: var(--code-remove-bg-color);
+    left: 0px;
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    width: 24px;
+    height: 100%;
   }
 
   .warning {
@@ -455,16 +490,24 @@ pre code {
   }
 
   .error {
-    border: 2px solid #dc3546 !important;
-    background-color: #dc35463d !important;
+    border: 2px solid var(--code-error-border) ;
+    background-color: var(--code-error-background);
   }
 
-  .highlighted-word {
-    background-color: #ffffff24;
+  .dark .highlighted-word {
+    background-color: var(--background-color-750C);
     border: 1px solid var(--border-color-700C);
     padding: 1px;
     border-radius: 3px;
   }
+
+  .highlighted-word {
+    background-color: var(--background-color-800C);
+    border: 1px solid var(--border-color-800C);
+    padding: 1px;
+    border-radius: 3px;
+  }
+
 }
 
 /* Apply blur to everything inside <pre> except for .focused elements */
@@ -861,4 +904,16 @@ pre:has(.focused):hover span {
 
 .weight_450 {
   font-weight: 450;
+}
+
+.next-mdx-remote-codeblock code[data-theme*=" "],
+.next-mdx-remote-codeblock code[data-theme*=" "] span {
+  color: var(--shiki-light);
+}
+
+.dark {
+  .next-mdx-remote-codeblock code[data-theme*=" "],
+  .next-mdx-remote-codeblock code[data-theme*=" "] span {
+    color: var(--shiki-dark);
+  }
 }
