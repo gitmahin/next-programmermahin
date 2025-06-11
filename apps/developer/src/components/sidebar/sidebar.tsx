@@ -55,7 +55,7 @@ export const Sidebar = () => {
                                    className="text-text-color_2"
                               >
                                 <span
-                                  className={`one_line_ellipsis pl-7 rounded-tiny px-2 ${path_name.endsWith(siblingOneItem.siblingOneSlug) ? "text-white bg-pm_purple-700 font-medium" : ""}`}
+                                  className={`one_line_ellipsis pl-8 rounded-tiny px-2 ${path_name.endsWith(siblingOneItem.siblingOneSlug) ? "text-white bg-pm_purple-700 font-medium" : ""}`}
                                 >
                                   {siblingOneItem.siblingOneLabel}
                                 </span>
