@@ -153,10 +153,10 @@
   --surface-purple-border: #6d00c350;
   --surface-purple-fg: #52009aba;
 
-    --code-error-border: #f87171 ;
-    --code-error-background: #ef44443a ;
+  --code-error-border: #f87171;
+  --code-error-background: #ef44443a;
 
- --code-add-color:#059669 ;
+  --code-add-color: #059669;
   --code-remove-color: #dc2626;
   --code-add-bg-color: #10b9812a;
   --code-remove-bg-color: #dc26262f;
@@ -242,14 +242,13 @@
   --surface-purple-border: #c378fd7a;
   --surface-purple-fg: #d19dff;
 
-  --code-error-border: #dc2626 ;
-  --code-error-background: #dc26262f  ;
+  --code-error-border: #dc2626;
+  --code-error-background: #dc26262f;
 
-  --code-add-color:#10b981 ;
+  --code-add-color: #10b981;
   --code-remove-color: #ef4444;
   --code-add-bg-color: #10b9812a;
   --code-remove-bg-color: #dc26262f;
-  
 }
 
 html {
@@ -448,13 +447,13 @@ pre code {
   .add:before {
     content: "+";
     color: var(--code-add-color);
-       background-color: var(--code-add-bg-color);
+    background-color: var(--code-add-bg-color);
     left: 0px;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-        top: 50%;
+    top: 50%;
     transform: translateY(-50%);
     font-size: 18px;
 
@@ -471,7 +470,7 @@ pre code {
   .remove:before {
     content: "-";
     color: var(--code-remove-color);
-       background-color: var(--code-remove-bg-color);
+    background-color: var(--code-remove-bg-color);
     left: 0px;
     position: absolute;
     display: flex;
@@ -490,7 +489,7 @@ pre code {
   }
 
   .error {
-    border: 2px solid var(--code-error-border) ;
+    border: 2px solid var(--code-error-border);
     background-color: var(--code-error-background);
   }
 
@@ -507,7 +506,6 @@ pre code {
     padding: 1px;
     border-radius: 3px;
   }
-
 }
 
 /* Apply blur to everything inside <pre> except for .focused elements */
@@ -556,6 +554,26 @@ pre:has(.focused):hover span {
   display: inline-block;
   text-align: right;
   color: rgba(115, 138, 148, 0.4);
+}
+
+.next-mdx-remote-codeblock code[data-theme*=" "],
+.next-mdx-remote-codeblock code[data-theme*=" "] span {
+  color: var(--shiki-light);
+}
+
+.next-mdx-remote-codeblock pre {
+  background-color: var(--shiki-light-bg) !important;
+}
+
+.dark .next-mdx-remote-codeblock {
+  code[data-theme*=" "],
+  code[data-theme*=" "] span {
+    color: var(--shiki-dark);
+  }
+
+  pre {
+    background-color: var(--shiki-dark-bg) !important;
+  }
 }
 
 .dark {

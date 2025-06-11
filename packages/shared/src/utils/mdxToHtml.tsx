@@ -7,12 +7,12 @@ import {
   transformerNotationWordHighlight,
   transformerNotationFocus,
 } from "@shikijs/transformers";
-import { transformerCopyButton } from "@rehype-pretty/transformers";
 import rehypeSlug from "rehype-slug";
 import React, { ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { CopyCodeButton } from "../components";
+import { CopyCodeButton } from "../components/code";
+
 
 type AnchorProps = ComponentPropsWithoutRef<"a">;
 type PreTagProps = ComponentPropsWithoutRef<"pre">;
@@ -71,7 +71,7 @@ export const mdxToHtml = async (content: string) => {
             rehypePrettyCode,
             {
               theme: {
-                dark: "material-theme-ocean",
+                dark: "github-dark-high-contrast",
                 light: "github-light-high-contrast",
               },
               transformers: [
@@ -120,9 +120,18 @@ export const mdxToHtml = async (content: string) => {
         const language = codeElement?.props?.["data-language"] ?? "bash";
         const icon = iconMap[language as CodeLanguages] ?? iconMap["text"];
         return (
-          <div className="border h-full w-full p-1.5 my-[1.71429em] rounded-[15px] bg-background-color_925C border-border-color_800C">
-            <div className="h-[35px] w-full flex justify-center items-center px-2 pb-1.5">
-              <div className="w-full flex justify-start items-center gap-1.5 ">
+          <div className="border h-full group w-full p-1.5 my-[1.71429em] rounded-[15px] bg-background-color_925C border-border-color_800C next-mdx-remote-codeblock">
+            <div className="h-[35px] w-full flex justify-center items-center gap-3 px-2 pb-1.5">
+              <div className="flex w-fit justify-start items-center gap-1.5 ">
+                {
+                  Array.from({ length: 3 }).map((_, i) => {
+                    return (
+                      <div key={i} className={`w-[15px] h-[15px] transition-all duration-300 flex-shrink-0 border rounded-full border-border-color_800C filter grayscale opacity-20 group-hover:opacity-100 group-hover:!grayscale-0 ${i === 0 ? "bg-red-500": i===1 ? "bg-yellow-400": "bg-emerald-500"} `}></div>
+                    )
+                  })
+                }
+              </div>
+              <div className="w-full flex justify-end items-center gap-1.5 ">
                 <Image
                   src={`${icon}`}
                   alt={language}
@@ -138,7 +147,7 @@ export const mdxToHtml = async (content: string) => {
             </div>
             <pre
               {...props}
-              className="my-0 rounded-[10px] !bg-background-color_900C shadow-md next-mdx-remote-codeblock"
+              className="my-0 rounded-[10px] shadow "
             >
               {children}
             </pre>
