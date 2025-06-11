@@ -11,8 +11,7 @@ import rehypeSlug from "rehype-slug";
 import React, { ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { CopyCodeButton } from "../components/code";
-
+import { CopyCodeButton, PopupCodeBlock } from "../components/code";
 
 type AnchorProps = ComponentPropsWithoutRef<"a">;
 type PreTagProps = ComponentPropsWithoutRef<"pre">;
@@ -39,7 +38,7 @@ type CodeLanguages =
   | "c"
   | "md"
   | "mdx"
-  | "text"
+  | "text";
 
 const iconMap: Record<CodeLanguages, string> = {
   js: "/code/js.svg",
@@ -57,7 +56,7 @@ const iconMap: Record<CodeLanguages, string> = {
   c: "/code/c.svg",
   md: "/code/md.svg",
   mdx: "/code/mdx.svg",
-  text: "/code/text.svg"
+  text: "/code/text.svg",
 };
 
 export const mdxToHtml = async (content: string) => {
@@ -120,38 +119,30 @@ export const mdxToHtml = async (content: string) => {
         const language = codeElement?.props?.["data-language"] ?? "bash";
         const icon = iconMap[language as CodeLanguages] ?? iconMap["text"];
         return (
-          <div className="border h-full group w-full p-1.5 my-[1.71429em] rounded-[15px] bg-background-color_925C border-border-color_800C next-mdx-remote-codeblock">
-            <div className="h-[35px] w-full flex justify-center items-center gap-3 px-2 pb-1.5">
-              <div className="flex w-fit justify-start items-center gap-1.5 ">
-                {
-                  Array.from({ length: 3 }).map((_, i) => {
-                    return (
-                      <div key={i} className={`w-[15px] h-[15px] transition-all duration-300 flex-shrink-0 border rounded-full border-border-color_800C filter grayscale opacity-20 group-hover:opacity-100 group-hover:!grayscale-0 ${i === 0 ? "bg-red-500": i===1 ? "bg-yellow-400": "bg-emerald-500"} `}></div>
-                    )
-                  })
-                }
+          <PopupCodeBlock>
+            <div className="border h-full w-full p-1.5  rounded-[15px] bg-background-color_925C border-border-color_800C next-mdx-remote-codeblock">
+              <div className="h-[35px] w-full flex justify-center items-center gap-3 px-2 pb-1.5 ">
+                <div className="w-full flex justify-end items-center gap-1.5 ">
+                  <Image
+                    src={`${icon}`}
+                    alt={language}
+                    width={100}
+                    height={100}
+                    className="w-[18px] h-[18px]"
+                  />
+                  <span className="text-text-color_2 text-read_3 font-medium">
+                    {language}
+                  </span>
+                </div>
+                <CopyCodeButton />
               </div>
-              <div className="w-full flex justify-end items-center gap-1.5 ">
-                <Image
-                  src={`${icon}`}
-                  alt={language}
-                  width={100}
-                  height={100}
-                  className="w-[18px] h-[18px]"
-                />
-                <span className="text-text-color_2 text-read_3 font-medium">
-                  {language}
-                </span>
+              <div className="overflow-y-auto h-[calc(100%-35px)] w-full hide-scrollbar rounded-[10px] ">
+                <pre {...props} className="my-0 rounded-[10px] !h-full shadow ">
+                  {children}
+                </pre>
               </div>
-              <CopyCodeButton />
             </div>
-            <pre
-              {...props}
-              className="my-0 rounded-[10px] shadow "
-            >
-              {children}
-            </pre>
-          </div>
+          </PopupCodeBlock>
         );
       },
     },
