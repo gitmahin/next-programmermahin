@@ -11,6 +11,9 @@
     "clean": "rm -rf node_modules && echo 'Cleanup complete!'"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@next/mdx": "^15.3.3",
     "@programmer/hooks": "workspace:*",
     "@programmer/shared": "workspace:*",
     "@programmer/ui": "workspace:*",

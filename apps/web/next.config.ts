@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
+import createMDX from "@next/mdx"
 
 const nextConfig: NextConfig = {
+  pageExtensions: ["ts", "tsx", "mdx"],
   /* config options here */
   eslint: {
     ignoreDuringBuilds: true,
@@ -9,7 +11,13 @@ const nextConfig: NextConfig = {
   serverExternalPackages: ["@shikijs/twoslash"],
   // TODO: for docker image. otherwise comment this
   // output: "standalone",
+
+  experimental: {
+    mdxRs: true,
+  },
 };
 
-export default nextConfig;
+const withMDX = createMDX({})
+
+export default withMDX(nextConfig);
       
