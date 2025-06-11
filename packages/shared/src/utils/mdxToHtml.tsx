@@ -9,6 +9,10 @@ import {
 } from "@shikijs/transformers";
 import { transformerCopyButton } from "@rehype-pretty/transformers";
 import rehypeSlug from "rehype-slug";
+import { ComponentPropsWithoutRef } from "react";
+import Link from "next/link";
+
+type AnchorProps = ComponentPropsWithoutRef<"a">;
 
 export const mdxToHtml = async (content: string) => {
   const { content: MdxComponent } = await compileMDX({
@@ -37,9 +41,7 @@ export const mdxToHtml = async (content: string) => {
         ],
       },
     },
-    components:{
-      
-    }
+  
   });
 
   return MdxComponent;

@@ -98,7 +98,7 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
     const getData = fs.readFileSync(filePath, "utf-8");
     const { content } = matter(getData);
 
-    const MdxComponent = await mdxToHtml(content);
+    const {MdxComponent} = await mdxToHtml(getData);
 
     if (process.env.NODE_ENV === "development") {
       generateStaticParams().then((params) => {
