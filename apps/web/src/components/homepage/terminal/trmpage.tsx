@@ -57,20 +57,17 @@ export const CodeEditorHeroAnimationDisplay = ({
   const terminalTabRef = useRef<HTMLDivElement>(null);
   const [slideIndex, setSlideIndex] = useState(0);
 
-  const moveTerminalTabRefTo = useCallback(
-  //    ^^^
-    (btn: HTMLElement) => {
-      if (!terminalTabRef.current) return;
+  const moveTerminalTabRefTo = (btn: HTMLElement) => {
+    if (!terminalTabRef.current) return;
     terminalTabRef.current.style.width = \`\${btn.offsetWidth}px\`;
-      terminalTabRef.current.style.left = \`\${btn.offsetLeft}px\`;
-    },
-    [slideIndex]
-  );
+    terminalTabRef.current.style.left = \`\${btn.offsetLeft}px\`;
+  };
 
   useEffect(() => {
     if (!swiperRef.current) return;
     swiperRef.current?.slideTo(3);
   }, []);
+  
   return (
     <div className="relative z-10 w-full h-[650px] bg-gradient-to-l from-background-color_950C via-background-color_900C to-background-color_950C">
       <div className="mt-28 layout_max_1200 mx-auto w-full h-full  p-2  ">

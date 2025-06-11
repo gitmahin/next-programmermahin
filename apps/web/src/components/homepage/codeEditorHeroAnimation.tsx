@@ -58,11 +58,11 @@ export const CodeEditorHeroAnimationDisplay = ({
   const terminalTabRef = useRef<HTMLDivElement>(null);
   const [slideIndex, setSlideIndex] = useState(0);
 
-  const moveTerminalTabRefTo = useCallback((btn: HTMLElement) => {
+  const moveTerminalTabRefTo = (btn: HTMLElement) => {
     if (!terminalTabRef.current) return;
     terminalTabRef.current.style.width = `${btn.offsetWidth}px`;
     terminalTabRef.current.style.left = `${btn.offsetLeft}px`;
-  }, []);
+  };
 
   useEffect(() => {
     setTimeout(() => {
