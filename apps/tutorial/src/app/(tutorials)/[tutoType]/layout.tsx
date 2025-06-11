@@ -40,7 +40,7 @@ export default async function ContentLayout({
     });
   }
 
-  const tutorialType = tutoType as TutorialEnums || "react";
+  const tutorialType = tutoType as TutorialEnums;
   const tutorialData = getTutorialsByKey[tutorialType as TutorialEnums];
 
   return (
