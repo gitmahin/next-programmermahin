@@ -493,19 +493,19 @@ pre code {
     background-color: var(--code-error-background);
   }
 
-  .dark .highlighted-word {
-    background-color: var(--background-color-750C);
-    border: 1px solid var(--border-color-700C);
-    padding: 1px;
-    border-radius: 3px;
-  }
-
   .highlighted-word {
     background-color: var(--background-color-800C);
     border: 1px solid var(--border-color-800C);
     padding: 1px;
     border-radius: 3px;
   }
+}
+
+.dark pre code .highlighted-word {
+  background-color: var(--background-color-700C);
+  border: 1px solid var(--border-color-700C);
+  padding: 1px;
+  border-radius: 3px;
 }
 
 /* Apply blur to everything inside <pre> except for .focused elements */
@@ -556,7 +556,7 @@ pre:has(.focused):hover span {
   color: rgba(115, 138, 148, 0.4);
 }
 
-.next-mdx-remote-codeblock code[data-theme*=" "],
+/* .next-mdx-remote-codeblock code[data-theme*=" "],
 .next-mdx-remote-codeblock code[data-theme*=" "] span {
   color: var(--shiki-light);
 }
@@ -574,7 +574,7 @@ pre:has(.focused):hover span {
   pre {
     background-color: var(--shiki-dark-bg) !important;
   }
-}
+} */
 
 .dark {
   .codeblock .shiki,
