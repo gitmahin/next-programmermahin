@@ -161,7 +161,7 @@ export const FeaturesSlider = ({
               {Array.from({ length: 3 }).map((item, i) => {
                 return (
                   <div
-                    className="w-[15px] h-[15px] rounded-full bg-background-color_850C"
+                    className="w-[13px] h-[13px] rounded-full dark:bg-background-color_800C bg-background-color_850C"
                     key={i}
                   ></div>
                 );

@@ -75,20 +75,22 @@ export const CodeEditorHeroAnimationDisplay = ({
     <div className="relative z-10 w-full h-[650px] px-5">
       <div className="absolute max-w-[500px] w-full h-full dark:bg-pm_zinc-600 bg-pm_zinc-300 blur-[100px] rounded-full left-1/2 -translate-x-1/2 -z-[1]"></div>
       <div className=" layout_max_1200 mx-auto w-full h-full ">
-        <div className="rounded-[20px] border border-border-color_800C backdrop-blur-[150px] dark:bg-[#11111371] bg-[#f7f7f888] w-full h-full overflow-hidden relative">
+        <div className="rounded-[12px] p-1 pt-0 border border-border-color_800C backdrop-blur-[150px] dark:bg-[#11111371] bg-[#f7f7f888] w-full h-full overflow-hidden relative">
           <div className="absolute w-[300px] h-[300px] rounded-[50%] blur-[200px] dark:bg-pm_purple-500 dark:opacity-[70%] bg-pm_purple-400 top-0 left-0 -z-[11]"></div>
           <div className="absolute w-[300px] h-[300px] rounded-[50%] blur-[200px] dark:bg-pm_purple-500 dark:opacity-[70%] bg-pm_purple-400 bottom-0 right-0 -z-[11]"></div>
-          <div className="w-full h-[40px] px-3 pt-2 flex justify-start items-center">
-            <div className="flex justify-center items-center w-fit gap-2">
-              <div className="w-[14px] h-[14px] rounded-full dark:bg-[#7e22ce5e] bg-[#7e22ce42] border dark:border-pm_purple-800 border-pm_purple-400"></div>
-              <div className="w-[14px] h-[14px] rounded-full dark:bg-[#7e22ce5e] bg-[#7e22ce42] border dark:border-pm_purple-800 border-pm_purple-400"></div>
-              <div className="w-[14px] h-[14px] rounded-full dark:bg-[#7e22ce5e] bg-[#7e22ce42] border dark:border-pm_purple-800 border-pm_purple-400"></div>
-            </div>
 
-            <div className="flex justify-start items-center gap-2 pl-5 relative overflow-x-scroll w-full hide-scrollbar">
+            <div className="flex justify-start h-fit py-2 px-1 items-center w-fit gap-2">
+              {
+                Array.from({ length: 3 }).map((_, i) => {
+                  return <div key={i} className="w-[13px] h-[13px] rounded-full dark:bg-[#7e22ce5e] bg-[#7e22ce42] border dark:border-pm_purple-800 border-pm_purple-400"></div>
+                })
+              }
+            </div>
+          <div className="w-full h-[38px] px-1 py-0 flex justify-start items-center bg-background-color_800C rounded-t-[8px] border border-border-color_800C">
+            <div className="flex justify-start items-center gap-2 relative overflow-x-scroll w-full hide-scrollbar">
               <div
                 ref={terminalTabRef}
-                className="w-[73px] left-5 h-full transition-all duration-500 absolute dark:border-pm_purple-600 border-pm_purple-200 border bg-gradient-to-br from-pm_purple-500 to-pm_purple-800 rounded-tiny "
+                className="w-[73px] left-5 h-full transition-all duration-500 absolute dark:border-border-color_700C border dark:bg-background-color_700C bg-background-color_750C border-border-color_800C rounded-tiny "
               ></div>
               {TERMINAL_BUTTONS.map((button, i) => {
                 return (
@@ -98,12 +100,12 @@ export const CodeEditorHeroAnimationDisplay = ({
                         tabRefs.current[i] = btn;
                       }}
                       onClick={() => swiperRef.current?.slideTo(i)}
-                      className={`font-medium  px-2 py-1 text-read_2 z-10 relative transition-colors rounded-tiny  ${slideIndex === i ? "text-text-zinc_white" : "dark:hover:bg-[#7e22ce2e] hover:bg-[#7e22ce14] hover:backdrop-blur-lg text-text-color_2"}`}
+                      className={`font-medium  px-2 py-1 text-read_3 z-10 relative transition-colors rounded-tiny  ${slideIndex === i ? "dark:text-text-zinc_white text-text-color_1" : "hover:bg-background-color_750C hover:backdrop-blur-lg text-text-color_2"}`}
                     >
                       {button.label}
                     </button>
                     {i < TERMINAL_BUTTONS.length - 1 && (
-                      <div className="h-[15px] w-[1px] bg-background-color_750C"></div>
+                      <div className="h-[15px] w-[1px] bg-background-color_700C"></div>
                     )}
                   </React.Fragment>
                 );
@@ -111,7 +113,7 @@ export const CodeEditorHeroAnimationDisplay = ({
             </div>
           </div>
 
-          <div className="p-2 h-[calc(100%-40px)] w-full">
+          <div className="pt-0 h-[calc(100%-40px)] w-full">
             <Swiper
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
@@ -127,14 +129,14 @@ export const CodeEditorHeroAnimationDisplay = ({
               slidesPerView={1}
               navigation={false}
               allowTouchMove={false}
-              className="h-full rounded-[14px] overflow-hidden border border-border-color_800C "
+              className="h-[calc(100%-28px)] rounded-b-[8px] overflow-hidden "
             >
               <SwiperSlide className="w-full relative z-10">
-                <div className="h-[calc(100%-200px)] w-full overflow-y-auto overflow-x-hidden custom_scrollbar">
+                <div className="h-[calc(100%-200px)] w-full border border-border-color_800C rounded-b-[8px] overflow-y-auto hide-scrollbar overflow-x-hidden ">
                   {pageTsxComponent}
                 </div>
-                <div className="h-[200px] w-full border-t border-border-color_800C bg-background-color_900C">
-                  <div className="flex justify-start items-center text-[11px] text-text-color_3 gap-5 py-2 px-3">
+                <div className="h-[200px] w-full border rounded-[8px] overflow-hidden  mt-1 border-border-color_800C bg-background-color_900C ">
+                  <div className="flex justify-start bg-background-color_800C items-center text-[11px] text-text-color_3 gap-5 py-2 px-3">
                     <button>PROBLEMS</button>
                     <button>DEBUG CONSOLE</button>
                     <button className="relative text-text-color_4 font-medium">
@@ -143,7 +145,7 @@ export const CodeEditorHeroAnimationDisplay = ({
                     </button>
                     <button>PORTS</button>
                   </div>
-                  <div className="h-[calc(100%-34px)] overflow-y-auto px-3 py-2 text-[14px] custom_scrollbar text-text-color_4">
+                  <div className="h-[calc(100%-34px)] overflow-y-auto px-3 py-2 text-[14px] hide-scrollbar  text-text-color_4">
                     <p>&gt; next dev --turbopack --port 3000</p>
                     <div className="px-4 py-2">
                       <p>
@@ -193,10 +195,10 @@ export const CodeEditorHeroAnimationDisplay = ({
               <SwiperSlide className="w-full h-full ">
                 {styleCssComponent}
               </SwiperSlide>
-              <SwiperSlide className="w-full h-full overflow-y-auto custom_scrollbar overflow-x-hidden">
+              <SwiperSlide className="w-full h-full overflow-y-auto hide-scrollbar overflow-x-hidden">
                 {tailwindComponent}
               </SwiperSlide>
-              <SwiperSlide className="w-full h-full overflow-y-auto custom_scrollbar overflow-x-hidden">
+              <SwiperSlide className="w-full h-full overflow-y-auto hide-scrollbar overflow-x-hidden">
                 {packageJsonComponent}
               </SwiperSlide>
               <SwiperSlide className="w-full dark:bg-[#111113a3] bg-[#f7f7f888]">

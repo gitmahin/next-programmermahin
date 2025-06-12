@@ -535,7 +535,7 @@ pre:has(.focused):hover span {
 }
 
 .codeblockwithouttypes .line {
-  padding: 0px 25px;
+  padding: 0px 30px;
 }
 
 .codeblock code {
@@ -603,8 +603,8 @@ pre:has(.focused):hover span {
 .light {
   .codeblockwithouttypes .add:before {
     content: "+";
-    color: #2ac27e;
-    left: 5px;
+    color: var(--code-add-color);
+    left: 0px;
     position: absolute;
   }
 }
