@@ -489,8 +489,8 @@ pre code {
   }
 
   .error {
-    border: 2px solid var(--code-error-border);
-    background-color: var(--code-error-background);
+    border: 2px solid var(--code-error-border) !important;
+    background-color: var(--code-error-background) !important;
   }
 
   .highlighted-word {

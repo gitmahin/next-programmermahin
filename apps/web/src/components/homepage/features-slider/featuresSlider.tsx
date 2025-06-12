@@ -174,8 +174,8 @@ export const FeaturesSlider = ({
               </span>
             </div>
           </div>
-          <div className="p-2 pt-0 w-full h-[calc(100%-40px)]">
-            <div className="w-full h-full  bg-background-color_900C p-1 rounded-[14px]">
+          <div className=" w-full h-[calc(100%-40px)]">
+            <div className="w-full h-full  p-1 pt-0 rounded-[14px]">
               <Swiper
                 onSwiper={(swiper) => {
                   swiperRef.current = swiper;
