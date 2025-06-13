@@ -1,16 +1,17 @@
-import { CodeEditorHeroAnimationDisplay } from "@/components/homepage/codeEditorHeroAnimation";
-import {
-  TrmPage,
-  TrmStyle,
-  TrmPackageJson,
-} from "@/components/homepage/terminal";
 import { AirFlowText } from "@/components/framer-motions";
 import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
 import { ChevronRight } from "lucide-react";
 import React from "react";
-import { SnippetsFeatures } from "@/components/homepage/features-slider";
 import Link from "next/link";
-import { TrmTailwind } from "@/components/homepage/terminal/trmTailwind";
+import {
+  ErrorResolvingComp,
+  TrmTailwind,
+  SnippetsFeatures,
+  TrmPage,
+  TrmStyle,
+  TrmPackageJson,
+  CodeEditorHeroAnimationDisplay,
+} from "@/components/homepage";
 
 //  <div className="w-full h-[30px] border-b border-border-color_800C relative">
 //           <div className="w-full h-full absolute left-0 top-0 border-none box-border border-border-color_800C border-x border-x-border-color_800C bg-[image:repeating-linear-gradient(225deg,_var(--border-color-800C)_0,_var(--border-color-800C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-800C)]/5 md:block dark:[--pattern-fg:var(--border-color-800C)]/10 "></div>
@@ -32,30 +33,26 @@ export default function Home() {
       {/* hero */}
       <div className="layout_max_1200 w-full mx-auto relative z-10 pt-[64px] px-5">
         <div className="flex justify-center items-center w-full mt-16">
-          
           <p className="font-medium text-read_2 text-text-color_1 text-center">
-          <span className="bg-gradient-to-br dark:from-green-700 dark:to-green-900 from-green-100 to-green-300 font-medium text-read_2 border border-green-500 px-2 rounded-tablet">
-            Free
-          </span>
-          <span className="pl-2">
-            Practical. Powerful Learning Platform for Developers
-
-          </span>
+            <span className="bg-gradient-to-br dark:from-green-700 dark:to-green-900 from-green-100 to-green-300 font-medium text-read_2 border border-green-500 px-2 rounded-tablet">
+              Free
+            </span>
+            <span className="pl-2">
+              Practical. Powerful Learning Platform for Developers
+            </span>
           </p>
         </div>
 
         <div className="mt-5">
           <AirFlowText initialY={20} duration={0.5}>
-            <h1 className="main_hero_heading_sync font-semibold text-center text-text-color_1 w-full tracking-tight">
+            <h1 className="main_hero_heading_sync font-weight_550 text-center text-text-color_1 w-full tracking-tight">
               Where Future{" "}
               <span className="font-geist_mono text-pm_purple-600">[</span>
               <span className="font-geist_mono">Programmers</span>
               <span className="font-geist_mono text-pm_purple-600">]</span>{" "}
               Begin
-              <br/>
-              & Code Becomes Confidence.
+              <br />& Code Becomes Confidence.
             </h1>
-           
           </AirFlowText>
           <AirFlowText initialY={25} duration={0.5}>
             <p className="text-[18px] weight_450 mt-4 text-text-color_4 text-center mx-auto max-w-[650px] max-[850px]:text-[16px] w-full leading-6">
@@ -120,6 +117,8 @@ export default function Home() {
       />
 
       <SnippetsFeatures />
+
+      <ErrorResolvingComp />
       <div className="mt-32"></div>
     </div>
   );
