@@ -23,7 +23,7 @@ const ErrorChildElement = ({
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsam
         earum consectetur quisquam atque esse, rerum ad rem optio eveniet?
       </p>
-      <div className="p-1.5 bg-gradient-to-tl from-background-color_950C via-background-color_900C to-background-color_700C h-[350px] max-[970px]:h-[300px]  rounded-[15px] mt-8">
+      <div className="p-1.5 bg-gradient-to-tl from-background-color_950C via-background-color_900C to-background-color_700C h-[350px] [@media(max-width:970px)]:h-[300px]  rounded-[15px] mt-8">
         <div className="bg-background-color_950C w-full h-full rounded-[12px]"></div>
       </div>
     </div>
@@ -44,10 +44,10 @@ export const ErrorResolvingComp = () => {
   return (
     <div className="  mt-44  w-full px-5 ">
       <div className="layout_max_1200  mx-auto ">
-        <div className="flex justify-between items-start max-[1210px]:flex-col">
+        <div className="flex justify-between items-start [@media(max-width:1137px)]:flex-col [@media(max-width:1137px)]:items-center">
           <div className="flex-shrink-0">
-            <h2 className=" main_hero_heading_sync font-weight_530 transition-all duration-300 ">
-              <span className="flex justify-start items-center  ">
+            <h2 className=" main_hero_heading_sync font-weight_530 transition-all duration-300 [@media(max-width:1137px)]:text-center">
+              <span className="flex justify-start items-center  [@media(max-width:1137px)]:justify-center">
                 Tired of{" "}
                 <span className="border ml-3 mr-1 px-2 border-red-600 bg-[#dc262639]">
                   <LetterSwapForward
@@ -63,18 +63,18 @@ export const ErrorResolvingComp = () => {
               </span>
             </h2>
           </div>
-          <p className="text-read_1 max-w-[500px] w-full font-medium text-text-color_2 max-[1210px]:mt-2 max-[550]:max-w-[100%]">
+          <p className="text-read_1 max-w-[500px] w-full font-medium text-text-color_2 [@media(max-width:1137px)]:mt-2 max-[550]:max-w-[100%] [@media(max-width:1137px)]:text-center">
             From cryptic console messages to broken UI elements — our fix guides
             are built to save your time and sanity. Discover how to resolve
             common errors quickly, efficiently, and with confidence.
           </p>
         </div>
 
-        <div className="grid relative grid-cols-2 grid-rows-2  w-full mt-16 gap-y-20 max-[1140px]:gap-x-24 max-[900px]:grid-cols-1 max-[900px]:grid-rows-[auto] max-[900px]:justify-items-center">
-            <div className="absolute w-[1px] bg-background-color_900C h-full top-0 left-1/2 -translate-x-1/2 max-[900px]:hidden"></div>
-            <div className="absolute h-[1px] bg-background-color_900C w-full top-1/2 left-0 -translate-y-1/2 max-[900px]:hidden"></div>
+        <div className="grid relative grid-cols-2 grid-rows-2  w-full mt-16 gap-y-20 [@media(max-width:1140px)]:gap-x-24 [@media(max-width:900px)]:grid-cols-1 [@media(max-width:900px)]:grid-rows-[auto] [@media(max-width:900px)]:justify-items-center">
+            <div className="absolute w-[1px] bg-background-color_900C h-full top-0 left-1/2 -translate-x-1/2 [@media(max-width:900px)]:hidden"></div>
+            <div className="absolute h-[1px] bg-background-color_900C w-full top-1/2 left-0 -translate-y-1/2 [@media(max-width:900px)]:hidden"></div>
             <ErrorChildElement
-            title={""} 
+            title={""}  
             desc={""}
             image={""}
             />
@@ -82,7 +82,7 @@ export const ErrorResolvingComp = () => {
             title={""}
             desc={""}
             image={""}
-            className="ml-auto max-[900px]:ml-0"
+            className="ml-auto [@media(max-width:900px)]:ml-0"
             />
             <ErrorChildElement
             title={""}
@@ -93,7 +93,7 @@ export const ErrorResolvingComp = () => {
             title={""}
             desc={""}
             image={""}
-                   className="ml-auto max-[900px]:ml-0"
+                   className="ml-auto [@media(max-width:900px)]:ml-0"
             />
         </div>
       </div>

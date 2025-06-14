@@ -55,7 +55,7 @@ export default function Home() {
             </h1>
           </AirFlowText>
           <AirFlowText initialY={25} duration={0.5}>
-            <p className="text-[18px] weight_450 mt-4  text-text-color_4 text-center mx-auto max-w-[650px] w-full leading-6 max-[1000px]:text-[16px]">
+            <p className="text-[18px] weight_450 mt-4  text-text-color_4 text-center mx-auto max-w-[650px] w-full leading-6 [@media(max-width:1000px)]:text-[16px]">
               Get unlimited access to tutorials, hands-on problem solving, and
               industry-level development knowledge - all in one powerful
               platform. Start your journey to level up your career.
