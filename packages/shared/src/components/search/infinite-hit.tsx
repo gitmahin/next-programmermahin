@@ -41,8 +41,8 @@ export function InfiniteHits({
       <div className="ais-InfiniteHits-list">
         {Object.keys(groupedHits).map((label, i) => (
           <React.Fragment key={i}>
-            <div className="border p-3 rounded border-border-color_800C bg-background-color_925C mb-2">
-              <div className={` flex justify-start items-center gap-2 `}>
+            <div className="border p-1 rounded-[15px] border-border-color_800C bg-background-color_925C mb-2">
+              <div className={` flex justify-start items-center gap-2 px-3 pt-1`}>
                 <Folder
                   size={LUCIDE_DEFAULT_ICON_SIZE}
                   className="text-text-color_1"
@@ -54,7 +54,7 @@ export function InfiniteHits({
                     .replace(/^\w/, (c) => c.toUpperCase())}
                 </span>
               </div>
-              <div className="bg-background-color_950C mt-2 rounded p-2">
+              <div className="bg-background-color_950C mt-2 rounded-[12px] p-2">
                 {groupedHits &&
                   groupedHits[label]?.map((hit) => (
                     <div key={hit.objectID} className="ais-InfiniteHits-item  ">

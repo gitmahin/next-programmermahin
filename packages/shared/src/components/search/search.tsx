@@ -129,8 +129,8 @@ export const Search = ({ showSearchButton = true }: SearchPropsTypes) => {
           handleOpenChangeSearchBox(state);
         }}
       >
-        <DialogContent className="max-w-[950px] max-h-[650px] h-full w-full p-2 outline-none">
-          <div className="w-full h-full overflow-hidden bg-background-color_950C border-border-color_800C border rounded">
+        <DialogContent className="max-w-[950px] max-h-[650px] h-full w-full p-2 outline-none ">
+          <div className="w-full h-full overflow-hidden bg-background-color_950C border-border-color_800C border !rounded-[20px]">
             <InstantSearch
               searchClient={searchAlgolia}
               indexName={TUTORIAL_INDEX_NAME}
@@ -151,15 +151,6 @@ export const Search = ({ showSearchButton = true }: SearchPropsTypes) => {
                   }}
                   submitIconComponent={() => <SearchIcon />}
                 />
-                <button
-                  onClick={() => handleOpenChangeSearchBox(false)}
-                  className="rounded-full p-1 transition-all group absolute top-1/2 -translate-y-1/2 right-3 bg-background-color_900C hover:bg-background-color_800C"
-                >
-                  <X
-                    size={LUCIDE_DEFAULT_ICON_SIZE}
-                    className="text-text-svg_default_color group-hover:text-text-color_1 "
-                  />
-                </button>
               </div>
               <NoResultsBoundary fallback={<NoResults />}>
                 <div className="w-full border-b border-border-color_800C sticky top-[0px] left-0 h-[40px] flex justify-center items-center flex-shrink-0 z-10">
@@ -187,7 +178,7 @@ export const Search = ({ showSearchButton = true }: SearchPropsTypes) => {
                         />
                       </div>
                       <div
-                        className={`w-full h-full rounded bg-background-color_925C overflow-y-auto custom_scrollbar`}
+                        className={`w-full h-full rounded-[15px] bg-background-color_925C overflow-y-auto custom_scrollbar`}
                       >
                         <div className="p-4 pb-0">
                           <div className="w-full flex justify-center items-center">

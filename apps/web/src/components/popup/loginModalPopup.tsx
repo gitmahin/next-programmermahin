@@ -25,17 +25,11 @@ export const LoginModalPopup = ({
       open={open}
       onOpenChange={(state) => handleOpenChange(state)}
     >
-      <DialogContent className="border border-border-color_800C max-w-[400px] w-full bg-background-color_925C  ">
-        <button
-          onClick={() => handleOpenChange(false)}
-          className="absolute top-3 right-3 outline-none bg-background-color_850C transition-all shadow rounded-full group hover:bg-background-color_800C p-2"
-        >
-          <X
-            size={LUCIDE_DEFAULT_ICON_SIZE}
-            className="text-text-svg_default_color group-hover:text-text-color_1"
-          />
-        </button>
-        <div className="w-full max-h-[600px] h-fit overflow-y-auto custom_scrollbar p-5 ">
+      <DialogContent
+        className=" !rounded-none overflow-hidden p-3 max-h-[600px] h-full max-w-[400px] w-full "
+        closeButtonClassName="!top-4 !right-4"
+      >
+        <div className="overflow-y-auto p-5  border !rounded-[15px] h-full border-border-color_800C custom_scrollbar   bg-background-color_925C">
           {children}
         </div>
       </DialogContent>

@@ -9,7 +9,7 @@ export default function ErrorResolvingHomePage() {
           return (
             <div
               key={i}
-              className="  border rounded-[15px] bg-background-color_950C h-[300px] border-border-color_800C"
+              className="overflow-hidden relative border rounded-[15px] bg-background-color_950C h-[300px] border-border-color_800C"
             >
               <div className="bg-[var(--accent-surface-error-bg)] p-3 rounded-t-[15px] text-[var(--accent-surface-error-fg)] border border-[var(--accent-surface-error-border)]">
                 <h2 className="  text-read_1 font-medium  three_line_ellipsis overflow-hidden">
@@ -19,15 +19,18 @@ export default function ErrorResolvingHomePage() {
                   recusandae nemo nesciunt ullam error!
                 </h2>
               </div>
-              <div className="p-3">
+              <div className="p-3 bg-background-color_925C h-full">
                 <p className="text-read_3 text-text-color_3">Quick overview to resolve</p>
                 <p className="text-read_2 text-text-color_2 mt-1 three_line_ellipsis overflow-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi placeat reiciendis iusto fuga numquam aspernatur ipsam perspiciatis incidunt, pariatur hic dolore dolor aliquam neque impedit sunt ipsum accusamus. Mollitia, reiciendis.</p>
               </div>
-              <Link scroll={false} href={`/error-resolving/resolve-${i+1}`}>
-                <button className="py-2 px-8 text-text-zinc_white font-medium text-read_1 bg-emerald-600 rounded ">
+              <div className="absolute bottom-0 left-0 p-3 w-full bg-background-color_950C">
+
+              <Link scroll={false} href={`/error-resolving/resolve-${i+1}`} >
+                <button className="py-2 px-8 text-text-zinc_white font-medium text-read_1 bg-green-700 transition-colors hover:bg-green-600 active:bg-green-800  rounded ">
                     Resolve now
                 </button>
               </Link>
+              </div>
             </div>
           );
         })}

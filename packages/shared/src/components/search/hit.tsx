@@ -97,7 +97,7 @@ export default function Hit({ hit }: HitProps) {
       }}
     >
       <li
-        className={`w-full flex justify-between items-center list-none group p-3 ${searchMetaInfoActiveKey === hit.objectID.toString() && "bg-background-color_800C"} hover:bg-background-color_800C transition-colors rounded-tiny`}
+        className={`w-full flex justify-between items-center list-none group p-3 ${searchMetaInfoActiveKey === hit.objectID.toString() && "bg-background-color_800C"} hover:bg-background-color_800C transition-colors rounded-[8px]`}
       >
         <div className="flex justify-start items-center gap-3">
           <div className="flex-shrink-0 bg-background-color_925C w-[30px] h-[30px] rounded-tiny flex justify-center items-center">

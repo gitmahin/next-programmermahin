@@ -1,0 +1,164 @@
+---
+title: Understanding JSX in React
+desc: A beginner-friendly guide to learning JSX, the syntax extension for JavaScript that makes writing React applications easier and cleaner.
+---
+
+# Understanding JSX in React
+
+---
+
+## What is JSX?
+
+**JSX** stands for **JavaScript XML**.
+
+- ✅ Allows writing HTML-like code in JavaScript.
+- ✅ Makes React code more readable and easier to write.
+- ✅ Translates to standard JavaScript using tools like Babel.
+
+---
+
+## Why Use JSX?
+
+JSX simplifies the process of creating and inserting HTML elements into the DOM.
+
+Instead of doing this:
+```js
+const element = React.createElement('h1', {}, 'Hello, world!');
+```
+
+You can do this with JSX:
+```js 
+const element = <h1>Hello, world!</h1>;
+```
+
+---
+
+## Basic JSX Example
+
+```js
+const myElement = <h1>I Love JSX!</h1>;
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(myElement);
+```
+
+Without JSX:
+```js
+const myElement = React.createElement('h1', {}, 'I do not use JSX!');
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(myElement);
+```
+
+---
+
+## Expressions in JSX
+
+JSX lets you embed expressions using `{}`:
+
+```js
+const myElement = <h1>React is {5 + 5} times better with JSX</h1>;
+```
+
+You can use variables, functions, or any JavaScript expression inside the curly braces.
+
+---
+
+## Multiline HTML with JSX
+
+To write multiple lines of HTML, wrap them in parentheses:
+```js 
+const myElement = (
+  <ul>
+    <li>Apples</li>
+    <li>Bananas</li>
+    <li>Cherries</li>
+  </ul> 
+);
+```
+
+---
+
+## One Top Level Element
+
+JSX must return **a single parent element**.
+
+✅ Valid:
+```js
+const myElement = (
+  <div> // [!code warning]
+    <p>I am a paragraph.</p>
+    <p>I am a paragraph too.</p>
+  </div> // [!code warning]
+);
+```
+
+❌ Invalid:
+```js
+// This will cause an error
+const myElement = (
+  <p>I am a paragraph.</p> // [!code error]
+  <p>I am a paragraph too.</p> // [!code error]
+);
+```
+
+✅ Alternative: Use a **Fragment** (`<> </>`)
+```js
+const myElement = (
+  <> // [!code highlight]
+    <p>I am a paragraph.</p>
+    <p>I am a paragraph too.</p>
+  </> // [!code highlight]
+);
+```
+
+---
+
+## JSX Rules Recap
+
+### All elements must be closed
+```js
+const myElement = <input type="text" />;
+```
+
+### Use className instead of class
+```js
+// [!code word:className]
+const myElement = <h1 className="header">Hello World</h1>;
+```
+
+---
+
+## Conditional Rendering in JSX
+
+JSX does not support `if` statements directly inside the return block. Use either:
+
+### Option 1: Declare outside JSX
+```js
+// [!code word:text]
+const x = 5;
+let text = "Goodbye";
+if (x < 10) {
+  text = "Hello";
+}
+const myElement = <h1>{text}</h1>;
+```
+
+### Option 2: Use Ternary Operator
+```js
+// [!code word:?]
+const x = 5;
+const myElement = <h1>{x < 10 ? "Hello" : "Goodbye"}</h1>;
+```
+
+---
+
+## Summary
+
+- JSX allows mixing HTML with JavaScript in a seamless way.
+- Helps keep code clean, readable, and efficient.
+- Requires proper syntax like closing tags and wrapping with one parent.
+- Use `{}` for expressions and ternary for conditionals.
+
+Start using JSX to build cleaner, faster, and more dynamic React applications!
+
