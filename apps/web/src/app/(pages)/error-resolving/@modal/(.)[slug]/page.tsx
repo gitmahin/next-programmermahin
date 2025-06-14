@@ -1,5 +1,5 @@
 import matter from "gray-matter";
-import { mdxToHtml } from "@programmer/shared";
+import { CommentSection, mdxToHtml } from "@programmer/shared";
 import fs from "fs/promises";
 import { PopoverDialog } from "./popoverDialog";
 
@@ -24,6 +24,8 @@ export default async function InterceptedSingleErrorResolvePage({
         <article className="prose prose-gray dark:prose-invert">
           {parsedContent}
         </article>
+        <CommentSection/>
+
       </PopoverDialog>
     </>
   );
