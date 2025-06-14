@@ -909,6 +909,7 @@ pre:has(.focused):hover span {
   line-height: 1.2;
 }
 
+/* forgot where i used this */
 .secondary_heading_sync {
   font-size: clamp(30px, 5vw, 44px);
   line-height: 1.2;
@@ -917,6 +918,12 @@ pre:has(.focused):hover span {
 /* uses in design */
 .main_hero_heading_sync {
   font-size: clamp(35px, 5vw, 56px);
+  line-height: 1.2;
+}
+
+/* uses in design */
+.super_heading_sync {
+  font-size: clamp(40px, 5vw, 64px);
   line-height: 1.2;
 }
 
