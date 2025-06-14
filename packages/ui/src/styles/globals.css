@@ -921,6 +921,12 @@ pre:has(.focused):hover span {
   line-height: 1.2;
 }
 
+/* uses in design */
+.super_heading_sync {
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.2;
+}
+
 .weight_450 {
   font-weight: 450;
 }

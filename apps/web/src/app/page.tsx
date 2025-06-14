@@ -45,7 +45,7 @@ export default function Home() {
 
         <div className="mt-5">
           <AirFlowText initialY={20} duration={0.5}>
-            <h1 className="main_hero_heading_sync font-weight_550 text-center text-text-color_1 w-full tracking-tight">
+            <h1 className="super_heading_sync font-weight_550 text-center text-text-color_1 w-full tracking-tighter">
               Where Future{" "}
               <span className="font-geist_mono text-pm_purple-600">[</span>
               <span className="font-geist_mono">Programmers</span>
@@ -55,7 +55,7 @@ export default function Home() {
             </h1>
           </AirFlowText>
           <AirFlowText initialY={25} duration={0.5}>
-            <p className="text-[18px] weight_450 mt-4 text-text-color_4 text-center mx-auto max-w-[650px] max-[850px]:text-[16px] w-full leading-6">
+            <p className="text-[18px] weight_450 mt-4  text-text-color_4 text-center mx-auto max-w-[650px] w-full leading-6 max-[1000px]:text-[16px]">
               Get unlimited access to tutorials, hands-on problem solving, and
               industry-level development knowledge - all in one powerful
               platform. Start your journey to level up your career.
