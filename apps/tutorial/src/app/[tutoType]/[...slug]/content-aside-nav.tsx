@@ -2,25 +2,23 @@
 import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
 import { AlignLeft, TableOfContents, X } from "lucide-react";
 import Link from "next/link";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { extractAnchors } from "@programmer/shared";
-import { useActiveAnchor } from "@programmer/hooks";
+import React, { useState } from "react";
+import { generateTocFromMdx, useActiveHeading } from "react-mdxutils"
 
 export default function ContentAsideNav({
   mdxContent,
 }: {
   mdxContent: string;
 }) {
-  const anchors = extractAnchors(mdxContent);
+  const anchors = generateTocFromMdx(mdxContent);
   const [openAside, setOpenAside] = useState<boolean>(false);
   const {
-    handleHashClick,
-    anchorListsRef,
-    tabRef,
-    moveTabToAnchor,
-    activeHash,
+    handleActiveHeading,
+    activeHeading,
+    activeIndicatorRef,
+    headingListRefs,
     asideRef,
-  } = useActiveAnchor(mdxContent);
+  } = useActiveHeading(mdxContent);
 
   return (
     <>
@@ -59,15 +57,15 @@ export default function ContentAsideNav({
                 <Link href={`#${item.slug}`} key={i} className="">
                   <li
                     ref={(el) => {
-                      anchorListsRef.current[item.slug] = el;
+                      headingListRefs.current[item.slug] = el;
                     }}
                     onClick={() => {
-                      handleHashClick(`#${item.slug}`);
-                      moveTabToAnchor(
-                        anchorListsRef.current[item.slug] as HTMLElement
+                    
+                      handleActiveHeading(
+                        headingListRefs.current[item.slug] as HTMLElement, `#${item.slug}`
                       );
                     }}
-                    className={`one_line_ellipsis w-fit px-2 text-read_2 ${activeHash === `#${item.slug}` ? "text-pm_purple-600 font-medium" : "text-text-color_2"}`}
+                    className={`one_line_ellipsis w-fit px-2 text-read_2 ${activeHeading === `#${item.slug}` ? "text-pm_purple-600 font-medium" : "text-text-color_2"}`}
                     style={{ marginLeft: `${(item.level - 2) * 10}px` }}
                   >
                     {item.content}
@@ -76,7 +74,7 @@ export default function ContentAsideNav({
               );
             })}
             <div
-              ref={tabRef}
+              ref={activeIndicatorRef}
               className="absolute transition-all duration-200 h-[28px] bg-background-color_850C left-0 top-0 rounded-tiny -z-10"
             ></div>
           </ul>

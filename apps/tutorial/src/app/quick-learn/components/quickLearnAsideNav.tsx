@@ -1,48 +1,26 @@
 "use client";
-import { useActiveAnchor } from "@programmer/hooks";
-import { extractAnchors, TocItem } from "@programmer/shared";
 import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
 import { TableOfContents, X } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
-
-// interface NestedAnchor extends TocItem {
-//   children: TocItem[];
-// }
-
-// function nestAnchors(anchors: TocItem[]): NestedAnchor[] {
-//   const nested: NestedAnchor[] = [];
-//   let currentH2: NestedAnchor | null = null;
-
-//   for (const anchor of anchors) {
-//     if (anchor.level === 2) {
-//       currentH2 = { ...anchor, children: [] };
-//       nested.push(currentH2);
-//     } else if (currentH2) {
-//       currentH2.children.push(anchor);
-//     }
-//   }
-
-//   return nested;
-// }
+import { generateTocFromMdx, useActiveHeading } from "react-mdxutils";
 
 export const QuickLearnAsideNav = ({
   matterContent,
 }: {
   matterContent: string;
 }) => {
-  const anchors = extractAnchors(matterContent);
+  const anchors = generateTocFromMdx(matterContent);
   const [openAside, setOpenAside] = useState<boolean>(false);
   // const nestedAnchors = nestAnchors(anchors);
   // console.log(nestedAnchors);
   const {
-    handleHashClick,
-    anchorListsRef,
-    tabRef,
-    moveTabToAnchor,
-    activeHash,
+    handleActiveHeading,
+    activeHeading,
+    activeIndicatorRef,
+    headingListRefs,
     asideRef,
-  } = useActiveAnchor(matterContent);
+  } = useActiveHeading(matterContent);
 
   return (
     <>
@@ -75,15 +53,15 @@ export const QuickLearnAsideNav = ({
                 <Link href={`#${anchor.slug}`} key={i}>
                   <li
                     ref={(el) => {
-                      anchorListsRef.current[anchor.slug] = el;
+                      headingListRefs.current[anchor.slug] = el;
                     }}
                     onClick={() => {
-                      handleHashClick(`#${anchor.slug}`);
-                      moveTabToAnchor(
-                        anchorListsRef.current[anchor.slug] as HTMLElement
+                     
+                      handleActiveHeading(
+                        headingListRefs.current[anchor.slug] as HTMLElement, `#${anchor.slug}`
                       );
                     }}
-                    className={`one_line_ellipsis px-3 w-fit text-read_2 ${activeHash === `#${anchor.slug}` ? "text-pm_purple-600 font-medium" : "text-text-color_2"}`}
+                    className={`one_line_ellipsis px-3 w-fit text-read_2 ${activeHeading === `#${anchor.slug}` ? "text-pm_purple-600 font-medium" : "text-text-color_2"}`}
                     style={{ marginLeft: `${(anchor.level - 2) * 10}px` }}
                   >
                     {anchor.content}
@@ -92,7 +70,7 @@ export const QuickLearnAsideNav = ({
               );
             })}
             <div
-              ref={tabRef}
+              ref={activeIndicatorRef}
               className="absolute transition-all duration-200 h-[28px] bg-background-color_850C  top-0 rounded-tiny -z-10"
             ></div>
           </ul>
