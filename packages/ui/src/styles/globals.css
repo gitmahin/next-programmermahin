@@ -957,3 +957,9 @@ pre:has(.focused):hover span {
     gap: 12px;
   }
 }
+
+@media screen and (max-width: 1060px) {
+  .mobile_menu{
+    display: flex;
+  }
+}

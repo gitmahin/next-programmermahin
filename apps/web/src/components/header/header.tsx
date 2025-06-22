@@ -47,7 +47,7 @@ export const Header = () => {
         </div>
         <MainNav />
 
-        <div className="hidden max-[520px]:flex justify-end items-center gap-2 flex-shrink-0">
+        <div className="hidden mobile_menu justify-end items-center gap-2 flex-shrink-0">
           <PMButton
             variant="silent"
             className="py-1 px-2 rounded-tablet group flex justify-between items-center gap-1"
@@ -79,7 +79,7 @@ export const Header = () => {
           handleOpen={handleOpenMobileMenu}
         />
 
-        <div className="flex justify-end items-center gap-2 w-full flex-1 max-[520px]:hidden">
+        <div className="flex justify-end items-center gap-2 w-full flex-1 max-[1060px]:hidden">
           <PMButton
             variant="silent"
             className="py-1 px-2 rounded-tablet group flex justify-between items-center gap-1"
