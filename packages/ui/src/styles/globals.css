@@ -405,7 +405,7 @@ body {
 }
 
 .light .codeblockwithouttypes .highlighted {
-  background-color: #2d2d2d24;
+  background-color: #7e22ce28;
   border-left: 2px solid var(--color-purple-700);
 }
 
@@ -434,7 +434,7 @@ pre code {
   }
 
   .highlighted {
-    background-color: var(--background-color-800C);
+    background-color: #7e22ce40;
     border-left: 2px solid var(--color-purple-700);
   }
 

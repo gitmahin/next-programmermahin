@@ -68,7 +68,7 @@ export const CodeEditorHeroAnimationDisplay = ({
     setTimeout(() => {
       if (!swiperRef.current) return;
       swiperRef.current?.slideTo(4);
-    }, 1000);
+    }, 1500);
   }, []);
 
   return (
@@ -79,18 +79,21 @@ export const CodeEditorHeroAnimationDisplay = ({
           <div className="absolute w-[300px] h-[300px] rounded-[50%] blur-[200px] dark:bg-pm_purple-500 dark:opacity-[70%] bg-pm_purple-400 top-0 left-0 -z-[11]"></div>
           <div className="absolute w-[300px] h-[300px] rounded-[50%] blur-[200px] dark:bg-pm_purple-500 dark:opacity-[70%] bg-pm_purple-400 bottom-0 right-0 -z-[11]"></div>
 
-            <div className="flex justify-start h-fit py-2 px-1 items-center w-fit gap-2">
-              {
-                Array.from({ length: 3 }).map((_, i) => {
-                  return <div key={i} className="w-[13px] h-[13px] rounded-full dark:bg-[#7e22ce5e] bg-[#7e22ce42] border dark:border-pm_purple-800 border-pm_purple-400"></div>
-                })
-              }
-            </div>
+          <div className="flex justify-start h-fit py-2 px-1 items-center w-fit gap-2">
+            {Array.from({ length: 3 }).map((_, i) => {
+              return (
+                <div
+                  key={i}
+                  className="w-[13px] h-[13px] rounded-full dark:bg-[#7e22ce5e] bg-[#7e22ce42] border dark:border-pm_purple-800 border-pm_purple-400"
+                ></div>
+              );
+            })}
+          </div>
           <div className="w-full h-[38px] px-1 py-0 flex justify-start items-center bg-background-color_800C rounded-t-[8px] border border-border-color_800C">
             <div className="flex justify-start items-center gap-2 relative overflow-x-scroll w-full hide-scrollbar">
               <div
                 ref={terminalTabRef}
-                className="w-[73px] left-5 h-full transition-all duration-500 absolute dark:border-border-color_700C border dark:bg-background-color_700C bg-background-color_750C border-border-color_800C rounded-tiny "
+                className="w-[73px] left-0 h-full transition-all duration-500 absolute dark:border-border-color_700C border dark:bg-background-color_700C bg-background-color_750C border-border-color_800C rounded-tiny "
               ></div>
               {TERMINAL_BUTTONS.map((button, i) => {
                 return (
@@ -115,6 +118,7 @@ export const CodeEditorHeroAnimationDisplay = ({
 
           <div className="pt-0 h-[calc(100%-40px)] w-full">
             <Swiper
+              id="typescript-hero-animation-display"
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
               }}

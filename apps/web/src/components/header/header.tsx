@@ -1,11 +1,24 @@
 "use client";
-import { LUCIDE_DEFAULT_ICON_SIZE, PMButton, PMLogo, ThemeModeToggoler } from "@programmer/ui";
-import React from "react";
-import { Search, setSearchBoxOpen } from "@programmer/shared";
+import {
+  LUCIDE_DEFAULT_ICON_SIZE,
+  PMButton,
+  PMLogo,
+  ThemeModeToggoler,
+} from "@programmer/ui";
+import React, { useState } from "react";
+import { setSearchBoxOpen } from "@programmer/shared";
 import { useAppDispatch } from "@/hooks/redux.hook";
 import { Equal, SearchIcon } from "lucide-react";
 import { MainNav } from "./mainNav";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const DynamicSearchBox = dynamic(
+  () => import("@programmer/shared").then((module) => module.Search),
+  {
+    ssr: false,
+  }
+);
 
 export const Header = () => {
   // for dispatch type safety
@@ -13,6 +26,7 @@ export const Header = () => {
 
   const handleSearchBoxOpen = () => {
     if (!setSearchBoxOpen) return;
+
     dispatch(setSearchBoxOpen(true));
   };
 
@@ -27,13 +41,19 @@ export const Header = () => {
         <MainNav />
 
         <div className="hidden max-[520px]:flex justify-end items-center gap-2 flex-shrink-0">
-
- <ThemeModeToggoler />
-        <PMButton variant="silent" radius="tablet" className="p-1 flex-shrink-0 flex justify-center items-center">
-        <Equal size={24} className="text-text-svg_default_color group-hover:text-text-color_1" />
-        </PMButton>
+          <ThemeModeToggoler />
+          <PMButton
+            variant="silent"
+            radius="tablet"
+            className="p-1 flex-shrink-0 flex justify-center items-center"
+          >
+            <Equal
+              size={24}
+              className="text-text-svg_default_color group-hover:text-text-color_1"
+            />
+          </PMButton>
         </div>
-        
+
         <div className="flex justify-end items-center gap-2 w-full flex-1 max-[520px]:hidden">
           <PMButton
             variant="silent"
@@ -48,7 +68,9 @@ export const Header = () => {
               Ctrl k
             </span>
           </PMButton>
-          <Search showSearchButton={false} />
+
+          <DynamicSearchBox showSearchButton={false} />
+
           <Link href={"/login"}>
             <PMButton
               variant="secondary"

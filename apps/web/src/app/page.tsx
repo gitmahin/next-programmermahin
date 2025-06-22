@@ -12,6 +12,7 @@ import {
   TrmPackageJson,
   CodeEditorHeroAnimationDisplay,
 } from "@/components/homepage";
+import { DynamicErrorResolveShowupSection } from "@/components/homepage/dynamics";
 
 //  <div className="w-full h-[30px] border-b border-border-color_800C relative">
 //           <div className="w-full h-full absolute left-0 top-0 border-none box-border border-border-color_800C border-x border-x-border-color_800C bg-[image:repeating-linear-gradient(225deg,_var(--border-color-800C)_0,_var(--border-color-800C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-800C)]/5 md:block dark:[--pattern-fg:var(--border-color-800C)]/10 "></div>
@@ -44,7 +45,7 @@ export default function Home() {
         </div>
 
         <div className="mt-5">
-          <AirFlowText initialY={20} duration={0.5}>
+          <AirFlowText initialY={20} duration={0.5} delay={0.2}>
             <h1 className="super_heading_sync font-weight_550 text-center text-text-color_1 w-full tracking-tighter">
               Where Future{" "}
               <span className="font-geist_mono text-pm_purple-600">[</span>
@@ -54,7 +55,7 @@ export default function Home() {
               <br />& Code Becomes Confidence.
             </h1>
           </AirFlowText>
-          <AirFlowText initialY={25} duration={0.5}>
+          <AirFlowText initialY={25} duration={0.5} delay={0.2}>
             <p className="text-[18px] weight_450 mt-4  text-text-color_4 text-center mx-auto max-w-[650px] w-full leading-6 [@media(max-width:1000px)]:text-[16px]">
               Get unlimited access to tutorials, hands-on problem solving, and
               industry-level development knowledge - all in one powerful
@@ -63,7 +64,7 @@ export default function Home() {
           </AirFlowText>
         </div>
 
-        <AirFlowText initialY={30} duration={0.5}>
+        <AirFlowText initialY={30} duration={0.5} delay={0.2}>
           <div className="flex justify-center items-center gap-2 mt-6 ">
             <Link href={"/login"}>
               <PMButton
@@ -118,7 +119,7 @@ export default function Home() {
 
       <SnippetsFeatures />
 
-      <ErrorResolvingComp />
+      <DynamicErrorResolveShowupSection/>
       <div className="mt-32"></div>
     </div>
   );

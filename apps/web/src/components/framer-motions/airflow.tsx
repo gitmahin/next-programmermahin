@@ -9,6 +9,7 @@ interface AirFlowTextProps {
   animateY?: number;
   exitY?: number;
   duration?: number;
+  delay?: number;
 }
 
 export const AirFlowText = ({
@@ -19,6 +20,7 @@ export const AirFlowText = ({
   animateY,
   exitY,
   duration,
+  delay
 }: AirFlowTextProps) => {
   return (
     <AnimatePresence mode="wait">
@@ -27,7 +29,7 @@ export const AirFlowText = ({
         initial={{ opacity: 0, y: initialY ?? -20, filter: "blur(5px)" }}
         animate={{ opacity: 1, y: animateY ?? 0, filter: "blur(0px)" }}
         exit={{ opacity: 0, y: exitY ?? 10, filter: "blur(4px)" }}
-        transition={{ duration: duration ?? 0.8, ease: "easeOut" }}
+        transition={{ duration: duration ?? 0.8, ease: "easeOut", delay: delay ?? 0 }}
         className="text-read_16 text-text-color_2 mt-1"
       >
         <span className={`${className}`}>{children}</span>

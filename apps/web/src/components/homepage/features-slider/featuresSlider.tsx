@@ -181,6 +181,7 @@ export const FeaturesSlider = ({
           <div className=" w-full h-[calc(100%-40px)]">
             <div className="w-full h-full  p-1 pt-0 rounded-[14px]">
               <Swiper
+                id="snippets-features-slider"
                 onSwiper={(swiper) => {
                   swiperRef.current = swiper;
                 }}
