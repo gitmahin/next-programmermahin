@@ -161,7 +161,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className=" pb-8 pt-5 flex justify-between items-center max-[720px]:items-center max-[720px]:gap-5 max-[720px]:flex-col-reverse max-[520px]:gap-3">
+          <div className=" pb-8 pt-5 flex justify-between items-center footer-bottom ">
             <p className="text-read_2 font-medium text-text-color_3">
               programmermahin.com © <span>{currentYear}</span>
             </p>

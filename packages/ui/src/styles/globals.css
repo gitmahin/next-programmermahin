@@ -942,3 +942,18 @@ pre:has(.focused):hover span {
     color: var(--shiki-dark);
   }
 }
+
+
+@media screen and (max-width: 720px) {
+  .footer-bottom{
+    gap: 20px;
+    flex-direction: column-reverse;
+
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .footer-bottom{
+    gap: 12px;
+  }
+}
