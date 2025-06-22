@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic"
 
-const ImportDynamicErrorResolvingComp = dynamic(() => import("../error-resolving-comp").then((module) => module.ErrorResolvingComp), {
+const ImportDynamicErrorResolvingComp = dynamic(() => import("../homepage/error-resolving-comp").then((module) => module.ErrorResolvingComp), {
     ssr: false
 })
 

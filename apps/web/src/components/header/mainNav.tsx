@@ -95,9 +95,8 @@ export const MainNav = () => {
                         <div className="flex justify-between items-center px-4">
                           <GithubSVG
                             color={"#ffffff"}
-                            width={28}
-                            height={28}
-                            className={"flex-shrink-0"}
+                             width={22}
+                        height={22}
                           />
                           <h4 className="text-text-zinc_white font-medium text-read_2">
                             Github

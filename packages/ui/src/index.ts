@@ -18,6 +18,7 @@ export * from "./statusAlert";
 export * from "./textarea";
 export * from "./checkbox";
 export * from "./select";
+export * from "./sheet";
 
 export * from "./icons/discord-icon";
 export * from "./icons/facebook";
