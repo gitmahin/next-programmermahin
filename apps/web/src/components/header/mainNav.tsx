@@ -135,26 +135,30 @@ export const MainNav = () => {
                         </div>
                       </button>
                     </Link>
-
-                    <button className="w-full h-full py-2 rounded transition-colors  bg-[#1772E8] hover:bg-[#1772e8e0]">
-                      <div className="flex justify-between items-center px-4">
-                        <FacebookIcon
-                          color={"#ffffff"}
-                          width={28}
-                          height={28}
-                          className={"flex-shrink-0"}
-                        />
-                        <h4 className="text-text-zinc_white font-medium text-read_2">
-                          Connect With Facebook
-                        </h4>
-                      </div>
-                      <div className="w-full px-4 p-1">
-                        <p className="text-left text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis text-pm_zinc-200">
-                          Learn, Build, and Stay Updated. Join group chats and
-                          share your projects on social.
-                        </p>
-                      </div>
-                    </button>
+                    <Link
+                      href={"https://www.facebook.com/groups/1269302621096148"}
+                      target="_blank"
+                    >
+                      <button className="w-full h-full py-2 rounded transition-colors  bg-[#1772E8] hover:bg-[#1772e8e0]">
+                        <div className="flex justify-between items-center px-4">
+                          <FacebookIcon
+                            color={"#ffffff"}
+                            width={28}
+                            height={28}
+                            className={"flex-shrink-0"}
+                          />
+                          <h4 className="text-text-zinc_white font-medium text-read_2">
+                            Connect With Facebook
+                          </h4>
+                        </div>
+                        <div className="w-full px-4 p-1">
+                          <p className="text-left text-[12px] mt-1 leading-[0.9rem] two_line_ellipsis text-pm_zinc-200">
+                            Learn, Build, and Stay Updated. Join group chats and
+                            share your projects on social.
+                          </p>
+                        </div>
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

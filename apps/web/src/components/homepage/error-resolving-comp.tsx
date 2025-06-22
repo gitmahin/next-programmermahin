@@ -64,9 +64,7 @@ export const ErrorResolvingComp = () => {
             </h2>
           </div>
           <p className="text-read_1 max-w-[500px] w-full font-medium text-text-color_2 [@media(max-width:1137px)]:mt-2 max-[550]:max-w-[100%] [@media(max-width:1137px)]:text-center">
-            From cryptic console messages to broken UI elements — our fix guides
-            are built to save your time and sanity. Discover how to resolve
-            common errors quickly, efficiently, and with confidence.
+            Our guides transform frustrating programming errors into solvable challenges, teaching you step-by-step how to debug, resolve issues, and ensure your applications function seamlessly, from logic to user interface.
           </p>
         </div>
 
