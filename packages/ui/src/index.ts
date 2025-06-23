@@ -32,5 +32,6 @@ export * from "./icons/vs-search";
 export * from "./icons/play-debug";
 export * from "./icons/source-control";
 export * from "./icons/copilot";
+export * from "./icons/code";
 export * from "./icons/type";
 export * from "./statusBox";
