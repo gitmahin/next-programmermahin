@@ -42,7 +42,7 @@ import {
   VSRemoteSVG,
   VSsearchSVG,
 } from "@programmer/ui";
-import { useState } from "react";
+import { SVGProps, useState } from "react";
 import { FilesComp } from "./files-comp";
 import { SearchComp } from "./search-comp";
 import { RunAndDebugComp } from "./run-and-debug";
@@ -51,6 +51,7 @@ import Image from "next/image";
 import { VsHeader } from "./vsheader";
 import { VsOuterHeader } from "./vs-outer-header";
 import { VsFooter } from "./vs-footer";
+import { CodeLanguages, SVGTsxIconType } from "@programmer/types";
 
 type IDENavigationCategoryType =
   | "files"
@@ -88,6 +89,7 @@ const IDE_SIDEBAR_ACTIVE_TAB: {
   run_debug: <RunAndDebugComp />,
   source_control: <SourceControlComp />,
 };
+
 
 export const HeroIDE = () => {
   const [activeNavById, setActiveNavById] =
@@ -162,18 +164,14 @@ export const HeroIDE = () => {
                   defaultSize={50}
                   className="bg-[var(--github-default-background-color-2)]"
                 >
-                 <div className="w-full h-full">
-                    <div className="h-[22px] border-b border-[var(--github-default-border-color-1)] bg-[var(--github-default-background-color-1)]">
-                      
-                    </div>
-                 </div>
-
-
+                  <div className="w-full h-full">
+                    <div className="h-[22px] border-b border-[var(--github-default-border-color-1)] bg-[var(--github-default-background-color-1)]"></div>
+                  </div>
                 </ResizablePanel>
               </ResizablePanelGroup>
             </div>
 
-            <VsFooter/>
+            <VsFooter />
           </div>
         </div>
       </div>

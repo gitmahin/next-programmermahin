@@ -33,5 +33,8 @@ export * from "./icons/play-debug";
 export * from "./icons/source-control";
 export * from "./icons/copilot";
 export * from "./icons/code";
+export * from "./icons/system";
 export * from "./icons/type";
 export * from "./statusBox";
+
+export * from "./lib/get-icons"

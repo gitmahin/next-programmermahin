@@ -6,7 +6,7 @@ export const VsHeader = () => {
               {Array.from({ length: 3 }).map((_, i) => {
                 return (
                   <div
-                    className={`w-[12px] h-[12px] rounded-full ${i === 0 ? "bg-[#ef4444]" : i === 1 ? "bg-[#facc15]" : "bg-[#a3e635]"} `}
+                    className={`w-[10px] h-[10px] rounded-full ${i === 0 ? "bg-[#ef4444]" : i === 1 ? "bg-[#facc15]" : "bg-[#a3e635]"} `}
                   ></div>
                 );
               })}
