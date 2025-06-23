@@ -105,16 +105,7 @@ export const mdxToHtml = async (content: string) => {
           <div className="border h-full w-full p-1 pt-0 my-[1.71429em] rounded-[15px] bg-background-color_925C border-border-color_800C next-mdx-remote-codeblock">
             <div className="h-[35px] w-full flex justify-center items-center gap-3 px-2 py-0.5">
               <div className="w-full flex justify-start items-center gap-5">
-                <div className="flex w-fit justify-start items-center gap-1.5 ">
-                  {Array.from({ length: 3 }).map((_, i) => {
-                    return (
-                      <div
-                        key={i}
-                        className={`w-[13px] h-[13px] flex-shrink-0 border rounded-full border-border-color_800C dark:bg-background-color_750C bg-background-color_850C`}
-                      ></div>
-                    );
-                  })}
-                </div>
+                
                 <div className="w-full flex justify-start items-center gap-1.5 ">
                   <Icon width={16} height={16} />
                   <span className="text-text-color_2 text-read_3 font-medium">
