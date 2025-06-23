@@ -27,5 +27,8 @@ export * from "./icons/google";
 export * from "./icons/status-icons";
 export * from "./icons/twitter-icon";
 export * from "./icons/whatsapp-icon";
+export * from "./icons/vs-remote";
+export * from "./icons/vs-search";
+export * from "./icons/play-debug";
 export * from "./icons/type";
 export * from "./statusBox";

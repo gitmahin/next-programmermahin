@@ -160,6 +160,19 @@
   --code-remove-color: #dc2626;
   --code-add-bg-color: #10b9812a;
   --code-remove-bg-color: #dc26262f;
+
+
+
+  /* github default theme color */
+  --github-default-background-color-1: #1F2428;
+  --github-default-background-color-2: #24292E;
+  --github-default-background-color-3: #313539;
+  --github-default-background-color-4: #444A4D;
+  --github-default-active-bar-color-1:  #F9826C;
+  --github-default-button-color-1: #22863A;
+  --github-default-border-color-1: #1f2329;
+  
+
 }
 
 .dark {
