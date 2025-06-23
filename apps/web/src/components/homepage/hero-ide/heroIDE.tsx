@@ -1,12 +1,15 @@
 "use client";
 import { cva } from "class-variance-authority";
 import {
+  BellDot,
+  Braces,
   Bug,
   BugPlay,
   BugPlayIcon,
   ChevronLeft,
   ChevronRight,
   CircleUser,
+  CircleX,
   Code2,
   CodeSquare,
   DotIcon,
@@ -20,34 +23,34 @@ import {
   PanelBottom,
   PanelLeft,
   PanelRight,
+  RefreshCw,
   Search,
   Settings,
   Settings2,
   SettingsIcon,
+  TriangleAlert,
 } from "lucide-react";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable-panel";
-import { PLayDebug, SourceControlSVG, VSsearchSVG } from "@programmer/ui";
+import {
+  GitHubCopilot,
+  PLayDebug,
+  SourceControlSVG,
+  VSRemoteSVG,
+  VSsearchSVG,
+} from "@programmer/ui";
 import { useState } from "react";
 import { FilesComp } from "./files-comp";
 import { SearchComp } from "./search-comp";
 import { RunAndDebugComp } from "./run-and-debug";
 import { SourceControlComp } from "./source-control";
 import Image from "next/image";
-
-const IDE_HEADER_NAV_MENUS = [
-  "File",
-  "Edit",
-  "Selection",
-  "View",
-  "Go",
-  "Run",
-  "Terminal",
-  "Help",
-];
+import { VsHeader } from "./vsheader";
+import { VsOuterHeader } from "./vs-outer-header";
+import { VsFooter } from "./vs-footer";
 
 type IDENavigationCategoryType =
   | "files"
@@ -69,20 +72,22 @@ const IDE_LEFT_SIDE_NAVIGATION_IOCNS: {
   },
   {
     id: "source_control",
-    icon: <SourceControlSVG width={15} height={15}/>
+    icon: <SourceControlSVG width={15} height={15} />,
   },
   {
     id: "run_debug",
-    icon: <PLayDebug width={15} height={15}/>
-  }
+    icon: <PLayDebug width={15} height={15} />,
+  },
 ];
 
-const IDE_SIDEBAR_ACTIVE_TAB: {[key in IDENavigationCategoryType]: React.ReactNode} = {
-  files: <FilesComp/>,
-  search: <SearchComp/>,
-  run_debug: <RunAndDebugComp/>,
-  source_control: <SourceControlComp/>,
-}
+const IDE_SIDEBAR_ACTIVE_TAB: {
+  [key in IDENavigationCategoryType]: React.ReactNode;
+} = {
+  files: <FilesComp />,
+  search: <SearchComp />,
+  run_debug: <RunAndDebugComp />,
+  source_control: <SourceControlComp />,
+};
 
 export const HeroIDE = () => {
   const [activeNavById, setActiveNavById] =
@@ -91,60 +96,27 @@ export const HeroIDE = () => {
     <div className="w-full flex justify-center items-center relative z-20 mt-5">
       <div className="max-w-[800px] h-[500px] w-full relative">
         <div className="w-[400px] h-[300px] border overflow-hidden rounded-[12px] bg-background-color_925C border-border-color_800C absolute right-[-250px] bottom-10 rotate-12">
-          <Image 
-          src={"/heroimages/quicklearn.png"}
-          width={1000}
-          height={1000}
-          alt="tutorial"
-          className="object-cover object-right-top w-full h-full"
+          <Image
+            src={"/heroimages/quicklearn.png"}
+            width={1000}
+            height={1000}
+            alt="tutorial"
+            className="object-cover object-right-top w-full h-full"
           />
         </div>
         <div className="w-[400px] h-[300px] border overflow-hidden rounded-[12px] bg-background-color_925C border-border-color_800C absolute left-[-250px] bottom-10 -rotate-12">
- <Image 
-          src={"/hero_black.png"}
-          width={1000}
-          height={1000}
-          alt="tutorial"
-          className="object-cover object-left-top w-full h-full"
+          <Image
+            src={"/hero_black.png"}
+            width={1000}
+            height={1000}
+            alt="tutorial"
+            className="object-cover object-left-top w-full h-full"
           />
-
         </div>
 
-        <div className="w-full flex justify-start items-center gap-2 mb-1 pl-5">
-          <span className="text-[10px] font-weight_530">Code</span>
-          <ul className="flex justify-start items-center gap-0.5">
-            {IDE_HEADER_NAV_MENUS.map((item, i) => {
-              return (
-                <li
-                  key={i}
-                  className="text-[10px] px-1 hover:bg-background-color_800C cursor-pointer rounded-[3px] transition-colors text-text-color_4 font-weight_450"
-                >
-                  {item}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+        <VsOuterHeader />
         <div className="w-full h-full rounded-[12px] overflow-hidden relative z-20 shadow-[0px_0px_80px_#000000] border border-border-color_800C bg-background-color_950C">
-          <div className="w-full h-[25px] bg-[var(--github-default-background-color-2)] border-b border-[var(--github-default-border-color-1)] flex justify-between items-center">
-            <div className="flex justify-start items-center gap-2 pl-2 w-full">
-              {Array.from({ length: 3 }).map((_, i) => {
-                return (
-                  <div
-                    className={`w-[12px] h-[12px] rounded-full ${i === 0 ? "bg-[#ef4444]" : i === 1 ? "bg-[#facc15]" : "bg-[#a3e635]"} `}
-                  ></div>
-                );
-              })}
-            </div>
-            <div className="text-[11px] font-weight_450 text-text-color_2 flex-grow">
-              programmermahin
-            </div>
-            <div className="flex justify-end items-center gap-2 w-full pr-2">
-              <PanelLeft size={12} className="text-text-svg_default_color" />
-              <PanelBottom size={12} className="text-text-svg_default_color" />
-              <PanelRight size={12} className="text-text-svg_default_color" />
-            </div>
-          </div>
+          <VsHeader />
           <div className="h-[calc(100%-41px)] ">
             <div className="flex justify-center items-center h-full w-full">
               <div className="h-full w-[30px] bg-[var(--github-default-background-color-2)] flex flex-col items-center justify-between gap-2">
@@ -189,10 +161,19 @@ export const HeroIDE = () => {
                 <ResizablePanel
                   defaultSize={50}
                   className="bg-[var(--github-default-background-color-2)]"
-                ></ResizablePanel>
+                >
+                 <div className="w-full h-full">
+                    <div className="h-[22px] border-b border-[var(--github-default-border-color-1)] bg-[var(--github-default-background-color-1)]">
+                      
+                    </div>
+                 </div>
+
+
+                </ResizablePanel>
               </ResizablePanelGroup>
             </div>
-            <div className="w-full h-[16px] border-t border-[var(--github-default-border-color-1)] bg-[var(--github-default-background-color-2)]"></div>
+
+            <VsFooter/>
           </div>
         </div>
       </div>
