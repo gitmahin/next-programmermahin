@@ -36,6 +36,7 @@ import { FilesComp } from "./files-comp";
 import { SearchComp } from "./search-comp";
 import { RunAndDebugComp } from "./run-and-debug";
 import { SourceControlComp } from "./source-control";
+import Image from "next/image";
 
 const IDE_HEADER_NAV_MENUS = [
   "File",
@@ -89,8 +90,25 @@ export const HeroIDE = () => {
   return (
     <div className="w-full flex justify-center items-center relative z-20 mt-5">
       <div className="max-w-[800px] h-[500px] w-full relative">
-        <div className="w-[400px] h-[300px] border rounded-[12px] bg-background-color_925C border-border-color_800C absolute right-[-250px] bottom-10 rotate-12"></div>
-        <div className="w-[400px] h-[300px] border rounded-[12px] bg-background-color_925C border-border-color_800C absolute left-[-250px] bottom-10 -rotate-12"></div>
+        <div className="w-[400px] h-[300px] border overflow-hidden rounded-[12px] bg-background-color_925C border-border-color_800C absolute right-[-250px] bottom-10 rotate-12">
+          <Image 
+          src={"/heroimages/quicklearn.png"}
+          width={1000}
+          height={1000}
+          alt="tutorial"
+          className="object-cover object-right-top w-full h-full"
+          />
+        </div>
+        <div className="w-[400px] h-[300px] border overflow-hidden rounded-[12px] bg-background-color_925C border-border-color_800C absolute left-[-250px] bottom-10 -rotate-12">
+ <Image 
+          src={"/hero_black.png"}
+          width={1000}
+          height={1000}
+          alt="tutorial"
+          className="object-cover object-left-top w-full h-full"
+          />
+
+        </div>
 
         <div className="w-full flex justify-start items-center gap-2 mb-1 pl-5">
           <span className="text-[10px] font-weight_530">Code</span>
