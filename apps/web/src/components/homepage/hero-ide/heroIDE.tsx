@@ -30,10 +30,12 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable-panel";
-import { PLayDebug, VSsearchSVG } from "@programmer/ui";
+import { PLayDebug, SourceControlSVG, VSsearchSVG } from "@programmer/ui";
 import { useState } from "react";
 import { FilesComp } from "./files-comp";
 import { SearchComp } from "./search-comp";
+import { RunAndDebugComp } from "./run-and-debug";
+import { SourceControlComp } from "./source-control";
 
 const IDE_HEADER_NAV_MENUS = [
   "File",
@@ -65,6 +67,10 @@ const IDE_LEFT_SIDE_NAVIGATION_IOCNS: {
     icon: <VSsearchSVG width={15} height={15} className="rotate-90" />,
   },
   {
+    id: "source_control",
+    icon: <SourceControlSVG width={15} height={15}/>
+  },
+  {
     id: "run_debug",
     icon: <PLayDebug width={15} height={15}/>
   }
@@ -73,8 +79,8 @@ const IDE_LEFT_SIDE_NAVIGATION_IOCNS: {
 const IDE_SIDEBAR_ACTIVE_TAB: {[key in IDENavigationCategoryType]: React.ReactNode} = {
   files: <FilesComp/>,
   search: <SearchComp/>,
-  source_control: "",
-  run_debug: "",
+  run_debug: <RunAndDebugComp/>,
+  source_control: <SourceControlComp/>,
 }
 
 export const HeroIDE = () => {
@@ -154,7 +160,7 @@ export const HeroIDE = () => {
                 className="w-full h-full "
               >
                 <ResizablePanel
-                  defaultSize={20}
+                  defaultSize={18}
                   maxSize={60}
                   minSize={20}
                   className="bg-[var(--github-default-background-color-1)] border-l border-[var(--github-default-border-color-1)]"

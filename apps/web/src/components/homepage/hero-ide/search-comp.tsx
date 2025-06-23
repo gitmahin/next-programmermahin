@@ -1,6 +1,6 @@
 import { AlignLeft, CaseSensitive, ChevronRight, CopyMinus, FilePlus, FilePlus2, ListX, LucideIcon, Regex, RotateCw } from "lucide-react";
 import { SidebarTitle } from "./sidebar-title";
-import { VSInputBox } from "./vs-input";
+import { VSInputBox } from "./ui";
 
 const SEARCH_INPUT_OPTIONS_ICON: LucideIcon[] = [
     CaseSensitive,
@@ -23,7 +23,7 @@ export const SearchComp = () => {
         <div className="w-full flex justify-center items-center gap-1">
           <ChevronRight size={10} className="text-pm_zinc-300 flex-shrink-0" />
           <div className="flex-grow relative flex justify-center items-center">
-          <VSInputBox placeholder="Search" />
+          <VSInputBox placeholder="Search" autoFocus  />
             <div className="absolute z-10 right-1 top-1/2 -translate-y-1/2 flex justify-end items-center gap-0.5">
             {
                 SEARCH_INPUT_OPTIONS_ICON.map((icon, i) => {
