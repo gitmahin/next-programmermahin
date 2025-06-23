@@ -1,8 +1,8 @@
-import { CodeLanguages } from "@programmer/types"
+import { FileType } from "@programmer/types"
 import { SVGProps } from "react";
-import { Bash, C, Cpp, CSS, Docker, Git, HTML5, JavaScript, JSON, Markdown, MdxIcon, Nginx, ReactJSX, ReactTsx, Text, TypeScript } from "../icons/code";
+import { Bash, C, Cpp, CSS, Docker, Git, HTML5, JavaScript, JSON, Markdown, MdxIcon, Nginx, Npm, Prettier, ReactJSX, ReactTsx, Text, Turbo, TypeScript } from "../icons/code";
 export const GetIconByLanguage: Record<
-  CodeLanguages,
+  FileType,
   React.ComponentType<SVGProps<SVGSVGElement>>
 > = {
   js: JavaScript,
@@ -21,4 +21,7 @@ export const GetIconByLanguage: Record<
   md: Markdown,
   mdx: MdxIcon,
   text: Text,
+  npm: Npm,
+  turbo: Turbo,
+  prettier: Prettier,
 };

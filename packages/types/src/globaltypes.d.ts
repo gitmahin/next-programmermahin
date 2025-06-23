@@ -5,7 +5,7 @@ export interface AnchorsType {
 }
 
 
-type CodeLanguages =
+export type FileType =
   | "js"
   | "ts"
   | "tsx"
@@ -21,6 +21,9 @@ type CodeLanguages =
   | "c"
   | "md"
   | "mdx"
-  | "text";
+  | "text"
+  | "npm"
+  | "turbo"
+  | "prettier"
 
-  type SVGTsxIconType = React.ComponentType<SVGProps<SVGAElement>>;
+  export type SVGTsxIconType = React.ComponentType<SVGProps<SVGAElement>>;

@@ -31,7 +31,7 @@ import {
   Text,
   GetIconByLanguage,
 } from "@programmer/ui";
-import { CodeLanguages } from "@programmer/types";
+import {FileType} from "@programmer/types";
 
 type AnchorProps = ComponentPropsWithoutRef<"a">;
 type PreTagProps = ComponentPropsWithoutRef<"pre">;
@@ -100,7 +100,7 @@ export const mdxToHtml = async (content: string) => {
           children
         ) as React.ReactElement<CodeElementProps>;
         const language = codeElement?.props?.["data-language"] ?? "bash";
-        const Icon = GetIconByLanguage[language as CodeLanguages] ?? GetIconByLanguage["text"];
+        const Icon = GetIconByLanguage[language as FileType] ?? GetIconByLanguage["text"];
         return (
           <div className="border h-full w-full p-1 pt-0 my-[1.71429em] rounded-[15px] bg-background-color_925C border-border-color_800C next-mdx-remote-codeblock">
             <div className="h-[35px] w-full flex justify-center items-center gap-3 px-2 py-0.5">

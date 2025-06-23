@@ -51,7 +51,7 @@ import Image from "next/image";
 import { VsHeader } from "./vsheader";
 import { VsOuterHeader } from "./vs-outer-header";
 import { VsFooter } from "./vs-footer";
-import { CodeLanguages, SVGTsxIconType } from "@programmer/types";
+import { FileType, SVGTsxIconType } from "@programmer/types";
 
 type IDENavigationCategoryType =
   | "files"
