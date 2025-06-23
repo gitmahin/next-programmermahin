@@ -9,7 +9,7 @@ import {
 } from "@programmer/ui";
 import { FileType, SVGTsxIconType } from "@programmer/types";
 
-type FileId = "turbo.json" | "package.json" | "tsconfig.json" | "gitignore" | "prettierignore" | "prettierrc" | "web-redux-store" | "searchBoxOpenSlice" | "searchMetaInfoSlice" | "searchMobInfoOpenSlice" | "package.json-shared"
+type FileId = "turbo.json" | "package.json" | "tsconfig.json" | "gitignore" | "prettierignore" | "prettierrc" | "web-redux-store" | "searchBoxOpenSlice" | "searchMetaInfoSlice" | "searchMobInfoOpenSlice" | "package.json-shared" | "root-readme"
 
 
 interface ProjectFileType {
@@ -47,7 +47,7 @@ const PROJECT_DETAILS: ProjectTreeType = {
                 type: "folder",
                 files: [
                   {
-                    id: "store",
+                    id: "web-redux-store",
                     name: "store.ts",
                     ext: "ts",
                   },
@@ -130,6 +130,11 @@ const PROJECT_DETAILS: ProjectTreeType = {
   "package.json": {
     id: "package.json",
     ext: "npm",
+    type: "file",
+  },
+ "README.md": {
+    id: "root-readme",
+    ext: "md",
     type: "file",
   },
   "turbo.json": {
