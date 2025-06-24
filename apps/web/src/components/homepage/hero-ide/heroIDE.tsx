@@ -1,10 +1,20 @@
-import { CircleUser, Files, SettingsIcon } from "lucide-react";
+"use client";
+import {
+  CircleUser,
+  Files,
+  SettingsIcon,
+} from "lucide-react";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable-panel";
-import { PLayDebug, SourceControlSVG, VSsearchSVG } from "@programmer/ui";
+import {
+  PLayDebug,
+  SourceControlSVG,
+  VSsearchSVG,
+} from "@programmer/ui";
+import {  useState } from "react";
 import { FilesComp } from "./files-comp";
 import { SearchComp } from "./search-comp";
 import { RunAndDebugComp } from "./run-and-debug";
@@ -14,9 +24,6 @@ import { VsHeader } from "./vsheader";
 import { VsOuterHeader } from "./vs-outer-header";
 import { VsFooter } from "./vs-footer";
 import { VsIDEContentHeader } from "./vs-ide-content-header";
-import { getFileContentCompById } from "./files";
-import { useAppSelector } from "@/hooks/redux.hook";
-import { CurrentFileByIdSelector } from "@/redux/slice/vside/vside-slice";
 
 type IDENavigationCategoryType =
   | "files"
@@ -55,9 +62,13 @@ const IDE_SIDEBAR_ACTIVE_TAB: {
   source_control: <SourceControlComp />,
 };
 
-export const HeroIDE = ({currentFileById = "root-readme"}: {currentFileById: string}) => {
-  const activeNavById = "files";
+export const HeroIDE = () => {
+  const [activeNavById, setActiveNavById] =
+    useState<IDENavigationCategoryType>("files");
 
+
+
+  
   return (
     <div className="w-full flex justify-center items-center relative z-20 mt-5">
       <div className="max-w-[800px] h-[500px] w-full relative">
@@ -90,9 +101,9 @@ export const HeroIDE = ({currentFileById = "root-readme"}: {currentFileById: str
                   {IDE_LEFT_SIDE_NAVIGATION_IOCNS.map((item, i) => {
                     return (
                       <div
-                        // onClick={() => {
-                        //   setActiveNavById(item.id);
-                        // }}
+                        onClick={() => {
+                          setActiveNavById(item.id);
+                        }}
                         className={`w-full h-[28px] border-l border-transparent text-pm_zinc-500 hover:text-pm_zinc-200  ${activeNavById === item.id && "!text-pm_zinc-200 !border-[var(--github-default-active-bar-color-1)]"} flex justify-center items-center   `}
                       >
                         {item.icon}
@@ -129,10 +140,13 @@ export const HeroIDE = ({currentFileById = "root-readme"}: {currentFileById: str
                   className="bg-[var(--github-default-background-color-2)]"
                 >
                   <div className="w-full h-full">
-                    <VsIDEContentHeader />
-                  <div className="h-[calc(100%-22px)] vs_codeide_scrollbar overflow-y-auto ">
-      <div className="w-full">{getFileContentCompById[currentFileById as FileId]}</div>
-    </div>
+                   
+<VsIDEContentHeader/>
+                    <div className="h-[calc(100%-22px)] vs_codeide_scrollbar overflow-y-auto ">
+                        <div className="w-full">
+                          {/* {getFileContentCompById["root-readme"]} */}
+                        </div>
+                    </div>
                   </div>
                 </ResizablePanel>
               </ResizablePanelGroup>

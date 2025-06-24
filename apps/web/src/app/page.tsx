@@ -3,15 +3,9 @@ import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
 import { ChevronRight } from "lucide-react";
 import React from "react";
 import Link from "next/link";
-import {
-  SnippetsFeatures,
-} from "@/components/homepage";
+import { SnippetsFeatures } from "@/components/homepage";
 import { DynamicErrorResolveShowupSection } from "@/components/dynamics";
 import { HeroIDE } from "@/components/homepage/hero-ide";
-
-//  <div className="w-full h-[30px] border-b border-border-color_800C relative">
-//           <div className="w-full h-full absolute left-0 top-0 border-none box-border border-border-color_800C border-x border-x-border-color_800C bg-[image:repeating-linear-gradient(225deg,_var(--border-color-800C)_0,_var(--border-color-800C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-800C)]/5 md:block dark:[--pattern-fg:var(--border-color-800C)]/10 "></div>
-//         </div>
 
 export default function Home() {
   return (
@@ -105,10 +99,10 @@ export default function Home() {
           <span className="text-text-color_4">Zero fluff</span>. Pure skill.
         </p>
       </div>
-      <HeroIDE/>
+      <HeroIDE />
 
       <SnippetsFeatures />
-      <DynamicErrorResolveShowupSection/>
+      <DynamicErrorResolveShowupSection />
       <div className="mt-32"></div>
     </div>
   );
