@@ -12,7 +12,7 @@ export const VsHeader = () => {
                 );
               })}
             </div>
-            <div className="text-[11px] font-weight_450 text-text-color_2 flex-grow">
+            <div className="text-[11px] font-weight_450 text-pm_zinc-200 flex-grow">
               programmermahin
             </div>
             <div className="flex justify-end items-center gap-2 w-full pr-2">

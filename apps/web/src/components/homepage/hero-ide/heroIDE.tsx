@@ -82,7 +82,7 @@ export const HeroIDE = ({ children }: { children: React.ReactNode }) => {
         </div>
 
         <VsOuterHeader />
-        <div className="w-full h-full rounded-[12px] overflow-hidden relative z-20 shadow-[0px_0px_80px_#000000] border border-border-color_800C bg-background-color_950C">
+        <div className="w-full h-full rounded-[12px] overflow-hidden relative z-20 dark:shadow-[0px_0px_80px_#000000]  bg-background-color_950C shadow-[0px_0px_80px_#a1a1aa]">
           <VsHeader />
           <div className="h-[calc(100%-41px)] ">
             <div className="flex justify-center items-center h-full w-full">

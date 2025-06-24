@@ -1,6 +1,6 @@
 "use client";
-import { ChevronDown, ChevronRight, Ellipsis } from "lucide-react";
-import React, { useCallback, useMemo, useState } from "react";
+import { ChevronDown, ChevronRight } from "lucide-react";
+import React, { use, useCallback, useEffect, useMemo, useState } from "react";
 import { SidebarTitle } from "./sidebar-title";
 import {
   DefaultFolder,
@@ -12,7 +12,10 @@ import { useAppDispatch, useAppSelector } from "@/hooks/redux.hook";
 import {
   CurrentFileByIdSelector,
   handleOpenNewFile,
+  setCurrentFile,
 } from "@/redux/slice/vside/vside-slice";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 interface ProjectFileType {
   name: string;
@@ -58,7 +61,7 @@ const PROJECT_DETAILS: ProjectTreeType = {
             },
           },
           "tsconfig.json": {
-            id: "tsconfig.json",
+            id: "tsconfigjson",
             ext: "json",
             type: "file",
           },
@@ -104,7 +107,7 @@ const PROJECT_DETAILS: ProjectTreeType = {
         },
         files: [
           {
-            id: "package.json-shared",
+            id: "packagejson-shared",
             name: "package.json",
             ext: "npm",
           },
@@ -130,7 +133,7 @@ const PROJECT_DETAILS: ProjectTreeType = {
     type: "file",
   },
   "package.json": {
-    id: "package.json",
+    id: "packagejson",
     ext: "npm",
     type: "file",
   },
@@ -140,7 +143,7 @@ const PROJECT_DETAILS: ProjectTreeType = {
     type: "file",
   },
   "turbo.json": {
-    id: "turbo.json",
+    id: "turbojson",
     ext: "turbo",
     type: "file",
   },
@@ -227,6 +230,12 @@ const ProjecTreeFileView = ({
             </div>
           </div>
         ) : (
+           <Link
+                scroll={false}
+                  href={`/?${new URLSearchParams({
+                    filetype: value.id ? value.id : "root-readme",
+                  }).toString()}`}
+                >
           <div
             style={{ paddingLeft: `${currentPaddingLeft}px` }}
             className={`w-full cursor-pointer border border-transparent select-none focus:border-blue-600 focus:bg-[var(--github-default-background-color-3)] ${currentFile === value.id && "bg-[var(--github-default-background-color-2)]"}`}
@@ -249,6 +258,7 @@ const ProjecTreeFileView = ({
               <span className="one_line_ellipsis relative z-10">{key}</span>
             </div>
           </div>
+          </Link>
         )}
 
         {isExpanded && (
@@ -264,29 +274,36 @@ const ProjecTreeFileView = ({
               const FileIcon =
                 GetIconByLanguage[file.ext] ?? GetIconByLanguage["text"];
               return (
-                <div
-                  key={`${file.id}`}
-                  style={{ paddingLeft: `${filePaddingLeft}px` }}
-                  className={`cursor-pointer select-none border border-transparent focus:border-blue-600 focus:bg-[var(--github-default-background-color-3)] ${currentFile === file.id && "bg-[var(--github-default-background-color-2)]"}`}
-                  tabIndex={0}
-                  onClick={() => {
-                    if (!file.id || !file.ext) return;
-                    openNewFile({
-                      name: file.name,
-                      id: file.id,
-                      ext: file.ext,
-                    });
-                  }}
+                <Link
+                scroll={false}
+                  href={`/?${new URLSearchParams({
+                    filetype: file.id,
+                  }).toString()}`}
                 >
-                  <div className="pl-[22px] flex justify-start items-center gap-1">
-                    <FileIcon
-                      width={13}
-                      height={13}
-                      className="flex-shrink-0"
-                    />
-                    <span className="one_line_ellipsis">{file.name}</span>
+                  <div
+                    key={`${file.id}`}
+                    style={{ paddingLeft: `${filePaddingLeft}px` }}
+                    className={`cursor-pointer select-none border border-transparent focus:border-blue-600 focus:bg-[var(--github-default-background-color-3)] ${currentFile === file.id && "bg-[var(--github-default-background-color-2)]"}`}
+                    tabIndex={0}
+                    onClick={() => {
+                      if (!file.id || !file.ext) return;
+                      openNewFile({
+                        name: file.name,
+                        id: file.id,
+                        ext: file.ext,
+                      });
+                    }}
+                  >
+                    <div className="pl-[22px] flex justify-start items-center gap-1">
+                      <FileIcon
+                        width={13}
+                        height={13}
+                        className="flex-shrink-0"
+                      />
+                      <span className="one_line_ellipsis">{file.name}</span>
+                    </div>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>
@@ -299,6 +316,73 @@ const ProjecTreeFileView = ({
 export const FilesComp = () => {
   const MEMOIZED_PROJECT_DETAILS = useMemo(() => PROJECT_DETAILS, []);
   const [projectOpen, setProjectOpen] = useState<boolean>(true);
+  const searchParams = useSearchParams();
+  const fileType = searchParams.get("filetype") as FileId;
+  const findFileById = useCallback((tree: ProjectTreeType, fileId: FileId): ProjectFileType | undefined => {
+  for (const key in tree) {
+    // Ensure it's an own property to avoid iterating prototype chain
+    if (Object.prototype.hasOwnProperty.call(tree, key)) {
+      const node = tree[key];
+
+      // Case 1: The current node itself is a file (e.g., .gitignore, package.json at root)
+      if (node?.type === "file" && node.id === fileId && node && node.ext) {
+        // We need to construct a ProjectFileType as `node` directly might not have 'name'
+        // based on the provided ProjectTreeType. We're inferring 'name' from the key.
+        return {
+          id: node.id,
+          name: key, // Assuming the key is the file name for direct files
+          ext: node.ext,
+        };
+      }
+
+      // Case 2: The current node is a folder
+      if (node?.type === "folder") {
+        // Check files directly within this folder
+        if (node.files && node.files.length > 0) {
+          const foundFileInFolder = node.files.find(file => file.id === fileId);
+          if (foundFileInFolder) {
+            return foundFileInFolder;
+          }
+        }
+
+        // Recursively search in subfolders
+        if (node.subFolder) {
+          const foundInSubFolder = findFileById(node.subFolder, fileId);
+          if (foundInSubFolder) {
+            return foundInSubFolder;
+          }
+        }
+      }
+    }
+  }
+  return undefined; // File not found
+}, [])
+
+
+
+  const VsIDEFileManagerDispatch = useAppDispatch();
+
+  const handleSetCurrentFile = useCallback(() => {
+    if (!setCurrentFile) return;
+    VsIDEFileManagerDispatch(setCurrentFile(fileType));
+  }, [setCurrentFile, searchParams]);
+
+  useEffect(() => {
+    handleSetCurrentFile();
+    
+  }, [fileType]);
+  
+  useEffect(() => {
+    const currentFileDetails = findFileById(PROJECT_DETAILS, fileType);
+if (!handleOpenNewFile) return;
+      VsIDEFileManagerDispatch(
+        handleOpenNewFile({
+          activeFileName: currentFileDetails?.name,
+          activeFileById: currentFileDetails?.id,
+          activeFileExt: currentFileDetails?.ext,
+        })
+      );
+  }, [])
 
   const toggleProjectOpen = useCallback(() => {
     setProjectOpen((prev) => !prev);

@@ -11,9 +11,12 @@ import { getFileContentCompById } from "@/components/homepage/hero-ide/files";
 export default async function Page({
   searchParams,
 }: {
-    searchParams: Promise<{ filetype: string }>
+  searchParams: Promise<{ filetype: string | undefined }>;
 }) {
   const filetype = (await searchParams).filetype;
+  const fileCode = getFileContentCompById[
+            (filetype ? filetype : "root-readme") as FileId
+          ]
   return (
     <div className="w-full ">
       <div className="hero_image_wrapper">
@@ -106,7 +109,9 @@ export default async function Page({
         </p>
       </div>
       <HeroIDE>
-          {getFileContentCompById[filetype as FileId]}
+        {
+          fileCode? fileCode : "No file found"
+        }
       </HeroIDE>
 
       <SnippetsFeatures />

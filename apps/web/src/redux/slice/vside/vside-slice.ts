@@ -38,10 +38,10 @@ export const vsIdeFileManagerSlice: Slice<VSIDEReduxDatatype> = createSlice({
       );
       if (!exists) {
         state.openedFiles = [...state.openedFiles, { ...action.payload }];
-        state.currentFileById = action.payload.activeFileById
+       
         
       } else {
-        state.currentFileById = action.payload.activeFileById
+     
       }
     },
 

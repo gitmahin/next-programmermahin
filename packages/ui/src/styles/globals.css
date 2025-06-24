@@ -538,6 +538,7 @@ pre:has(.focused):hover span {
 
 .codeblock .line {
   padding: 0px 10px;
+
 }
 
 .codeblock pre {
@@ -555,6 +556,7 @@ pre:has(.focused):hover span {
   width: 100%;
   display: grid;
   grid-template-columns: max-content;
+
   text-wrap: wrap;
 }
 
@@ -588,13 +590,15 @@ pre:has(.focused):hover span {
   }
 } */
 
-.dark {
-  .codeblock .shiki,
+.codeblock .shiki,
   .codeblock .shiki span {
     color: var(--shiki-dark) !important;
-    background-color: transparent !important;
+    background-color: var(--github-default-background-color-2) !important;
     text-decoration: var(--shiki-dark-text-decoration) !important;
   }
+
+.dark {
+  
 
   .codeblockwithouttypes .shiki,
   .codeblockwithouttypes .shiki span {
