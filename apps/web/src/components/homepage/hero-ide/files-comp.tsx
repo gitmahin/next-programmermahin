@@ -363,7 +363,8 @@ export const FilesComp = () => {
   const VsIDEFileManagerDispatch = useAppDispatch();
 
   const handleSetCurrentFile = useCallback(() => {
-    if (!setCurrentFile) return;
+
+    if (!setCurrentFile || fileType) return;
     VsIDEFileManagerDispatch(setCurrentFile(fileType));
   }, [setCurrentFile, searchParams]);
 
@@ -373,8 +374,9 @@ export const FilesComp = () => {
   }, [fileType]);
   
   useEffect(() => {
+    if (!handleOpenNewFile || !fileType) return;
     const currentFileDetails = findFileById(PROJECT_DETAILS, fileType);
-if (!handleOpenNewFile) return;
+    if(!currentFileDetails) return
       VsIDEFileManagerDispatch(
         handleOpenNewFile({
           activeFileName: currentFileDetails?.name,

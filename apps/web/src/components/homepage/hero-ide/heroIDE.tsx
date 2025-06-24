@@ -68,7 +68,15 @@ export const HeroIDE = ({ children }: { children: React.ReactNode }) => {
             width={1000}
             height={1000}
             alt="tutorial"
-            className="object-cover object-right-top w-full h-full"
+            className="object-cover object-right-top w-full h-full hidden dark:block"
+          />
+
+          <Image
+            src={"/heroimages/quicklearn_white.png"}
+            width={1000}
+            height={1000}
+            alt="tutorial"
+            className="object-cover object-right-top w-full h-full block dark:hidden"
           />
         </div>
         <div className="w-[400px] h-[300px] border overflow-hidden rounded-[12px] bg-background-color_925C border-border-color_800C absolute left-[-250px] bottom-10 -rotate-12">
@@ -77,12 +85,19 @@ export const HeroIDE = ({ children }: { children: React.ReactNode }) => {
             width={1000}
             height={1000}
             alt="tutorial"
-            className="object-cover object-left-top w-full h-full"
+            className="object-cover object-left-top w-full h-full hidden dark:block"
+          />
+          <Image
+            src={"/hero_white.png"}
+            width={1000}
+            height={1000}
+            alt="tutorial"
+            className="object-cover object-left-top w-full h-full block dark:hidden"
           />
         </div>
 
         <VsOuterHeader />
-        <div className="w-full h-full rounded-[12px] overflow-hidden relative z-20 dark:shadow-[0px_0px_80px_#000000]  bg-background-color_950C shadow-[0px_0px_80px_#a1a1aa]">
+        <div className="w-full h-full rounded-[12px] overflow-hidden relative z-20 dark:shadow-[0px_0px_80px_#000000]  bg-background-color_950C shadow-[0px_0px_80px_#d8b4fe]">
           <VsHeader />
           <div className="h-[calc(100%-41px)] ">
             <div className="flex justify-center items-center h-full w-full">
