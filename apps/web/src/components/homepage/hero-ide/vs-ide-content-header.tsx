@@ -33,14 +33,16 @@ export const VsIDEContentHeader = () => {
             <div
               onClick={() => handleCurrentFile(item.activeFileById)}
               key={i}
-              className={`flex flex-shrink-0 px-2 justify-center items-center gap-1 h-full w-[90px] border-[var(--github-default-border-color-1)] border-r border-t border-t-transparent ${currentFileById === item.activeFileById ? "!border-t-[var(--github-default-active-bar-color-1)] bg-[var(--github-default-background-color-2)]" : "hover:bg-[var(--github-default-background-color-3)]"} cursor-pointer`}
+              className={`flex select-none flex-shrink-0 px-2 justify-center items-center gap-1 h-full w-[90px] border-[var(--github-default-border-color-1)] border-r border-t border-t-transparent ${currentFileById === item.activeFileById ? "!border-t-[var(--github-default-active-bar-color-1)] bg-[var(--github-default-background-color-2)]" : "hover:bg-[var(--github-default-background-color-3)]"} cursor-pointer`}
             >
               <FileIcon width={13} height={13} />
               <p className="text-[9px] one_line_ellipsis ">
                 {item.activeFileName}.{item.activeFileExt}
               </p>
               <div
-                onClick={() => handleCloseFile(item.activeFileById)}
+                onClick={(e) =>{ 
+                  e.preventDefault()
+                  handleCloseFile(item.activeFileById)}}
                 className="p-[1px] flex-shrink-0 hover:bg-[var(--github-default-background-color-4)] flex justify-center items-center rounded-[3px]"
               >
                 <X size={8} />

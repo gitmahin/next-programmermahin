@@ -229,7 +229,7 @@ const ProjecTreeFileView = ({
         ) : (
           <div
             style={{ paddingLeft: `${currentPaddingLeft}px` }}
-            className={`w-full cursor-pointer border border-transparent select-none focus:border-blue-600 focus:bg-[var(--github-default-background-color-3)]`}
+            className={`w-full cursor-pointer border border-transparent select-none focus:border-blue-600 focus:bg-[var(--github-default-background-color-3)] ${currentFile === value.id && "bg-[var(--github-default-background-color-2)]"}`}
             tabIndex={0}
             onClick={() => {
               if (!value.id || !value.ext) return;
