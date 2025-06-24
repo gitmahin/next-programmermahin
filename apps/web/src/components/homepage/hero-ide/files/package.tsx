@@ -1,4 +1,4 @@
-import { CodeBlock } from "@/components/shiki"
+import { CodeBlock } from "@/components/shiki";
 const webpackagejsoncode = `{
   "name": "web",
   "version": "1.0.2",
@@ -36,15 +36,14 @@ const webpackagejsoncode = `{
     "typescript": "^5.8.2"
   }
 }
-`
+`;
 export const WebPackage = () => {
-    return (
-           <CodeBlock lang="json" className="text-[9px]">
+  return (
+    <CodeBlock lang="json" className="text-[9px]">
       {webpackagejsoncode}
     </CodeBlock>
-    )
-}
-
+  );
+};
 
 const sharepackagejsoncode = `{
   "name": "@programmer/shared",
@@ -83,12 +82,12 @@ const sharepackagejsoncode = `{
     "typescript": "^5.8.2"
   }
 }
-`
+`;
 
 export const SharedPackageJson = () => {
-    return (
-           <CodeBlock lang="json" className="text-[9px]">
+  return (
+    <CodeBlock lang="json" className="text-[9px]">
       {sharepackagejsoncode}
     </CodeBlock>
-    )
-}
+  );
+};

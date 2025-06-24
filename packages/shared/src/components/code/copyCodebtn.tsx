@@ -8,12 +8,12 @@ export const CopyCodeButton = () => {
   const handleCopy = async (e: React.MouseEvent<HTMLButtonElement>) => {
     // Find the closest <pre> element
     console.log("copied the code");
-    
-     const wrapper = e.currentTarget.closest("div[class*='border']");
+
+    const wrapper = e.currentTarget.closest("div[class*='border']");
     const pre = wrapper?.querySelector("pre");
-      const code = pre?.innerText;
+    const code = pre?.innerText;
     console.log("code tag", code);
-    
+
     if (!code) return;
     console.log("copied the code success");
 
@@ -26,5 +26,16 @@ export const CopyCodeButton = () => {
     }
   };
 
-  return <button onClick={handleCopy} className="p-1 relative z-10 rounded-tiny transition-colors flex-shrink-0 hover:bg-background-color_800C">{copied ? <Check size={16} className="dark:text-emerald-500 text-emerald-600"/> : <Copy size={16} className="text-text-svg_default_color" />}</button>;
+  return (
+    <button
+      onClick={handleCopy}
+      className="p-1 relative z-10 rounded-tiny transition-colors flex-shrink-0 hover:bg-background-color_800C"
+    >
+      {copied ? (
+        <Check size={16} className="dark:text-emerald-500 text-emerald-600" />
+      ) : (
+        <Copy size={16} className="text-text-svg_default_color" />
+      )}
+    </button>
+  );
 };

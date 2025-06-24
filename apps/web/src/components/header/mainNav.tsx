@@ -93,11 +93,7 @@ export const MainNav = () => {
                     >
                       <button className="w-full h-full py-2 rounded transition-colors  bg-[#24292E] hover:bg-[#1b1f23]">
                         <div className="flex justify-between items-center px-4">
-                          <GithubSVG
-                            color={"#ffffff"}
-                             width={22}
-                        height={22}
-                          />
+                          <GithubSVG color={"#ffffff"} width={22} height={22} />
                           <h4 className="text-text-zinc_white font-medium text-read_2">
                             Github
                           </h4>

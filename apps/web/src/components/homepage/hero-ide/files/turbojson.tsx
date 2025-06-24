@@ -1,4 +1,4 @@
-import { CodeBlock } from "@/components/shiki"
+import { CodeBlock } from "@/components/shiki";
 
 const code = `{
   "$schema": "https://turbo.build/schema.json",
@@ -36,11 +36,11 @@ const code = `{
   }
 }
 
-`
+`;
 export const Turbojson = () => {
-    return (
-           <CodeBlock lang="json" className="text-[9px]">
+  return (
+    <CodeBlock lang="json" className="text-[9px]">
       {code}
     </CodeBlock>
-    )
-}
+  );
+};

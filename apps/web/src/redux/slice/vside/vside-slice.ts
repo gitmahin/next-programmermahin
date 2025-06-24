@@ -38,10 +38,7 @@ export const vsIdeFileManagerSlice: Slice<VSIDEReduxDatatype> = createSlice({
       );
       if (!exists) {
         state.openedFiles = [...state.openedFiles, { ...action.payload }];
-       
-        
       } else {
-     
       }
     },
 
@@ -54,11 +51,9 @@ export const vsIdeFileManagerSlice: Slice<VSIDEReduxDatatype> = createSlice({
       );
     },
 
-    setCurrentFile: (
-      state, action: PayloadAction<FileId>
-    ) => {
-      state.currentFileById = action.payload
-    }
+    setCurrentFile: (state, action: PayloadAction<FileId>) => {
+      state.currentFileById = action.payload;
+    },
   },
 });
 
@@ -67,6 +62,9 @@ export const CurrentFileByIdSelector = (state: RootState) =>
 
 export const OpenedFilesSelector = (state: RootState) =>
   state.vsIdeFileManager.openedFiles;
-export const { handleRemoveFlieFromOpenedFiles, handleOpenNewFile,setCurrentFile } =
-  vsIdeFileManagerSlice.actions;
+export const {
+  handleRemoveFlieFromOpenedFiles,
+  handleOpenNewFile,
+  setCurrentFile,
+} = vsIdeFileManagerSlice.actions;
 export default vsIdeFileManagerSlice.reducer;

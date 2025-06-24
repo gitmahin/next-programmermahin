@@ -37,4 +37,4 @@ export * from "./icons/system";
 export * from "./icons/type";
 export * from "./statusBox";
 
-export * from "./lib/get-icons"
+export * from "./lib/get-icons";

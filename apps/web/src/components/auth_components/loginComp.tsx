@@ -139,10 +139,7 @@ export const LoginComp = ({
             placeholder="Password"
           />
           <div className={`text-left  w-full mt-1`}>
-            <Link
-              href=""
-              className="text-read_3 text-blue-500 hover:underline"
-            >
+            <Link href="" className="text-read_3 text-blue-500 hover:underline">
               Forgot your password?
             </Link>
           </div>
@@ -154,13 +151,20 @@ export const LoginComp = ({
           </PMButton>
           <p className="text-read_3 mt-5 text-text-color_2">
             By signing in, you agree to our{" "}
-            <Link href={"/legals/terms"} className="text-blue-500 hover:underline">
+            <Link
+              href={"/legals/terms"}
+              className="text-blue-500 hover:underline"
+            >
               Terms
             </Link>{" "}
             and{" "}
-            <Link href={"/legals/privacy-policy"} className="text-blue-500 hover:underline">
+            <Link
+              href={"/legals/privacy-policy"}
+              className="text-blue-500 hover:underline"
+            >
               Privacy Policy
-            </Link>.
+            </Link>
+            .
           </p>
         </div>
       </div>

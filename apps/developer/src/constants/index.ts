@@ -1,1 +1,1 @@
-export * from "./globals.constant"
+export * from "./globals.constant";

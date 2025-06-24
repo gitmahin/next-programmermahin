@@ -71,13 +71,12 @@ export default function RootLayout({
           <GlobalThemeProvider>
             <Header />
             <SkeletonTheme
-                baseColor="var(--skeleton-base-color)"
-                highlightColor="var(--skeleton-highlightColor)"
-              >
-
-            {children}
-            {modal}
-              </SkeletonTheme>
+              baseColor="var(--skeleton-base-color)"
+              highlightColor="var(--skeleton-highlightColor)"
+            >
+              {children}
+              {modal}
+            </SkeletonTheme>
             <Footer />
           </GlobalThemeProvider>
         </ReduxProvider>

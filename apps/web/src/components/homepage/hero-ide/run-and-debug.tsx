@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react";
 import { SidebarTitle } from "./sidebar-title";
 import { VSButton } from "./ui";
 
-
 export const RunAndDebugComp = () => {
   const divRef = useRef<HTMLDivElement>(null);
 

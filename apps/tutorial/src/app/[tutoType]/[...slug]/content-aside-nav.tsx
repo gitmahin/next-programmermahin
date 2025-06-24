@@ -3,7 +3,7 @@ import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
 import { AlignLeft, TableOfContents, X } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
-import { generateTocFromMdx, useActiveHeading } from "react-mdxutils"
+import { generateTocFromMdx, useActiveHeading } from "react-mdxutils";
 
 export default function ContentAsideNav({
   mdxContent,
@@ -60,9 +60,9 @@ export default function ContentAsideNav({
                       headingListRefs.current[item.slug] = el;
                     }}
                     onClick={() => {
-                    
                       handleActiveHeading(
-                        headingListRefs.current[item.slug] as HTMLElement, `#${item.slug}`
+                        headingListRefs.current[item.slug] as HTMLElement,
+                        `#${item.slug}`
                       );
                     }}
                     className={`one_line_ellipsis w-fit px-2 text-read_2 ${activeHeading === `#${item.slug}` ? "text-pm_purple-600 font-medium" : "text-text-color_2"}`}

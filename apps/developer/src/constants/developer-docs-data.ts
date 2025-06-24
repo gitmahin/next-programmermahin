@@ -1,17 +1,16 @@
 export type DeveloperDocsData = {
-    [key: string]: {
-        slug: string;
-        items: {
-            label: string;
-            slug: string;
-            siblingOneItems?: {
-                siblingOneLabel: string;
-                siblingOneSlug: string;
-            }[]
-        }[]
-    }
-}
-
+  [key: string]: {
+    slug: string;
+    items: {
+      label: string;
+      slug: string;
+      siblingOneItems?: {
+        siblingOneLabel: string;
+        siblingOneSlug: string;
+      }[];
+    }[];
+  };
+};
 
 export const DEVELOPER_DOCS_DATA: DeveloperDocsData = {
   "Getting Started": {
@@ -23,9 +22,9 @@ export const DEVELOPER_DOCS_DATA: DeveloperDocsData = {
         siblingOneItems: [
           {
             siblingOneLabel: "Why it is Classic mode?",
-            siblingOneSlug: "why-it-is-classic-mode"
-          }
-        ]
+            siblingOneSlug: "why-it-is-classic-mode",
+          },
+        ],
       },
       {
         label: "Setting Up Locally",
@@ -33,19 +32,19 @@ export const DEVELOPER_DOCS_DATA: DeveloperDocsData = {
         siblingOneItems: [
           {
             siblingOneLabel: "Cloning the Repository",
-            siblingOneSlug: "cloning-the-repository"
+            siblingOneSlug: "cloning-the-repository",
           },
           {
             siblingOneLabel: "Installing Dependencies",
-            siblingOneSlug: "installing-dependencies"
+            siblingOneSlug: "installing-dependencies",
           },
           {
             siblingOneLabel: "Environment Variables",
-            siblingOneSlug: "environment-variables"
-          }
-        ]
-      }
-    ]
+            siblingOneSlug: "environment-variables",
+          },
+        ],
+      },
+    ],
   },
 
   "State Management": {
@@ -57,19 +56,19 @@ export const DEVELOPER_DOCS_DATA: DeveloperDocsData = {
         siblingOneItems: [
           {
             siblingOneLabel: "Setting up Store",
-            siblingOneSlug: "setting-up-store"
+            siblingOneSlug: "setting-up-store",
           },
           {
             siblingOneLabel: "Creating Slices",
-            siblingOneSlug: "creating-slices"
+            siblingOneSlug: "creating-slices",
           },
           {
             siblingOneLabel: "Redux with TypeScript",
-            siblingOneSlug: "redux-with-typescript"
-          }
-        ]
-      }
-    ]
+            siblingOneSlug: "redux-with-typescript",
+          },
+        ],
+      },
+    ],
   },
 
   "API Integration": {
@@ -81,17 +80,17 @@ export const DEVELOPER_DOCS_DATA: DeveloperDocsData = {
         siblingOneItems: [
           {
             siblingOneLabel: "Apollo Client Setup",
-            siblingOneSlug: "apollo-client-setup"
+            siblingOneSlug: "apollo-client-setup",
           },
           {
             siblingOneLabel: "Writing Queries and Mutations",
-            siblingOneSlug: "writing-queries-and-mutations"
+            siblingOneSlug: "writing-queries-and-mutations",
           },
           {
             siblingOneLabel: "Type Safety with GraphQL",
-            siblingOneSlug: "type-safety-with-graphql"
-          }
-        ]
+            siblingOneSlug: "type-safety-with-graphql",
+          },
+        ],
       },
       {
         label: "Using REST APIs",
@@ -99,19 +98,19 @@ export const DEVELOPER_DOCS_DATA: DeveloperDocsData = {
         siblingOneItems: [
           {
             siblingOneLabel: "API Service Layer",
-            siblingOneSlug: "api-service-layer"
+            siblingOneSlug: "api-service-layer",
           },
           {
             siblingOneLabel: "Error Handling",
-            siblingOneSlug: "error-handling"
+            siblingOneSlug: "error-handling",
           },
           {
             siblingOneLabel: "Fetching Data with SWR",
-            siblingOneSlug: "fetching-data-with-swr"
-          }
-        ]
-      }
-    ]
+            siblingOneSlug: "fetching-data-with-swr",
+          },
+        ],
+      },
+    ],
   },
 
   "Styling & UI": {
@@ -123,13 +122,13 @@ export const DEVELOPER_DOCS_DATA: DeveloperDocsData = {
         siblingOneItems: [
           {
             siblingOneLabel: "Customizing the Theme",
-            siblingOneSlug: "customizing-theme"
+            siblingOneSlug: "customizing-theme",
           },
           {
             siblingOneLabel: "Best Practices",
-            siblingOneSlug: "tailwind-best-practices"
-          }
-        ]
+            siblingOneSlug: "tailwind-best-practices",
+          },
+        ],
       },
       {
         label: "Reusable Components",
@@ -137,15 +136,15 @@ export const DEVELOPER_DOCS_DATA: DeveloperDocsData = {
         siblingOneItems: [
           {
             siblingOneLabel: "Button, Modal, Toast",
-            siblingOneSlug: "button-modal-toast"
+            siblingOneSlug: "button-modal-toast",
           },
           {
             siblingOneLabel: "Using ShadCN/UI",
-            siblingOneSlug: "using-shadcn-ui"
-          }
-        ]
-      }
-    ]
+            siblingOneSlug: "using-shadcn-ui",
+          },
+        ],
+      },
+    ],
   },
 
   "Type Safety": {
@@ -157,33 +156,32 @@ export const DEVELOPER_DOCS_DATA: DeveloperDocsData = {
         siblingOneItems: [
           {
             siblingOneLabel: "Types vs Interfaces",
-            siblingOneSlug: "types-vs-interfaces"
+            siblingOneSlug: "types-vs-interfaces",
           },
           {
             siblingOneLabel: "Utility Types",
-            siblingOneSlug: "utility-types"
+            siblingOneSlug: "utility-types",
           },
           {
             siblingOneLabel: "Strict Mode & TSConfig",
-            siblingOneSlug: "strict-mode-and-tsconfig"
-          }
-        ]
-      }
-    ]
+            siblingOneSlug: "strict-mode-and-tsconfig",
+          },
+        ],
+      },
+    ],
   },
 
-  "Tutorials": {
+  Tutorials: {
     slug: "tutorials",
     items: [
       {
         label: "Create Your First PR",
         slug: "create-your-first-pr",
-       
       },
       {
         label: "Building a Feature Module",
         slug: "building-a-feature-module",
-      }
-    ]
-  }
+      },
+    ],
+  },
 };

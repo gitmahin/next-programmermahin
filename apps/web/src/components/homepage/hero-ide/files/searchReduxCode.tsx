@@ -1,4 +1,4 @@
-import { CodeBlock } from "@/components/shiki"
+import { CodeBlock } from "@/components/shiki";
 
 const reduxStoreCode = `import { configureStore } from "@reduxjs/toolkit";
 import {
@@ -25,14 +25,14 @@ export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
 
-`
+`;
 export const ReduxStore = () => {
-    return (
-   <CodeBlock lang="ts" className="text-[9px]">
+  return (
+    <CodeBlock lang="ts" className="text-[9px]">
       {reduxStoreCode}
     </CodeBlock>
-    )
-}
+  );
+};
 
 const searchBoxOpenSlicecode = `import { configureStore, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction, Slice } from "@reduxjs/toolkit";
@@ -89,16 +89,15 @@ export const { setSearchBoxOpen } = searchBoxOpenSlice.actions;
 
 export const searchBoxOpenReducer = searchBoxOpenSlice.reducer;
 
-`
+`;
 
 export const SearchBoxOpenSliceCode = () => {
-    return (
-   <CodeBlock lang="ts" className="text-[9px]">
+  return (
+    <CodeBlock lang="ts" className="text-[9px]">
       {searchBoxOpenSlicecode}
     </CodeBlock>
-    )
-}
-
+  );
+};
 
 const searchMetaInfoCode = `import { configureStore, createSelector, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction, Slice } from "@reduxjs/toolkit";
@@ -183,17 +182,15 @@ export const { setSearchMetaInfo } = searchMetaInfoSlice.actions;
 
 export const searchMetaInfoReducer = searchMetaInfoSlice.reducer;
 
-`
+`;
 
 export const SearchMetaInfoSliceCode = () => {
-    return (
-   <CodeBlock lang="ts" className="text-[9px]">
+  return (
+    <CodeBlock lang="ts" className="text-[9px]">
       {searchMetaInfoCode}
     </CodeBlock>
-    )
-}
-
-
+  );
+};
 
 const searchMobInfoOpenSliceCode = `import { configureStore, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction, Slice } from "@reduxjs/toolkit";
@@ -243,12 +240,12 @@ export const { setSearchMobInfoOpen } = searchMobInfoOpenSlice.actions;
 
 export const searchMobInfoOpenReducer = searchMobInfoOpenSlice.reducer;
 
-`
+`;
 
 export const SearchMobInfoOpenSliceCode = () => {
-    return (
-   <CodeBlock lang="ts" className="text-[9px]">
+  return (
+    <CodeBlock lang="ts" className="text-[9px]">
       {searchMobInfoOpenSliceCode}
     </CodeBlock>
-    )
-}
+  );
+};

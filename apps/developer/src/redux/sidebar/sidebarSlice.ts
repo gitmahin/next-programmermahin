@@ -10,7 +10,7 @@ export interface SidebarStateType {
 // Define the initial state using that type
 const initialState: SidebarStateType = {
   isSidebarOpen: false,
-  isContentAsideOpen: false
+  isContentAsideOpen: false,
 };
 
 export const SidebarSliceName = "sidebar";
@@ -35,6 +35,5 @@ export const isSidebarOpenSelector = (state: RootState) =>
   state.sidebar.isSidebarOpen;
 export const isContentAsideOpenSelector = (state: RootState) =>
   state.sidebar.isContentAsideOpen;
-
 
 export default slidebarSlice.reducer;

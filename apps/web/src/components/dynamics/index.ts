@@ -1,1 +1,1 @@
-export * from "./dynamic-error-comp"
+export * from "./dynamic-error-comp";

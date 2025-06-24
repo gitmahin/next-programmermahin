@@ -7,8 +7,11 @@ export const RouterNavigation = () => {
   const router = useRouter();
   return (
     <div className="flex justify-between items-center w-fit gap-2">
-      <button onClick={() => router.back()} className="classic_button text-black flex-shrink-0">
-          <ArrowLeft size={20} />
+      <button
+        onClick={() => router.back()}
+        className="classic_button text-black flex-shrink-0"
+      >
+        <ArrowLeft size={20} />
       </button>
       <button
         onClick={() => router.forward()}

@@ -7,14 +7,16 @@ import {
   searchBoxOpenSliceName,
   searchBoxOpenReducer,
 } from "@programmer/shared";
-import vsIdeFileManagerReducer, { vsideSliceName } from "./slice/vside/vside-slice"
+import vsIdeFileManagerReducer, {
+  vsideSliceName,
+} from "./slice/vside/vside-slice";
 
 export const store = configureStore({
   reducer: {
     [searchMetaInfoSliceName]: searchMetaInfoReducer,
     [searchMobInfoOpenSliceName]: searchMobInfoOpenReducer,
     [searchBoxOpenSliceName]: searchBoxOpenReducer,
-    [vsideSliceName]: vsIdeFileManagerReducer
+    [vsideSliceName]: vsIdeFileManagerReducer,
   },
 });
 

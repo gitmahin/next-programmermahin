@@ -64,35 +64,30 @@ export const ErrorResolvingComp = () => {
             </h2>
           </div>
           <p className="text-read_1 max-w-[500px] w-full font-medium text-text-color_2 [@media(max-width:1137px)]:mt-2 max-[550]:max-w-[100%] [@media(max-width:1137px)]:text-center">
-            Our guides transform frustrating programming errors into solvable challenges, teaching you step-by-step how to debug, resolve issues, and ensure your applications function seamlessly, from logic to user interface.
+            Our guides transform frustrating programming errors into solvable
+            challenges, teaching you step-by-step how to debug, resolve issues,
+            and ensure your applications function seamlessly, from logic to user
+            interface.
           </p>
         </div>
 
         <div className="grid relative grid-cols-2 grid-rows-2  w-full mt-16 gap-y-20 [@media(max-width:1140px)]:gap-x-24 [@media(max-width:900px)]:grid-cols-1 [@media(max-width:900px)]:grid-rows-[auto] [@media(max-width:900px)]:justify-items-center">
-            <div className="absolute w-[1px] bg-background-color_900C h-full top-0 left-1/2 -translate-x-1/2 [@media(max-width:900px)]:hidden"></div>
-            <div className="absolute h-[1px] bg-background-color_900C w-full top-1/2 left-0 -translate-y-1/2 [@media(max-width:900px)]:hidden"></div>
-            <ErrorChildElement
-            title={""}  
-            desc={""}
-            image={""}
-            />
-            <ErrorChildElement
+          <div className="absolute w-[1px] bg-background-color_900C h-full top-0 left-1/2 -translate-x-1/2 [@media(max-width:900px)]:hidden"></div>
+          <div className="absolute h-[1px] bg-background-color_900C w-full top-1/2 left-0 -translate-y-1/2 [@media(max-width:900px)]:hidden"></div>
+          <ErrorChildElement title={""} desc={""} image={""} />
+          <ErrorChildElement
             title={""}
             desc={""}
             image={""}
             className="ml-auto [@media(max-width:900px)]:ml-0"
-            />
-            <ErrorChildElement
+          />
+          <ErrorChildElement title={""} desc={""} image={""} />
+          <ErrorChildElement
             title={""}
             desc={""}
             image={""}
-            />
-            <ErrorChildElement
-            title={""}
-            desc={""}
-            image={""}
-                   className="ml-auto [@media(max-width:900px)]:ml-0"
-            />
+            className="ml-auto [@media(max-width:900px)]:ml-0"
+          />
         </div>
       </div>
     </div>

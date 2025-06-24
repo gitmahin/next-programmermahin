@@ -1,6 +1,26 @@
-import { FileType } from "@programmer/types"
+import { FileType } from "@programmer/types";
 import { SVGProps } from "react";
-import { Bash, C, Cpp, CSS, Docker, Git, HTML5, JavaScript, JSON, Markdown, MdxIcon, Nginx, Npm, Prettier, ReactJSX, ReactTsx, Text, Turbo, TypeScript } from "../icons/code";
+import {
+  Bash,
+  C,
+  Cpp,
+  CSS,
+  Docker,
+  Git,
+  HTML5,
+  JavaScript,
+  JSON,
+  Markdown,
+  MdxIcon,
+  Nginx,
+  Npm,
+  Prettier,
+  ReactJSX,
+  ReactTsx,
+  Text,
+  Turbo,
+  TypeScript,
+} from "../icons/code";
 export const GetIconByLanguage: Record<
   FileType,
   React.ComponentType<SVGProps<SVGSVGElement>>

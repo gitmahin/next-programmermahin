@@ -74,7 +74,6 @@ If you have any questions or ideas, feel free to:
 Thank you for being part of the journey. I believe in open learning and collaborative growth — and I'm glad you’re here.
 `;
 
-
 export const RootReadme = () => {
   return (
     <CodeBlock lang="md" className="text-[9px]">

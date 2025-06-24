@@ -36,21 +36,31 @@ export const Header = () => {
           {isSidebarOpen && <X size={16} />}
         </div>
         <PMLogo size="sm" />
-        <h1 className="ml-2 border-l border-border-color_800C pl-2 font-medium text-read_16">Developer Docs</h1>
+        <h1 className="ml-2 border-l border-border-color_800C pl-2 font-medium text-read_16">
+          Developer Docs
+        </h1>
       </div>
-        <nav className="flex justify-end items-center w-full gap-3 pr-5 text-read_2 font-medium">
-          {HEADER_NAV_LINKS.map((navLink, i) => {
-            return (
-              <Link href={`${navLink.slug}`} key={i} className="text-text-color_2 hover:text-text-color_1 transition-colors">
-                {navLink.label}
-              </Link>
-            );
-          })}
-        </nav>
+      <nav className="flex justify-end items-center w-full gap-3 pr-5 text-read_2 font-medium">
+        {HEADER_NAV_LINKS.map((navLink, i) => {
+          return (
+            <Link
+              href={`${navLink.slug}`}
+              key={i}
+              className="text-text-color_2 hover:text-text-color_1 transition-colors"
+            >
+              {navLink.label}
+            </Link>
+          );
+        })}
+      </nav>
 
       <div className="flex justify-center items-center gap-2">
-        <input type="text" placeholder="Search" className="px-2 py-0.5 bg-background-color_900C border border-border-color_800C rounded-tiny placeholder:text-text-color_3" />
-        <ThemeModeToggoler/>
+        <input
+          type="text"
+          placeholder="Search"
+          className="px-2 py-0.5 bg-background-color_900C border border-border-color_800C rounded-tiny placeholder:text-text-color_3"
+        />
+        <ThemeModeToggoler />
       </div>
     </header>
   );

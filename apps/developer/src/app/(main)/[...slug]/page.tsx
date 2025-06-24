@@ -12,11 +12,11 @@ type MainDocContentPropsType = {
 };
 
 export async function generateStaticParams() {
-  const data = getDeveloperDocsFlatData
+  const data = getDeveloperDocsFlatData;
   const slug = data.map((item, _) => ({
-    slug: item.path.split("/").slice(1)
-  }))
-  return slug
+    slug: item.path.split("/").slice(1),
+  }));
+  return slug;
 }
 
 export async function generateMetadata({

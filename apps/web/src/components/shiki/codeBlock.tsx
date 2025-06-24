@@ -18,7 +18,6 @@ export async function CodeBlock(props: Props) {
     // transformers: [transformerTwoslash({
     //   renderer: rendererRich()
     // })],
-    
   });
 
   return (

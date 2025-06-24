@@ -56,9 +56,9 @@ export const QuickLearnAsideNav = ({
                       headingListRefs.current[anchor.slug] = el;
                     }}
                     onClick={() => {
-                     
                       handleActiveHeading(
-                        headingListRefs.current[anchor.slug] as HTMLElement, `#${anchor.slug}`
+                        headingListRefs.current[anchor.slug] as HTMLElement,
+                        `#${anchor.slug}`
                       );
                     }}
                     className={`one_line_ellipsis px-3 w-fit text-read_2 ${activeHeading === `#${anchor.slug}` ? "text-pm_purple-600 font-medium" : "text-text-color_2"}`}

@@ -91,8 +91,14 @@ export const FeaturesSlider = ({
   return (
     <div className="w-full mt-44 px-5">
       <div className="layout_max_1200 mx-auto flex justify-between items-start [@media(max-width:1137px)]:flex-col [@media(max-width:1137px)]:items-center">
-          <h2 className="main_hero_heading_sync font-weight_530  flex-shrink-0 [@media(max-width:1137px)]:text-center">Extended IDE <br /> Into Codeblock</h2>
-          <p className="text-read_1 max-w-[500px] w-full font-medium text-text-color_2 [@media(max-width:1137px)]:mt-2 max-[550]:max-w-[100%] [@media(max-width:1137px)]:text-center">Turn complex lessons into simplified, interactive Codeblocks - designed to boost understanding and make learning to code more intuitive.</p>
+        <h2 className="main_hero_heading_sync font-weight_530  flex-shrink-0 [@media(max-width:1137px)]:text-center">
+          Extended IDE <br /> Into Codeblock
+        </h2>
+        <p className="text-read_1 max-w-[500px] w-full font-medium text-text-color_2 [@media(max-width:1137px)]:mt-2 max-[550]:max-w-[100%] [@media(max-width:1137px)]:text-center">
+          Turn complex lessons into simplified, interactive Codeblocks -
+          designed to boost understanding and make learning to code more
+          intuitive.
+        </p>
       </div>
       <div className="layout_max_1200   mx-auto flex justify-center items-start gap-8  max-[1137px]:gap-3 max-[1137px]:flex-col max-[1137px]:items-center mt-16">
         <div className="w-full">

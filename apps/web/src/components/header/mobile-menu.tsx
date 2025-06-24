@@ -85,12 +85,17 @@ export const MobileMenu = ({
           </div>
           <div className="w-full ">
             <div className="p-3">
-                <div className="flex justify-start items-center gap-2">
-                    <div className="w-[30px] h-[30px] flex-shrink-0  bg-[var(--surface-purple-bg)] rounded-tiny border border-[var(--surface-purple-border)] flex justify-center items-center">
-<Puzzle size={LUCIDE_DEFAULT_ICON_SIZE} className="text-[var(--surface-purple-fg)]" />
-                    </div>
-                    <p className="text-read_1 font-medium text-text-color_4">Features</p>
+              <div className="flex justify-start items-center gap-2">
+                <div className="w-[30px] h-[30px] flex-shrink-0  bg-[var(--surface-purple-bg)] rounded-tiny border border-[var(--surface-purple-border)] flex justify-center items-center">
+                  <Puzzle
+                    size={LUCIDE_DEFAULT_ICON_SIZE}
+                    className="text-[var(--surface-purple-fg)]"
+                  />
                 </div>
+                <p className="text-read_1 font-medium text-text-color_4">
+                  Features
+                </p>
+              </div>
             </div>
             <div className="p-3 border-t border-border-color_800C">
               <p className="text-read_2 uppercase font-medium text-text-color_3">

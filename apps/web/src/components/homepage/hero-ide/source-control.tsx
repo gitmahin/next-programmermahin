@@ -1,5 +1,12 @@
 "use client";
-import { AlignLeft, Check, ChevronDown, ChevronRight, Ellipsis, RotateCw } from "lucide-react";
+import {
+  AlignLeft,
+  Check,
+  ChevronDown,
+  ChevronRight,
+  Ellipsis,
+  RotateCw,
+} from "lucide-react";
 import { SidebarTitle } from "./sidebar-title";
 import { VSButton } from "./ui";
 import { VSInputBox } from "./ui/vs-input";
@@ -17,10 +24,10 @@ export const SourceControlComp = () => {
           </span>
         </div>
         <div className=" group-hover:opacity-100 flex justify-end items-center gap-1.5 pr-2">
-             <AlignLeft  size={10} className="text-pm_zinc-400" />
-<Check size={12} className="text-pm_zinc-400" />
-  <RotateCw size={10} className="text-pm_zinc-400" />
-  <Ellipsis size={12} className="text-pm_zinc-400" />
+          <AlignLeft size={10} className="text-pm_zinc-400" />
+          <Check size={12} className="text-pm_zinc-400" />
+          <RotateCw size={10} className="text-pm_zinc-400" />
+          <Ellipsis size={12} className="text-pm_zinc-400" />
         </div>
       </div>
       <div

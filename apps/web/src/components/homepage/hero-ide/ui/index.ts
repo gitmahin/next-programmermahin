@@ -1,2 +1,2 @@
-export * from "./vs-button"
-export * from "./vs-input"
+export * from "./vs-button";
+export * from "./vs-input";

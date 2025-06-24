@@ -11,8 +11,8 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 export const ContentAside = ({ content }: { content: string }) => {
-   const anchors = extractAnchors(content);
-  const { activeHash } = useActiveAnchor(content)
+  const anchors = extractAnchors(content);
+  const { activeHash } = useActiveAnchor(content);
   const isContentAsideOpen = useAppSelector(isContentAsideOpenSelector);
   const dispatch = useAppDispatch();
 

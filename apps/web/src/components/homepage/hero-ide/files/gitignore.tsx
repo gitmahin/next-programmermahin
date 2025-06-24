@@ -1,4 +1,4 @@
-import { CodeBlock } from "@/components/shiki"
+import { CodeBlock } from "@/components/shiki";
 
 const code = `# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
@@ -44,11 +44,11 @@ yarn-error.log*
 
 .idea
 
-`
+`;
 export const GitIgnore = () => {
-    return (
-   <CodeBlock lang="bash" className="text-[9px]">
+  return (
+    <CodeBlock lang="bash" className="text-[9px]">
       {code}
     </CodeBlock>
-    )
-}
+  );
+};

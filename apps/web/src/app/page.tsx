@@ -14,9 +14,8 @@ export default async function Page({
   searchParams: Promise<{ filetype: string | undefined }>;
 }) {
   const filetype = (await searchParams).filetype;
-  const fileCode = getFileContentCompById[
-            (filetype ? filetype : "root-readme") as FileId
-          ]
+  const fileCode =
+    getFileContentCompById[(filetype ? filetype : "root-readme") as FileId];
   return (
     <div className="w-full ">
       <div className="hero_image_wrapper">
@@ -108,11 +107,7 @@ export default async function Page({
           <span className="text-text-color_4">Zero fluff</span>. Pure skill.
         </p>
       </div>
-      <DynamicHeroIDE>
-        {
-          fileCode? fileCode : "No file found"
-        }
-      </DynamicHeroIDE>
+      <DynamicHeroIDE>{fileCode ? fileCode : "No file found"}</DynamicHeroIDE>
 
       <SnippetsFeatures />
       <DynamicErrorResolveShowupSection />

@@ -1,11 +1,16 @@
-
-import { configureStore, createSelector, createSlice, PayloadAction, Slice } from "@reduxjs/toolkit";
+import {
+  configureStore,
+  createSelector,
+  createSlice,
+  PayloadAction,
+  Slice,
+} from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 type PaginateDataType = {
-    label: string;
-    path: string;
-}
+  label: string;
+  path: string;
+};
 
 export interface paginateStateType {
   next: PaginateDataType | undefined;
@@ -30,8 +35,7 @@ export const paginateSlice: Slice<paginateStateType> = createSlice({
       }>
     ) => {
       const { currentIndex, dataList } = action.payload;
-      state.prev =
-        currentIndex > 0 ? dataList[currentIndex - 1] : undefined;
+      state.prev = currentIndex > 0 ? dataList[currentIndex - 1] : undefined;
       state.next =
         dataList && currentIndex < dataList.length - 1
           ? dataList[currentIndex + 1]
@@ -48,13 +52,11 @@ type paginationInterface = {
 export let usePaginationSelector: TypedUseSelectorHook<paginationInterface> =
   useSelector;
 
-  
 // Defines a local store for type inference only; not actively used.
 const configureLocalStore = () =>
   configureStore({
     reducer: { [paginationSliceName]: paginateSlice.reducer },
   });
-
 
 const selectPaginationState = (state: paginationInterface) => state.pagination;
 
@@ -66,8 +68,7 @@ export const paginationValuesSelector = createSelector(
   })
 );
 
-
-  // Infers dispatch type for a store using only this slice.
+// Infers dispatch type for a store using only this slice.
 type SliceDispatch = ReturnType<typeof configureLocalStore>["dispatch"];
 export let usePaginationDispatch = () => useDispatch<SliceDispatch>();
 
@@ -79,6 +80,5 @@ export const initializePaginationSlicePackage = (
   usePaginationSelector = useAppSelector;
 };
 
-
 export const { setPagination } = paginateSlice.actions;
-export const paginationReducer =  paginateSlice.reducer;
+export const paginationReducer = paginateSlice.reducer;

@@ -4,7 +4,6 @@ export interface AnchorsType {
   anchor: string;
 }
 
-
 export type FileType =
   | "js"
   | "ts"
@@ -24,6 +23,6 @@ export type FileType =
   | "text"
   | "npm"
   | "turbo"
-  | "prettier"
+  | "prettier";
 
-  export type SVGTsxIconType = React.ComponentType<SVGProps<SVGAElement>>;
+export type SVGTsxIconType = React.ComponentType<SVGProps<SVGAElement>>;

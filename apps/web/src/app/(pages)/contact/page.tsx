@@ -202,8 +202,7 @@ export default function ContactPage() {
                 >
                   <PopoverTrigger asChild>
                     <PMButton
-                  disabled={isNoneOfAbove}
-                  
+                      disabled={isNoneOfAbove}
                       variant="secondary"
                       className="w-full rounded transition-colors mt-3 flex justify-center items-center px-3 group py-1.5 gap-2 text-text-color_2  hover:text-text-color_1 disabled:text-text-color_3"
                     >
@@ -344,9 +343,20 @@ export default function ContactPage() {
 
           <div className="w-full h-[calc(100%-70px)] backdrop-blur-md rounded-l-[20px] border border-r-0 border-background-color_900C p-2 pr-0">
             <div className="w-full h-full bg-background-color_900C rounded-l-[15px] overflow-hidden">
-                <Image src={"/contact_page/dark/tuto.png"} width={1000} height={800} alt="Tutorial home page" className="w-full h-full object-cover object-left-top hidden dark:block" />
-                <Image src={"/contact_page/light/tuto.png"} width={1000} height={800} alt="Tutorial home page" className="w-full h-full object-cover object-left-top dark:hidden block" />
-
+              <Image
+                src={"/contact_page/dark/tuto.png"}
+                width={1000}
+                height={800}
+                alt="Tutorial home page"
+                className="w-full h-full object-cover object-left-top hidden dark:block"
+              />
+              <Image
+                src={"/contact_page/light/tuto.png"}
+                width={1000}
+                height={800}
+                alt="Tutorial home page"
+                className="w-full h-full object-cover object-left-top dark:hidden block"
+              />
             </div>
           </div>
           <div className=" w-full h-[50px] mt-5 flex justify-between items-center ">

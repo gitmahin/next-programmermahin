@@ -11,16 +11,16 @@ import React, { useEffect } from "react";
 export const Sidebar = () => {
   const path_name = usePathname();
   const isSidebarOpen = useAppSelector(isSidebarOpenSelector);
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-  const dataForPagination = getDeveloperDocsFlatData
+  const dataForPagination = getDeveloperDocsFlatData;
 
   useEffect(() => {
     const currentIndex = dataForPagination.findIndex(
       (navItem) => decodeURIComponent(path_name) === navItem.path
     );
-    if(!setPagination) return
-    dispatch(setPagination({currentIndex, dataList: dataForPagination}))
+    if (!setPagination) return;
+    dispatch(setPagination({ currentIndex, dataList: dataForPagination }));
   }, [dataForPagination, path_name]);
 
   return (
@@ -31,7 +31,9 @@ export const Sidebar = () => {
         {Object.entries(DEVELOPER_DOCS_DATA).map(([Key, value], i) => {
           return (
             <div key={i} className="mb-8 text-read_1">
-              <p className="font-medium one_line_ellipsis text-text-color_3">{Key}</p>
+              <p className="font-medium one_line_ellipsis text-text-color_3">
+                {Key}
+              </p>
               <div className=" leading-8">
                 {value.items.map((item, j) => {
                   return (
@@ -46,13 +48,13 @@ export const Sidebar = () => {
                           {item.label}
                         </span>
                       </Link>
-                      <div >
+                      <div>
                         {item.siblingOneItems?.map((siblingOneItem, k) => {
                           return (
                             <div key={k}>
                               <Link
                                 href={`/${value.slug}/${item.slug}/${siblingOneItem.siblingOneSlug}`}
-                                   className="text-text-color_2"
+                                className="text-text-color_2"
                               >
                                 <span
                                   className={`one_line_ellipsis pl-8 rounded-tiny px-2 ${path_name.endsWith(siblingOneItem.siblingOneSlug) ? "text-white bg-pm_purple-700 font-medium" : ""}`}
