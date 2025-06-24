@@ -4,13 +4,7 @@ import { ChevronRight } from "lucide-react";
 import React from "react";
 import Link from "next/link";
 import {
-  ErrorResolvingComp,
-  TrmTailwind,
   SnippetsFeatures,
-  TrmPage,
-  TrmStyle,
-  TrmPackageJson,
-  CodeEditorHeroAnimationDisplay,
 } from "@/components/homepage";
 import { DynamicErrorResolveShowupSection } from "@/components/dynamics";
 import { HeroIDE } from "@/components/homepage/hero-ide";

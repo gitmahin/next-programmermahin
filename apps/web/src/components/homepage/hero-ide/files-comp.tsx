@@ -8,9 +8,8 @@ import {
   GetIconByLanguage,
 } from "@programmer/ui";
 import { FileType, SVGTsxIconType } from "@programmer/types";
-
-type FileId = "turbo.json" | "package.json" | "tsconfig.json" | "gitignore" | "prettierignore" | "prettierrc" | "web-redux-store" | "searchBoxOpenSlice" | "searchMetaInfoSlice" | "searchMobInfoOpenSlice" | "package.json-shared" | "root-readme"
-
+import { useAppDispatch } from "@/hooks/redux.hook";
+import { handleOpenNewFile } from "@/redux/slice/vside/vside-slice";
 
 interface ProjectFileType {
   name: string;
@@ -132,7 +131,7 @@ const PROJECT_DETAILS: ProjectTreeType = {
     ext: "npm",
     type: "file",
   },
- "README.md": {
+  "README.md": {
     id: "root-readme",
     ext: "md",
     type: "file",
@@ -153,6 +152,20 @@ const ProjecTreeFileView = ({
   project: ProjectTreeType;
   depth?: number;
 }) => {
+  const VsIDEFileManagerDispatch = useAppDispatch();
+  const openNewFile = useCallback(
+    ({ name, id, ext }: ProjectFileType) => {
+      if (!handleOpenNewFile) return;
+      VsIDEFileManagerDispatch(
+        handleOpenNewFile({
+          activeFileName: name,
+          activeFileById: id,
+          activeFileExt: ext,
+        })
+      );
+    },
+    [VsIDEFileManagerDispatch]
+  );
   const projectEntries = useMemo(() => Object.entries(project), [project]);
   return projectEntries.map(([key, value], i) => {
     const currentPaddingLeft = depth * INDENT_SIZE;
@@ -169,56 +182,69 @@ const ProjecTreeFileView = ({
         className="text-[11px] text-pm_zinc-200 leading-[18px]"
       >
         {/* folder button */}
-        <div
-          style={{ paddingLeft: `${currentPaddingLeft}px` }}
-          className={`w-full cursor-pointer border border-transparent select-none focus:border-blue-600 focus:bg-[var(--github-default-background-color-4)]`}
-          tabIndex={0}
-          onClick={toggleExpansion}
-        >
-          <div className="relative pl-[20px] flex justify-start items-center gap-1">
-            {value.type === "folder" ? (
-              <>
-                {isExpanded ? (
-                  <ChevronDown
-                    size={10}
-                    className="text-pm_zinc-300 absolute left-2.5 top-1/2 -translate-y-1/2"
-                  />
-                ) : (
-                  <ChevronRight
-                    size={10}
-                    className="text-pm_zinc-300 absolute left-2.5 top-1/2 -translate-y-1/2"
-                  />
-                )}
 
-                {isExpanded ? (
-                  <DefaultFolderOpen
+        {value.type === "folder" ? (
+          <div
+            style={{ paddingLeft: `${currentPaddingLeft}px` }}
+            className={`w-full cursor-pointer border border-transparent select-none focus:border-blue-600 focus:bg-[var(--github-default-background-color-4)]`}
+            tabIndex={0}
+            onClick={toggleExpansion}
+          >
+            <div className="relative pl-[20px] flex justify-start items-center gap-1">
+              {isExpanded ? (
+                <ChevronDown
+                  size={10}
+                  className="text-pm_zinc-300 absolute left-2.5 top-1/2 -translate-y-1/2"
+                />
+              ) : (
+                <ChevronRight
+                  size={10}
+                  className="text-pm_zinc-300 absolute left-2.5 top-1/2 -translate-y-1/2"
+                />
+              )}
+
+              {isExpanded ? (
+                <DefaultFolderOpen
+                  width={13}
+                  height={13}
+                  className="flex-shrink-0 relative z-10"
+                />
+              ) : (
+                FolderIcon && (
+                  <FolderIcon
                     width={13}
                     height={13}
                     className="flex-shrink-0 relative z-10"
                   />
-                ) : (
-                  FolderIcon && (
-                    <FolderIcon
-                      width={13}
-                      height={13}
-                      className="flex-shrink-0 relative z-10"
-                    />
-                  )
-                )}
-                <span className="one_line_ellipsis relative z-10">{key}</span>
-              </>
-            ) : (
-              <>
-                <FileIconParent
-                  width={13}
-                  height={13}
-                  className="flex-shrink-0"
-                />
-                <span className="one_line_ellipsis relative z-10">{key}</span>
-              </>
-            )}
+                )
+              )}
+              <span className="one_line_ellipsis relative z-10">{key}</span>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div
+            style={{ paddingLeft: `${currentPaddingLeft}px` }}
+            className={`w-full cursor-pointer border border-transparent select-none focus:border-blue-600 focus:bg-[var(--github-default-background-color-4)]`}
+            tabIndex={0}
+            onClick={() => {
+              if (!value.id || !value.ext) return;
+              openNewFile({
+                name: key,
+                id: value.id,
+                ext: value.ext,
+              });
+            }}
+          >
+            <div className="relative pl-[20px] flex justify-start items-center gap-1">
+              <FileIconParent
+                width={13}
+                height={13}
+                className="flex-shrink-0"
+              />
+              <span className="one_line_ellipsis relative z-10">{key}</span>
+            </div>
+          </div>
+        )}
 
         {isExpanded && (
           <div>
@@ -237,6 +263,14 @@ const ProjecTreeFileView = ({
                   key={`${file.id}`}
                   style={{ paddingLeft: `${filePaddingLeft}px` }}
                   className="cursor-pointer select-none"
+                   onClick={() => {
+              if (!file.id || !file.ext) return;
+              openNewFile({
+                name: file.name,
+                id: file.id,
+                ext: file.ext,
+              });
+            }}
                 >
                   <div className="pl-[22px] flex justify-start items-center gap-1">
                     <FileIcon

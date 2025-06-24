@@ -1,48 +1,11 @@
 "use client";
-import { cva } from "class-variance-authority";
-import {
-  BellDot,
-  Braces,
-  Bug,
-  BugPlay,
-  BugPlayIcon,
-  ChevronLeft,
-  ChevronRight,
-  CircleUser,
-  CircleX,
-  Code2,
-  CodeSquare,
-  DotIcon,
-  Ellipsis,
-  File,
-  FileIcon,
-  Files,
-  GemIcon,
-  LucideIcon,
-  Menu,
-  PanelBottom,
-  PanelLeft,
-  PanelRight,
-  RefreshCw,
-  Search,
-  Settings,
-  Settings2,
-  SettingsIcon,
-  TriangleAlert,
-} from "lucide-react";
+import { CircleUser, Files, SettingsIcon } from "lucide-react";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable-panel";
-import {
-  GitHubCopilot,
-  PLayDebug,
-  SourceControlSVG,
-  VSRemoteSVG,
-  VSsearchSVG,
-} from "@programmer/ui";
-import { SVGProps, useState } from "react";
+import { PLayDebug, SourceControlSVG, VSsearchSVG } from "@programmer/ui";
 import { FilesComp } from "./files-comp";
 import { SearchComp } from "./search-comp";
 import { RunAndDebugComp } from "./run-and-debug";
@@ -51,7 +14,10 @@ import Image from "next/image";
 import { VsHeader } from "./vsheader";
 import { VsOuterHeader } from "./vs-outer-header";
 import { VsFooter } from "./vs-footer";
-import { FileType, SVGTsxIconType } from "@programmer/types";
+import { VsIDEContentHeader } from "./vs-ide-content-header";
+import { VsIdeFileContent } from "./files";
+import { useAppSelector } from "@/hooks/redux.hook";
+import { CurrentFileByIdSelector } from "@/redux/slice/vside/vside-slice";
 
 type IDENavigationCategoryType =
   | "files"
@@ -90,10 +56,11 @@ const IDE_SIDEBAR_ACTIVE_TAB: {
   source_control: <SourceControlComp />,
 };
 
-
 export const HeroIDE = () => {
-  const [activeNavById, setActiveNavById] =
-    useState<IDENavigationCategoryType>("files");
+  const activeNavById = "files";
+
+  const currentFileById = useAppSelector(CurrentFileByIdSelector);
+
   return (
     <div className="w-full flex justify-center items-center relative z-20 mt-5">
       <div className="max-w-[800px] h-[500px] w-full relative">
@@ -126,9 +93,9 @@ export const HeroIDE = () => {
                   {IDE_LEFT_SIDE_NAVIGATION_IOCNS.map((item, i) => {
                     return (
                       <div
-                        onClick={() => {
-                          setActiveNavById(item.id);
-                        }}
+                        // onClick={() => {
+                        //   setActiveNavById(item.id);
+                        // }}
                         className={`w-full h-[28px] border-l border-transparent text-pm_zinc-500 hover:text-pm_zinc-200  ${activeNavById === item.id && "!text-pm_zinc-200 !border-[var(--github-default-active-bar-color-1)]"} flex justify-center items-center   `}
                       >
                         {item.icon}
@@ -165,7 +132,8 @@ export const HeroIDE = () => {
                   className="bg-[var(--github-default-background-color-2)]"
                 >
                   <div className="w-full h-full">
-                    <div className="h-[22px] border-b border-[var(--github-default-border-color-1)] bg-[var(--github-default-background-color-1)]"></div>
+                    <VsIDEContentHeader />
+                    <VsIdeFileContent activeFileId={currentFileById} />
                   </div>
                 </ResizablePanel>
               </ResizablePanelGroup>
