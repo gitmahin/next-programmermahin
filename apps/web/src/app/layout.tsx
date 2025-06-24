@@ -11,6 +11,8 @@ import "swiper/css/effect-fade";
 import "swiper/css";
 import { Footer } from "@/components/footer";
 import Script from "next/script";
+import { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -68,8 +70,14 @@ export default function RootLayout({
         <ReduxProvider>
           <GlobalThemeProvider>
             <Header />
+            <SkeletonTheme
+                baseColor="var(--skeleton-base-color)"
+                highlightColor="var(--skeleton-highlightColor)"
+              >
+
             {children}
             {modal}
+              </SkeletonTheme>
             <Footer />
           </GlobalThemeProvider>
         </ReduxProvider>

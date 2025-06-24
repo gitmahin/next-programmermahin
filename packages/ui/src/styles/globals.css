@@ -170,6 +170,11 @@
   --github-default-button-color-1: #22863a;
   --github-default-button-color-2: #1f7b34;
   --github-default-border-color-1: #1c1f25;
+
+
+    /* loader */
+  --skeleton-base-color: var(--color-zinc-200);
+  --skeleton-highlightColor: var(--color-zinc-50);
 }
 
 .dark {
@@ -259,6 +264,11 @@
   --code-remove-color: #ef4444;
   --code-add-bg-color: #10b9812a;
   --code-remove-bg-color: #dc26262f;
+
+   /* loader */
+  --skeleton-base-color: var(--color-zinc-900);
+  --skeleton-highlightColor: var(--color-zinc-700);
+
 }
 
 html {
@@ -976,4 +986,9 @@ pre:has(.focused):hover span {
   .mobile_menu {
     display: flex;
   }
+}
+
+
+.react-loading-skeleton{
+  line-height: 1.5 !important;
 }
