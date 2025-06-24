@@ -1,4 +1,3 @@
-"use client";
 import { CircleUser, Files, SettingsIcon } from "lucide-react";
 import {
   ResizableHandle,
@@ -15,7 +14,7 @@ import { VsHeader } from "./vsheader";
 import { VsOuterHeader } from "./vs-outer-header";
 import { VsFooter } from "./vs-footer";
 import { VsIDEContentHeader } from "./vs-ide-content-header";
-import { VsIdeFileContent } from "./files";
+import { getFileContentCompById } from "./files";
 import { useAppSelector } from "@/hooks/redux.hook";
 import { CurrentFileByIdSelector } from "@/redux/slice/vside/vside-slice";
 
@@ -56,10 +55,8 @@ const IDE_SIDEBAR_ACTIVE_TAB: {
   source_control: <SourceControlComp />,
 };
 
-export const HeroIDE = () => {
+export const HeroIDE = ({currentFileById = "root-readme"}: {currentFileById: string}) => {
   const activeNavById = "files";
-
-  const currentFileById = useAppSelector(CurrentFileByIdSelector);
 
   return (
     <div className="w-full flex justify-center items-center relative z-20 mt-5">
@@ -133,7 +130,9 @@ export const HeroIDE = () => {
                 >
                   <div className="w-full h-full">
                     <VsIDEContentHeader />
-                    <VsIdeFileContent activeFileId={currentFileById} />
+                  <div className="h-[calc(100%-22px)] vs_codeide_scrollbar overflow-y-auto ">
+      <div className="w-full">{getFileContentCompById[currentFileById as FileId]}</div>
+    </div>
                   </div>
                 </ResizablePanel>
               </ResizablePanelGroup>

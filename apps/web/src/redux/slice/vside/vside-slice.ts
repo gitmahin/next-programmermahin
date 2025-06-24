@@ -1,4 +1,4 @@
-import { FileType, GeneralNavItemType } from "@programmer/types";
+import { FileType } from "@programmer/types";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction, Slice } from "@reduxjs/toolkit";
 import { RootState } from "@/redux/store";

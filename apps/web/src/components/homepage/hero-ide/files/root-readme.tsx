@@ -1,7 +1,6 @@
 import { CodeBlock } from "@/components/shiki";
 
-const code = `
-# 👋 Welcome to the Next-ProgrammerMahin Monorepo!
+const code = `# 👋 Welcome to the Next-ProgrammerMahin Monorepo!
 
 Hello there! 👨‍💻  
 Welcome to the **Next-ProgrammerMahin**, powered by **Turborepo**. We’re excited to have you here!
