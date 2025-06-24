@@ -160,6 +160,21 @@
   --code-remove-color: #dc2626;
   --code-add-bg-color: #10b9812a;
   --code-remove-bg-color: #dc26262f;
+
+  /* github default theme color */
+  --github-default-background-color-1: #1f2428;
+  --github-default-background-color-2: #24292e;
+  --github-default-background-color-3: #313539;
+  --github-default-background-color-4: #444a4d;
+  --github-default-active-bar-color-1: #f9826c;
+  --github-default-button-color-1: #22863a;
+  --github-default-button-color-2: #1f7b34;
+  --github-default-border-color-1: #1c1f25;
+
+
+    /* loader */
+  --skeleton-base-color: var(--color-zinc-200);
+  --skeleton-highlightColor: var(--color-zinc-50);
 }
 
 .dark {
@@ -249,6 +264,11 @@
   --code-remove-color: #ef4444;
   --code-add-bg-color: #10b9812a;
   --code-remove-bg-color: #dc26262f;
+
+   /* loader */
+  --skeleton-base-color: var(--color-zinc-900);
+  --skeleton-highlightColor: var(--color-zinc-700);
+
 }
 
 html {
@@ -527,11 +547,13 @@ pre:has(.focused):hover span {
 }
 
 .codeblock .line {
-  padding: 0px 15px;
+  padding: 0px 10px;
+
 }
 
 .codeblock pre {
   height: 100%;
+  padding-top: 0px !important;
 }
 
 .codeblockwithouttypes .line {
@@ -541,8 +563,10 @@ pre:has(.focused):hover span {
 .codeblock code {
   counter-reset: step;
   counter-increment: step 0;
-  display: grid;
   width: 100%;
+  display: grid;
+  grid-template-columns: max-content;
+
   text-wrap: wrap;
 }
 
@@ -550,7 +574,7 @@ pre:has(.focused):hover span {
   content: counter(step);
   counter-increment: step;
   width: 1rem;
-  margin-right: 1.5rem;
+  margin-right: 1.3rem;
   display: inline-block;
   text-align: right;
   color: rgba(115, 138, 148, 0.4);
@@ -576,13 +600,15 @@ pre:has(.focused):hover span {
   }
 } */
 
-.dark {
-  .codeblock .shiki,
+.codeblock .shiki,
   .codeblock .shiki span {
     color: var(--shiki-dark) !important;
-    background-color: var(--background-color-900C) !important;
+    background-color: var(--github-default-background-color-2) !important;
     text-decoration: var(--shiki-dark-text-decoration) !important;
   }
+
+.dark {
+  
 
   .codeblockwithouttypes .shiki,
   .codeblockwithouttypes .shiki span {
@@ -943,23 +969,26 @@ pre:has(.focused):hover span {
   }
 }
 
-
 @media screen and (max-width: 720px) {
-  .footer-bottom{
+  .footer-bottom {
     gap: 20px;
     flex-direction: column-reverse;
-
   }
 }
 
 @media screen and (max-width: 520px) {
-  .footer-bottom{
+  .footer-bottom {
     gap: 12px;
   }
 }
 
 @media screen and (max-width: 1060px) {
-  .mobile_menu{
+  .mobile_menu {
     display: flex;
   }
+}
+
+
+.react-loading-skeleton{
+  line-height: 1.5 !important;
 }

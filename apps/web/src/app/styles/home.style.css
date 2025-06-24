@@ -53,3 +53,20 @@
   transform-origin: top left;
   backface-visibility: hidden;
 }
+
+/* WebKit Scrollbar Styling */
+.vs_codeide_scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+
+.vs_codeide_scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--github-default-background-color-4);
+  border-radius: 0px ;
+}
+
+.vs_codeide_scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 0px ;
+}

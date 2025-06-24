@@ -27,5 +27,14 @@ export * from "./icons/google";
 export * from "./icons/status-icons";
 export * from "./icons/twitter-icon";
 export * from "./icons/whatsapp-icon";
+export * from "./icons/vs-remote";
+export * from "./icons/vs-search";
+export * from "./icons/play-debug";
+export * from "./icons/source-control";
+export * from "./icons/copilot";
+export * from "./icons/code";
+export * from "./icons/system";
 export * from "./icons/type";
 export * from "./statusBox";
+
+export * from "./lib/get-icons"

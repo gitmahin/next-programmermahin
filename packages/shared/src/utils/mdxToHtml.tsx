@@ -8,11 +8,30 @@ import {
   transformerNotationFocus,
 } from "@shikijs/transformers";
 import rehypeSlug from "rehype-slug";
-import React, { ComponentPropsWithoutRef } from "react";
+import React, { ComponentPropsWithoutRef, SVGProps } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { CopyCodeButton } from "../components/code";
-
+import {
+  JavaScript,
+  ReactJSX,
+  ReactTsx,
+  TypeScript,
+  HTML5,
+  CSS,
+  JSON,
+  Bash,
+  Nginx,
+  Docker,
+  Git,
+  Cpp,
+  C,
+  MdxIcon,
+  Markdown,
+  Text,
+  GetIconByLanguage,
+} from "@programmer/ui";
+import {FileType} from "@programmer/types";
 
 type AnchorProps = ComponentPropsWithoutRef<"a">;
 type PreTagProps = ComponentPropsWithoutRef<"pre">;
@@ -21,43 +40,6 @@ type CodeElementProps = {
   children?: React.ReactNode;
   className?: string;
   ["data-language"]?: string;
-};
-
-type CodeLanguages =
-  | "js"
-  | "ts"
-  | "tsx"
-  | "jsx"
-  | "html"
-  | "css"
-  | "json"
-  | "bash"
-  | "nginx"
-  | "docker"
-  | "git"
-  | "cpp"
-  | "c"
-  | "md"
-  | "mdx"
-  | "text"
-
-const iconMap: Record<CodeLanguages, string> = {
-  js: "/code/js.svg",
-  ts: "/code/ts.svg",
-  tsx: "/code/tsx.svg",
-  jsx: "/code/jsx.svg",
-  html: "/code/html.svg",
-  css: "/code/css.svg",
-  json: "/code/json.svg",
-  bash: "/code/powershell.svg",
-  nginx: "/code/nginx.svg",
-  docker: "/code/docker.svg",
-  git: "/code/git.svg",
-  cpp: "/code/cpp.svg",
-  c: "/code/c.svg",
-  md: "/code/md.svg",
-  mdx: "/code/mdx.svg",
-  text: "/code/text.svg"
 };
 
 export const mdxToHtml = async (content: string) => {
@@ -118,30 +100,18 @@ export const mdxToHtml = async (content: string) => {
           children
         ) as React.ReactElement<CodeElementProps>;
         const language = codeElement?.props?.["data-language"] ?? "bash";
-        const icon = iconMap[language as CodeLanguages] ?? iconMap["text"];
+        const Icon = GetIconByLanguage[language as FileType] ?? GetIconByLanguage["text"];
         return (
           <div className="border h-full w-full p-1 pt-0 my-[1.71429em] rounded-[15px] bg-background-color_925C border-border-color_800C next-mdx-remote-codeblock">
             <div className="h-[35px] w-full flex justify-center items-center gap-3 px-2 py-0.5">
-              <div className="flex w-fit justify-start items-center gap-1.5 ">
-                {
-                  Array.from({ length: 3 }).map((_, i) => {
-                    return (
-                      <div key={i} className={`w-[13px] h-[13px] flex-shrink-0 border rounded-full border-border-color_800C dark:bg-background-color_750C bg-background-color_850C`}></div>
-                    )
-                  })
-                }
-              </div>
-              <div className="w-full flex justify-end items-center gap-1.5 ">
-                <Image
-                  src={`${icon}`}
-                  alt={language}
-                  width={100}
-                  height={100}
-                  className="w-[18px] h-[18px]"
-                />
-                <span className="text-text-color_2 text-read_3 font-medium">
-                  {language}
-                </span>
+              <div className="w-full flex justify-start items-center gap-5">
+                
+                <div className="w-full flex justify-start items-center gap-1.5 ">
+                  <Icon width={16} height={16} />
+                  <span className="text-text-color_2 text-read_3 font-medium">
+                    {language}
+                  </span>
+                </div>
               </div>
               <CopyCodeButton />
             </div>

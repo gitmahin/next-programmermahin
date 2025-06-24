@@ -26,5 +26,5 @@ export const CopyCodeButton = () => {
     }
   };
 
-  return <button onClick={handleCopy} className="p-1 rounded-tiny transition-colors flex-shrink-0 hover:bg-background-color_800C">{copied ? <Check size={16} className="dark:text-emerald-500 text-emerald-600"/> : <Copy size={16} className="text-text-svg_default_color" />}</button>;
+  return <button onClick={handleCopy} className="p-1 relative z-10 rounded-tiny transition-colors flex-shrink-0 hover:bg-background-color_800C">{copied ? <Check size={16} className="dark:text-emerald-500 text-emerald-600"/> : <Copy size={16} className="text-text-svg_default_color" />}</button>;
 };

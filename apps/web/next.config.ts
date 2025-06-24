@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
   serverExternalPackages: ["@shikijs/twoslash"],
   // TODO: for docker image. otherwise comment this
   // output: "standalone",
-};
-
-export default nextConfig; 
-        
+}; 
+   
+export default nextConfig;  
+          
