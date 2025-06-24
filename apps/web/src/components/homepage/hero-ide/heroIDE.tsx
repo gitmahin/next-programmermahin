@@ -1,20 +1,12 @@
 "use client";
-import {
-  CircleUser,
-  Files,
-  SettingsIcon,
-} from "lucide-react";
+import { CircleUser, Files, SettingsIcon } from "lucide-react";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable-panel";
-import {
-  PLayDebug,
-  SourceControlSVG,
-  VSsearchSVG,
-} from "@programmer/ui";
-import {  useState } from "react";
+import { PLayDebug, SourceControlSVG, VSsearchSVG } from "@programmer/ui";
+import { useState } from "react";
 import { FilesComp } from "./files-comp";
 import { SearchComp } from "./search-comp";
 import { RunAndDebugComp } from "./run-and-debug";
@@ -24,6 +16,7 @@ import { VsHeader } from "./vsheader";
 import { VsOuterHeader } from "./vs-outer-header";
 import { VsFooter } from "./vs-footer";
 import { VsIDEContentHeader } from "./vs-ide-content-header";
+import { FileType } from "@programmer/types";
 
 type IDENavigationCategoryType =
   | "files"
@@ -62,7 +55,7 @@ const IDE_SIDEBAR_ACTIVE_TAB: {
   source_control: <SourceControlComp />,
 };
 
-export const HeroIDE = () => {
+export const HeroIDE = ({ children }: { children: React.ReactNode }) => {
   const [activeNavById, setActiveNavById] =
     useState<IDENavigationCategoryType>("files");
 
@@ -101,6 +94,7 @@ export const HeroIDE = () => {
                         onClick={() => {
                           setActiveNavById(item.id);
                         }}
+                        key={i}
                         className={`w-full h-[28px] border-l border-transparent text-pm_zinc-500 hover:text-pm_zinc-200  ${activeNavById === item.id && "!text-pm_zinc-200 !border-[var(--github-default-active-bar-color-1)]"} flex justify-center items-center   `}
                       >
                         {item.icon}
@@ -137,12 +131,9 @@ export const HeroIDE = () => {
                   className="bg-[var(--github-default-background-color-2)]"
                 >
                   <div className="w-full h-full">
-                   
-<VsIDEContentHeader/>
+                    <VsIDEContentHeader />
                     <div className="h-[calc(100%-22px)] vs_codeide_scrollbar overflow-y-auto ">
-                        <div className="w-full">
-                          {/* {getFileContentCompById["root-readme"]} */}
-                        </div>
+                      <div className="w-full">{children}</div>
                     </div>
                   </div>
                 </ResizablePanel>

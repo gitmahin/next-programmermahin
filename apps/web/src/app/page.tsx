@@ -6,8 +6,14 @@ import Link from "next/link";
 import { SnippetsFeatures } from "@/components/homepage";
 import { DynamicErrorResolveShowupSection } from "@/components/dynamics";
 import { HeroIDE } from "@/components/homepage/hero-ide";
+import { getFileContentCompById } from "@/components/homepage/hero-ide/files";
 
-export default function Home() {
+export default async function Page({
+  searchParams,
+}: {
+    searchParams: Promise<{ filetype: string }>
+}) {
+  const filetype = (await searchParams).filetype;
   return (
     <div className="w-full ">
       <div className="hero_image_wrapper">
@@ -99,7 +105,9 @@ export default function Home() {
           <span className="text-text-color_4">Zero fluff</span>. Pure skill.
         </p>
       </div>
-      <HeroIDE />
+      <HeroIDE>
+          {getFileContentCompById[filetype as FileId]}
+      </HeroIDE>
 
       <SnippetsFeatures />
       <DynamicErrorResolveShowupSection />
