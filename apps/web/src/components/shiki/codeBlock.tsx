@@ -1,6 +1,6 @@
 import type { BundledLanguage } from "shiki";
 import { codeToHtml } from "shiki";
-import { transformerTwoslash } from "@shikijs/twoslash";
+// import { transformerTwoslash, rendererRich } from "@shikijs/twoslash";
 
 interface Props {
   children: string;
@@ -15,7 +15,10 @@ export async function CodeBlock(props: Props) {
       light: "github-light-high-contrast",
       dark: "github-dark-high-contrast",
     },
-    transformers: [transformerTwoslash()],
+    // transformers: [transformerTwoslash({
+    //   renderer: rendererRich()
+    // })],
+    
   });
 
   return (
