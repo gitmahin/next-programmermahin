@@ -66,9 +66,6 @@ export const HeroIDE = () => {
   const [activeNavById, setActiveNavById] =
     useState<IDENavigationCategoryType>("files");
 
-
-
-  
   return (
     <div className="w-full flex justify-center items-center relative z-20 mt-5">
       <div className="max-w-[800px] h-[500px] w-full relative">

@@ -8,8 +8,11 @@ import {
   GetIconByLanguage,
 } from "@programmer/ui";
 import { FileType, SVGTsxIconType } from "@programmer/types";
-import { useAppDispatch } from "@/hooks/redux.hook";
-import { handleOpenNewFile } from "@/redux/slice/vside/vside-slice";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux.hook";
+import {
+  CurrentFileByIdSelector,
+  handleOpenNewFile,
+} from "@/redux/slice/vside/vside-slice";
 
 interface ProjectFileType {
   name: string;
@@ -153,6 +156,8 @@ const ProjecTreeFileView = ({
   depth?: number;
 }) => {
   const VsIDEFileManagerDispatch = useAppDispatch();
+  const currentFile = useAppSelector(CurrentFileByIdSelector);
+
   const openNewFile = useCallback(
     ({ name, id, ext }: ProjectFileType) => {
       if (!handleOpenNewFile) return;
@@ -186,7 +191,7 @@ const ProjecTreeFileView = ({
         {value.type === "folder" ? (
           <div
             style={{ paddingLeft: `${currentPaddingLeft}px` }}
-            className={`w-full cursor-pointer border border-transparent select-none focus:border-blue-600 focus:bg-[var(--github-default-background-color-4)]`}
+            className={`w-full cursor-pointer border border-transparent select-none focus:border-blue-600 focus:bg-[var(--github-default-background-color-3)]`}
             tabIndex={0}
             onClick={toggleExpansion}
           >
@@ -224,7 +229,7 @@ const ProjecTreeFileView = ({
         ) : (
           <div
             style={{ paddingLeft: `${currentPaddingLeft}px` }}
-            className={`w-full cursor-pointer border border-transparent select-none focus:border-blue-600 focus:bg-[var(--github-default-background-color-4)]`}
+            className={`w-full cursor-pointer border border-transparent select-none focus:border-blue-600 focus:bg-[var(--github-default-background-color-3)]`}
             tabIndex={0}
             onClick={() => {
               if (!value.id || !value.ext) return;
@@ -262,15 +267,16 @@ const ProjecTreeFileView = ({
                 <div
                   key={`${file.id}`}
                   style={{ paddingLeft: `${filePaddingLeft}px` }}
-                  className="cursor-pointer select-none"
-                   onClick={() => {
-              if (!file.id || !file.ext) return;
-              openNewFile({
-                name: file.name,
-                id: file.id,
-                ext: file.ext,
-              });
-            }}
+                  className={`cursor-pointer select-none border border-transparent focus:border-blue-600 focus:bg-[var(--github-default-background-color-3)] ${currentFile === file.id && "bg-[var(--github-default-background-color-2)]"}`}
+                  tabIndex={0}
+                  onClick={() => {
+                    if (!file.id || !file.ext) return;
+                    openNewFile({
+                      name: file.name,
+                      id: file.id,
+                      ext: file.ext,
+                    });
+                  }}
                 >
                   <div className="pl-[22px] flex justify-start items-center gap-1">
                     <FileIcon
