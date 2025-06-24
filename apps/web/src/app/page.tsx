@@ -5,7 +5,7 @@ import React from "react";
 import Link from "next/link";
 import { SnippetsFeatures } from "@/components/homepage";
 import { DynamicErrorResolveShowupSection } from "@/components/dynamics";
-import { HeroIDE } from "@/components/homepage/hero-ide";
+import { DynamicHeroIDE } from "@/components/homepage/hero-ide";
 import { getFileContentCompById } from "@/components/homepage/hero-ide/files";
 
 export default async function Page({
@@ -108,11 +108,11 @@ export default async function Page({
           <span className="text-text-color_4">Zero fluff</span>. Pure skill.
         </p>
       </div>
-      <HeroIDE>
+      <DynamicHeroIDE>
         {
           fileCode? fileCode : "No file found"
         }
-      </HeroIDE>
+      </DynamicHeroIDE>
 
       <SnippetsFeatures />
       <DynamicErrorResolveShowupSection />

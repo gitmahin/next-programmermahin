@@ -364,7 +364,7 @@ export const FilesComp = () => {
 
   const handleSetCurrentFile = useCallback(() => {
 
-    if (!setCurrentFile || fileType) return;
+    if (!setCurrentFile || !fileType) return;
     VsIDEFileManagerDispatch(setCurrentFile(fileType));
   }, [setCurrentFile, searchParams]);
 
