@@ -70,3 +70,28 @@
   background: transparent;
   border-radius: 0px ;
 }
+
+@media screen and (max-width: 1388px) {
+  .hero_two_bg_sideimage_1{
+    right: -150px;
+  } 
+  .hero_two_bg_sideimage_2{
+    left: -150px;
+  } 
+}
+@media screen and (max-width: 1180px) {
+  .hero_two_bg_sideimage_1{
+    right: -80px;
+  } 
+  .hero_two_bg_sideimage_2{
+    left: -80px;
+  } 
+}
+@media screen and (max-width: 1034px) {
+  .hero_two_bg_sideimage_1{
+    display: none;
+  } 
+  .hero_two_bg_sideimage_2{
+    display: none;
+  } 
+}

@@ -9,10 +9,12 @@ import {
 import { GetIconByLanguage } from "@programmer/ui";
 import { X } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 export const VsIDEContentHeader = () => {
   const OPENED_FILES = useAppSelector(OpenedFilesSelector);
   const VsIDEFileMangerDispatch = useAppDispatch();
+  const scrollRef = useRef<HTMLDivElement>(null);
   const currentFileById = useAppSelector(CurrentFileByIdSelector);
   const handleCloseFile = (fileid: FileId) => {
     if (!handleRemoveFlieFromOpenedFiles) return;
@@ -25,9 +27,28 @@ export const VsIDEContentHeader = () => {
     if (!setCurrentFile) return;
     VsIDEFileMangerDispatch(setCurrentFile(fileId));
   };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (e.deltaY === 0) return;
+      e.preventDefault();
+      el.scrollLeft += e.deltaY;
+    };
+
+    el.addEventListener("wheel", handleWheel, { passive: false });
+    return () => el.removeEventListener("wheel", handleWheel);
+  }, []);
+
   return (
     <>
-      <div className="h-[22px] border-b border-[var(--github-default-border-color-1)] bg-[var(--github-default-background-color-1)] flex justify-start items-center ">
+      <div
+        ref={scrollRef}
+        style={{ scrollBehavior: "smooth" }}
+        className="h-[22px] border-b overflow-x-auto hide-scrollbar border-[var(--github-default-border-color-1)] bg-[var(--github-default-background-color-1)] flex justify-start items-center "
+      >
         {OPENED_FILES.map((item, i) => {
           const FileIcon = GetIconByLanguage[item.activeFileExt];
           return (
@@ -36,11 +57,11 @@ export const VsIDEContentHeader = () => {
               href={`/?${new URLSearchParams({
                 filetype: item.activeFileById,
               }).toString()}`}
+              key={i}
               className=" h-full"
             >
               <div
                 onClick={() => handleCurrentFile(item.activeFileById)}
-                key={i}
                 className={`flex select-none flex-shrink-0 px-2 justify-center items-center gap-1 h-full w-[90px] border-[var(--github-default-border-color-1)] border-r border-t border-t-transparent ${currentFileById === item.activeFileById ? "!border-t-[var(--github-default-active-bar-color-1)] bg-[var(--github-default-background-color-2)]" : "hover:bg-[var(--github-default-background-color-3)]"} cursor-pointer`}
               >
                 <FileIcon width={13} height={13} />

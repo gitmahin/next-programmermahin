@@ -60,9 +60,9 @@ export const HeroIDE = ({ children }: { children: React.ReactNode }) => {
     useState<IDENavigationCategoryType>("files");
 
   return (
-    <div className="w-full flex justify-center items-center relative z-20 mt-5">
-      <div className="max-w-[800px] h-[500px] w-full relative">
-        <div className="w-[400px] h-[300px] border overflow-hidden rounded-[12px] bg-background-color_925C border-border-color_800C absolute right-[-250px] bottom-10 rotate-12">
+    <div className="w-full h-full border flex justify-center items-center relative z-20 mt-5 px-2">
+      <div className="max-w-[800px] h-[500px] w-full relative ">
+        <div className="w-[400px] h-[300px] border overflow-hidden rounded-[12px] bg-background-color_925C border-border-color_800C absolute right-[-250px] bottom-10 rotate-12 hero_two_bg_sideimage_1">
           <Image
             src={"/heroimages/quicklearn.png"}
             width={1000}
@@ -79,7 +79,7 @@ export const HeroIDE = ({ children }: { children: React.ReactNode }) => {
             className="object-cover object-right-top w-full h-full block dark:hidden"
           />
         </div>
-        <div className="w-[400px] h-[300px] border overflow-hidden rounded-[12px] bg-background-color_925C border-border-color_800C absolute left-[-250px] bottom-10 -rotate-12">
+        <div className="w-[400px] h-[300px] border overflow-hidden rounded-[12px] bg-background-color_925C border-border-color_800C absolute left-[-250px] bottom-10 -rotate-12 hero_two_bg_sideimage_2">
           <Image
             src={"/hero_black.png"}
             width={1000}
@@ -131,11 +131,12 @@ export const HeroIDE = ({ children }: { children: React.ReactNode }) => {
               <ResizablePanelGroup
                 direction="horizontal"
                 className="w-full h-full "
+                
               >
                 <ResizablePanel
                   defaultSize={18}
                   maxSize={60}
-                  minSize={20}
+                  minSize={0}
                   className="bg-[var(--github-default-background-color-1)] border-l border-[var(--github-default-border-color-1)]"
                 >
                   {IDE_SIDEBAR_ACTIVE_TAB[activeNavById]}

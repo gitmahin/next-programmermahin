@@ -400,8 +400,8 @@ export const FilesComp = () => {
           className="px-0.5  border border-transparent cursor-pointer focus:!border-blue-600 outline-none flex justify-between items-center"
         >
           <div className="flex justify-start items-center ">
-            <ChevronRight size={10} className="text-pm_zinc-300" />
-            <span className="uppercase text-[9px] text-pm_zinc-200 font-weight_450">
+            <ChevronRight size={10} className="text-pm_zinc-300 flex-shrink-0" />
+            <span className="uppercase text-[9px] text-pm_zinc-200 font-weight_450 one_line_ellipsis">
               open editors
             </span>
           </div>
@@ -414,11 +414,11 @@ export const FilesComp = () => {
         >
           <div className="flex justify-start items-center ">
             {projectOpen ? (
-              <ChevronDown size={10} className="text-pm_zinc-300" />
+              <ChevronDown size={10} className="text-pm_zinc-300 flex-shrink-0" />
             ) : (
-              <ChevronRight size={10} className="text-pm_zinc-300" />
+              <ChevronRight size={10} className="text-pm_zinc-300 flex-shrink-0" />
             )}
-            <span className="uppercase text-[9px] text-pm_zinc-200 font-weight_450">
+            <span className="uppercase text-[9px] text-pm_zinc-200 font-weight_450 one_line_ellipsis">
               programmermahin
             </span>
           </div>
