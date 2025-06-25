@@ -60,7 +60,7 @@ export const HeroIDE = ({ children }: { children: React.ReactNode }) => {
     useState<IDENavigationCategoryType>("files");
 
   return (
-    <div className="w-full h-full border flex justify-center items-center relative z-20 mt-5 px-2">
+    <div className="w-full h-full  flex justify-center items-center relative z-20 mt-5 px-2">
       <div className="max-w-[800px] h-[500px] w-full relative ">
         <div className="w-[400px] h-[300px] border overflow-hidden rounded-[12px] bg-background-color_925C border-border-color_800C absolute right-[-250px] bottom-10 rotate-12 hero_two_bg_sideimage_1">
           <Image
