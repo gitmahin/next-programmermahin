@@ -440,7 +440,7 @@ pre code {
   border-radius: 0px !important;
   display: grid;
   width: 100%;
-  text-wrap: wrap;
+  text-wrap: nowrap;
   position: relative;
   font-family: var(--font-jetbrains-mono);
 
@@ -567,7 +567,7 @@ pre:has(.focused):hover span {
   display: grid;
   grid-template-columns: max-content;
 
-  text-wrap: wrap;
+  text-wrap: nowrap;
 }
 
 .codeblock code .line::before {
