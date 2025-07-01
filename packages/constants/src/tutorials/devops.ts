@@ -1,4 +1,5 @@
-import { TutorialNavItemType } from "./type";
+import { TutorialNavItemType } from "@programmer/types";
+
 
 export const DEVOPS_TUTORIALS: TutorialNavItemType = {
   "Introduction to DevOps": {
@@ -18,17 +19,18 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
       },
     ],
   },
-  "Linux & Command Line": {
+  "Linux & Bash Scripting": {
     slug: "linux-command-line",
     icon: "/icons/linux.svg",
     items: [
       {
-        label: "Basic commands, file navigation",
-        slug: "linux-basic-commands-navigation",
+        label: "Get Started With Bash",
+        slug: "get-started-with-bash",
       },
       {
-        label: "Permissions, services, process management",
+        label: "Bash Basic commands",
         slug: "linux-permissions-services-processes",
+
       },
     ],
   },

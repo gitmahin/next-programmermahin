@@ -1,9 +1,8 @@
-import { TutorialNavItemType } from "./type";
-
+import { TutorialNavItemType } from "@programmer/types";
 export const MONOREPO_TUTORIALS: TutorialNavItemType = {
   "Introduction to Monorepos": {
     slug: "monorepo-intro",
-    icon: "",
+  
     items: [
       { label: "What is a Monorepo?", slug: "what-is-monorepo" },
       { label: "Benefits of Monorepos", slug: "monorepo-benefits" },
@@ -12,7 +11,7 @@ export const MONOREPO_TUTORIALS: TutorialNavItemType = {
   },
   "Turborepo Setup": {
     slug: "monorepo-turborepo",
-    icon: "",
+
     items: [
       { label: "Setting up Turborepo", slug: "monorepo-setup" },
       { label: "Caching and Pipelines", slug: "monorepo-caching" },
@@ -21,7 +20,7 @@ export const MONOREPO_TUTORIALS: TutorialNavItemType = {
   },
   "Advanced Strategies": {
     slug: "monorepo-advanced",
-    icon: "",
+
     items: [
       { label: "Deploying Apps from Monorepos", slug: "monorepo-deployment" },
       { label: "Shared Packages", slug: "monorepo-shared-packages" },

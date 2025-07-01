@@ -13,22 +13,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { CopyCodeButton } from "../components/code";
 import {
-  JavaScript,
-  ReactJSX,
-  ReactTsx,
-  TypeScript,
-  HTML5,
-  CSS,
-  JSON,
-  Bash,
-  Nginx,
-  Docker,
-  Git,
-  Cpp,
-  C,
-  MdxIcon,
-  Markdown,
-  Text,
   GetIconByLanguage,
 } from "@programmer/ui";
 import { FileType } from "@programmer/types";

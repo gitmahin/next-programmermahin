@@ -1,9 +1,9 @@
-import { TutorialNavItemType } from "./type";
+import { TutorialNavItemType } from "@programmer/types";
 
 export const REACT_TUTORIALS: TutorialNavItemType = {
   "React Fundamentals": {
     slug: "react-fundamentals",
-    icon: "",
+
     items: [
       { label: "Getting Started", slug: "getting-started" },
       { label: "Understanding JSX", slug: "understanding-jsx" },
@@ -15,7 +15,7 @@ export const REACT_TUTORIALS: TutorialNavItemType = {
   },
   "React Hooks": {
     slug: "react-hooks",
-    icon: "",
+   
     items: [
       { label: "What Is a Hook?", slug: "what-is-a-hook" },
       { label: "useState", slug: "use-state" },
@@ -28,7 +28,7 @@ export const REACT_TUTORIALS: TutorialNavItemType = {
   },
   "React + Express": {
     slug: "react-with-express",
-    icon: "",
+ 
     items: [
       { label: "Setup Express", slug: "setup-express" },
       { label: "Creating APIs", slug: "creating-rest-apis" },

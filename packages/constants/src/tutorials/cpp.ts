@@ -1,4 +1,4 @@
-import { TutorialNavItemType } from "./type";
+import { TutorialNavItemType } from "@programmer/types";
 
 export const CPP_TUTORIALS: TutorialNavItemType = {
   "Getting Started": {
