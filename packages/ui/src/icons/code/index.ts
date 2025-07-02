@@ -19,3 +19,4 @@ export * from "./bash";
 export * from "./npm";
 export * from "./prettier";
 export * from "./turbo";
+export * from "./kubernetes"

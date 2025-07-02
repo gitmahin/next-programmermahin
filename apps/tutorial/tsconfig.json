@@ -20,7 +20,7 @@
     "next-env.d.ts",
     "next.config.ts",
     ".next/types/**/*.ts"
-  ],
+, "src/content/tutorials/devops/linux-and-bash-scripting/bash-file-handling.mdx"  ],
   "exclude": [
     "node_modules"
   ]

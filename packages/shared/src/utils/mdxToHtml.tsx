@@ -13,25 +13,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { CopyCodeButton } from "../components/code";
 import {
-  JavaScript,
-  ReactJSX,
-  ReactTsx,
-  TypeScript,
-  HTML5,
-  CSS,
-  JSON,
-  Bash,
-  Nginx,
-  Docker,
-  Git,
-  Cpp,
-  C,
-  MdxIcon,
-  Markdown,
-  Text,
   GetIconByLanguage,
 } from "@programmer/ui";
 import { FileType } from "@programmer/types";
+import { ExternalLink } from "lucide-react";
 
 type AnchorProps = ComponentPropsWithoutRef<"a">;
 type PreTagProps = ComponentPropsWithoutRef<"pre">;
@@ -88,10 +73,11 @@ export const mdxToHtml = async (content: string) => {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className={className}
+            className={`${className} inline-flex`}
             {...props}
           >
             {children}
+             <ExternalLink size={14} className="pl-0.5" />
           </a>
         );
       },
@@ -103,7 +89,7 @@ export const mdxToHtml = async (content: string) => {
         const Icon =
           GetIconByLanguage[language as FileType] ?? GetIconByLanguage["text"];
         return (
-          <div className="border h-full w-full p-1 pt-0 my-[1.71429em] rounded-[15px] bg-background-color_925C border-border-color_800C next-mdx-remote-codeblock">
+          <div className="border h-full w-full p-1 pt-0 rounded-[15px] bg-background-color_925C border-border-color_800C next-mdx-remote-codeblock">
             <div className="h-[35px] w-full flex justify-center items-center gap-3 px-2 py-0.5">
               <div className="w-full flex justify-start items-center gap-5">
                 <div className="w-full flex justify-start items-center gap-1.5 ">
@@ -117,7 +103,7 @@ export const mdxToHtml = async (content: string) => {
             </div>
             <pre
               {...props}
-              className="my-0 rounded-[10px] shadow dark:bg-background-color_900C bg-background-color_950C border-border-color_800C border"
+              className="my-0 rounded-[10px] max-w-full whitespace-pre shadow dark:bg-background-color_900C bg-background-color_950C border-border-color_800C border"
             >
               {children}
             </pre>

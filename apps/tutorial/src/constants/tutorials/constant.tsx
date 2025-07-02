@@ -1,5 +1,4 @@
-import { GeneralNavItemType } from "@programmer/types";
-import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
+
 import { BrainCircuit, HomeIcon, LucideIcon } from "lucide-react";
 import { TutorialEnums } from "@programmer/constants";
 

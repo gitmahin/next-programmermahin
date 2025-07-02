@@ -5,8 +5,8 @@ import {
   MONOREPO_TUTORIALS,
   NEXTJS_TUTORIALS,
   REACT_TUTORIALS,
-  TutorialNavItemType,
 } from ".";
+import { TutorialNavItemType } from "@programmer/types";
 
 export enum TutorialEnums {
   GIT = "git",

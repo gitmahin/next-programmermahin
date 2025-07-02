@@ -1,3 +1,5 @@
+import { SVGProps } from "react";
+import { GeneralNavItemType } from "./navitem";
 export interface AnchorsType {
   level: number;
   text: string;
@@ -26,3 +28,23 @@ export type FileType =
   | "prettier";
 
 export type SVGTsxIconType = React.ComponentType<SVGProps<SVGAElement>>;
+
+export interface TutorialDirChildNavItemType {
+  icon?: string;
+  slug: string;
+  items: GeneralNavItemType[];
+}
+
+export interface TutorialChildNavItemType extends GeneralNavItemType {
+  dirItems?: {
+    [key: string]: TutorialDirChildNavItemType;
+  };
+}
+
+export interface TutorialNavItemType {
+  [key: string]: {
+    icon?: string;
+    slug: string;
+    items: TutorialChildNavItemType[];
+  };
+}

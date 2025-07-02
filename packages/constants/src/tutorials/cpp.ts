@@ -1,9 +1,9 @@
-import { TutorialNavItemType } from "./type";
+import { TutorialNavItemType } from "@programmer/types";
 
 export const CPP_TUTORIALS: TutorialNavItemType = {
   "Getting Started": {
     slug: "cpp-getting-started",
-    icon: "",
+
     items: [
       { label: "Introduction To C++", slug: "introduction-to-cpp" },
       { label: "Setting up your environment", slug: "cpp-setup-environment" },
@@ -12,7 +12,7 @@ export const CPP_TUTORIALS: TutorialNavItemType = {
   },
   "Core Concepts": {
     slug: "cpp-core-concepts",
-    icon: "",
+
     items: [
       { label: "Variables and Data Types", slug: "cpp-variables-data-types" },
       { label: "Control Structures", slug: "cpp-control-structures" },
@@ -21,7 +21,7 @@ export const CPP_TUTORIALS: TutorialNavItemType = {
   },
   "Advanced Topics": {
     slug: "cpp-advanced",
-    icon: "",
+
     items: [
       { label: "Object-Oriented Programming", slug: "cpp-oop" },
       { label: "Memory Management", slug: "cpp-memory-management" },

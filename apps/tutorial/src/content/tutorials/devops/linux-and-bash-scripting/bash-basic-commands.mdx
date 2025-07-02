@@ -1,0 +1,79 @@
+---
+title: Bash Basic Commands
+desc: Learn file navigation and fundamental operations on Unix/Linux systems with practical examples.
+---
+
+# Bash Basic Commands
+---
+This tutorial will cover the absolute basics you need to start navigating and interacting with your Unix/Linux file system.
+
+**We'll focus on:**
+
+- Listing files and directories (`ls`)
+- Changing directories (`cd`)
+- Printing your current directory (`pwd`)
+---
+## 1. Bash Listing `ls`
+It allows you to see the contents of a directory.
+
+```bash
+ls
+```
+Example output:
+```bash
+Desktop    Documents    Downloads   Music    Pictures    Public    Templates    Videos    my_file.txt
+```
+
+### Some Important Options With `ls`
+- `-l` - Long listing format
+- `-a` - Include hidden files
+
+Examples:
+```bash
+ls -l
+ls -a
+```
+
+You can also write all options at once
+```bash
+ls -la
+```
+
+[Show more options](https://www.w3schools.com/bash/bash_ls.php)
+
+---
+
+## 2. Bash Change Directory `cd`
+The `cd` command (short for "change directory") is how you navigate through your file system.
+
+To move into a specific directory, type `cd` followed by the directory's name.
+```bash
+cd Documents
+```
+<p style={{fontSize: "13px"}}>
+*You have to go to home directory to change directory to `Documents`*.
+</p>
+
+After this command, your current location in the terminal will be inside the `Documents` directory.
+
+### Options With `cd`
+- **(Go Up One Level):** `cd ..`
+This command moves you to the one level up directory from your current location.
+- **Switch to the previous directory:** `cd -`
+- **Change to the root directory:** `cd /`
+- **Change to the home directory:** `cd ~`
+    - The `cd ~` command takes you to your home directory, which is the default directory for your user account.
+
+---
+## 3. Bash Print Directory `pwd`
+The `pwd` command (short for "print working directory") simply tells you your current location in the file system. It's like asking "Where am I?"
+```bash
+pwd
+```
+Example output:
+```bash
+/home/yourusername/Documents
+```
+[Learn more](https://www.w3schools.com/bash/bash_pwd.php)
+
+Next we will learn about **File handling** in bash
