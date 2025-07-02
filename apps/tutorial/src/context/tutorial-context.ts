@@ -1,7 +1,8 @@
 "use client";
 
+import { TutorialNavItemType } from "@programmer/types";
 // currently not using this file
-import { TutorialNavItemType } from "@programmer/constants";
+
 import { createContext, useContext } from "react";
 
 interface TutorialContexttype {
