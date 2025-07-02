@@ -17,6 +17,7 @@ export * from "./input";
 export * from "./statusAlert";
 export * from "./textarea";
 export * from "./checkbox";
+export * from "./tooltip";
 export * from "./select";
 export * from "./sheet";
 

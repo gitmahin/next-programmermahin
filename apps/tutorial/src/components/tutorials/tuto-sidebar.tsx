@@ -7,9 +7,7 @@ import React, {
   useState,
 } from "react";
 import { TutoListPopup } from "./tuto-list-popup";
-import {
-  TUTORIALS_ICON,
-} from "@programmer/constants";
+import { TUTORIALS_ICON } from "@programmer/constants";
 import Image from "next/image";
 import { setPagination } from "@/redux/tutorials/tutoPaginateSlice";
 import { FlattenedTutorialChapter } from "@/types/flattened-tutorial-ch";
@@ -18,12 +16,12 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { setLockMouseEnter } from "@/redux/tutorials/tutoTabSlice";
 import { TutorialEnums } from "@programmer/constants";
+import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
+import { ChevronDown, ChevronRight } from "lucide-react";
 import {
-
-  LUCIDE_DEFAULT_ICON_SIZE,
-} from "@programmer/ui";
-import { ChevronDown } from "lucide-react";
-import { TutorialDirChildNavItemType, TutorialNavItemType } from "@programmer/types";
+  TutorialNavCoreItemsType,
+  TutorialNavItemType,
+} from "@programmer/types";
 
 export const TutoSidebar = ({
   tutoData,
@@ -93,7 +91,7 @@ export const TutoSidebar = ({
           // If there are dirItems, push them too before recursing
           if (item.dirItems) {
             for (const [dirKey, dir] of Object.entries(item.dirItems)) {
-              const typedDir = dir as TutorialDirChildNavItemType;
+              const typedDir = dir as TutorialNavCoreItemsType;
               const dirPath = `${parentPath}/${typedDir.slug}`;
 
               // Push the dir-level node (e.g., "k8s-pods")
@@ -236,7 +234,7 @@ export const TutoSidebar = ({
                             const isActivePathDir =
                               segments.slice(-1).toString() === childValue.slug;
                             return (
-                              <div key={j}>
+                              <div key={`${i}-${j}`}>
                                 <Link
                                   ref={(el) => {
                                     lessons.current[childValue.slug] = el;
@@ -261,9 +259,9 @@ export const TutoSidebar = ({
                                       }}
                                       className={` h-[25px] rounded-[5px] w-[25px] mr-1 transition-colors  ${isActivePathDir ? "hover:bg-background-color_900C" : "hover:bg-background-color_800C"} flex justify-center items-center`}
                                     >
-                                      <ChevronDown
+                                      <ChevronRight
                                         size={LUCIDE_DEFAULT_ICON_SIZE}
-                                        className={`transition-all duration-300 ${isOpen[childValue.slug] ? "text-text-color_1 " : "text-text-svg_default_color"}`}
+                                        className={`transition-all duration-300 ${isOpen[childValue.slug] ? "text-text-color_1 rotate-90" : "text-text-svg_default_color"}`}
                                       />
                                     </button>
 
@@ -296,7 +294,7 @@ export const TutoSidebar = ({
                                     return (
                                       <Link
                                         href={`/${tutorialType}/${value.slug}/${childValue.slug}/${subItem.slug}`}
-                                        key={k}
+                                        key={`${i}-${j}-${k}`}
                                         className="group"
                                         ref={(el) => {
                                           lessons.current[subItem.slug ?? ""] =
@@ -321,6 +319,116 @@ export const TutoSidebar = ({
                             );
                           }
                         )}
+
+                      {item.group &&
+                        Object.entries(item.group).map(([gKey, gValue], gi) => {
+                          return (
+                            <div key={`${i}-${gi}`}>
+                              <span className="text-read_3 font-medium text-text-color_2 pl-3 uppercase one_line_ellipsis">
+                                {gKey}
+                              </span>
+                              <div className="pl-5">
+                                {gValue.dirItems &&
+                                  Object.entries(gValue.dirItems).map(
+                                    ([dKey, dvalue], di) => {
+                                      const isActivePathDir =
+                                        segments.slice(-1).toString() ===
+                                        dvalue.slug;
+                                      return (
+                                        <div key={`${gi}-${di}`}>
+                                          <Link
+                                            ref={(el) => {
+                                              lessons.current[dvalue.slug] = el;
+                                            }}
+                                            href={`/${tutorialType}/${value.slug}/${dvalue.slug}`}
+                                            className="group"
+                                          >
+                                            <li
+                                              onClick={() =>
+                                                openDirChild(dvalue.slug, true)
+                                              }
+                                              className={`flex justify-between items-center text-read_2 font-medium group-hover:text-text-color_1 pl-3 rounded-tiny py-0 ${isActivePathDir ? "bg-background-color_800C font-semibold relative text-text-color_1" : `${path_name.split("/").includes(dvalue.slug) ? "text-text-color_1 font-semibold" : "text-text-color_4"}`}`}
+                                            >
+                                              <span className="one_line_ellipsis">
+                                                {dKey}
+                                              </span>
+
+                                              <button
+                                                onClick={(e) => {
+                                                  e.preventDefault();
+                                                  openDirChild(dvalue.slug);
+                                                }}
+                                                className={` h-[25px] rounded-[5px] w-[25px] mr-1 transition-colors  ${isActivePathDir ? "hover:bg-background-color_900C" : "hover:bg-background-color_800C"} flex justify-center items-center`}
+                                              >
+                                                <ChevronRight
+                                                  size={
+                                                    LUCIDE_DEFAULT_ICON_SIZE
+                                                  }
+                                                  className={`transition-all duration-300 ${isOpen[dvalue.slug] ? "text-text-color_1 rotate-90" : "text-text-svg_default_color"}`}
+                                                />
+                                              </button>
+
+                                              {isActivePathDir && (
+                                                <div
+                                                  className={`w-[3.5px] h-[16px] bg-pm_purple-600 rounded-tablet transition-all duration-300 absolute left-0 top-1/2 -translate-y-1/2`}
+                                                ></div>
+                                              )}
+                                            </li>
+                                          </Link>
+
+                                          <div
+                                            ref={(el) => {
+                                              dirChildRef.current[dvalue.slug] =
+                                                el;
+                                            }}
+                                            style={{ height: "0px" }}
+                                            className={`ml-3 pl-2 border-l overflow-hidden  ${
+                                              path_name
+                                                .split("/")
+                                                .includes(dvalue.slug) &&
+                                              !isActivePathDir
+                                                ? "border-pm_purple-600"
+                                                : "border-border-color_800C"
+                                            }`}
+                                          >
+                                            {dvalue.items.map((subItem, ki) => {
+                                              const isActivePathSubItem =
+                                                segments
+                                                  .slice(-1)
+                                                  .toString() === subItem.slug;
+                                              return (
+                                                <Link
+                                                  href={`/${tutorialType}/${value.slug}/${dvalue.slug}/${subItem.slug}`}
+                                                  key={`${i}-${gi}-${ki}`}
+                                                  className="group"
+                                                  ref={(el) => {
+                                                    lessons.current[
+                                                      subItem.slug ?? ""
+                                                    ] = el;
+                                                  }}
+                                                >
+                                                  <li
+                                                    className={`px-3 py-0 relative one_line_ellipsis rounded-tiny text-read_2  ${isActivePathSubItem ? "text-text-color_1 font-semibold bg-background-color_800C" : "font-medium text-text-color_4"}`}
+                                                  >
+                                                    <span>{subItem.label}</span>
+                                                    {isActivePathSubItem && (
+                                                      <div
+                                                        className={`w-[3.5px] h-[16px] bg-pm_purple-600 rounded-tablet transition-all duration-300 absolute left-0 top-1/2 -translate-y-1/2`}
+                                                      ></div>
+                                                    )}
+                                                  </li>
+                                                </Link>
+                                              );
+                                            })}
+                                          </div>
+                                        </div>
+                                      );
+                                    }
+                                  )}
+                              </div>
+                            </div>
+                          );
+                        })}
                     </React.Fragment>
                   );
                 })}

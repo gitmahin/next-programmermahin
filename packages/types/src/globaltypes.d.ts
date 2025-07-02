@@ -5,6 +5,7 @@ export interface AnchorsType {
   text: string;
   anchor: string;
 }
+import { React } from "react";
 
 export type FileType =
   | "js"
@@ -29,15 +30,26 @@ export type FileType =
 
 export type SVGTsxIconType = React.ComponentType<SVGProps<SVGAElement>>;
 
-export interface TutorialDirChildNavItemType {
+export interface TutorialNavCoreItemsType {
   icon?: string;
   slug: string;
   items: GeneralNavItemType[];
 }
 
-export interface TutorialChildNavItemType extends GeneralNavItemType {
+interface TutorialDiritemType {
   dirItems?: {
-    [key: string]: TutorialDirChildNavItemType;
+    [key: string]: TutorialNavCoreItemsType;
+  };
+}
+
+export interface TutorialChildNavItemType
+  extends GeneralNavItemType,
+    TutorialDiritemType {
+  group?: {
+    [key: string]: Omit<TutorialNavCoreItemsType, 'items' | 'slug'> & {
+    items?: GeneralNavItemType[];
+    slug?: string
+  } & TutorialDiritemType;
   };
 }
 

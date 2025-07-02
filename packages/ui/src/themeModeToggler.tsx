@@ -51,7 +51,7 @@ export const ThemeModeToggoler = () => {
             />
           </div>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="bg-background-color_850C">
+        <DropdownMenuContent align="end" className="bg-background-color_850C !border-border-color_800C p-0.5">
           <DropdownMenuItem
             className="group hover:bg-background-color_750C py-1 rounded-tiny"
             onClick={() => setTheme("system")}
