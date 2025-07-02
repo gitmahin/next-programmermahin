@@ -10,11 +10,11 @@ import {
   CPP_TUTORIALS,
   getTutorialsByKey,
   TutorialEnums,
-  TutorialNavItemType,
   TUTORIALS_ICON,
 } from "@programmer/constants";
 import { capitalizeFirstLetter } from "../../utils";
 import { ChevronRight, FileText } from "lucide-react";
+import { TutorialNavItemType } from "@programmer/types";
 
 interface FullTutorialNavItemType {
   [key: string]: TutorialNavItemType;
