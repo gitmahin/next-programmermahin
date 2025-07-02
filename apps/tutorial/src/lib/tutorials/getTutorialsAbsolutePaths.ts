@@ -1,9 +1,9 @@
 import {
   getTutorialsByKey,
   TUTORIAL_TYPES,
-  TutorialDirChildNavItemType,
   TutorialEnums,
 } from "@programmer/constants";
+import { TutorialDirChildNavItemType } from "@programmer/types";
 
 export const getTutorialsAbsolutePaths = () => {
   const params: { tutoType: string; slug: string[] }[] = [];
