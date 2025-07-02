@@ -213,7 +213,7 @@ export const TutoListPopup = ({
                         handleMouseEnter(item.key, item.label)
                       }
                       key={i}
-                      className={`flex cursor-pointer relative group transition-colors duration-150 select-none rounded-tiny justify-start items-center gap-3 px-3 py-1 ${tutoTab.activeKey === item.key && item.bg_color}`}
+                      className={`flex cursor-pointer  relative group transition-colors duration-150 select-none rounded-tiny justify-start items-center gap-3 px-3 py-1 ${tutoTab.activeKey === item.key ? item.bg_color: "hover:bg-background-color_800C"}`}
                     >
                       <div className="flex justify-center items-center">
                         <Image
