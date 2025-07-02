@@ -16,6 +16,7 @@ import {
   GetIconByLanguage,
 } from "@programmer/ui";
 import { FileType } from "@programmer/types";
+import { ExternalLink } from "lucide-react";
 
 type AnchorProps = ComponentPropsWithoutRef<"a">;
 type PreTagProps = ComponentPropsWithoutRef<"pre">;
@@ -72,10 +73,11 @@ export const mdxToHtml = async (content: string) => {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className={className}
+            className={`${className} inline-flex`}
             {...props}
           >
             {children}
+             <ExternalLink size={14} className="pl-0.5" />
           </a>
         );
       },

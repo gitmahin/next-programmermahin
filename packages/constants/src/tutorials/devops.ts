@@ -23,6 +23,10 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
     
     items: [
       {
+        label: "Absolute & Relative Paths",
+        slug: "absolute-and-relative-paths"
+      },
+      {
         label: "Get Started With Bash",
         slug: "get-started-with-bash",
       },
