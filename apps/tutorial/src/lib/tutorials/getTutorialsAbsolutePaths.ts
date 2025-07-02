@@ -3,7 +3,7 @@ import {
   TUTORIAL_TYPES,
   TutorialEnums,
 } from "@programmer/constants";
-import { TutorialDirChildNavItemType } from "@programmer/types";
+import { TutorialNavCoreItemsType } from "@programmer/types";
 
 export const getTutorialsAbsolutePaths = () => {
   const params: { tutoType: string; slug: string[] }[] = [];
@@ -26,7 +26,7 @@ export const getTutorialsAbsolutePaths = () => {
         // If item has dirItems, handle them
         if (item.dirItems) {
           Object.entries(item.dirItems).forEach(([_, dir]) => {
-            const typedDir = dir as TutorialDirChildNavItemType;
+            const typedDir = dir as TutorialNavCoreItemsType;
             // push the dir nodes
             if (typedDir.slug) {
               params.push({

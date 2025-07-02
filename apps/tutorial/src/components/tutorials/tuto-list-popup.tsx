@@ -17,10 +17,14 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@programmer/ui";
 import {
   BookOpenCheck,
   ChevronRight,
+  Library,
   LockKeyholeIcon,
   PanelRightClose,
   PanelRightOpen,
@@ -168,15 +172,22 @@ export const TutoListPopup = ({
   return (
     <>
       {showClickAbleTutoOpenBtn && (
-        <div
-          onClick={handleOpenTutoTab}
-          className="flex justify-center items-center w-[25px] h-[25px] active:border-pm_purple-700 active:border flex-shrink-0 hover:bg-background-color_800C rounded-tiny cursor-pointer"
-        >
-          <ChevronRight
-            size={LUCIDE_DEFAULT_ICON_SIZE}
-            className="text-text-svg_default_color"
-          />
-        </div>
+        <Tooltip>
+          <TooltipTrigger>
+            <div
+              onClick={handleOpenTutoTab}
+              className="flex justify-center items-center w-[25px] h-[25px] active:border-pm_purple-700 active:border flex-shrink-0 hover:bg-background-color_800C rounded-tiny cursor-pointer"
+            >
+              <Library
+                size={LUCIDE_DEFAULT_ICON_SIZE}
+                className="text-text-svg_default_color"
+              />
+            </div>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Library</p>
+          </TooltipContent>
+        </Tooltip>
       )}
       <Dialog open={open} onOpenChange={handleOpenChange}>
         <DialogContent className="p-2 outline-none overflow-hidden  max-w-[700px] h-[500px] w-full">
@@ -209,11 +220,9 @@ export const TutoListPopup = ({
                 {MAIN_NAV_TUTORIALS.map((item, i) => {
                   return (
                     <li
-                      onClick={() =>
-                        handleMouseEnter(item.key, item.label)
-                      }
+                      onClick={() => handleMouseEnter(item.key, item.label)}
                       key={i}
-                      className={`flex cursor-pointer  relative group transition-colors duration-150 select-none rounded-tiny justify-start items-center gap-3 px-3 py-1 ${tutoTab.activeKey === item.key ? item.bg_color: "hover:bg-background-color_800C"}`}
+                      className={`flex cursor-pointer  relative group transition-colors duration-150 select-none rounded-tiny justify-start items-center gap-3 px-3 py-1 ${tutoTab.activeKey === item.key ? item.bg_color : "hover:bg-background-color_800C"}`}
                     >
                       <div className="flex justify-center items-center">
                         <Image

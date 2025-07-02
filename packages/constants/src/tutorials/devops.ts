@@ -1,5 +1,7 @@
 import { TutorialNavItemType } from "@programmer/types";
 
+
+
 export const DEVOPS_TUTORIALS: TutorialNavItemType = {
   // "Introduction to DevOps": {
   //   slug: "introduction-to-devops",
@@ -20,11 +22,11 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
   // },
   "Linux & Bash Scripting": {
     slug: "linux-and-bash-scripting",
-    
+
     items: [
       {
         label: "Absolute & Relative Paths",
-        slug: "absolute-and-relative-paths"
+        slug: "absolute-and-relative-paths",
       },
       {
         label: "Get Started With Bash",
@@ -41,23 +43,27 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
             items: [
               {
                 label: "Bash Create Files (touch)",
-                slug: "bash-create-files"
-              }, {
+                slug: "bash-create-files",
+              },
+              {
                 label: "Bash Make Directory (mkdir)",
-                slug: "bash-make-directory"
-              }, {
+                slug: "bash-make-directory",
+              },
+              {
                 label: "Bash Concatenate (cat)",
-                slug: "bash-concatenate"
-              }, {
+                slug: "bash-concatenate",
+              },
+              {
                 label: "Copy, Move & Remove",
-                slug: "bash-copy-move-remove"
-              }, {
+                slug: "bash-copy-move-remove",
+              },
+              {
                 label: "Bash File Compression",
-                slug: "bash-file-compression"
-              }
-            ]
-          }
-        }
+                slug: "bash-file-compression",
+              },
+            ],
+          },
+        },
       },
       {
         dirItems: {
@@ -66,27 +72,27 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
             items: [
               {
                 label: "Bash Search Text (grep)",
-                slug: "bash-search-text"
+                slug: "bash-search-text",
               },
               {
                 label: "Bash Pattern Scan (awk)",
-                slug: "bash-pattern-scan"
+                slug: "bash-pattern-scan",
               },
               {
                 label: "Bash Stream Editor (sed)",
-                slug: "bash-stream-editor"
+                slug: "bash-stream-editor",
               },
               {
                 label: "Bash Remove Section (cut)",
-                slug: "bash-remove-section"
-              }
-            ]
-          }
-        }
+                slug: "bash-remove-section",
+              },
+            ],
+          },
+        },
       },
       {
         label: "System Monitoring",
-        slug: "system-monitoring"
+        slug: "system-monitoring",
       },
       {
         dirItems: {
@@ -95,19 +101,19 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
             items: [
               {
                 label: "ping, curl & wget",
-                slug: "bash-ping-curl-wget"
+                slug: "bash-ping-curl-wget",
               },
               {
                 label: "Bash Remote Connect ssh",
-                slug: "bash-remote-connect-ssh"
-              }
-            ]
-          }
-        }
+                slug: "bash-remote-connect-ssh",
+              },
+            ],
+          },
+        },
       },
       {
         label: "File Permissions",
-        slug: "file-permissions-in-linux"
+        slug: "file-permissions-in-linux",
       },
       {
         dirItems: {
@@ -115,35 +121,59 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
             slug: "bash-scripting",
             items: [
               {
-                label: "Getting Started",
-                slug: "getting-started-with-bash-scripting"
-              },
-              {
                 label: "Variables & Data Types",
-                slug: "variables-and-data-types"
+                slug: "variables-and-data-types",
               },
               {
                 label: "Operators In Bash",
-                slug: "bash-operators"
+                slug: "bash-operators",
               },
               {
                 label: "Conditional Statements",
-                slug: "conditional-statements"
+                slug: "conditional-statements",
               },
               {
                 label: "Loops In Bash",
-                slug: "loops-in-bash"
+                slug: "loops-in-bash",
               },
               {
                 label: "Functions In Bash",
-                slug: "functions-in-bash"
+                slug: "functions-in-bash",
+              },
+            ],
+          },
+        },
+      },
+      {
+        group: {
+          "Bash Testing Automation": {
+            dirItems: {
+              "Unit Testing": {
+                slug: "unit-testing",
+                items: [
+                  {
+                    label: "Intoduction To bats-core",
+                    slug: "introduction-to-bats-core"
+                  },
+                  {
+                    label: "Writing tests In bats-core",
+                    slug: "writing-tests"
+                  },
+                  {
+                    label: "Pre & Post-Test hooks in bats-core",
+                    slug: "setup-and-teardown-hook-in-bats-core"
+                  },
+                  {
+                    label: "Tagging Your Tests",
+                    slug: "tagging-your-tests"
+                  }
+                ]
               }
-            ]
-          }
-        }
-      }
+            }
+          },
+        },
+      },
     ],
-  
   },
   // "Networking Basics": {
   //   slug: "networking-basics",
@@ -161,7 +191,7 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
   //       label: "Public vs private networks",
   //       slug: "networking-public-vs-private",
   //     },
-      
+
   //   ],
   // },
   // Kubernetes: {

@@ -1,0 +1,47 @@
+---
+title:
+desc:
+---
+
+# What is a Bash Script?
+A Bash script is simply a plain text file containing a series of Bash commands. When you execute the script, the shell reads and runs these commands sequentially, just as if you were typing them directly into your terminal. This automation is incredibly useful for repetitive tasks, system administration, and building custom tools.
+
+## 1. Your First Bash Script: "Hello, World!"
+
+### Step 1: Create the Script File
+Open a text editor (like `nano`, `vim`, `gedit`, or VS Code) and create a new file named `hello.sh`. The `.sh` extension is a common convention for shell scripts, though not strictly required.
+
+```bash
+vim hello.sh
+```
+
+### Step 2: Add the Script Content
+
+```bash
+#!/bin/bash
+echo "Hello, World!"
+```
+
+Let's break down these lines:
+- `#!/bin/bash`: This is called the shebang (or hashbang). It tells your operating system which interpreter to use to execute the script. In this case, it specifies `/bin/bash`. Always include this as the very first line of your script.
+- Any line starting with `#` is a comment. Comments are ignored by the interpreter and are used to explain your code to humans.
+
+### Step 3: Make the Script Executable
+By default, newly created files do not have execute permissions. You need to grant this permission using the `chmod` command.
+
+```bash
+chmod -v 755 hello.sh
+```
+<p style={{fontSize: "13px"}}>*You can also use [Chmod Calculator](https://chmod-calculator.com/) to get this permission code*</p>
+
+### Step 4: Run Your Script
+1. Using the full path
+    ```bash
+    ./hello.sh
+    ```
+2. Explicitly calling the interpreter
+    ```bash
+    bash hello.sh
+    ```
+    
+    This method doesn't require execute permissions on the script file itself, as you're telling bash to interpret the file directly. However, the shebang line is still good practice.
