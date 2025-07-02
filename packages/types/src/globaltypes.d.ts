@@ -1,4 +1,5 @@
 import { SVGProps } from "react";
+import { GeneralNavItemType } from "./navitem";
 export interface AnchorsType {
   level: number;
   text: string;
@@ -29,7 +30,7 @@ export type FileType =
 export type SVGTsxIconType = React.ComponentType<SVGProps<SVGAElement>>;
 
 export interface TutorialDirChildNavItemType {
-  icon?: React.ComponentType<SVGProps<SVGSVGElement>> | undefined;
+  icon?: string;
   slug: string;
   items: GeneralNavItemType[];
 }
@@ -42,7 +43,7 @@ export interface TutorialChildNavItemType extends GeneralNavItemType {
 
 export interface TutorialNavItemType {
   [key: string]: {
-    icon?: React.ComponentType<SVGProps<SVGSVGElement>> | undefined;
+    icon?: string;
     slug: string;
     items: TutorialChildNavItemType[];
   };

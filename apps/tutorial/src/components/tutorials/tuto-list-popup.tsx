@@ -1,6 +1,6 @@
 "use client";
 import { MAIN_NAV_TUTORIALS } from "@/constants";
-import { DEVOPS_TUTORIALS, TutorialNavItemType } from "@programmer/constants";
+import { DEVOPS_TUTORIALS } from "@programmer/constants";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux.hook";
 import {
   setLockMouseEnter,
@@ -30,6 +30,7 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { TutorialNavItemType } from "@programmer/types";
 
 interface TutoListPopupPropsType {
   showClickAbleTutoOpenBtn?: boolean;
@@ -208,11 +209,11 @@ export const TutoListPopup = ({
                 {MAIN_NAV_TUTORIALS.map((item, i) => {
                   return (
                     <li
-                      onMouseEnter={() =>
+                      onClick={() =>
                         handleMouseEnter(item.key, item.label)
                       }
                       key={i}
-                      className={`flex relative group transition-colors duration-150 select-none rounded-tiny justify-start items-center gap-3 px-3 py-1 ${tutoTab.activeKey === item.key && item.bg_color}`}
+                      className={`flex cursor-pointer relative group transition-colors duration-150 select-none rounded-tiny justify-start items-center gap-3 px-3 py-1 ${tutoTab.activeKey === item.key && item.bg_color}`}
                     >
                       <div className="flex justify-center items-center">
                         <Image

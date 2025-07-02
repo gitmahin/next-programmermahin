@@ -34,13 +34,14 @@
   }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 1394px) {
   .tuto_cont_aside {
     position: fixed;
     right: -100%;
     background-color: var(--background);
     width: 250px;
     padding-top: 85px;
+    z-index: 5;
     border-left: 1px solid var(--border-color-800C);
   }
 

@@ -992,3 +992,8 @@ pre:has(.focused):hover span {
 .react-loading-skeleton{
   line-height: 1.5 !important;
 }
+
+.prose :where(figure):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    margin-top: 0em;
+    margin-bottom: 0em;
+}

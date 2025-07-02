@@ -29,7 +29,7 @@ export const CopyCodeButton = () => {
   return (
     <button
       onClick={handleCopy}
-      className="p-1 relative z-10 rounded-tiny transition-colors flex-shrink-0 hover:bg-background-color_800C"
+      className="p-1 relative z-[2] rounded-tiny transition-colors flex-shrink-0 hover:bg-background-color_800C"
     >
       {copied ? (
         <Check size={16} className="dark:text-emerald-500 text-emerald-600" />

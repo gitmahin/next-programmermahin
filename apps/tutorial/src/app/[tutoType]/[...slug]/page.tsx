@@ -109,8 +109,8 @@ export default async function ContentPage({ params }: ContentPagePropsType) {
     return (
       <>
         <div className="flex justify-center items-start gap-5">
-          <div className="max-w-[750px] w-full p-5 pt-16">
-            <article className="prose prose-gray dark:prose-invert main-article">
+          <div className="max-w-[750px] w-full p-5 pt-16 ">
+            <article className="prose prose-gray dark:prose-invert main-article w-full">
               {MdxComponent}
             </article>
             <TutoPagination />

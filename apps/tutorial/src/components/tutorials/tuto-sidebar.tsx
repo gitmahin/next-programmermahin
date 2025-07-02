@@ -8,30 +8,23 @@ import React, {
 } from "react";
 import { TutoListPopup } from "./tuto-list-popup";
 import {
-  TutorialChildNavItemType,
-  TutorialDirChildNavItemType,
-  TutorialNavItemType,
   TUTORIALS_ICON,
 } from "@programmer/constants";
 import Image from "next/image";
 import { setPagination } from "@/redux/tutorials/tutoPaginateSlice";
 import { FlattenedTutorialChapter } from "@/types/flattened-tutorial-ch";
-import { setMobSidebarOpen } from "@/redux/tutorials/mobSidebarOpen";
-import { useAppDispatch, useAppSelector } from "@/hooks/redux.hook";
+import { useAppDispatch } from "@/hooks/redux.hook";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
 import Link from "next/link";
 import { setLockMouseEnter } from "@/redux/tutorials/tutoTabSlice";
 import { TutorialEnums } from "@programmer/constants";
 import {
-  Accordion,
-  AccordionItem,
+
   LUCIDE_DEFAULT_ICON_SIZE,
-  PMButton,
 } from "@programmer/ui";
 import { ChevronDown } from "lucide-react";
+import { TutorialDirChildNavItemType, TutorialNavItemType } from "@programmer/types";
 
-const MEM_SLUG_NAME_LOCSTRG = "slug";
 export const TutoSidebar = ({
   tutoData,
   tutorialType,
