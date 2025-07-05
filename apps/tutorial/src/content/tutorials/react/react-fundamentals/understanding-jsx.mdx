@@ -86,7 +86,8 @@ JSX must return **a single parent element**.
 ✅ Valid:
 ```js
 const myElement = (
-  <div> // [!code warning]
+  // [!code warning:1]
+  <div> 
     <p>I am a paragraph.</p>
     <p>I am a paragraph too.</p>
   </div> // [!code warning]
@@ -105,7 +106,8 @@ const myElement = (
 ✅ Alternative: Use a **Fragment** (`<> </>`)
 ```js
 const myElement = (
-  <> // [!code highlight]
+// [!code highlight:1]
+  <> 
     <p>I am a paragraph.</p>
     <p>I am a paragraph too.</p>
   </> // [!code highlight]

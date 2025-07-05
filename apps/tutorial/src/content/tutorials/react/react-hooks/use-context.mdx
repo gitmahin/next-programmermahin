@@ -20,7 +20,7 @@ function Component1() {
 
   return (
     <>
-      <Component2 user={user} /> // [!code highlight]
+      <Component2 user={user} /> {/* [!code highlight] */}
     </>
   );
 }
@@ -50,7 +50,7 @@ function Component1() {
   const [user, setUser] = useState("Jesse");
 
   return (
-    <UserContext.Provider value={user}> // [!code highlight]
+    <UserContext.Provider value={user}> {/* [!code highlight] */}
       <Component2 />
     </UserContext.Provider> // [!code highlight]
   );
