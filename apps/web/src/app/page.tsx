@@ -41,7 +41,7 @@ export default async function Page({
           </p>
         </div>
 
-        <div className="mt-5">
+        {/* <div className="mt-5">
           <AirFlowText initialY={20} duration={0.5} delay={0.2}>
             <h1 className="super_heading_sync font-weight_550 text-center text-text-color_1 w-full tracking-tighter">
               Where Future{" "}
@@ -87,7 +87,7 @@ export default async function Page({
               </PMButton>
             </Link>
           </div>
-        </AirFlowText>
+        </AirFlowText> */}
         {/* <div className="mt-28 flex justify-center items-center relative">
             <Image src={"/hero_dev.svg"} width={1000} height={800} alt="Cpp" className="w-[900px] absolute -z-[1]" />
 
