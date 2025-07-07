@@ -60,7 +60,7 @@ const App = () => {
 
   return (
     <>
-      <Todos todos={todos} addTodo={addTodo} /> // [!code highlight]
+      <Todos todos={todos} addTodo={addTodo} /> {/* [!code highlight] */}
       <hr />
       <div>
         Count: {count}
@@ -86,7 +86,7 @@ const Todos = ({ todos, addTodo }) => {
       {todos.map((todo, index) => (
         <p key={index}>{todo}</p>
       ))}
-      <button onClick={addTodo}>Add Todo</button> // [!code highlight]
+      <button onClick={addTodo}>Add Todo</button> {/* [!code highlight] */}
     </>
   );
 };

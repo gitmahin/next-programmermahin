@@ -5,4 +5,62 @@ desc:
 
 # Bash Create Files
 
+## 1. Creating Empty Files with touch
+
+The `touch` command is primarily used to change the access and modification timestamps of a file. However, if the specified file does not exist, `touch` will create an empty file with that name. This makes it ideal for creating placeholder files.
+
+```bash
+touch my-file.txt
+```
+If my-file.txt already exists, its timestamps will be updated to the current time. If it doesn't exist, it will be created as an empty file.
+
+To verify whether the file's timestamps were actually updated, you can use the `stat` command.
+```bash
+stat my-file.txt
+
+# output:
+#   File: my-file.txt
+#   Size: 0         	Blocks: 0          IO Block: 4096   regular empty file
+# Device: 259,5	Inode: 7128669     Links: 1
+# Access: (0664/-rw-rw-r--)  Uid: ( 1000/   lxxxv)   Gid: ( 1000/   lxxxv)
+# Access: 2025-07-05 15:12:06.015863578 +0600
+# Modify: 2025-07-05 15:12:06.015863578 +0600
+# Change: 2025-07-05 15:12:06.015863578 +0600
+# Birth: 2025-07-05 15:11:53.152051790 +0600
+```
+### Creating Multiple Empty Files At Once
+```bash
+touch file1.txt file2.log report.pdf
+```
+
+## Options with touch
+- `-a` - Update only when the file was last read
+- `-m` - Update only when the file was last changed
+- `-t` - Set the timestamp to a specific time
+- `-c` - Do not create any files
+
+[Learn more about these options](https://www.w3schools.com/bash/bash_touch.php)
+
+## 2. Creating Files with Content using Redirection
+The most common way to create a file and populate it with content in one go is by using output redirection operators (`>`, `>>`).
+- **`>` (Redirection / Overwrite):** This operator redirects the standard output of a command to a file. If the file exists, its content will be overwritten. If the file does not exist, it will be created.
+    ```bash
+    # [!code word:>]
+    echo "Hello, learner." > welcome.txt
+    echo "Hello, learner again." > welcome.txt
+    cat welcome.txt
+    # Output: Hello, learner again.
+    ```
+- **`>>`(Append Redirection):** This operator redirects the standard output of a command to a file. If the file exists, the new content will be appended to the end of the file. If the file does not exist, it will be created.
+    ```bash
+    # [!code word:>>]
+    echo "First line of text." > logfile.txt # Create and write
+    echo "Second line appended." >> logfile.txt # Append
+    echo "Third line also appended." >> logfile.txt # Append
+    cat logfile.txt
+    # Output:
+    # First line of text.
+    # Second line appended.
+    # Third line also appended.
+    ```
 
