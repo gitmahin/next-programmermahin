@@ -63,7 +63,7 @@ export default async function Page({
           <span className="text-text-color_4">Zero fluff</span>. Pure skill.
         </p>
       </div>
-      <DynamicHeroIDE>{fileCode ? fileCode : "No file found"}</DynamicHeroIDE>
+      {/* <DynamicHeroIDE>{fileCode ? fileCode : "No file found"}</DynamicHeroIDE> */}
 
       <SnippetsFeatures />
       <DynamicErrorResolveShowupSection />
