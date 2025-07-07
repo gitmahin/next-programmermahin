@@ -7,13 +7,10 @@ import {
 } from "@/components/ui/resizable-panel";
 import { PLayDebug, SourceControlSVG, VSsearchSVG } from "@programmer/ui";
 import { useState } from "react";
-
 import Image from "next/image";
 import { VsHeader } from "./vsheader";
 import { VsOuterHeader } from "./vs-outer-header";
 import { VsFooter } from "./vs-footer";
-import { VsIDEContentHeader } from "./vs-ide-content-header";
-import { FileType } from "@programmer/types";
 import dynamic from "next/dynamic";
 
 type IDENavigationCategoryType =
@@ -45,6 +42,9 @@ const IDE_LEFT_SIDE_NAVIGATION_IOCNS: {
 ];
 
 
+const DynamicVsContentHeader = dynamic(() => import("./vs-ide-content-header").then((mod) => mod.VsIDEContentHeader), {
+  ssr: false
+})
 
 const DynamicFilesComp = dynamic(() => import("./files-comp").then((mod) => mod.FilesComp), {
   ssr: false
@@ -67,6 +67,8 @@ const IDE_SIDEBAR_ACTIVE_TAB: {
   run_debug: <DynamicRunAndDebugComp />,
   source_control: <DynamicSourceControlComp />,
 };
+
+
 
 export const HeroIDE = ({ children }: { children: React.ReactNode }) => {
   const [activeNavById, setActiveNavById] =
@@ -160,7 +162,7 @@ export const HeroIDE = ({ children }: { children: React.ReactNode }) => {
                   className="bg-[var(--github-default-background-color-2)]"
                 >
                   <div className="w-full h-full">
-                    <VsIDEContentHeader />
+                    <DynamicVsContentHeader />
                     <div className="h-[calc(100%-22px)] vs_codeide_scrollbar overflow-y-auto ">
                       <div className="w-full">{children}</div>
                     </div>
