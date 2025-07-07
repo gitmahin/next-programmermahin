@@ -1,12 +1,8 @@
-import { AirFlowText } from "@/components/framer-motions";
-import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
-import { ChevronRight } from "lucide-react";
 import React from "react";
-import Link from "next/link";
 import { HeroHeading, SnippetsFeatures } from "@/components/homepage";
 import { DynamicErrorResolveShowupSection } from "@/components/dynamics";
 import { DynamicHeroIDE } from "@/components/homepage/hero-ide";
-import { getFileContentCompById } from "@/components/homepage/hero-ide/files";
+// import { getFileContentCompById } from "@/components/homepage/hero-ide/files";
 
 export default async function Page({
   searchParams,
@@ -14,8 +10,8 @@ export default async function Page({
   searchParams: Promise<{ filetype: string | undefined }>;
 }) {
   const filetype = (await searchParams).filetype;
-  const fileCode =
-    getFileContentCompById[(filetype ? filetype : "root-readme") as FileId];
+  // const fileCode =
+  //   getFileContentCompById[(filetype ? filetype : "root-readme") as FileId];
   return (
     <div className="w-full ">
       <div className="hero_image_wrapper">
@@ -63,7 +59,7 @@ export default async function Page({
           <span className="text-text-color_4">Zero fluff</span>. Pure skill.
         </p>
       </div>
-      <DynamicHeroIDE>{fileCode ? fileCode : "No file found"}</DynamicHeroIDE>
+      <DynamicHeroIDE>{ "No file found"}</DynamicHeroIDE>
 
       <SnippetsFeatures />
       <DynamicErrorResolveShowupSection />
