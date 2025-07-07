@@ -125,7 +125,17 @@ module.exports = {
         weight_450: "450",
         weight_530: "530",
         weight_550: "550",
-      }
+      },
+      animation: {
+        fadeLoading: "fadeLoading 1.5s infinite",
+      
+      },
+      keyframes: {
+        fadeLoading: {
+          "0%, 100%": { opacity: "50%" },
+          "50%": { opacity: "20%" },
+        },
+      },
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
