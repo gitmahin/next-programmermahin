@@ -113,9 +113,7 @@ export const MainNav = () => {
                       <button className="w-full h-full py-2 rounded transition-colors  bg-indigo-600 hover:bg-indigo-700">
                         <div className="flex justify-between items-center px-4">
                           <DiscordIcon
-                            color={"#ffffff"}
-                            width={28}
-                            height={28}
+                            width={22} height={22}
                             className={"flex-shrink-0"}
                           />
                           <h4 className="text-text-zinc_white font-medium text-read_2">
@@ -137,9 +135,7 @@ export const MainNav = () => {
                       <button className="w-full h-full py-2 rounded transition-colors  bg-[#1772E8] hover:bg-[#1772e8e0]">
                         <div className="flex justify-between items-center px-4">
                           <FacebookIcon
-                            color={"#ffffff"}
-                            width={28}
-                            height={28}
+                            width={22} height={22}
                             className={"flex-shrink-0"}
                           />
                           <h4 className="text-text-zinc_white font-medium text-read_2">

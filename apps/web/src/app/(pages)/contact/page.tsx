@@ -10,10 +10,10 @@ import {
   PopoverContent,
   PopoverTrigger,
   Textarea,
-  TwitterSVG,
   WhatsAppIcon,
   PMLogo,
   StatusBox,
+  XformerlyTwitter,
 } from "@programmer/ui";
 import { ArrowLeft, MessageCircleQuestion, PlusIcon, X } from "lucide-react";
 import Image from "next/image";
@@ -32,7 +32,7 @@ const SOCIAL_LINKS: SocialLinksType[] = [
     url: "https://github.com/gitmahin",
   },
   {
-    icon: TwitterSVG,
+    icon: XformerlyTwitter,
     url: "https://x.com/pr0grammerMahin",
   },
   {
@@ -360,12 +360,12 @@ export default function ContactPage() {
             </div>
           </div>
           <div className=" w-full h-[50px] mt-5 flex justify-between items-center ">
-            <div className="flex justify-start items-center gap-3 w-full ">
+            <div className="flex justify-start items-center gap-3.5 w-full ">
               {SOCIAL_LINKS.map((item, i) => {
                 const SocialIcon = item.icon;
                 return (
                   <Link href={`${item.url}`} key={i} target="_blank">
-                    <SocialIcon width={25} height={25} />
+                    <SocialIcon width={20} height={20} />
                   </Link>
                 );
               })}
