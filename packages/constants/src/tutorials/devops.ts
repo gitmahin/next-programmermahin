@@ -1,7 +1,5 @@
 import { TutorialNavItemType } from "@programmer/types";
 
-
-
 export const DEVOPS_TUTORIALS: TutorialNavItemType = {
   // "Introduction to DevOps": {
   //   slug: "introduction-to-devops",
@@ -38,8 +36,8 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
       },
       {
         dirItems: {
-          "Bash File Handling": {
-            slug: "bash-file-handling",
+          "Bash File & Dir Handling": {
+            slug: "bash-file-and-directory-handling",
             items: [
               {
                 label: "Bash Create Files (touch)",
@@ -129,6 +127,10 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
                 slug: "bash-operators",
               },
               {
+                label: "Substitution In Bash",
+                slug: "substitution-in-bash",
+              },
+              {
                 label: "Conditional Statements",
                 slug: "conditional-statements",
               },
@@ -139,6 +141,14 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
               {
                 label: "Functions In Bash",
                 slug: "functions-in-bash",
+              },
+              {
+                label: "Fallback In Bash",
+                slug: "fallback-in-bash",
+              },
+              {
+                label: "Remove Prefix Or Suffix In Bash",
+                slug: "remove-prefix-or-suffix-of-a-word-in-bash",
               },
             ],
           },

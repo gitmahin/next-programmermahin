@@ -5,7 +5,7 @@ desc:
 
 # Bash Create Files
 
-## 1. Creating Empty Files with touch
+## 1. Creating Empty Files With touch
 
 The `touch` command is primarily used to change the access and modification timestamps of a file. However, if the specified file does not exist, `touch` will create an empty file with that name. This makes it ideal for creating placeholder files.
 
@@ -41,7 +41,7 @@ touch file1.txt file2.log report.pdf
 
 [Learn more about these options](https://www.w3schools.com/bash/bash_touch.php)
 
-## 2. Creating Files with Content using Redirection
+## 2. Creating Files With Content Using Redirection
 The most common way to create a file and populate it with content in one go is by using output redirection operators (`>`, `>>`).
 - **`>` (Redirection / Overwrite):** This operator redirects the standard output of a command to a file. If the file exists, its content will be overwritten. If the file does not exist, it will be created.
     ```bash
@@ -63,4 +63,10 @@ The most common way to create a file and populate it with content in one go is b
     # Second line appended.
     # Third line also appended.
     ```
+
+## More Knowledge
+#### 1. Getting Last Modified Time Of A File
+```bash
+stat -c %y myfile.txt
+```
 
