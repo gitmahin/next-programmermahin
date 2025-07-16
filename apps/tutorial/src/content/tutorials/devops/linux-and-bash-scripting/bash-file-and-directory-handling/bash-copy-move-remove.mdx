@@ -1,0 +1,77 @@
+---
+title: Copy, Move & Remove In Bash
+desc:
+---
+
+# Copy, Move & Remove
+
+## Copy
+
+In Bash, `cp`, `mv`, and `rm` are three fundamental commands for managing your files and directories. They allow you to copy, move (or rename), and remove items on your system.
+
+### Basic Usage
+To make a copy of a file, specify the source file and then the destination file name for the copy.
+```bash
+cp myfile.txt backup.txt
+```
+Now, you will have two identical files: myfile.txt and backup.txt.
+
+### Copying a File to a Directory
+You can also copy a file into an existing directory. In this case, the destination is the path to the directory. The copied file will retain its original name within that directory.
+
+**Example:**
+To copy report.docx into the documents folder:
+```bash
+cp report.docx documents/
+```
+Or, to copy it into documents and give it a new name final_report.docx:
+```bash
+cp report.docx documents/final_report.docx
+```
+## cp Options
+- `-r`	Copy directories recursively (including all files and subdirectories).
+- `-i`	Interactive mode: Prompts before overwriting an existing file.
+- `-u`	Update: Copy only if the source file is newer than the destination file, or if the destination file doesn't exist.
+- `-v`	Verbose mode: Shows the name of each file as it's copied.
+
+### -r Copy Directories & Files Recursively
+
+**Example:** Copy files to directory
+Copy multiple files to any directory.
+```bash
+cp -r text.txt myfile.txt mynote.txt /sandbox
+```
+
+**Example:** Copy directory to another directory
+```bash
+cp -r myfolder sandbox
+```
+[Learn more about `cp`](https://www.w3schools.com/bash/bash_cp.php)
+
+---
+
+## Move or Rename Files and Directories
+
+The mv command is used for two main purposes: moving files/directories to a different location, or renaming files/directories.
+
+### Moving a File
+To move a file, specify the source file and the destination directory.
+```bash
+mv <source_file> <destination_directory>/
+```
+
+### Renaming Files and Directories
+mv is also the command you use to rename a file or directory. You simply specify the current name as the source and the new name as the destination.
+```bash
+mv <old_name> <new_name>
+mv draft.txt final_version.txt
+```
+Similarly, to rename a directory:
+```bash
+mv old_project_folder new_project_folder
+```
+### mv Options
+- `-i`	Interactive mode: Prompts before overwriting an existing file/directory.
+- `-u`	Update: Move only if the source file is newer than the destination file, or if the destination file doesn't exist.
+- `-v`	Verbose mode: Shows the name of each file/directory as it's moved.
+[Learn more about `mv`](https://www.w3schools.com/bash/bash_mv.php)
