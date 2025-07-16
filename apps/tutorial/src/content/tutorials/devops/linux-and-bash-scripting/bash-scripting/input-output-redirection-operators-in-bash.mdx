@@ -1,0 +1,104 @@
+---
+title: 
+desc:
+---
+
+# Input/Output Redirection Operators in Bash 🔄
+In Bash, redirection operators allow you to change where a command reads its input from (input redirection) or where it sends its output to (output redirection). Instead of just interacting with the terminal, you can send data to or from files, or even provide text directly to a command.
+
+## Output Redirection
+### 1. Writing To A File >
+The `>` operator redirects the standard output (stdout) of a command to a file.
+```bash
+# [!code word:>]
+echo "Hello, world!" > message.txt
+```
+- If message.txt does not exist, it will be created.
+- If message.txt already exists, its entire content will be overwritten by the **"Hello world"**. Be extremely careful when using > as it can lead to data loss!
+
+### 2. Appending To A File >>
+The >> operator also redirects the standard output (stdout) of a command to a file, but with a crucial difference: it appends the output to the end of the file.
+
+- If message.txt does not exist, it will be created.
+- If message.txt already exists, the new output will be added to the end of its current content. Existing content remains untouched.
+
+Let's add more text to message.txt without deleting "Hello, world!".
+```bash
+# [!code word:>>]
+echo "This is a new line." >> message.txt
+```
+
+## Input Redirection
+### 1. Here Document
+The `<<` operator is used to provide multiple lines of input directly to a command from the script or terminal, rather than from a file. This is known as a "here document."
+
+Let's use cat to display text provided as a here document.
+```bash
+# [!code word:<<]
+cat << EOF
+This is the first line.
+This is the second line.
+And this is the last line.
+EOF
+```
+- All lines between the starting DELIMITER and the ending DELIMITER are fed as standard input to the command.
+
+**Output:**
+
+```terminal
+This is the first line.
+This is the second line.
+And this is the last line.
+```
+
+### 2. Here String
+The `<<<` operator, or "here string," is a convenient way to feed a single string (a line of text) directly as standard input to a command. 
+- It takes the literal string you provide after `<<<`.
+- It feeds that string as if it were a line of input coming from a file or from the keyboard.
+
+**Example:**
+If you run cat `<<<` "Hello World", it's like you typed "Hello World" and pressed Enter, and cat just prints it back.
+```bash
+cat <<< "Hello World"
+```
+**Output**
+```terminal
+Hello World
+```
+
+## Now, let's integrate Here String with IFS and read.
+
+- `IFS=";"`:
+
+    - `IFS` stands for Internal Field Separator. It's a special Bash variable that defines what characters read (and other commands like for loops) should use to separate fields (words) when parsing a string.
+
+    - By default, `IFS` is set to whitespace (`space`, `tab`, `newline`).
+
+
+Example:
+```bash
+IFS=";" read -r name age city <<< "Alice;30;New York"
+
+echo "Name: $name"
+echo "Age: $age"
+echo "City: $city"
+```
+- `IFS=";"` temporarily changes the field separator to a semicolon. This means when read processes input, it will now treat semicolons as boundaries between different "words" or "fields."
+- `-r`: This option to read tells it to interpret backslashes literally (raw input), preventing them from being treated as escape characters. This is generally good practice to avoid unexpected behavior when reading arbitrary input.
+
+**Explanation:**
+- `<<< "Alice;30;New York"`: The string `"Alice;30;New York"` is fed as standard input to the `read` command.
+- `IFS=";"`: read is told that the field separator is a semicolon.
+- `read -r name age city`:
+    - `read` takes the input string.
+    - It sees "Alice", then a semicolon. It assigns "Alice" to the first variable, `name`.
+    - It then sees "30", then a semicolon. It assigns "30" to the second variable, `age`.
+    - It then sees "New York" and the end of the string. It assigns "New York" to the third variable, `city`.
+    - The `-r` ensures that if there were any backslashes in "Alice;30;New York", they wouldn't be interpreted as escape sequences.
+
+**Output:**
+```terminal
+Name: Alice
+Age: 30
+City: New York
+```

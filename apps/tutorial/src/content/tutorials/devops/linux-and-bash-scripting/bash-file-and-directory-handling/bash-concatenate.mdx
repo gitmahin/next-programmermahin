@@ -1,0 +1,71 @@
+---
+title: Bash Cat Command
+desc:
+---
+
+# Bash cat Command 
+
+It's primarily used to display the content of files right in your terminal and to combine (concatenate) multiple files into a single output or new file.
+
+## Basic Usage: Displaying File Content
+The most common use of `cat` is to simply show what's inside a file.
+
+```bash
+cat myfile.txt
+```
+
+## Remove Extra Empty Lines
+If your file has multiple consecutive blank lines, the `-s` option can "squeeze" them down, replacing any sequence of two or more blank lines with a single blank line.
+
+**Example:**
+Imagine you have a file, myfile.txt, that looks like this:
+```terminal
+This is the first line.
+
+
+And this is the third.
+
+
+
+
+Last line here.
+```
+
+if you were to run cat myfile.txt without any options, you would see all those blank lines exactly as they are in the file
+
+But when you use cat -s myfile.txt, the `-s` option tells cat: "If you find two or more blank lines in a row, replace that entire block of blank lines with just one blank line."
+
+**Output with -s:**
+
+```terminal
+This is the first line.
+
+And this is the third.
+
+Last line here.
+```
+
+## Using cat with Piping
+The `cat` command is frequently used with pipes `(|)`. A pipe takes the standard output of one command and feeds it as the standard input to another command. This is incredibly useful for processing text data with other command-line tools. 
+```bash
+cat myfile.txt | grep "world"
+```
+Output:
+```terminal
+world
+```
+
+**How it works:**
+
+- cat `myfile.txt` displays the entire content of `myfile.txt`.
+- The pipe `|` sends this content as input to `grep` "world".
+- `grep` "world" then filters this input and only displays lines that contain the word "world".
+
+## Combining Files into a New File
+This is the most frequent way `cat` is used for concatenation. You list the files you want to combine, and then use the [redirection operator](/devops/linux-and-bash-scripting/bash-scripting/input-output-redirection-operators-in-bash) (`>`) to send the combined output to a new file.
+```bash
+cat file1.txt file2.txt > combined_file.txt
+```
+- `file1.txt`, `file2.txt`: These are the source files whose contents you want to combine. You can list as many files as you need, separated by spaces.
+
+- `>`: This is the output redirection operator. It tells your shell to take the result of the cat command (which is the combined content of `file1.txt` and `file2.txt`) and write it into `combined_file.txt`.

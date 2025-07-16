@@ -14,6 +14,7 @@ import {
   MdxIcon,
   Nginx,
   Npm,
+  PowerShell,
   Prettier,
   ReactJSX,
   ReactTsx,
@@ -44,4 +45,5 @@ export const GetIconByLanguage: Record<
   npm: Npm,
   turbo: Turbo,
   prettier: Prettier,
+  terminal: PowerShell
 };

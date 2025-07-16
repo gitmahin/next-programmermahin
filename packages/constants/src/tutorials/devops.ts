@@ -143,6 +143,14 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
                 slug: "functions-in-bash",
               },
               {
+                label: "User Input In Bash",
+                slug: "user-input-in-bash",
+              },
+              {
+                label: "Input/Output Redirection Operators In Bash",
+                slug: "input-output-redirection-operators-in-bash",
+              },
+              {
                 label: "Fallback In Bash",
                 slug: "fallback-in-bash",
               },

@@ -26,7 +26,8 @@ export type FileType =
   | "text"
   | "npm"
   | "turbo"
-  | "prettier";
+  | "prettier"
+  | "terminal"
 
 export type SVGTsxIconType = React.ComponentType<SVGProps<SVGAElement>>;
 
