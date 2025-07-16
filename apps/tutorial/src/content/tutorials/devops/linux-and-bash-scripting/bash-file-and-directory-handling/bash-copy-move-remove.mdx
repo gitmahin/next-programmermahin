@@ -75,3 +75,27 @@ mv old_project_folder new_project_folder
 - `-u`	Update: Move only if the source file is newer than the destination file, or if the destination file doesn't exist.
 - `-v`	Verbose mode: Shows the name of each file/directory as it's moved.
 [Learn more about `mv`](https://www.w3schools.com/bash/bash_mv.php)
+
+---
+
+## Remove Files or Directories
+The rm command is used to remove (delete) files or directories. Use `rm` with caution, as deleted files are not moved to a "Recycle Bin" or "Trash" and can be difficult or impossible to recover!
+
+### Basic Usage: Removing a File
+To delete a single file, simply use rm followed by the filename.
+```bash
+rm temporary.log
+```
+
+### Remove Directories Recursively 
+You cannot remove an empty directory with `rm` by default (you'd use `rmdir` for that). To remove a directory that contains files or other subdirectories, you must use the `-r` (recursive) option.
+```bash
+rm -r old_data_folder
+```
+### Force Delete
+The `-f` (force) option overrides any prompts or warnings. It will delete files even if they are write-protected, and it will not ask for confirmation. **This option is dangerous if used carelessly, as it can lead to irreversible data loss.**
+```bash
+rm -f <filename>
+rm -rf <directory_name>
+```
+[Learn more about `rm`](https://www.w3schools.com/bash/bash_rm.php)
