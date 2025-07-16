@@ -127,8 +127,8 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
                 slug: "bash-operators",
               },
               {
-                label: "Substitution In Bash",
-                slug: "substitution-in-bash",
+                label: "Substitutions In Bash",
+                slug: "substitutions-in-bash",
               },
               {
                 label: "Conditional Statements",
@@ -139,8 +139,28 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
                 slug: "loops-in-bash",
               },
               {
+                label: "Arrays In Bash",
+                slug: "arrays-in-bash",
+              },
+              {
+                label: "Positional Arguments In Bash",
+                slug: "positional-arguments-in-bash",
+              },
+              {
                 label: "Functions In Bash",
                 slug: "functions-in-bash",
+              },
+              {
+                label: "Local & Global Variables In Bash",
+                slug: "local-and-global-variables-in-bash",
+              },
+              {
+                label: "Basic Calculations In Bash",
+                slug: "basic-calculations-in-bash",
+              },
+               {
+                label: "DateTime In Bash",
+                slug: "date-time-in-bash",
               },
               {
                 label: "User Input In Bash",
@@ -158,6 +178,18 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
                 label: "Remove Prefix Or Suffix In Bash",
                 slug: "remove-prefix-or-suffix-of-a-word-in-bash",
               },
+             {
+                label: "Text Spliting In Bash",
+                slug: "text-spliting-in-bash",
+              },
+              {
+                label: "File Discriptors In Bash",
+                slug: "file-discriptors-in-bash",
+              },
+              {
+                label: "Error Handling In Bash",
+                slug: "error-handling-in-bash",
+              },
             ],
           },
         },
@@ -171,23 +203,23 @@ export const DEVOPS_TUTORIALS: TutorialNavItemType = {
                 items: [
                   {
                     label: "Intoduction To bats-core",
-                    slug: "introduction-to-bats-core"
+                    slug: "introduction-to-bats-core",
                   },
                   {
                     label: "Writing tests In bats-core",
-                    slug: "writing-tests"
+                    slug: "writing-tests",
                   },
                   {
                     label: "Pre & Post-Test hooks in bats-core",
-                    slug: "setup-and-teardown-hook-in-bats-core"
+                    slug: "pre-and-post-test-hooks-in-bats-core",
                   },
                   {
                     label: "Tagging Your Tests",
-                    slug: "tagging-your-tests"
-                  }
-                ]
-              }
-            }
+                    slug: "tagging-your-tests",
+                  },
+                ],
+              },
+            },
           },
         },
       },

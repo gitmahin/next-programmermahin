@@ -8,9 +8,9 @@ import {
   transformerNotationFocus,
 } from "@shikijs/transformers";
 import rehypeSlug from "rehype-slug";
-import React, { ComponentPropsWithoutRef, SVGProps } from "react";
+import React, { ComponentPropsWithoutRef } from "react";
+import remarkGfm from 'remark-gfm'
 import Link from "next/link";
-import Image from "next/image";
 import { CopyCodeButton } from "../components/code";
 import {
   GetIconByLanguage,
@@ -34,6 +34,7 @@ export const mdxToHtml = async (content: string) => {
       mdxOptions: {
         rehypePlugins: [
           rehypeSlug,
+          remarkGfm, // Support GFM (tables, autolinks, tasklists, strikethrough).
           [
             rehypePrettyCode,
             {
