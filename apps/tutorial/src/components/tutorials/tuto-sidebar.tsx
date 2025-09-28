@@ -22,8 +22,9 @@ import {
 } from "@programmer/types";
 import { PaginateStoreDataType, paginationStore } from "@programmer/shared";
 import { tutoTabStore } from "@/services/store";
+import { observer } from "mobx-react";
 
-export const TutoSidebar = ({
+export const TutoSidebar = observer(({
   tutoData,
   tutorialType,
 }: {
@@ -438,4 +439,4 @@ export const TutoSidebar = ({
       </div>
     </>
   );
-};
+});
