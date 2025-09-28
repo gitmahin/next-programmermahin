@@ -1,14 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import tutoChaptersReducer, {
-  tutoChaptersSliceName,
-} from "./tutorials/tutoChaptersSlice";
-import tutoTabReducer, { tutoTabSliceName } from "./tutorials/tutoTabSlice";
-import tutoPaginateReducer, {
-  tutoPaginateSliceName,
-} from "./tutorials/tutoPaginateSlice";
-import mobSidebarOpenReducer, {
-  mobSidebarOpenSliceName,
-} from "./tutorials/mobSidebarOpen";
+
 import {
   searchMobInfoOpenReducer,
   searchMobInfoOpenSliceName,
@@ -17,17 +8,10 @@ import {
   searchBoxOpenSliceName,
   searchBoxOpenReducer,
 } from "@programmer/shared";
-import quickLearnNavItemReducer, {
-  quickLearnNavItemsSliceName,
-} from "./quicklearn/quickLearnNavItemsSlice";
+
 
 export const store = configureStore({
   reducer: {
-    [tutoChaptersSliceName]: tutoChaptersReducer,
-    [tutoTabSliceName]: tutoTabReducer,
-    [tutoPaginateSliceName]: tutoPaginateReducer,
-    [quickLearnNavItemsSliceName]: quickLearnNavItemReducer,
-    [mobSidebarOpenSliceName]: mobSidebarOpenReducer,
     [searchMetaInfoSliceName]: searchMetaInfoReducer,
     [searchMobInfoOpenSliceName]: searchMobInfoOpenReducer,
     [searchBoxOpenSliceName]: searchBoxOpenReducer,

@@ -66,7 +66,7 @@ export default async function RootLayout({
         <ReduxProvider>
           <GlobalThemeProvider>
             <div className="pl-[320px] main-content">
-              {/* <Search /> */}
+              <Search />
               <MobileHeader />
               {children}
             </div>

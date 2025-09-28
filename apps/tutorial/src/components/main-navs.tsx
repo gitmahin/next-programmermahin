@@ -5,31 +5,20 @@ import { GraduationCap } from "lucide-react";
 import Image from "next/image";
 import React, { Suspense } from "react";
 import { TutoListPopup } from "./tutorials";
-import {
-  setLockMouseEnter,
-  setOpenTutoTab,
-  setTutoTabDetails,
-} from "@/redux/tutorials/tutoTabSlice";
-import { useAppDispatch } from "@/hooks/redux.hook";
 import { getTutorialsByKey, TutorialEnums } from "@programmer/constants";
 import { TutorialNavItemType } from "@programmer/types";
+import { tutoTabStore } from "@/services/store";
 
 export default function MainNavs() {
-  const dispatch = useAppDispatch();
 
   const handleTutorialListClick = (tutoType: string, tutoName: string) => {
-    if (!setOpenTutoTab || !setTutoTabDetails || !setLockMouseEnter) return;
-    dispatch(setOpenTutoTab(true));
-    dispatch(
-      setTutoTabDetails({
-        data: getTutorialsByKey[
-          tutoType as TutorialEnums
-        ] as TutorialNavItemType,
-        activeKey: tutoType,
-        tutorialName: tutoName,
-      })
-    );
-    dispatch(setLockMouseEnter(true));
+    tutoTabStore.setOpenTutoTab(true);
+    tutoTabStore.setTutoTabDetails({
+      data: getTutorialsByKey[tutoType as TutorialEnums] as TutorialNavItemType,
+      activeKey: tutoType,
+      tutorialName: tutoName,
+    });
+    tutoTabStore.setLockMouseEnter(true);
   };
   return (
     <div className="px-4 w-full ">

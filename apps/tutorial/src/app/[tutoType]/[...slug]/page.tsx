@@ -2,7 +2,7 @@ import React from "react";
 import fs from "fs";
 import matter from "gray-matter";
 import ContentAsideNav from "./content-aside-nav";
-import TutoPagination from "./paginatation";
+import {TutoPagination} from "./paginatation";
 import {
   algolia,
   extractAnchors,

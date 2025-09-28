@@ -1,12 +1,6 @@
 "use client";
 import { MAIN_NAV_TUTORIALS } from "@/constants";
 import { DEVOPS_TUTORIALS } from "@programmer/constants";
-import { useAppDispatch, useAppSelector } from "@/hooks/redux.hook";
-import {
-  setLockMouseEnter,
-  setOpenTutoTab,
-  setTutoTabDetails,
-} from "@/redux/tutorials/tutoTabSlice";
 import { getTutorialsByKey, TutorialEnums } from "@programmer/constants";
 import {
   Dialog,
@@ -23,7 +17,6 @@ import {
 } from "@programmer/ui";
 import {
   BookOpenCheck,
-  ChevronRight,
   Library,
   LockKeyholeIcon,
   PanelRightClose,
@@ -32,15 +25,17 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { TutorialNavItemType } from "@programmer/types";
+import { tutoTabStore } from "@/services/store";
+import { observer } from "mobx-react";
 
 interface TutoListPopupPropsType {
   showClickAbleTutoOpenBtn?: boolean;
 }
 
-export const TutoListPopup = ({
+export const TutoListPopup = observer(({
   showClickAbleTutoOpenBtn = true,
 }: TutoListPopupPropsType) => {
   const path_name = usePathname();
@@ -48,10 +43,9 @@ export const TutoListPopup = ({
   const [openTutoNavSize, setOpenTutoNavSide] = useState(false);
   const queryParams = useSearchParams();
   const isOpenTutoTab = queryParams.get("tutoTab");
-  const tutoTab = useAppSelector((state) => state.tutoTab);
-  const lockMouseEnter = tutoTab.lock;
-  const open = tutoTab.open;
-  const dispatch = useAppDispatch();
+
+  const lockMouseEnter = tutoTabStore.lock;
+  const open = tutoTabStore.open;
 
   useEffect(() => {
     setTimeout(() => {
@@ -61,24 +55,23 @@ export const TutoListPopup = ({
     }, 300);
   }, []);
 
-  const handleMouseEnter = (tutorialtype: string, tutoName: string) => {
+  const handleOnClickTutoPopupList = useCallback((tutorialtype: string, tutoName: string) => {
     if (!lockMouseEnter) {
-      if (!setTutoTabDetails) return;
-      dispatch(
-        setTutoTabDetails({
+      tutoTabStore.setTutoTabDetails({
           data: getTutorialsByKey[
             tutorialtype as TutorialEnums
           ] as TutorialNavItemType,
           activeKey: tutorialtype,
           tutorialName: tutoName,
         })
-      );
+    }else{
+      toast.error("Click the lock icon to unlock navigation")
     }
-  };
+  }, [lockMouseEnter]);
 
   // getting the first key from the data object, so that on click start learning user can go to the intro of the course
   useEffect(() => {
-    const firstEntry = Object.entries(tutoTab.data)[0];
+    const firstEntry = Object.entries(tutoTabStore.data)[0];
 
     if (firstEntry) {
       const [key, value] = firstEntry;
@@ -86,49 +79,44 @@ export const TutoListPopup = ({
 
       if (key && value.slug && firstItemSlug) {
         setLearningButtomURL(
-          `/${tutoTab.activeKey}/${value.slug}/${firstItemSlug}`
+          `/${tutoTabStore.activeKey}/${value.slug}/${firstItemSlug}`
         );
       }
     }
-  }, [tutoTab, handleMouseEnter]);
+  }, [tutoTabStore.data, handleOnClickTutoPopupList]);
 
   // This function handles changes in the open state of a tutorial tab for dialog onOpenChange
   const handleOpenChange = (value: boolean) => {
-    if (!setOpenTutoTab) return;
-    // Dispatch an action to update the open state in Redux
-    dispatch(setOpenTutoTab(value));
+    tutoTabStore.setOpenTutoTab(value)
   };
 
   // open tutorial selector tab on click
   const handleOpenTutoTab = () => {
-    if (!setOpenTutoTab) return;
-    dispatch(setOpenTutoTab(true));
+tutoTabStore.setOpenTutoTab(true)
+
   };
 
   // if start learning button clicked close the tutorial selector tab
   const handleStartLrnButtonClicked = () => {
-    if (!setOpenTutoTab) return;
     if (path_name === learningButtonURL) {
-      dispatch(setOpenTutoTab(false));
+      tutoTabStore.setOpenTutoTab(false)
     }
   };
 
   // on path change close the tutorial selector tab
   useEffect(() => {
-    if (!setOpenTutoTab) return;
-    dispatch(setOpenTutoTab(false));
+    tutoTabStore.setOpenTutoTab(false)
   }, [path_name]);
 
   // unlock mouse enter if locked
   const UnlockOnMouseEnter = () => {
-    if (!setLockMouseEnter) return;
-    dispatch(setLockMouseEnter(false));
-    toast.success("UI Unlocked");
+    tutoTabStore.setLockMouseEnter(false)
+    toast.success("Navigation Unlocked");
   };
 
   useEffect(() => {
     setOpenTutoNavSide(false);
-  }, [tutoTab.activeKey]);
+  }, [tutoTabStore.activeKey]);
 
   const countLessonsInChapter = (chapter: TutorialNavItemType[string]) => {
     return (
@@ -220,9 +208,9 @@ export const TutoListPopup = ({
                 {MAIN_NAV_TUTORIALS.map((item, i) => {
                   return (
                     <li
-                      onClick={() => handleMouseEnter(item.key, item.label)}
+                      onClick={() => handleOnClickTutoPopupList(item.key, item.label)}
                       key={i}
-                      className={`flex cursor-pointer  relative group transition-colors duration-150 select-none rounded-tiny justify-start items-center gap-3 px-3 py-1 ${tutoTab.activeKey === item.key ? item.bg_color : "hover:bg-background-color_800C"}`}
+                      className={`flex cursor-pointer  relative group transition-colors duration-150 select-none rounded-tiny justify-start items-center gap-3 px-3 py-1 ${tutoTabStore.activeKey === item.key ? item.bg_color : "hover:bg-background-color_800C"}`}
                     >
                       <div className="flex justify-center items-center">
                         <Image
@@ -236,14 +224,14 @@ export const TutoListPopup = ({
                             dark:invert
                             transition-all duration-100
                             ${
-                              tutoTab.activeKey === item.key &&
+                              tutoTabStore.activeKey === item.key &&
                               "grayScaleActiveImage group-hover:grayScaleActiveImage"
                             }
                             `}
                         />
                       </div>
                       <span
-                        className={`text-read_1  ${tutoTab.activeKey === item.key ? "group-hover:text-text-color_1" : "text-text-color_4"}  font-medium`}
+                        className={`text-read_1  ${tutoTabStore.activeKey === item.key ? "group-hover:text-text-color_1" : "text-text-color_4"}  font-medium`}
                       >
                         {item.label}
                       </span>
@@ -265,13 +253,13 @@ export const TutoListPopup = ({
                       className="text-text-svg_default_color"
                     />
                   </div>
-                  <div className="text-[12px] h-full pr-[8px] px-1 hover:bg-background-color_800C font-medium text-text-color_2 flex justify-center items-center">
-                    UI Locked
+                  <div className="text-[12px] h-full pr-[8px] px-1 font-medium text-text-color_2 flex justify-center items-center">
+                    Navigation Locked
                   </div>
                 </PMButton>
               )}
             </div>
-            {tutoTab.activeKey ? (
+            {tutoTabStore.activeKey ? (
               <div className="w-full h-full overflow-y-auto tuto_tab_content  overflow-x-hidden">
                 <div className=" h-full">
                   <div className="sticky z-[1] py-4 px-5 top-0 backdrop-blur-lg course_ovw rounded-tr-[7px]">
@@ -282,12 +270,12 @@ export const TutoListPopup = ({
                   <div>
                     <div className="mt-1 px-5">
                       <h2 className="font-medium text-[25px] text-text-color_1">
-                        {tutoTab.tutorialName} Tutorial
+                        {tutoTabStore.tutorialName} Tutorial
                       </h2>
                       <div className="mt-5 flex justify-start items-center">
                         <div className="border-r flex flex-col items-center w-fit pr-3 border-border-color_800C">
                           <span className="text-[25px]">
-                            {countChapters(tutoTab.data)}
+                            {countChapters(tutoTabStore.data)}
                           </span>
                           <span className="text-[12px] text-text-color_2">
                             Chapters
@@ -295,7 +283,7 @@ export const TutoListPopup = ({
                         </div>
                         <div className=" flex flex-col items-center w-fit pl-3">
                           <span className="text-[25px]">
-                            {Object.values(tutoTab.data).reduce(
+                            {Object.values(tutoTabStore.data).reduce(
                               (acc, chapter) =>
                                 acc + countLessonsInChapter(chapter),
                               0
@@ -320,7 +308,7 @@ export const TutoListPopup = ({
                       </span>
                     </div>
                     <div className="pb-16 px-5">
-                      {Object.entries(tutoTab.data).map(([key, value], i) => {
+                      {Object.entries(tutoTabStore.data).map(([key, value], i) => {
                         return (
                           <Accordion type="single" collapsible key={i}>
                             <AccordionItem
@@ -410,4 +398,4 @@ export const TutoListPopup = ({
       </Dialog>
     </>
   );
-};
+});

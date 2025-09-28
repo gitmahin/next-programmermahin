@@ -2,7 +2,7 @@
 import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
 import { TableOfContents, X } from "lucide-react";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { generateTocFromMdx, useActiveHeading } from "react-mdxutils";
 
 export const QuickLearnAsideNav = ({
@@ -10,6 +10,7 @@ export const QuickLearnAsideNav = ({
 }: {
   matterContent: string;
 }) => {
+
   const anchors = generateTocFromMdx(matterContent);
   const [openAside, setOpenAside] = useState<boolean>(false);
   // const nestedAnchors = nestAnchors(anchors);

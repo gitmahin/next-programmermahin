@@ -2,24 +2,17 @@
 import { ReactTyped } from "react-typed";
 import React from "react";
 import { PMButton } from "@programmer/ui";
-import { useDispatch } from "react-redux";
-import {
-  setLockMouseEnter,
-  setOpenTutoTab,
-} from "@/redux/tutorials/tutoTabSlice";
 import Image from "next/image";
 import { GETTING_STARTED, WHY_LEARN_HERE } from "@/constants/landing_page";
 import MainNavs from "@/components/main-navs";
 import { Sidebar } from "@/components/sidebar";
 import Link from "next/link";
+import { tutoTabStore } from "@/services/store";
 
 const page = () => {
-  const dispatch = useDispatch();
-
   const handleBrowseTutoClicked = () => {
-    if (!setOpenTutoTab || !setLockMouseEnter) return;
-    dispatch(setOpenTutoTab(true));
-    dispatch(setLockMouseEnter(false));
+    tutoTabStore.setOpenTutoTab(true);
+    tutoTabStore.setLockMouseEnter(false);
   };
 
   return (

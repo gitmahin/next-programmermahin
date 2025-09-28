@@ -10,24 +10,19 @@ import { Braces, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import { sidebarStore } from "@/services/store";
+import { observer } from "mobx-react";
 
-import { setMobSidebarOpen } from "@/redux/tutorials/mobSidebarOpen";
-import { useAppDispatch, useAppSelector } from "@/hooks/redux.hook";
-
-export const Sidebar = ({ children }: { children: React.ReactNode }) => {
+export const Sidebar = observer(({ children }: { children: React.ReactNode }) => {
   const path_name = usePathname();
-  const dispatch = useAppDispatch();
-
-  const mobSidebarOpen = useAppSelector((state) => state.mobSidebarOpen.open);
 
   const handleSidebarOff = () => {
-    if (!setMobSidebarOpen) return;
-    dispatch(setMobSidebarOpen(false));
+    sidebarStore.setIsOpenMobSidebar(false)
   };
 
   return (
     <aside
-      className={`w-[320px] z-50 transition-[left] border-r border-border-color_800C bg-background-color_900C h-screen fixed left-0 top-0 tutosidebar ${mobSidebarOpen ? "openTutoSidebar" : ""}`}
+      className={`w-[320px] z-50 transition-[left] border-r border-border-color_800C bg-background-color_900C h-screen fixed left-0 top-0 tutosidebar ${sidebarStore.isOpenMobSidebar ? "openTutoSidebar" : ""}`}
     >
       {/* <div className="w-[20px] h-screen absolute left-full top-0 border border-solid box-border border-l-0 border-r-1 border-b-0 border-border-color_800C border-x border-x-border-color_800C bg-[image:repeating-linear-gradient(315deg,_var(--border-color-800C)_0,_var(--border-color-800C)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-800C)]/5 md:block dark:[--pattern-fg:var(--border-color-800C)]/10 max-[1114px]:backdrop-blur-3xl"></div> */}
 
@@ -96,8 +91,11 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
             })}
           </ul>
         </div>
+        <div className="pb-5">
+
         {children}
+        </div>
       </nav>
     </aside>
   );
-};
+});

@@ -9,19 +9,19 @@ import React, {
 import { TutoListPopup } from "./tuto-list-popup";
 import { TUTORIALS_ICON } from "@programmer/constants";
 import Image from "next/image";
-import { setPagination } from "@/redux/tutorials/tutoPaginateSlice";
+
 import { FlattenedTutorialChapter } from "@/types/flattened-tutorial-ch";
-import { useAppDispatch } from "@/hooks/redux.hook";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { setLockMouseEnter } from "@/redux/tutorials/tutoTabSlice";
 import { TutorialEnums } from "@programmer/constants";
 import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import {  ChevronRight } from "lucide-react";
 import {
   TutorialNavCoreItemsType,
   TutorialNavItemType,
 } from "@programmer/types";
+import { PaginateStoreDataType, paginationStore } from "@programmer/shared";
+import { tutoTabStore } from "@/services/store";
 
 export const TutoSidebar = ({
   tutoData,
@@ -31,7 +31,6 @@ export const TutoSidebar = ({
   tutorialType: TutorialEnums;
 }) => {
   const path_name = usePathname();
-  const dispatch = useAppDispatch();
   const lessons = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
   const dirChildRef = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const [isOpen, setIsOpen] = useState<{ [key: string]: boolean }>({});
@@ -65,8 +64,6 @@ export const TutoSidebar = ({
   );
 
   useEffect(() => {
-    if (!setPagination) return;
-
     const flattenDocs = (
       data: TutorialNavItemType,
       basePath: string = `/${tutorialType}`
@@ -121,11 +118,13 @@ export const TutoSidebar = ({
       (navItem) => decodeURIComponent(path_name) === navItem.path
     );
 
-    dispatch(setPagination({ currentIndex, flatTutoList: flatDocList }));
+    paginationStore.setPagination(
+      currentIndex,
+      flatDocList as PaginateStoreDataType[]
+    );
 
     // unlock tutoTab sidebar ui if path is in tutorial
-    if (!setLockMouseEnter) return;
-    dispatch(setLockMouseEnter(false));
+    tutoTabStore.setLockMouseEnter(false)
   }, [path_name, tutoData]);
 
   useEffect(() => {

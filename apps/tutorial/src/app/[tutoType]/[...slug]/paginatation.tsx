@@ -1,19 +1,20 @@
 "use client";
-import { RootState } from "@/redux/store";
 import { LUCIDE_DEFAULT_ICON_SIZE, PMButton } from "@programmer/ui";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import { useSelector } from "react-redux";
+import {observer} from "mobx-react"
 
-export default function TutoPagination() {
-  const prev = useSelector((state: RootState) => state.tutoPaginate.prev);
-  const next = useSelector((state: RootState) => state.tutoPaginate.next);
+import { paginationStore } from "@programmer/shared";
+
+export const  TutoPagination = observer(() => {
+
+
 
   return (
     <div className="mt-10 mb-10 flex justify-center items-center gap-2 pt-2">
-      {prev && (
-        <Link href={`${prev?.path}`} className="w-full">
+      {paginationStore.prev && (
+        <Link href={`${paginationStore.prev?.path}`} className="w-full">
           <PMButton
             variant="silent"
             className="w-full p-3 px-4 border group border-border-color_800C transition-colors flex flex-col justify-center items-start"
@@ -30,14 +31,14 @@ export default function TutoPagination() {
               </span>
             </div>
             <p className="text-read_1 pt-2 one_line_ellipsis font-medium">
-              {prev?.label}
+              {paginationStore.prev?.label}
             </p>
           </PMButton>
         </Link>
       )}
 
-      {next && (
-        <Link href={`${next?.path}`} className="w-full">
+      {paginationStore.next && (
+        <Link href={`${paginationStore.next?.path}`} className="w-full">
           <PMButton
             variant="silent"
             className="w-full p-3 px-4 border group border-border-color_800C transition-colors flex flex-col justify-center items-end"
@@ -53,11 +54,11 @@ export default function TutoPagination() {
               />
             </div>
             <p className="text-read_1 pt-2 one_line_ellipsis font-medium">
-              {next?.label}
+              {paginationStore.next?.label}
             </p>
           </PMButton>
         </Link>
       )}
     </div>
   );
-}
+})

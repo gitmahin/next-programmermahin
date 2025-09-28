@@ -1,23 +1,20 @@
 "use client";
-import { setMobSidebarOpen } from "@/redux/tutorials/mobSidebarOpen";
+
+import { sidebarStore } from "@/services/store";
 import { LUCIDE_DEFAULT_ICON_SIZE, PMButton, PMLogo } from "@programmer/ui";
 import { PanelRightClose } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
 
 export default function MobileHeader() {
-  const dispatch = useDispatch();
   const path_name = usePathname();
 
   const handleOpenSidebar = () => {
-    if (!setMobSidebarOpen) return;
-    dispatch(setMobSidebarOpen(true));
+    sidebarStore.setIsOpenMobSidebar(true);
   };
 
   useEffect(() => {
-    if (!setMobSidebarOpen) return;
-    dispatch(setMobSidebarOpen(false));
+    sidebarStore.setIsOpenMobSidebar(false);
   }, [path_name]);
 
   return (
