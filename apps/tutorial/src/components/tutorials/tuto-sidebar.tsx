@@ -16,7 +16,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { TutorialEnums } from "@programmer/constants";
 import { LUCIDE_DEFAULT_ICON_SIZE } from "@programmer/ui";
-import { ChevronRight } from "lucide-react";
+import {  ChevronRight } from "lucide-react";
 import {
   TutorialNavCoreItemsType,
   TutorialNavItemType,
@@ -24,13 +24,13 @@ import {
 import { PaginateStoreDataType, paginationStore } from "@programmer/shared";
 import { tutoTabStore } from "@/services/store";
 
-function TutoSidebarComponent({
+export const TutoSidebar = ({
   tutoData,
   tutorialType,
 }: {
   tutoData: TutorialNavItemType;
   tutorialType: TutorialEnums;
-}) {
+}) => {
   const path_name = usePathname();
   const lessons = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
   const dirChildRef = useRef<{ [key: string]: HTMLDivElement | null }>({});
@@ -125,7 +125,7 @@ function TutoSidebarComponent({
     );
 
     // unlock tutoTab sidebar ui if path is in tutorial
-    tutoTabStore.setLockMouseEnter(false);
+    tutoTabStore.setLockMouseEnter(false)
   }, [path_name, tutoData, tutorialType]);
 
   useEffect(() => {
@@ -439,6 +439,4 @@ function TutoSidebarComponent({
       </div>
     </>
   );
-}
-
-export const TutoSidebar = memo(TutoSidebarComponent);
+};

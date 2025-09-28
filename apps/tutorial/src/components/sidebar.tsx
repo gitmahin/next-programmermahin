@@ -15,7 +15,7 @@ import { observer } from "mobx-react";
 
 
 export const Sidebar = observer(({ children }: { children: React.ReactNode }) => {
-  const path_name = usePathname();
+  // const path_name = usePathname();
 
   const handleSidebarOff = () => {
     sidebarStore.setIsOpenMobSidebar(false)
@@ -69,7 +69,7 @@ export const Sidebar = observer(({ children }: { children: React.ReactNode }) =>
             </Link>
           </div>
 
-          <ul className="leading-9 pt-3">
+          {/* <ul className="leading-9 pt-3">
             {MAIN_NAV_LINKS.map((item, i) => {
               const Icon = item.icon;
               const segments = path_name.split("/").filter(Boolean);
@@ -90,7 +90,7 @@ export const Sidebar = observer(({ children }: { children: React.ReactNode }) =>
                 </Link>
               );
             })}
-          </ul>
+          </ul> */}
         </div>
         <div className="pb-5">
 
