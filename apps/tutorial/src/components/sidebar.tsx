@@ -11,9 +11,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { sidebarStore } from "@/services/store";
-import { observer } from "mobx-react";
 
-export const Sidebar = observer(({ children }: { children: React.ReactNode }) => {
+
+export const Sidebar = ({ children }: { children: React.ReactNode }) => {
   const path_name = usePathname();
 
   const handleSidebarOff = () => {
@@ -98,4 +98,4 @@ export const Sidebar = observer(({ children }: { children: React.ReactNode }) =>
       </nav>
     </aside>
   );
-});
+};
