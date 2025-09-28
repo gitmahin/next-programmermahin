@@ -125,7 +125,7 @@ export const TutoSidebar = ({
 
     // unlock tutoTab sidebar ui if path is in tutorial
     tutoTabStore.setLockMouseEnter(false)
-  }, [path_name, tutoData]);
+  }, [path_name, tutoData, tutorialType]);
 
   useEffect(() => {
     const lastPath = path_name.split("/").pop();
@@ -144,7 +144,7 @@ export const TutoSidebar = ({
   useEffect(() => {
     const lastPath = path_name.split("/").slice(-2, -1).toString();
     openDirChild(lastPath ?? "", true);
-  }, [path_name]);
+  }, [path_name, openDirChild]);
 
   return (
     <>
