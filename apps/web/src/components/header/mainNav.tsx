@@ -41,7 +41,7 @@ export const MainNav = () => {
               <div className="w-[720px] h-[300px] p-2">
                 <div className="w-full h-full grid grid-cols-[220px_220px_1fr] gap-2">
                   <Link
-                    href={"https://developer.programmermahin.com"}
+                    href={"https://developer-programmermahin.vercel.app"}
                     target="_blank"
                     className="w-full h-full"
                   >
@@ -161,7 +161,7 @@ export const MainNav = () => {
             <NavigationMenuContent>
               <div className="w-[800px] h-[330px] grid grid-cols-[250px_280px_1fr]">
                 <Link
-                  href={"https://tutorial.programmermahin.com"}
+                  href={"https://tutorial-programmermahin.vercel.app"}
                   target="_blank"
                 >
                   <div className="w-[250px] border-r h-full border-border-color_800C relative group">
