@@ -88,7 +88,7 @@ export default function RootLayout({
               "@context": "https://schema.org/",
               "@type": "WebSite",
               name: "ProgrammerMahin",
-              url: "https://programmermahin.com/",
+              url: "https://programmermahin.vercel.app/",
             }),
           }}
         />

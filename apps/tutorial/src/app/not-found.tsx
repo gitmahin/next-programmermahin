@@ -39,7 +39,7 @@ export default function NotFound() {
             </Link>
           </div>
           <div className="w-full mt-3">
-            <Link href={"https://programmermahin.com"}>
+            <Link href={"https://programmermahin.vercel.app"}>
               <PMButton
                 variant="secondary"
                 className="w-full px-3 py-1 rounded transition-colors "

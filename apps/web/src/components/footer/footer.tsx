@@ -15,7 +15,7 @@ const TUTORIAL_BASE_PATH = `${process.env.NEXT_PUBLIC_TUTORIAL_BASE_PATH}`;
 const SUPPORTS: FooterLinkType[] = [
   {
     label: "Developer Docs",
-    slug: "https://developer.programmermahin.com",
+    slug: "https://developer-programmermahin.vercel.app",
   },
   {
     label: "Community",

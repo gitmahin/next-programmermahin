@@ -10,7 +10,7 @@ export const HEADER_NAV_LINKS: HeaderNavLinkType[] = [
   },
   {
     label: "Root",
-    slug: "https://programmermahin.com",
+    slug: "https://programmermahin.vercel.app",
   },
   {
     label: "Github",
@@ -26,6 +26,6 @@ export const HEADER_NAV_LINKS: HeaderNavLinkType[] = [
   },
   {
     label: "Contact",
-    slug: "https://programmermahin.com/contact",
+    slug: "https://programmermahin.vercel.app/contact",
   },
 ];

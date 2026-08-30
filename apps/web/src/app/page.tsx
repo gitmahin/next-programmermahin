@@ -62,7 +62,7 @@ export default async function Page({
       <DynamicHeroIDE>{fileCode ? fileCode : "No file found"}</DynamicHeroIDE>
 
       <SnippetsFeatures />
-      <DynamicErrorResolveShowupSection />
+      {/* <DynamicErrorResolveShowupSection /> */}
       <div className="mt-32"></div>
     </div>
   );

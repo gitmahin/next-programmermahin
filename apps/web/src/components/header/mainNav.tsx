@@ -195,7 +195,7 @@ export const MainNav = () => {
                 </Link>
                 <div className="w-full h-full p-2 pr-0">
                   <Link
-                    href={"https://tutorial.programmermahin.com/quick-learn"}
+                    href={"https://tutorial-programmermahin.vercel.app/quick-learn"}
                     target="_blank"
                   >
                     <div className="w-full h-full bg-background-color_900C border border-background-color_850C dark:hover:bg-background-color_850C hover:bg-background-color_800C transition-colors rounded relative overflow-hidden">

@@ -106,7 +106,7 @@ export const HeroHeading = () => {
             </PMButton>
           </Link>
 
-          <Link href={"https://tutorial.programmermahin.com/?tutoTab=1"}>
+          <Link href={"https://tutorial-programmermahin.vercel.app/?tutoTab=1"}>
             <PMButton
               variant="silent"
               className="px-4 py-2  rounded group flex justify-center items-center gap-2 transition-colors"

@@ -107,13 +107,13 @@ export const MobileMenu = ({
                   desc="Free, In-Depth Tutorials That Actually Teach You
                           Something"
                   icon={GraduationCap}
-                  link="https://tutorial.programmermahin.com/?tutoTab=1"
+                  link="https://tutorial-programmermahin.vercel.app/?tutoTab=1"
                 />
                 <DeveloperListItem
                   title="Quick Learn"
                   desc="Learn the essentials in minutes - not hours."
                   icon={Layers2}
-                  link="https://tutorial.programmermahin.com/quick-learn"
+                  link="https://tutorial-programmermahin.vercel.app/quick-learn"
                 />
                 <DeveloperListItem
                   title="Blogs"

@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: `https://programmermahin.com/sitemap.xml`,
+    sitemap: `https://programmermahin.vercel.app/sitemap.xml`,
   };
 }

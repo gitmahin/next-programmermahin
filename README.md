@@ -5,10 +5,10 @@ Welcome to the **Next-ProgrammerMahin**, powered by **Turborepo**. We’re excit
 
 This monorepo contains all the core projects that power:
 
-- 📘 **Tutorial Platform:** [tutorial.programmermahin.com](https://tutorial.programmermahin.com)  
+- 📘 **Tutorial Platform:** [tutorial.programmermahin.com](https://tutorial-programmermahin.vercel.app/)  
   Learn and teach programming with structured tutorials, real-world examples, and developer-focused tools.
 
-- 🌐 **Web Platform:** [programmermahin.com](https://programmermahin.com)  
+- 🌐 **Web Platform:** [programmermahin.com](https://programmermahin.vercel.app)  
   A learning-first platform built to help developers explore, grow, and contribute.
 
 ---

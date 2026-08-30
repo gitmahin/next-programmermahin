@@ -49,7 +49,7 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
       <nav className="w-full h-[calc(100%-55px)] bg-background-color_900C overflow-y-auto overflow-x-hidden">
         <div className="px-4 py-4">
           <div className="border-b border-border-color_800C pb-4">
-            <Link href={`https://programmermahin.com`}>
+            <Link href={`https://programmermahin.vercel.app`}>
               <li className="flex justify-start items-center gap-2 group">
                 <div
                   className={`border rounded-tiny border-border-color_800C p-[3px] bg-gradient-to-tr from-background-color_900C to-background-color_800C text-text-svg_default_color group-hover:text-pm_zinc-950 dark:group-hover:text-text-zinc_white"}`}
